@@ -67,11 +67,51 @@ flutter:
     - assets/images/
     - assets/icons/
 
+  fonts:
+    - family: Pretendard
+      fonts:
+        - asset: assets/fonts/Pretendard-Black.ttf
+          weight: 900
+        - asset: assets/fonts/Pretendard-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Pretendard-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Pretendard-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/Pretendard-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Pretendard-Regular.ttf
+        - asset: assets/fonts/Pretendard-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Pretendard-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Pretendard-Thin.ttf
+          weight: 100
+
+
+
+    - family: Assistant
+      fonts:
+        - asset: assets/fonts/Assistant-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Assistant-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/Assistant-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/Assistant-Light.ttf
+          weight: 300
+        - asset: assets/fonts/Assistant-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/Assistant-Regular.ttf
+        - asset: assets/fonts/Assistant-SemiBold.ttf
+          weight: 600
+
+
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
   # For details regarding adding assets from package dependencies, see
-  # https://flutter.dev/assets-and-images/#from-packages
+  # https://flutter.dev/asset-and-images/#from-packages
 
   # To add custom fonts to your application, add a fonts section here,
   # in this "flutter" section. Each entry in this list should have a
