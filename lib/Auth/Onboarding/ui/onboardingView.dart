@@ -1,8 +1,8 @@
 import 'package:dear_app/Auth/Onboarding/component/speechBubble.dart';
 import 'package:flutter/material.dart';
 
-class onboardingView extends StatelessWidget {
-  const onboardingView({super.key});
+class OnboardingView extends StatelessWidget {
+  const OnboardingView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -44,15 +44,12 @@ class onboardingView extends StatelessWidget {
                   //   padding: EdgeInsets.only(top: 10),
                   //   child: speechBubble(),
                   // ),
-                  speechBubble(),
-                  const Text(
-                    "회원가입하고 숨은 꿀팁 찾기",
-                    style: TextStyle(fontSize: 10, height: 1.2),
-                  ),
+                  SpeechBubble(),
+
                 ],
               ),
               const SizedBox(
-                height: 30,
+                height: 15,
               ),
               ElevatedButton(
                 onPressed: () {},

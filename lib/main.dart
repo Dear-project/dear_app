@@ -1,7 +1,9 @@
+import 'package:dear_app/Auth/Onboarding/component/speechBubble.dart';
+import 'package:dear_app/Auth/Onboarding/ui/onboardingView.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(OnboardingView());
 }
 
 class MyApp extends StatelessWidget {
