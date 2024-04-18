@@ -1,7 +1,8 @@
+import 'package:dear_app/Auth/Onboarding/component/speechBubble.dart';
 import 'package:flutter/material.dart';
 
-class signupView extends StatelessWidget {
-  const signupView({super.key});
+class onboardingView extends StatelessWidget {
+  const onboardingView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +20,8 @@ class signupView extends StatelessWidget {
                   "사소한 질문도 소중히",
                   style: TextStyle(
                     fontSize: 23,
-                    fontWeight: FontWeight.w600,
+                    fontFamily: "Pretendard",
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -27,7 +29,9 @@ class signupView extends StatelessWidget {
                 "DEAR.",
                 style: TextStyle(
                   fontSize: 50,
-                  fontWeight: FontWeight.bold,
+                  fontFamily: "Assistant",
+                  fontWeight: FontWeight.w800,
+                  color: Color(0xff0E2764),
                 ),
               ),
               SizedBox(
@@ -36,23 +40,11 @@ class signupView extends StatelessWidget {
               Stack(
                 alignment: Alignment.center,
                 children: [
-                  // Container(
-                  //   width: 140,
-                  //   height: 23,
-                  //   decoration: BoxDecoration(
-                  //       borderRadius: const BorderRadius.only(
-                  //         bottomLeft: Radius.circular(5),
-                  //         bottomRight: Radius.circular(5),
-                  //       ),
-                  //       boxShadow: [
-                  //         BoxShadow(
-                  //           color: Colors.grey.withOpacity(0.7),
-                  //           blurRadius: 5.0,
-                  //           spreadRadius: 0.0,
-                  //           offset: const Offset(0, 7),
-                  //         )
-                  //       ]),
+                  // Padding(
+                  //   padding: EdgeInsets.only(top: 10),
+                  //   child: speechBubble(),
                   // ),
+                  speechBubble(),
                   const Text(
                     "회원가입하고 숨은 꿀팁 찾기",
                     style: TextStyle(fontSize: 10, height: 1.2),
@@ -74,7 +66,10 @@ class signupView extends StatelessWidget {
                 ),
                 child: const Text(
                   "시작하기",
-                  style: TextStyle(fontSize: 16, height: 1.2),
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 9),
@@ -90,16 +85,13 @@ class signupView extends StatelessWidget {
                 ),
                 child: const Text(
                   "로그인",
-                  style: TextStyle(fontSize: 16),
+                  style: TextStyle(
+                      fontSize: 16,
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.bold),
                 ),
               ),
               const SizedBox(height: 8),
-              const Text(
-                "문의하기",
-                style: TextStyle(
-                  fontSize: 10,
-                ),
-              ),
             ],
           ),
         ),
