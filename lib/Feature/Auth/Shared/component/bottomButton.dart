@@ -6,45 +6,29 @@ class BottomButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-        onPressed: () {},
-        style: ElevatedButton.styleFrom(
-          fixedSize: Size(342, 56),
-          foregroundColor: Colors.white,
-          backgroundColor: Color(0xff0E2764),
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
+    return CupertinoButton(
+      onPressed: () {
+
+        },
+      padding: EdgeInsets.symmetric(),
+      color: Color(0xff0E2764),
+      borderRadius: BorderRadius.all(Radius.circular(16)),
+      child: Container(
+        width: 340,
+        height: 55,
+        child: Center(
+          child: Text(
+            "다음",
+            style: TextStyle(
+                fontFamily: "Pretendard",
+                fontSize: 16,
+                fontWeight: FontWeight.w700,
+                color: Colors.white
+            ),
           ),
-        ),
-        child: Text(
-          "다음",
-          style: TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
+        )
+      )
       );
   }
 
 }
-
-/*
-ElevatedButton(
-                onPressed: () {},
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(342, 56),
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xff0E2764),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                child: Text(
-                  "다음",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
- */

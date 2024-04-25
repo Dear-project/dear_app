@@ -1,5 +1,6 @@
 import 'package:dear_app/Feature/Auth/School/component/schoolCell.dart';
 import 'package:dear_app/Feature//Auth/School/component/schoolSearchBar.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,8 +10,7 @@ class SelectSchoolView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
           toolbarHeight: 130,
@@ -82,23 +82,17 @@ class SelectSchoolView extends StatelessWidget {
                   )
         ),
         bottomNavigationBar: BottomAppBar(
-          elevation: 0,
-          color: Colors.white,
-          child: CupertinoButton(
-            onPressed: () {
+            height: 100,
+            elevation: 0,
+            color: Colors.white,
+            child: CupertinoButton(
+              onPressed: () {
 
-            },
-            child: Text(
-                "다음",
-                style: TextStyle(
-                  color: DearColors.red.red400
-                ),
-            ),
-
+              },
+              child: BottomButton()
+            )
           )
-        )
-      )
-    );
+        );
   }
 
 }
