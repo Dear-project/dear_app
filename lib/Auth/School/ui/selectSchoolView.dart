@@ -1,5 +1,6 @@
 import 'package:dear_app/Auth/School/component/schoolCell.dart';
 import 'package:dear_app/Auth/School/component/schoolSearchBar.dart';
+import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -20,7 +21,9 @@ class SelectSchoolView extends StatelessWidget {
               children: [
                 SchoolSearchBar(),
                 SizedBox(height: 10),
-                Divider(),
+                Divider(
+                    color: Color(0xffC5D0DA),
+                ),
               ],
             ),
             preferredSize: const Size(10, 10),
@@ -78,6 +81,22 @@ class SelectSchoolView extends StatelessWidget {
                     }
                   )
         ),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 0,
+          color: Colors.white,
+          child: CupertinoButton(
+            onPressed: () {
+
+            },
+            child: Text(
+                "다음",
+                style: TextStyle(
+                  color: DearColors.
+                ),
+            ),
+
+          )
+        )
       )
     );
   }

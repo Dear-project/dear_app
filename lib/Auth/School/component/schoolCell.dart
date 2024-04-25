@@ -13,6 +13,7 @@ class SchoolCell extends StatelessWidget {
               fontSize: 20,
               fontWeight: FontWeight.w700
           )),
+
           SizedBox(height: 8,),
           Text("대구광역시 달성 구지면 창리로11길 93", style: TextStyle(
             fontFamily: "Pretendard",
