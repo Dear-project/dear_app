@@ -17,6 +17,7 @@ class SelectSchoolView extends StatelessWidget {
           backgroundColor: Colors.white,
           scrolledUnderElevation: 0,
           bottom: PreferredSize(
+            preferredSize: const Size(10, 10),
             child: Column(
               children: [
                 SchoolSearchBar(),
@@ -26,7 +27,6 @@ class SelectSchoolView extends StatelessWidget {
                 ),
               ],
             ),
-            preferredSize: const Size(10, 10),
           ),
           title: Text("학교 선택", style: TextStyle(
                   fontFamily: "Pretendard",
@@ -91,7 +91,7 @@ class SelectSchoolView extends StatelessWidget {
             child: Text(
                 "다음",
                 style: TextStyle(
-                  color: DearColors.
+                  color: DearColors.red.red400
                 ),
             ),
 
