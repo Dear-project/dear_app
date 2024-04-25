@@ -1,5 +1,5 @@
-import 'package:dear_app/Auth/School/component/schoolCell.dart';
-import 'package:dear_app/Auth/School/component/schoolSearchBar.dart';
+import 'package:dear_app/Feature/Auth/School/component/schoolCell.dart';
+import 'package:dear_app/Feature//Auth/School/component/schoolSearchBar.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

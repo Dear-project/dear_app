@@ -1,4 +1,4 @@
-import 'package:dear_app/Auth/School/ui/selectSchoolView.dart';
+import 'package:dear_app/Feature/Auth/School/ui/selectSchoolView.dart';
 
 import 'package:flutter/material.dart';
 
