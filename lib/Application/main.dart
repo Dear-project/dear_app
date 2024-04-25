@@ -1,9 +1,9 @@
-import 'package:dear_app/Auth/Onboarding/component/speechBubble.dart';
-import 'package:dear_app/Auth/Onboarding/ui/onboardingView.dart';
+import 'package:dear_app/Auth/School/ui/selectSchoolView.dart';
+
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(SelectSchoolView());
 }
 
 class MyApp extends StatelessWidget {
@@ -14,9 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           textSelectionTheme: TextSelectionThemeData(
-              cursorColor: Color(0xff0E2764),
-              selectionColor: Color(0xff0E2764).withOpacity(0.2),
-              selectionHandleColor: Color(0xff0E2764))),
+              cursorColor: const Color(0xff0E2764),
+              selectionColor: const Color(0xff0E2764).withOpacity(0.2),
+              selectionHandleColor: const Color(0xff0E2764))),
       home: Scaffold(
         backgroundColor: Colors.white,
         body: Center(
