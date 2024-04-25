@@ -82,16 +82,12 @@ class SelectSchoolView extends StatelessWidget {
                   )
         ),
         bottomNavigationBar: BottomAppBar(
-            height: 100,
-            elevation: 0,
-            color: Colors.white,
-            child: CupertinoButton(
-              onPressed: () {
-
-              },
-              child: BottomButton()
-            )
-          )
+          elevation: 0,
+          height: 80,
+          padding: EdgeInsets.all(0),
+          color: Colors.white,
+          child: CupertinoButton(onPressed: () {}, child: BottomButton()),
+        )
         );
   }
 

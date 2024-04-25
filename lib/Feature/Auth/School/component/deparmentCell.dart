@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 
 class DeparmentCell extends StatelessWidget {
   @override
@@ -16,9 +17,13 @@ class DeparmentCell extends StatelessWidget {
               color: Color(0xff787878)
           )
           ),
-          Divider(
-            color: Color(0xffD9D9D9),
+          Padding(
+            padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
+            child: Divider(
+              color: Color(0xffD9D9D9),
+            ),
           )
+
         ],
       ),
     );
