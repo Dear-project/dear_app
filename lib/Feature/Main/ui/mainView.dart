@@ -1,10 +1,14 @@
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
+import 'package:dear_app/Shared/model/dearTabViewItem.dart';
+import 'package:dear_app/Shared/theme/dearIcons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../Shared/model/dearTabViewItem.dart';
-import '../../../Shared/theme/dearIcons.dart';
+import '../Chat/ui/chatView.dart';
+import '../Home/ui/homeView.dart';
+import '../Profile/ui/profileView.dart';
+import '../Discover/ui/discoverView.dart';
+import '../People/ui/peopleView.dart';
 
 
 class MainView extends StatefulWidget {
@@ -15,13 +19,22 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   var _index = 0;
 
-  List<DearTabViewItem> items = [
+  List<Widget> _pages = [
+    HomeView(),
+    ChatView(),
+    DiscoverView(),
+    PeopleView(),
+    ProfileView()
+  ];
+
+  List<DearTabViewItem> _items = [
     DearTabViewItem(icon: DearIcons.home, toggle: true),
     DearTabViewItem(icon: DearIcons.chat),
     DearTabViewItem(icon: DearIcons.inventory,),
     DearTabViewItem(icon: DearIcons.people,),
     DearTabViewItem(icon: DearIcons.my)
   ];
+
 
   @override
   Widget build(BuildContext context) {
@@ -36,9 +49,7 @@ class _MainViewState extends State<MainView> {
         ),
         leadingWidth: 140,
       ),
-      body: Center(
-        child: Text("콘텐츠")
-      ),
+      body: _pages[_index],
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
         color: Colors.white,
@@ -47,10 +58,11 @@ class _MainViewState extends State<MainView> {
           children: [
             Divider(
               color: Color(0xffF1F1F1),
+
             ),
 
             DearTabView(
-                items: items,
+                items: _items,
                 onClick: (value) {
                   setState(() {
                     _index = value;
