@@ -2,33 +2,26 @@ import 'package:dear_app/Feature/Auth/Onboarding/ui/onboardingView.dart';
 import 'package:dear_app/Shared/model/dearTabViewItem.dart';
 import 'package:dear_app/Shared/theme/dearIcons.dart';
 import 'package:flutter/cupertino.dart';
-
-
+import 'package:flutter/material.dart';
 
 
 class DearTabView extends StatefulWidget {
-  const DearTabView({super.key});
+  final List<DearTabViewItem> items;
+  final ValueChanged<int>? onClick;
+  const DearTabView({required this.items, this.onClick});
 
   @override
   State<StatefulWidget> createState() => _DearTabViewState();
 }
 
 class _DearTabViewState extends State<DearTabView> {
-  List<DearTabViewItem> items = [
-    DearTabViewItem(icon: DearIcons.home, toggle: true),
-    DearTabViewItem(icon: DearIcons.chat),
-    DearTabViewItem(icon: DearIcons.inventory,),
-    DearTabViewItem(icon: DearIcons.people,),
-    DearTabViewItem(icon: DearIcons.my)
-  ];
-
   void clickItem(int index) {
     setState(() {
-      if (!items[index].toggle == true) {
-        items.forEach((element) {
+      if (!widget.items[index].toggle == true) {
+        widget.items.forEach((element) {
           element.toggle = false;
         });
-        items[index].toggle = true;
+        widget.items[index].toggle = true;
       }
 
     });
@@ -41,15 +34,16 @@ class _DearTabViewState extends State<DearTabView> {
         child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              for (int i = 0; i < items.length; i++)
+              for (int i = 0; i < widget.items.length; i++)
                 CupertinoButton(
                     child: Image(
-                      image: items[i].icon.toFill(items[i].toggle).image,
+                      image: widget.items[i].icon.toFill(widget.items[i].toggle).image,
                       width: 22,
                       height: 22,
                     ),
                     onPressed: () {
                       clickItem(i);
+                      widget.onClick?.call(i);
                     })
             ]));
   }

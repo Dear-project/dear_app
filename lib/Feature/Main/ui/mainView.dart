@@ -3,6 +3,9 @@ import 'package:dear_app/Shared/component/dearTabView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../../../Shared/model/dearTabViewItem.dart';
+import '../../../Shared/theme/dearIcons.dart';
+
 
 class MainView extends StatefulWidget {
   @override
@@ -10,6 +13,16 @@ class MainView extends StatefulWidget {
 
 }
 class _MainViewState extends State<MainView> {
+  var _index = 0;
+
+  List<DearTabViewItem> items = [
+    DearTabViewItem(icon: DearIcons.home, toggle: true),
+    DearTabViewItem(icon: DearIcons.chat),
+    DearTabViewItem(icon: DearIcons.inventory,),
+    DearTabViewItem(icon: DearIcons.people,),
+    DearTabViewItem(icon: DearIcons.my)
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,7 +49,14 @@ class _MainViewState extends State<MainView> {
               color: Color(0xffF1F1F1),
             ),
 
-            DearTabView(),
+            DearTabView(
+                items: items,
+                onClick: (value) {
+                  setState(() {
+                    _index = value;
+                  });
+                },
+            ),
           ],
         )
       )
