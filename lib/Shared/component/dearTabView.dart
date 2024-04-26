@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Onboarding/ui/onboardingView.dart';
 import 'package:dear_app/Shared/model/dearTabViewItem.dart';
 import 'package:dear_app/Shared/theme/dearIcons.dart';
 import 'package:flutter/cupertino.dart';
@@ -15,10 +16,10 @@ class DearTabView extends StatefulWidget {
 class _DearTabViewState extends State<DearTabView> {
   List<DearTabViewItem> items = [
     DearTabViewItem(icon: DearIcons.home, toggle: true),
-    DearTabViewItem(icon: DearIcons.chat, toggle: false),
-    DearTabViewItem(icon: DearIcons.inventory, toggle: false),
-    DearTabViewItem(icon: DearIcons.people, toggle: false),
-    DearTabViewItem(icon: DearIcons.my, toggle: false),
+    DearTabViewItem(icon: DearIcons.chat),
+    DearTabViewItem(icon: DearIcons.inventory,),
+    DearTabViewItem(icon: DearIcons.people,),
+    DearTabViewItem(icon: DearIcons.my)
   ];
 
   void clickItem(int index) {
@@ -36,9 +37,8 @@ class _DearTabViewState extends State<DearTabView> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: EdgeInsets.symmetric(horizontal: 35),
+        padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
         child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               for (int i = 0; i < items.length; i++)

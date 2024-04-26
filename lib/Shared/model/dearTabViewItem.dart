@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 
 class DearTabViewItem {
-  DearTabViewItem({required this.icon, required this.toggle});
+  DearTabViewItem({required this.icon, this.toggle = false});
+
 
   Image icon;
   bool toggle;
-
 
 }
