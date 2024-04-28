@@ -6,6 +6,7 @@ class DearIcons {
   static Image inventory = Image.asset("assets/icons/inventory.png");
   static Image people = Image.asset("assets/icons/people.png");
   static Image my = Image.asset("assets/icons/my.png");
+  static Image bell = Image.asset("assets/icons/bell.png");
 }
 
 extension DearIconsFill on Image {
@@ -16,8 +17,17 @@ extension DearIconsFill on Image {
       var str = this.toString();
       var substr = str.substring(str.lastIndexOf("(") + 1, str.indexOf(")"));
       var path = substr.substring(substr.lastIndexOf(" ") + 1, substr.lastIndexOf(".")).replaceAll("\"", "");
-      
-      return Image.asset("${path}_fill.png");
+
+      var image;
+
+      try {
+        image = Image.asset("${path}_fill.png");
+      }
+      catch(e) {
+        image = this;
+      }
+
+      return image;
     }
     else {
       return this;

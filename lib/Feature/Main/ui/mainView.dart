@@ -1,14 +1,14 @@
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
 import 'package:dear_app/Shared/model/dearTabViewItem.dart';
+import 'package:dear_app/Shared/theme/dearBadge.dart';
 import 'package:dear_app/Shared/theme/dearIcons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Chat/ui/chatView.dart';
 import '../Home/ui/homeView.dart';
 import '../Profile/ui/profileView.dart';
 import '../Discover/ui/discoverView.dart';
-import '../People/ui/peopleView.dart';
+import '../Community/ui/communityView.dart';
 
 
 class MainView extends StatefulWidget {
@@ -19,15 +19,15 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   var _index = 0;
 
-  List<Widget> _pages = [
+  final List<Widget> _pages = [
     HomeView(),
     ChatView(),
     DiscoverView(),
-    PeopleView(),
+    CommunityView(),
     ProfileView()
   ];
 
-  List<DearTabViewItem> _items = [
+  final List<DearTabViewItem> _items = [
     DearTabViewItem(icon: DearIcons.home, toggle: true),
     DearTabViewItem(icon: DearIcons.chat),
     DearTabViewItem(icon: DearIcons.inventory,),
@@ -48,6 +48,23 @@ class _MainViewState extends State<MainView> {
           child: DearLogo(),
         ),
         leadingWidth: 140,
+        actions: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: Container(
+              width: 22,
+              height: 25,
+              child: Stack(
+                  alignment: Alignment.topRight,
+                  children: [
+                    DearIcons.bell,
+                    DearBadge()
+                  ]
+              )
+            )
+          )
+
+        ],
       ),
       body: _pages[_index],
       bottomNavigationBar: BottomAppBar(
@@ -63,6 +80,7 @@ class _MainViewState extends State<MainView> {
 
             DearTabView(
                 items: _items,
+
                 onClick: (value) {
                   setState(() {
                     _index = value;

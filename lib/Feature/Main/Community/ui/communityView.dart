@@ -1,11 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class PeopleView extends StatelessWidget {
+class CommunityView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("사람들뷰"),
+      child: Text("커뮤니티뷰"),
     );
   }
 
