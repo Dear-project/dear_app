@@ -1,9 +1,6 @@
-import 'package:dear_app/Feature/Auth/Onboarding/ui/onboardingView.dart';
-import 'package:dear_app/Feature/Auth/School/ui/selectSchoolView.dart';
 import 'package:flutter/material.dart';
-
-import '../Feature/Auth/School/ui/selectDeparmentView.dart';
-import '../Feature/Main/ui/mainView.dart';
+import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/inChatView.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,7 +17,7 @@ class MyApp extends StatelessWidget {
               cursorColor: const Color(0xff0E2764),
               selectionColor: const Color(0xff0E2764).withOpacity(0.2),
               selectionHandleColor: const Color(0xff0E2764))),
-      home: MainView()
+      home: InChatView()
     );
   }
 }

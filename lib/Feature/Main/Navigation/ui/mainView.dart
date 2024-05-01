@@ -1,14 +1,16 @@
+import 'package:dear_app/Feature/Main/Profile/ui/profileView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
 import 'package:dear_app/Shared/model/dearTabViewItem.dart';
 import 'package:dear_app/Shared/theme/dearBadge.dart';
 import 'package:dear_app/Shared/theme/dearIcons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../Chat/ui/chatView.dart';
-import '../Home/ui/homeView.dart';
-import '../Profile/ui/profileView.dart';
-import '../Discover/ui/discoverView.dart';
-import '../Community/ui/communityView.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/chatView.dart';
+import 'package:dear_app/Feature/Main/Home/ui/homeView.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/discoverView.dart';
+import 'package:dear_app/Feature/Main/Community/ui/communityView.dart';
+import 'package:dear_app/Feature/Main/Profile/ui/profileView.dart';
 
 
 class MainView extends StatefulWidget {
@@ -57,7 +59,13 @@ class _MainViewState extends State<MainView> {
               child: Stack(
                   alignment: Alignment.topRight,
                   children: [
-                    DearIcons.bell,
+                    CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        child: DearIcons.bell,
+                        onPressed: () {
+
+                    }),
+
                     DearBadge()
                   ]
               )

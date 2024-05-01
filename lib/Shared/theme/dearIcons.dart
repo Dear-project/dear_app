@@ -7,6 +7,11 @@ class DearIcons {
   static Image people = Image.asset("assets/icons/people.png");
   static Image my = Image.asset("assets/icons/my.png");
   static Image bell = Image.asset("assets/icons/bell.png");
+  static Image back = Image.asset("assets/icons/back.png");
+  static Image detail = Image.asset("assets/icons/detail.png");
+  static Image attach = Image.asset("assets/icons/attach.png");
+  static Image photo = Image.asset("assets/icons/photo.png");
+  static Image send = Image.asset("assets/icons/send.png");
 }
 
 extension DearIconsFill on Image {
@@ -24,7 +29,10 @@ extension DearIconsFill on Image {
         image = Image.asset("${path}_fill.png");
       }
       catch(e) {
-        image = this;
+        image = Image(
+          image: this.image,
+          color: Color(0xff0E2764)
+        );
       }
 
       return image;

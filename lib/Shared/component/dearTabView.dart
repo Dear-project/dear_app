@@ -40,6 +40,7 @@ class _DearTabViewState extends State<DearTabView> {
                       image: widget.items[i].icon.toFill(widget.items[i].toggle).image,
                       width: 22,
                       height: 22,
+                      fit: BoxFit.fitWidth,
                     ),
                     onPressed: () {
                       clickItem(i);
