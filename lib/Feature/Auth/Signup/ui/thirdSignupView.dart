@@ -28,20 +28,6 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
   final _topTextEditController = TextEditingController();
   final _bottomTextEditController = TextEditingController();
 
-  // 타이머
-  int _seconds = 300;
-  late Timer _timer;
-
-  void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_seconds > 0) {
-          _seconds--;
-        }
-      });
-    });
-  }
-
   Function getHint = (AuthStep authStep, String type) {
     String hint = "";
     switch (authStep) {
@@ -54,6 +40,19 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
     }
     return hint;
   };
+
+  int _seconds = 300;
+  late Timer _timer;
+
+  void _startTimer() {
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        if (_seconds > 0) {
+          _seconds--;
+        }
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -73,8 +72,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
             children: [
               SizedBox(height: 50),
               DearLogo(size: 55),
+              // DearTimer(startTimer, timer),
               SizedBox(height: 21),
-              DearTextField(TextFieldType.email, _topTextEditController),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Row(
@@ -98,44 +97,7 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
               Stack(
                 alignment: Alignment.centerRight,
                 children: [
-                  Container(
-                    width: 340,
-                    height: 56,
-                    child: Stack(
-                      alignment: Alignment.center,
-                      children: [
-                        TextField(
-                          controller: _topTextEditController,
-                          onChanged: (value) {
-                            print("${value}");
-                          },
-                          cursorColor: Color(0xff0E2764),
-                          decoration: InputDecoration(
-                            hintText: "${getHint(authStep, "top")}",
-                            hintStyle: TextStyle(
-                              height: 1.3,
-                              fontFamily: "Pretendard",
-                              fontSize: 17,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xff0E2764), width: 0.0),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(16)),
-                                gapPadding: BorderSide.strokeAlignCenter),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(16)),
-                              borderSide: BorderSide(
-                                  color: Color(0xffC5D0DA), width: 1.0),
-                            ),
-                          ),
-                          maxLines: 1,
-                        ),
-                      ],
-                    ),
-                  ),
+                  DearTextField(TextFieldType.email, _topTextEditController),
                   if (!isAuthButtonClicked)
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -165,39 +127,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                                 alignment: Alignment.center,
                                 children: [
                                   if (isAuthenticated == null)
-                                    TextField(
-                                      controller: _bottomTextEditController,
-                                      onChanged: (value) {
-                                        print("${value}");
-                                      },
-                                      cursorColor: Color(0xff0E2764),
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            "${getHint(authStep, "bottom")}",
-                                        hintStyle: TextStyle(
-                                          height: 1.3,
-                                          fontFamily: "Pretendard",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff0E2764),
-                                                width: 0.0),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(16)),
-                                            gapPadding:
-                                                BorderSide.strokeAlignCenter),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(16)),
-                                          borderSide: BorderSide(
-                                              color: Color(0xffC5D0DA),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                    ),
+                                    DearTextField(TextFieldType.authCheck,
+                                        _bottomTextEditController),
                                   if (isAuthenticated != null &&
                                       isAuthenticated!)
                                     TextField(
@@ -235,65 +166,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                                     ),
                                   if (isAuthenticated != null &&
                                       !isAuthenticated!)
-                                    TextField(
-                                      controller: _bottomTextEditController,
-                                      onChanged: (value) {
-                                        print("${value}");
-                                      },
-                                      cursorColor: Color(0xff0E2764),
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            "${getHint(authStep, "bottom")}",
-                                        hintStyle: TextStyle(
-                                          height: 1.3,
-                                          fontFamily: "Pretendard",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffEA0C0C),
-                                                width: 1.4),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(16)),
-                                            gapPadding:
-                                                BorderSide.strokeAlignCenter),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(16)),
-                                          borderSide: BorderSide(
-                                              color: Color(0xffEA0C0C),
-                                              width: 1),
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                    ),
-                                  // if (TextFieldType.authCheck == TextFieldType.authCheck)
-                                  if (authStep == AuthStep.first)
-                                    Row(
-                                      children: [
-                                        Spacer(
-                                          flex: 1,
-                                        ),
-                                        Text('${_seconds ~/ 60}:',
-                                            style: TextStyle(
-                                              height: 1.2,
-                                              fontFamily: "Pretendard",
-                                              color: Color(0xff0E2764),
-                                              fontSize: 15,
-                                            )),
-                                        Text(
-                                            '${(_seconds % 60)}'
-                                                .padLeft(2, "0"),
-                                            style: TextStyle(
-                                              height: 1.2,
-                                              fontFamily: "Pretendard",
-                                              color: Color(0xff0E2764),
-                                              fontSize: 15,
-                                            )),
-                                        SizedBox(width: 100),
-                                      ],
-                                    ),
+                                    DearTextField(TextFieldType.email,
+                                        _topTextEditController),
                                 ],
                               ),
                             ),
@@ -344,6 +218,30 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                       ],
                     )
                   : SizedBox(height: 0, width: 0),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // Spacer(flex: 1),
+                  Text('${_seconds ~/ 60}:',
+                      style: TextStyle(
+                        height: 1.2,
+                        fontFamily: "Pretendard",
+                        color: Color(0xff0E2764),
+                        fontSize: 15,
+                      )),
+                  Text(
+                    '${(_seconds % 60)}'.padLeft(2, "0"),
+                    style: TextStyle(
+                      height: 1.2,
+                      fontFamily: "Pretendard",
+                      color: Color(0xff0E2764),
+                      fontSize: 15,
+                    ),
+                  ),
+                  // SizedBox(width: 100),
+                ],
+              ),
+              SizedBox(height: 20),
               if (isAuthButtonClicked && authStep == AuthStep.first)
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -398,13 +296,12 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                 print("${_bottomTextEditController.text.characters}");
                 _bottomTextEditController.text = "";
 
+
                 setState(() {
                   authStep = (authStep == AuthStep.first)
                       ? AuthStep.second
                       : AuthStep.third;
                 });
-
-                print("${_topTextEditController}");
               }),
               SizedBox(height: 45),
             ],

@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -5,7 +6,10 @@ import '../../../../Shared/component/dearLogo.dart';
 import '../../Shared/component/bottomButton.dart';
 
 class FifthSignupView extends StatelessWidget {
-  const FifthSignupView({super.key});
+  FifthSignupView({super.key});
+
+  final _topTextEditController = TextEditingController();
+  final _bottomTextEditController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +50,11 @@ class FifthSignupView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 45),
+              DearTextField(TextFieldType.name,
+                  _topTextEditController),
+              SizedBox(height: 15),
+              DearTextField(TextFieldType.birth,
+                  _bottomTextEditController),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () {}),

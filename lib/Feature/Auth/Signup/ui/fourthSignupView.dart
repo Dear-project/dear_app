@@ -1,11 +1,21 @@
+import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../Shared/component/dearLogo.dart';
 import '../../Shared/component/bottomButton.dart';
 
-class FourthSignupView extends StatelessWidget {
+class FourthSignupView extends StatefulWidget {
   const FourthSignupView({super.key});
+
+  @override
+  State<FourthSignupView> createState() => _FourthSignupViewState();
+}
+
+class _FourthSignupViewState extends State<FourthSignupView> {
+
+  final _topTextEditController = TextEditingController();
+  final _bottomTextEditController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +49,16 @@ class FourthSignupView extends StatelessWidget {
                         fontWeight: FontWeight.w700,
                       ),
                     ),
-                    Spacer(
-                      flex: 1,
-                    )
+                    Spacer(flex: 1),
                   ],
                 ),
               ),
               SizedBox(height: 45),
+              DearTextField(TextFieldType.pw,
+                  _topTextEditController),
+              SizedBox(height: 15),
+              DearTextField(TextFieldType.pwCheck,
+                  _bottomTextEditController),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () {}),
