@@ -12,6 +12,7 @@ class DearIcons {
   static Image attach = Image.asset("assets/icons/attach.png");
   static Image photo = Image.asset("assets/icons/photo.png");
   static Image send = Image.asset("assets/icons/send.png");
+  static Image check = Image.asset("assets/icons/check.png");
 }
 
 extension DearIconsFill on Image {

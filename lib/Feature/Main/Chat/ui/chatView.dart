@@ -5,7 +5,7 @@ class ChatView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-        child: Text("채팅뷰"),
+        child: Text("챗뷰")
     );
   }
 

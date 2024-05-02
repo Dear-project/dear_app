@@ -9,7 +9,7 @@ class DearLogo extends StatelessWidget {
       children: const [
         Text(
           "DEAR",
-          style: TextStyle(
+          style:   TextStyle(
             fontFamily: "Assistant",
             fontWeight: FontWeight.w800,
             fontSize: 28,
