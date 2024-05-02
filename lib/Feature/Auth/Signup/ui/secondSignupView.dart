@@ -1,3 +1,4 @@
+import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -21,29 +22,8 @@ class SecondSignupView extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "DEAR",
-                    style: TextStyle(
-                      fontFamily: "Assistant",
-                      fontWeight: FontWeight.w800,
-                      fontSize: 55,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                  Text(
-                    ".",
-                    style: TextStyle(
-                      fontFamily: "Assistant",
-                      fontWeight: FontWeight.w800,
-                      fontSize: 45,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                ],
-              ),
+              SizedBox(height: 50),
+              DearLogo(size: 55),
               SizedBox(height: 40),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 36),

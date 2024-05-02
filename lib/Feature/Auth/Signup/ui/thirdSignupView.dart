@@ -1,7 +1,9 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextFieldButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTimer.dart';
+import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -70,30 +72,9 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
           child: Column(
             children: [
               SizedBox(height: 50),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    "DEAR",
-                    style: TextStyle(
-                      fontFamily: "Assistant",
-                      fontWeight: FontWeight.w800,
-                      fontSize: 55,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                  Text(
-                    ".",
-                    style: TextStyle(
-                      fontFamily: "Assistant",
-                      fontWeight: FontWeight.w800,
-                      fontSize: 45,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                ],
-              ),
+              DearLogo(size: 55),
               SizedBox(height: 21),
+              DearTextField(TextFieldType.email, _topTextEditController),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Row(
@@ -410,8 +391,7 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
               Spacer(flex: 1),
               BottomDots(Dots.third),
               SizedBox(height: 30),
-              BottomButton(
-                  action: () {
+              BottomButton(action: () {
                 print("${_topTextEditController.text}");
                 _topTextEditController.text = "";
 
@@ -423,6 +403,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                       ? AuthStep.second
                       : AuthStep.third;
                 });
+
+                print("${_topTextEditController}");
               }),
               SizedBox(height: 45),
             ],
