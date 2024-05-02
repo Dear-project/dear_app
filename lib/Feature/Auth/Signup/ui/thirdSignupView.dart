@@ -410,7 +410,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
               Spacer(flex: 1),
               BottomDots(Dots.third),
               SizedBox(height: 30),
-              BottomButton(() {
+              BottomButton(
+                  action: () {
                 print("${_topTextEditController.text}");
                 _topTextEditController.text = "";
 
