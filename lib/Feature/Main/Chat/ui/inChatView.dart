@@ -1,8 +1,18 @@
 import 'package:dear_app/Shared/theme/dearIcons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-class InChatView extends StatelessWidget {
+class InChatView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _InChatViewState();
+
+}
+
+class _InChatViewState extends State<InChatView> {
+
+  final _textEditController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,49 +80,50 @@ class InChatView extends StatelessWidget {
         child: Text("s"),
       ),
       bottomNavigationBar: BottomAppBar(
-        height: 100,
+        height: (110) + MediaQuery.of(context).viewInsets.bottom,
         padding: EdgeInsets.zero,
-        child: Column(
-          children: [
-            CupertinoTextField(
-              autocorrect: false,
-              padding: EdgeInsets.all(25),
-              decoration: BoxDecoration(),
-              placeholder: "메시지를 입력해보세요.",
-              style: TextStyle(fontFamily: "Pretendard", fontSize: 15),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              child: Row(
-                children: [
-                  Image(
-                    image: DearIcons.attach.image,
-                    width: 26,
-                    height: 26,
-                    fit: BoxFit.fitWidth,
-                  ),
-                  SizedBox(width: 10,),
-                  Image(
-                    image: DearIcons.photo.image,
-                    width: 26,
-                    height: 26,
-                    fit: BoxFit.fitWidth,
-                  ),
-                  Spacer(),
-                  Image(
-                    image: DearIcons.send.toFill(false).image,
-                    width: 25,
-                    height: 25,
-                    fit: BoxFit.fitWidth,
-                  )
-                ],
-              )
-            )
-          ],
-        ),
         color: Colors.white,
         elevation: 0,
-      ),
+          child: Column(
+            children: [
+              CupertinoTextField(
+                controller: _textEditController,
+                autocorrect: false,
+                padding: EdgeInsets.all(25),
+                decoration: BoxDecoration(),
+                placeholder: "메시지를 입력해보세요.",
+                style: TextStyle(fontFamily: "Pretendard", fontSize: 15),
+              ),
+              Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
+                  child: Row(
+                    children: [
+                      Image(
+                        image: DearIcons.attach.image,
+                        width: 26,
+                        height: 26,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      SizedBox(width: 10,),
+                      Image(
+                        image: DearIcons.photo.image,
+                        width: 26,
+                        height: 26,
+                        fit: BoxFit.fitWidth,
+                      ),
+                      Spacer(),
+                      Image(
+                        image: DearIcons.send.toFill(false).image,
+                        width: 25,
+                        height: 25,
+                        fit: BoxFit.fitWidth,
+                      )
+                    ],
+                  )
+              )
+            ],
+        )
+        ),
     );
   }
 }
