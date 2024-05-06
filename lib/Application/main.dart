@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Onboarding/ui/firstJoinView.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/checkToggle.dart';
 import 'package:flutter/material.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
@@ -18,17 +19,7 @@ class MyApp extends StatelessWidget {
               cursorColor: const Color(0xff0E2764),
               selectionColor: const Color(0xff0E2764).withOpacity(0.2),
               selectionHandleColor: const Color(0xff0E2764))),
-      home: Scaffold(
-        backgroundColor: Color(0xffFFFFFF),
-        body: Center(
-          child: CheckToggle(
-            toggle: true,
-            onPressed: () {
-
-            },
-          ),
-        )
-      )
+      home: FirstJoinView()
     );
   }
 }

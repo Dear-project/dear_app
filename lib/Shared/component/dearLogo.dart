@@ -1,8 +1,11 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class DearLogo extends StatelessWidget {
   final double? size;
-  DearLogo({this.size = 28});
+  final Color? color;
+
+  DearLogo({this.size = 28, this.color = const Color(0xff0E2764)});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,7 @@ class DearLogo extends StatelessWidget {
             fontFamily: "Assistant",
             fontWeight: FontWeight.w800,
             fontSize: size,
-            color: Color(0xff0E2764),
+            color: color,
           ),
         );
   }
