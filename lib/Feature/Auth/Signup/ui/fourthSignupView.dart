@@ -145,7 +145,6 @@ class _FourthSignupViewState extends State<FourthSignupView> {
                 ),
               ),
               Spacer(flex: 1),
-              SizedBox(height: 30),
               BottomButton(action: () {
                 if (_topTextEditController.text !=
                     _bottomTextEditController.text) {

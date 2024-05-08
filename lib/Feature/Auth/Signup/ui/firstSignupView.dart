@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
@@ -150,30 +151,13 @@ class FirstSignupView extends StatelessWidget {
                   ),
                 ],
               ),
-              // CustomCheckbox(),
-              const SizedBox(
-                height: 190,
-              ),
-              ElevatedButton(
-                onPressed: () {
+              Spacer(flex: 1),
+              BottomButton(
+                action: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SecondSignupView()));
                 },
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(342, 56),
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xff0E2764),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                child: Text(
-                  "다음",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
               ),
+              SizedBox(height: 45),
             ],
           ),
         ),

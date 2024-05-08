@@ -58,7 +58,6 @@ class FifthSignupView extends StatelessWidget {
               SizedBox(height: 15),
               DearTextField(TextFieldType.birth, _bottomTextEditController),
               Spacer(flex: 1),
-              SizedBox(height: 30),
               BottomButton(action: () {}),
               SizedBox(height: 45),
             ],

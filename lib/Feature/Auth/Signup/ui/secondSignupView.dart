@@ -56,9 +56,7 @@ class SecondSignupView extends StatelessWidget {
                   typeSelectButton("교수"),
                 ],
               ),
-              SizedBox(
-                height: 117,
-              ),
+              Spacer(flex: 1),
               BottomButton(
                 action: () {
                   Navigator.push(
@@ -67,6 +65,7 @@ class SecondSignupView extends StatelessWidget {
                           builder: (context) => ThirdSignupView()));
                 },
               ),
+              SizedBox(height: 45),
             ],
           ),
         ),

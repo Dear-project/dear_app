@@ -197,14 +197,7 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                   ],
                 ),
               Spacer(flex: 1),
-              SizedBox(height: 30),
               BottomButton(action: () {
-                print("${_topTextEditController.text}");
-                // _topTextEditController.text = "";
-
-                print("${_bottomTextEditController.text.characters}");
-                // _bottomTextEditController.text = "";
-
                 if (_bottomTextEditController.text == "123") {
                   setState(() {
                     widget.isAuthenticated = true;
