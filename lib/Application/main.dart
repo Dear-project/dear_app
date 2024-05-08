@@ -3,6 +3,8 @@ import 'package:dear_app/Feature/Auth/Signup/ui/fifthSignupView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/fourthSignupView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/thirdSignupView.dart';
+import 'package:dear_app/Feature/Main/Chat/component/chatCell.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/chatView.dart';
 import 'package:flutter/material.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/inChatView.dart';
@@ -24,10 +26,8 @@ class MyApp extends StatelessWidget {
               selectionHandleColor: const Color(0xff0E2764))),
       home: Scaffold(
         backgroundColor: Color(0xffFFFFFF),
-        // body: ThirdSignupView(),
-        // body: FourthSignupView(),
-        // body: FirstSignupView(),
-        body: FirstSigninView(),
+        body: MainView(),
+        // body: ChatView(),
       ),
     );
   }
