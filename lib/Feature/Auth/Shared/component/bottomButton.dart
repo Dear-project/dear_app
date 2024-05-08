@@ -7,9 +7,10 @@ class BottomButton extends StatelessWidget {
     print("function a used!");
   };
 
-  // BottomButton({super.key});
+  String buttonText;
 
-  BottomButton({this.action});
+  // BottomButton({super.key});
+  BottomButton({this.action, this.buttonText = "다음"});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +28,7 @@ class BottomButton extends StatelessWidget {
             height: 55,
             child: Center(
               child: Text(
-                "다음",
+                "${this.buttonText}",
                 style: TextStyle(
                     fontFamily: "Pretendard",
                     fontSize: 16,

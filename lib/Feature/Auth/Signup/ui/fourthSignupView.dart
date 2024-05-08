@@ -1,5 +1,5 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/dearTextField.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/fifthSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
