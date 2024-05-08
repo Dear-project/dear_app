@@ -8,6 +8,8 @@ import 'package:flutter/material.dart';
 class FourthSignupView extends StatefulWidget {
   FourthSignupView({super.key});
 
+  bool? isPwDifferent;
+
   @override
   State<FourthSignupView> createState() => _FourthSignupViewState();
 }
@@ -15,8 +17,6 @@ class FourthSignupView extends StatefulWidget {
 class _FourthSignupViewState extends State<FourthSignupView> {
   final _topTextEditController = TextEditingController();
   final _bottomTextEditController = TextEditingController();
-
-  bool? isPwDifferent;
 
   @override
   Widget build(BuildContext context) {
@@ -65,25 +65,31 @@ class _FourthSignupViewState extends State<FourthSignupView> {
               ),
               SizedBox(height: 15),
               DearTextField(TextFieldType.pwCheck, _bottomTextEditController,
-                  isPwDifferent),
+                  widget.isPwDifferent),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () {
                 if (_topTextEditController.text !=
                     _bottomTextEditController.text) {
                   setState(() {
-                    isPwDifferent = true;
+                    widget.isPwDifferent = true;
                   });
-                  print("비밀번호가 달라요!, ${isPwDifferent}");
+                  print("비밀번호가 달라요!, ${widget.isPwDifferent}");
                 } else {
                   setState(() {
-                    isPwDifferent = false;
+                    widget.isPwDifferent = false;
                   });
-                  print("비밀번호가 같아요!, ${isPwDifferent}");
+                  print("비밀번호가 같아요!, ${widget.isPwDifferent}");
                 }
 
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => FifthSignupView()));
+                if (widget.isPwDifferent != null) {
+                  if (!widget.isPwDifferent!) {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => FifthSignupView()));
+                  }
+                }
               }),
               SizedBox(height: 45),
             ],

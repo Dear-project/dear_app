@@ -8,16 +8,18 @@ enum TextFieldType { email, authCheck, pw, pwCheck, name, birth }
 class DearTextField extends StatefulWidget {
   final TextFieldType textFieldType;
   final _TextEditController;
-  bool? isPwDifferent;
+
+  bool? showErrorText;
 
   DearTextField(this.textFieldType, this._TextEditController,
-      [this.isPwDifferent]);
+      [this.showErrorText]);
 
   @override
   State<DearTextField> createState() => _DearTextFieldState();
 }
 
 class _DearTextFieldState extends State<DearTextField> {
+
   @override
   void dispose() {
     widget._TextEditController.dispose();
@@ -60,13 +62,16 @@ class _DearTextFieldState extends State<DearTextField> {
   }
 
   String? checkErrorText() {
-    String? checkErrorText;
     switch (widget.textFieldType) {
       case TextFieldType.authCheck:
-      // return "인증번호가 옳지 않습니다.";
+        if (widget.showErrorText != null) {
+          if (!widget.showErrorText!) {
+            return "인증번호가 옳지 않습니다.";
+          }
+        }
       case TextFieldType.pwCheck:
-        if (widget.isPwDifferent != null) {
-          if (widget.isPwDifferent!) {
+        if (widget.showErrorText != null) {
+          if (widget.showErrorText!) {
             return "비밀번호가 일치하지 않습니다.";
           }
         }
@@ -88,16 +93,10 @@ class _DearTextFieldState extends State<DearTextField> {
               ? TextFormField(
                   controller: widget._TextEditController,
                   autovalidateMode: AutovalidateMode.always,
-                  onFieldSubmitted: (value) {
-                    debugPrint('onFieldSubmitted $value ');
-                  },
                   onChanged: (value) {
                     setState(() {});
-                    print("${widget.isPwDifferent}");
+                    print("${widget.showErrorText}");
                     debugPrint('change $value');
-                  },
-                  validator: (value) {
-                    debugPrint('validator $value');
                   },
                   style: TextStyle(
                     fontSize: 17,
@@ -108,7 +107,7 @@ class _DearTextFieldState extends State<DearTextField> {
                   decoration: InputDecoration(
                     hintText: "${getHint(widget.textFieldType)}",
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     hintStyle: TextStyle(
                       height: 1.3,
                       fontFamily: "Pretendard",
@@ -150,7 +149,7 @@ class _DearTextFieldState extends State<DearTextField> {
               : TextField(
                   controller: widget._TextEditController,
                   onChanged: (value) {
-                    print("${widget.isPwDifferent}");
+                    print("${widget.showErrorText}");
                     print("${value}");
                   },
                   style: TextStyle(
@@ -168,7 +167,7 @@ class _DearTextFieldState extends State<DearTextField> {
                       fontWeight: FontWeight.w300,
                     ),
                     contentPadding:
-                        EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+                        EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                     focusedBorder: OutlineInputBorder(
                         borderSide:
                             BorderSide(color: Color(0xff0E2764), width: 0.0),

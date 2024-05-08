@@ -7,49 +7,38 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
 
-enum AuthStep { first, second, third }
-
 class ThirdSignupView extends StatefulWidget {
-  const ThirdSignupView({super.key});
+  ThirdSignupView({super.key});
+
+  bool isAuthButtonClicked = false;
+  bool? isAuthenticated;
+
+  bool isRunning = false;
+  Timer timer = Timer.periodic(Duration(seconds: 1), (timer) {});
 
   @override
   State<ThirdSignupView> createState() => _ThirdSignupViewState();
 }
 
 class _ThirdSignupViewState extends State<ThirdSignupView> {
-  bool isAuthButtonClicked = false;
-  bool isAuthChecked = false;
-
-  bool? isAuthenticated;
-
-  AuthStep authStep = AuthStep.first;
-
   final _topTextEditController = TextEditingController();
   final _bottomTextEditController = TextEditingController();
 
-  Function getHint = (AuthStep authStep, String type) {
-    String hint = "";
-    switch (authStep) {
-      case AuthStep.first:
-        hint = (type == "top") ? "이메일" : "인증확인";
-      case AuthStep.second:
-        hint = (type == "top") ? "비밀번호" : "비밀번호 확인";
-      case AuthStep.third:
-        hint = (type == "top") ? "이름" : "생년월일";
-    }
-    return hint;
-  };
-
   int _seconds = 300;
-  late Timer _timer;
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    widget.timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_seconds > 0) {
           _seconds--;
         }
       });
+    });
+  }
+
+  void _resetTimer() {
+    setState(() {
+      _seconds = 300;
     });
   }
 
@@ -101,14 +90,14 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                 alignment: Alignment.centerRight,
                 children: [
                   DearTextField(TextFieldType.email, _topTextEditController),
-                  if (!isAuthButtonClicked)
+                  if (!widget.isAuthButtonClicked)
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: DearTextFieldButton(
                         action: () {
                           _startTimer();
                           setState(() {
-                            isAuthButtonClicked = true;
+                            widget.isAuthButtonClicked = true;
                           });
                         },
                         buttonText: "인증요청",
@@ -117,135 +106,50 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                 ],
               ),
               SizedBox(height: 15),
-              isAuthButtonClicked
-                  ? Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.centerRight,
-                          children: [
-                            Container(
-                              width: 340,
-                              height: 56,
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  if (isAuthenticated == null)
-                                    DearTextField(TextFieldType.authCheck,
-                                        _bottomTextEditController),
-                                  if (isAuthenticated != null &&
-                                      isAuthenticated!)
-                                    TextField(
-                                      controller: _bottomTextEditController,
-                                      onChanged: (value) {
-                                        print("${value}");
-                                      },
-                                      cursorColor: Color(0xff0E2764),
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            "${getHint(authStep, "bottom")}",
-                                        hintStyle: TextStyle(
-                                          height: 1.3,
-                                          fontFamily: "Pretendard",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff0E2764),
-                                                width: 0.0),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(16)),
-                                            gapPadding:
-                                                BorderSide.strokeAlignCenter),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(16)),
-                                          borderSide: BorderSide(
-                                              color: Color(0xffC5D0DA),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                    ),
-                                  if (isAuthenticated != null &&
-                                      !isAuthenticated!)
-                                    DearTextField(TextFieldType.email,
-                                        _topTextEditController),
-                                ],
-                              ),
-                            ),
-                            if (isAuthButtonClicked && !isAuthChecked)
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isAuthChecked = true;
-                                      isAuthenticated =
-                                          (_bottomTextEditController.text ==
-                                                  "123")
-                                              ? true
-                                              : false;
-                                    });
-                                    if (_bottomTextEditController.text ==
-                                        "123") {
-                                      print("인증번호 맞음");
-                                    } else {
-                                      print("인증번호 틀림");
-                                    }
-                                    print("${isAuthenticated}");
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: Size.zero,
-                                    padding: EdgeInsets.zero,
-                                    fixedSize: Size(73, 40),
-                                    foregroundColor: Colors.white,
-                                    backgroundColor: Color(0xff0E2764),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    "인증확인",
+              widget.isAuthButtonClicked
+                  ? Container(
+                      width: 340,
+                      height: 80,
+                      child: Stack(
+                        // alignment: Alignment.center,
+                        children: [
+                          if (widget.isAuthButtonClicked)
+                            DearTextField(
+                                TextFieldType.authCheck,
+                                _bottomTextEditController,
+                                widget.isAuthenticated),
+                          Padding(
+                            padding: EdgeInsets.fromLTRB(30, 20, 0, 0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Spacer(flex: 1),
+                                Text('${_seconds ~/ 60}:',
                                     style: TextStyle(
                                       height: 1.2,
                                       fontFamily: "Pretendard",
+                                      color: Color(0xff0E2764),
                                       fontSize: 15,
-                                    ),
+                                    )),
+                                Text(
+                                  '${(_seconds % 60)}'.padLeft(2, "0"),
+                                  style: TextStyle(
+                                    height: 1.2,
+                                    fontFamily: "Pretendard",
+                                    color: Color(0xff0E2764),
+                                    fontSize: 15,
                                   ),
                                 ),
-                              ),
-                          ],
-                        ),
-                        SizedBox(height: 31),
-                      ],
+                                SizedBox(width: 27),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   : SizedBox(height: 0, width: 0),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  // Spacer(flex: 1),
-                  Text('${_seconds ~/ 60}:',
-                      style: TextStyle(
-                        height: 1.2,
-                        fontFamily: "Pretendard",
-                        color: Color(0xff0E2764),
-                        fontSize: 15,
-                      )),
-                  Text(
-                    '${(_seconds % 60)}'.padLeft(2, "0"),
-                    style: TextStyle(
-                      height: 1.2,
-                      fontFamily: "Pretendard",
-                      color: Color(0xff0E2764),
-                      fontSize: 15,
-                    ),
-                  ),
-                  // SizedBox(width: 100),
-                ],
-              ),
-              SizedBox(height: 20),
-              if (isAuthButtonClicked && authStep == AuthStep.first)
+              SizedBox(height: 31),
+              if (widget.isAuthButtonClicked)
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -275,6 +179,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                           tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                       onPressed: () {
                         print("인증번호 재전송 버튼 클릭됨");
+                        // 인증번호 재전송
+                        _resetTimer();
                       },
                       child: Text(
                         style: TextStyle(
@@ -293,21 +199,27 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
               SizedBox(height: 30),
               BottomButton(action: () {
                 print("${_topTextEditController.text}");
-                _topTextEditController.text = "";
+                // _topTextEditController.text = "";
 
                 print("${_bottomTextEditController.text.characters}");
-                _bottomTextEditController.text = "";
+                // _bottomTextEditController.text = "";
 
-                setState(() {
-                  authStep = (authStep == AuthStep.first)
-                      ? AuthStep.second
-                      : AuthStep.third;
-                });
+                if (_bottomTextEditController.text == "123") {
+                  setState(() {
+                    widget.isAuthenticated = true;
+                  });
+                } else {
+                  setState(() {
+                    widget.isAuthenticated = false;
+                  });
+                }
 
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => FourthSignupView()));
+                if (widget.isAuthenticated ?? false) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => FourthSignupView()));
+                }
               }),
               SizedBox(height: 45),
             ],
