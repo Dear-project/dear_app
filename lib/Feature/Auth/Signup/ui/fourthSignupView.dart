@@ -1,12 +1,11 @@
+import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
+import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../Shared/component/dearLogo.dart';
-import '../../Shared/component/bottomButton.dart';
-
 class FourthSignupView extends StatefulWidget {
-  const FourthSignupView({super.key});
+  FourthSignupView({super.key});
 
   @override
   State<FourthSignupView> createState() => _FourthSignupViewState();
@@ -16,6 +15,8 @@ class _FourthSignupViewState extends State<FourthSignupView> {
 
   final _topTextEditController = TextEditingController();
   final _bottomTextEditController = TextEditingController();
+
+  bool? isPwDifferent;
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +55,32 @@ class _FourthSignupViewState extends State<FourthSignupView> {
                 ),
               ),
               SizedBox(height: 45),
-              DearTextField(TextFieldType.pw,
-                  _topTextEditController),
+              DearTextField(
+                TextFieldType.pw,
+                _topTextEditController,
+              ),
               SizedBox(height: 15),
-              DearTextField(TextFieldType.pwCheck,
-                  _bottomTextEditController),
+              DearTextField(
+                TextFieldType.pwCheck,
+                _bottomTextEditController,
+                isPwDifferent
+              ),
               Spacer(flex: 1),
               SizedBox(height: 30),
-              BottomButton(action: () {}),
+              BottomButton(action: () {
+                if (_topTextEditController.text !=
+                    _bottomTextEditController.text) {
+                  setState(() {
+                    isPwDifferent = true;
+                  });
+                  print("비밀번호가 달라요!, ${isPwDifferent}");
+                } else {
+                  setState(() {
+                    isPwDifferent = false;
+                  });
+                  print("비밀번호가 같아요!, ${isPwDifferent}");
+                }
+              }),
               SizedBox(height: 45),
             ],
           ),

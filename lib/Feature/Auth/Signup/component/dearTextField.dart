@@ -1,33 +1,26 @@
 import 'dart:async';
 
-import 'package:dear_app/Feature/Auth/Signup/component/dearTimer.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum TextFieldType { email, authCheck, pw, pwCheck, name, birth }
-enum TextFieldCondition { success, failed }
-enum TextFieldPosition { top, bottom }
 
 class DearTextField extends StatefulWidget {
-  final TextFieldType type;
+  final TextFieldType textFieldType;
   final _TextEditController;
-  final TextFieldCondition textFieldCondition;
+  bool? isPwDifferent;
 
-  const DearTextField(this.type, this._TextEditController, {super.key, this.textFieldCondition = TextFieldCondition.success});
+  DearTextField(this.textFieldType, this._TextEditController,
+      [this.isPwDifferent]);
 
   @override
-  State<DearTextField> createState() =>
-      _DearTextFieldState(type, _TextEditController, textFieldCondition);
+  State<DearTextField> createState() => _DearTextFieldState();
 }
 
 class _DearTextFieldState extends State<DearTextField> {
-  final TextFieldType type;
-  final _TextEditController;
-  final textFieldCondition;
-
   @override
   void dispose() {
-    _TextEditController.dispose();
+    widget._TextEditController.dispose();
     super.dispose();
   }
 
@@ -45,7 +38,7 @@ class _DearTextFieldState extends State<DearTextField> {
     });
   }
 
-  _DearTextFieldState(this.type, this._TextEditController, this.textFieldCondition);
+  _DearTextFieldState();
 
   String getHint(TextFieldType type) {
     String hintText = "";
@@ -66,108 +59,131 @@ class _DearTextFieldState extends State<DearTextField> {
     return hintText;
   }
 
-  String getPosition(TextFieldType type) {
-    TextFieldPosition position;
-    switch (type) {
-      case TextFieldType.email || TextFieldType.pw || TextFieldType.name:
-        position = TextFieldPosition.top;
-      case TextFieldType.authCheck || TextFieldType.pwCheck || TextFieldType.birth:
-        position = TextFieldPosition.bottom;
+  String? checkErrorText() {
+    String? checkErrorText;
+    switch (widget.textFieldType) {
+      case TextFieldType.authCheck:
+      // return "인증번호가 옳지 않습니다.";
+      case TextFieldType.pwCheck:
+        if (widget.isPwDifferent != null) {
+          if (widget.isPwDifferent!) {
+            return "비밀번호가 일치하지 않습니다.";
+          }
+        }
+      default:
+        return null;
     }
-    return position.toString();
+    return null;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: 340,
-      height: 56,
       child: Stack(
         alignment: Alignment.center,
         children: [
-          if (textFieldCondition == TextFieldCondition.success)
-          TextField(
-            controller: _TextEditController,
-            onChanged: (value) {
-              print("${value}");
-            },
-            cursorColor: Color(0xff0E2764),
-            decoration: InputDecoration(
-              hintText: "${getHint(type)}",
-              hintStyle: TextStyle(
-                height: 1.3,
-                fontFamily: "Pretendard",
-                fontSize: 17,
-                fontWeight: FontWeight.w300,
-              ),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xff0E2764), width: 0.0),
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                  gapPadding: BorderSide.strokeAlignCenter),
-              enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
-                borderSide: BorderSide(
-                  color: Color(0xffC5D0DA),
-                  width: 1.0,
-                ),
-              ),
-            ),
-            maxLines: 1,
-          ),
-          if (textFieldCondition == TextFieldCondition.failed)
-          TextField(
-            controller: _TextEditController,
-            onChanged: (value) {
-              print("${value}");
-            },
-            cursorColor: Color(0xff0E2764),
-            decoration: InputDecoration(
-              hintText: "${getHint(type)}",
-              hintStyle: TextStyle(
-                height: 1.3,
-                fontFamily: "Pretendard",
-                fontSize: 17,
-                fontWeight: FontWeight.w300,
-              ),
-              focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xff0E2764), width: 0.0),
-                  borderRadius: BorderRadius.all(Radius.circular(16)),
-                  gapPadding: BorderSide.strokeAlignCenter),
-              enabledBorder: const OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(16)),
-                borderSide: BorderSide(
-                  color: Color(0xffC5D0DA),
-                  width: 1.0,
-                ),
-              ),
-            ),
-            maxLines: 1,
-          ),
-          // if (type == TextFieldType.authCheck)
-          //   Row(
-          //     children: [
-          //       Spacer(
-          //         flex: 1,
-          //       ),
-          //       Text('${_seconds ~/ 60}:',
-          //           style: TextStyle(
-          //             height: 1.2,
-          //             fontFamily: "Pretendard",
-          //             color: Color(0xff0E2764),
-          //             fontSize: 15,
-          //           )),
-          //       Text(
-          //           '${(_seconds % 60)}'
-          //               .padLeft(2, "0"),
-          //           style: TextStyle(
-          //             height: 1.2,
-          //             fontFamily: "Pretendard",
-          //             color: Color(0xff0E2764),
-          //             fontSize: 15,
-          //           )),
-          //       SizedBox(width: 100),
-          //     ],
-          //   ),
+          (widget.textFieldType == TextFieldType.authCheck ||
+                  widget.textFieldType == TextFieldType.pwCheck)
+              ? TextFormField(
+                  controller: widget._TextEditController,
+                  autovalidateMode: AutovalidateMode.always,
+                  onFieldSubmitted: (value) {
+                    debugPrint('onFieldSubmitted $value ');
+                  },
+                  onChanged: (value) {
+                    setState(() {});
+                    print("${widget.isPwDifferent}");
+                    debugPrint('change $value');
+                  },
+                  validator: (value) {
+                    debugPrint('validator $value');
+                  },
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Pretendard",
+                  ),
+                  cursorColor: Color(0xff0E2764),
+                  decoration: InputDecoration(
+                    hintText: "${getHint(widget.textFieldType)}",
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+                    hintStyle: TextStyle(
+                      height: 1.3,
+                      fontFamily: "Pretendard",
+                      fontSize: 17,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    errorText: checkErrorText(),
+                    errorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      borderSide:
+                          BorderSide(color: Color(0xffEA0C0C), width: 1.0),
+                      gapPadding: BorderSide.strokeAlignCenter,
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xffEA0C0C), width: 1.2),
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        gapPadding: BorderSide.strokeAlignCenter),
+                    errorStyle: const TextStyle(
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xffEA0C0C),
+                      fontSize: 12,
+                    ),
+                    errorMaxLines: 1,
+                    focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xff0E2764), width: 0.0),
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        gapPadding: BorderSide.strokeAlignCenter),
+                    enabledBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      borderSide:
+                          BorderSide(color: Color(0xffC5D0DA), width: 1.0),
+                    ),
+                  ),
+                  maxLines: 1,
+                )
+              : TextField(
+                  controller: widget._TextEditController,
+                  onChanged: (value) {
+                    print("${widget.isPwDifferent}");
+                    print("${value}");
+                  },
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w600,
+                    fontFamily: "Pretendard",
+                  ),
+                  cursorColor: Color(0xff0E2764),
+                  decoration: InputDecoration(
+                    hintText: "${getHint(widget.textFieldType)}",
+                    hintStyle: TextStyle(
+                      height: 1.3,
+                      fontFamily: "Pretendard",
+                      fontSize: 17,
+                      fontWeight: FontWeight.w300,
+                    ),
+                    contentPadding:
+                        EdgeInsets.symmetric(vertical: 17, horizontal: 20),
+                    focusedBorder: OutlineInputBorder(
+                        borderSide:
+                            BorderSide(color: Color(0xff0E2764), width: 0.0),
+                        borderRadius: BorderRadius.all(Radius.circular(16)),
+                        gapPadding: BorderSide.strokeAlignCenter),
+                    enabledBorder: const OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(16)),
+                      borderSide: BorderSide(
+                        color: Color(0xffC5D0DA),
+                        width: 1.0,
+                      ),
+                    ),
+                  ),
+                  maxLines: 1,
+                )
         ],
       ),
     );
