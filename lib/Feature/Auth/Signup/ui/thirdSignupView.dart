@@ -1,8 +1,6 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextFieldButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/dearTimer.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/fourthSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
@@ -292,7 +290,6 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                   ],
                 ),
               Spacer(flex: 1),
-              BottomDots(Dots.third),
               SizedBox(height: 30),
               BottomButton(action: () {
                 print("${_topTextEditController.text}");

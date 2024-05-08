@@ -152,45 +152,7 @@ class FirstSignupView extends StatelessWidget {
               ),
               // CustomCheckbox(),
               const SizedBox(
-                height: 160,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffD9D9D9),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffD9D9D9),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(
-                height: 30,
+                height: 190,
               ),
               ElevatedButton(
                 onPressed: () {
