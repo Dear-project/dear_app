@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Signup/ui/thirdSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -11,18 +12,24 @@ class SecondSignupView extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Color(0xffFFFFFF),
         appBar: AppBar(
-          leading: Icon(
-            CupertinoIcons.chevron_left,
-            color: Color(0xffAAAAAA),
-            size: 30,
-          ),
-        ),
+            backgroundColor: Color(0xffFFFFFF),
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                CupertinoIcons.chevron_left,
+                color: Color(0xffAAAAAA),
+                size: 30,
+              ),
+            )),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(height: 50),
+              // SizedBox(height: 50),
               DearLogo(size: 55),
               SizedBox(height: 40),
               Padding(
@@ -49,7 +56,9 @@ class SecondSignupView extends StatelessWidget {
                   typeSelectButton("교수"),
                 ],
               ),
-              SizedBox(height: 87,),
+              SizedBox(
+                height: 87,
+              ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -86,11 +95,17 @@ class SecondSignupView extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 30),
-              BottomButton(),
+              BottomButton(
+                action: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ThirdSignupView()));
+                },
+              ),
             ],
           ),
         ),
-
       ),
     );
   }

@@ -17,13 +17,17 @@ class FifthSignupView extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: Icon(
-            CupertinoIcons.chevron_left,
-            color: Color(0xffAAAAAA),
-            size: 30,
-          ),
-        ),
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                CupertinoIcons.chevron_left,
+                color: Color(0xffAAAAAA),
+                size: 30,
+              ),
+            )),
         body: Center(
           child: Column(
             children: [
@@ -50,11 +54,9 @@ class FifthSignupView extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 45),
-              DearTextField(TextFieldType.name,
-                  _topTextEditController),
+              DearTextField(TextFieldType.name, _topTextEditController),
               SizedBox(height: 15),
-              DearTextField(TextFieldType.birth,
-                  _bottomTextEditController),
+              DearTextField(TextFieldType.birth, _bottomTextEditController),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () {}),

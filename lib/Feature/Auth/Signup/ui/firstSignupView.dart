@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -17,12 +18,17 @@ class FirstSignupView extends StatelessWidget {
           actions: [
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Icon(
-                CupertinoIcons.xmark,
-                size: 30,
-                color: Color(0xffAAAAAA),
+              child: IconButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                icon: Icon(
+                  CupertinoIcons.xmark,
+                  size: 30,
+                  color: Color(0xffAAAAAA),
+                ),
               ),
-            )
+            ),
           ],
         ),
         backgroundColor: Color(0xffFFFFFF),
@@ -187,7 +193,9 @@ class FirstSignupView extends StatelessWidget {
                 height: 30,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondSignupView()));
+                },
                 style: ElevatedButton.styleFrom(
                   fixedSize: Size(342, 56),
                   foregroundColor: Colors.white,
@@ -204,7 +212,6 @@ class FirstSignupView extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 10),
             ],
           ),
         ),
@@ -244,7 +251,7 @@ class _tosSelectButtonState extends State<tosSelectButton> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 side: MaterialStateBorderSide.resolveWith(
-                      (states) => BorderSide(color: Color(0xffC5D0DA)),
+                  (states) => BorderSide(color: Color(0xffC5D0DA)),
                 ),
                 fillColor: MaterialStatePropertyAll(
                     Color(isClicked ? 0xffE6EDF7 : 0xffF1F2F3)),
@@ -258,4 +265,3 @@ class _tosSelectButtonState extends State<tosSelectButton> {
     );
   }
 }
-

@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Auth/Signup/ui/fifthSignupView.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/fourthSignupView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/thirdSignupView.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +24,8 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Color(0xffFFFFFF),
         // body: ThirdSignupView(),
-        body: FourthSignupView(),
+        // body: FourthSignupView(),
+        body: FirstSignupView(),
       ),
     );
   }

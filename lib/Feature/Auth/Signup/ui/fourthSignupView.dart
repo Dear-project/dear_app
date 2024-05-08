@@ -1,5 +1,6 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/fifthSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,6 @@ class FourthSignupView extends StatefulWidget {
 }
 
 class _FourthSignupViewState extends State<FourthSignupView> {
-
   final _topTextEditController = TextEditingController();
   final _bottomTextEditController = TextEditingController();
 
@@ -24,13 +24,17 @@ class _FourthSignupViewState extends State<FourthSignupView> {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: Icon(
-            CupertinoIcons.chevron_left,
-            color: Color(0xffAAAAAA),
-            size: 30,
-          ),
-        ),
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                CupertinoIcons.chevron_left,
+                color: Color(0xffAAAAAA),
+                size: 30,
+              ),
+            )),
         body: Center(
           child: Column(
             children: [
@@ -60,11 +64,8 @@ class _FourthSignupViewState extends State<FourthSignupView> {
                 _topTextEditController,
               ),
               SizedBox(height: 15),
-              DearTextField(
-                TextFieldType.pwCheck,
-                _bottomTextEditController,
-                isPwDifferent
-              ),
+              DearTextField(TextFieldType.pwCheck, _bottomTextEditController,
+                  isPwDifferent),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () {
@@ -80,6 +81,9 @@ class _FourthSignupViewState extends State<FourthSignupView> {
                   });
                   print("비밀번호가 같아요!, ${isPwDifferent}");
                 }
+
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FifthSignupView()));
               }),
               SizedBox(height: 45),
             ],

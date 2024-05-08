@@ -3,6 +3,7 @@ import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextField.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextFieldButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/dearTimer.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/fourthSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -60,13 +61,17 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: Icon(
-            CupertinoIcons.chevron_left,
-            color: Color(0xffAAAAAA),
-            size: 30,
-          ),
-        ),
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                CupertinoIcons.chevron_left,
+                color: Color(0xffAAAAAA),
+                size: 30,
+              ),
+            )),
         body: Center(
           child: Column(
             children: [
@@ -296,12 +301,16 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                 print("${_bottomTextEditController.text.characters}");
                 _bottomTextEditController.text = "";
 
-
                 setState(() {
                   authStep = (authStep == AuthStep.first)
                       ? AuthStep.second
                       : AuthStep.third;
                 });
+
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FourthSignupView()));
               }),
               SizedBox(height: 45),
             ],
