@@ -9,17 +9,18 @@ class DearTextField extends StatefulWidget {
   final TextFieldType textFieldType;
   final _TextEditController;
 
+  bool isObscureText;
+
   bool? showErrorText;
 
   DearTextField(this.textFieldType, this._TextEditController,
-      [this.showErrorText]);
+      {this.isObscureText = false, this.showErrorText = null});
 
   @override
   State<DearTextField> createState() => _DearTextFieldState();
 }
 
 class _DearTextFieldState extends State<DearTextField> {
-
   @override
   void dispose() {
     widget._TextEditController.dispose();
@@ -104,6 +105,7 @@ class _DearTextFieldState extends State<DearTextField> {
                     fontFamily: "Pretendard",
                   ),
                   cursorColor: Color(0xff0E2764),
+                  obscureText: widget.isObscureText ?? false,
                   decoration: InputDecoration(
                     hintText: "${getHint(widget.textFieldType)}",
                     contentPadding:
@@ -158,6 +160,7 @@ class _DearTextFieldState extends State<DearTextField> {
                     fontFamily: "Pretendard",
                   ),
                   cursorColor: Color(0xff0E2764),
+                  obscureText: widget.isObscureText ?? false,
                   decoration: InputDecoration(
                     hintText: "${getHint(widget.textFieldType)}",
                     hintStyle: TextStyle(

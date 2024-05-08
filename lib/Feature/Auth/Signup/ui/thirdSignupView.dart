@@ -48,23 +48,23 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
       home: Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
-            backgroundColor: Colors.white,
-            leading: IconButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              icon: Icon(
-                CupertinoIcons.chevron_left,
-                color: Color(0xffAAAAAA),
-                size: 30,
-              ),
-            )),
+          backgroundColor: Colors.white,
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(
+              CupertinoIcons.chevron_left,
+              color: Color(0xffAAAAAA),
+              size: 30,
+            ),
+          ),
+        ),
         body: Center(
           child: Column(
             children: [
               SizedBox(height: 50),
               DearLogo(size: 55),
-              // DearTimer(startTimer, timer),
               SizedBox(height: 21),
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 36),
@@ -115,9 +115,10 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                         children: [
                           if (widget.isAuthButtonClicked)
                             DearTextField(
-                                TextFieldType.authCheck,
-                                _bottomTextEditController,
-                                widget.isAuthenticated),
+                              TextFieldType.authCheck,
+                              _bottomTextEditController,
+                              showErrorText: widget.isAuthenticated,
+                            ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(30, 20, 0, 0),
                             child: Row(

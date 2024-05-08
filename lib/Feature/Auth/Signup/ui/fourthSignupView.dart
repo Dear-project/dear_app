@@ -9,6 +9,8 @@ class FourthSignupView extends StatefulWidget {
   FourthSignupView({super.key});
 
   bool? isPwDifferent;
+  bool isObscurePw = true;
+  bool isObscurePwCheck = true;
 
   @override
   State<FourthSignupView> createState() => _FourthSignupViewState();
@@ -59,13 +61,89 @@ class _FourthSignupViewState extends State<FourthSignupView> {
                 ),
               ),
               SizedBox(height: 45),
-              DearTextField(
-                TextFieldType.pw,
-                _topTextEditController,
+              // DearTextField(
+              //   TextFieldType.pw,
+              //   _topTextEditController,
+              // ),
+              Container(
+                width: 340,
+                // height: 80,
+                child: Stack(
+                  // alignment: Alignment.center,
+                  children: [
+                    DearTextField(
+                      TextFieldType.pw,
+                      _topTextEditController,
+                      showErrorText: widget.isObscurePw,
+                      isObscureText: widget.isObscurePw,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Spacer(flex: 1),
+                          IconButton(
+                            // splashColor: Colors.transparent,
+                            // highlightColor: Colors.transparent,
+                            onPressed: () {
+                              setState(() {
+                                widget.isObscurePw = !widget.isObscurePw!;
+                              });
+                              print("${widget.isObscurePw}");
+                            },
+                            icon: Icon(
+                              CupertinoIcons.eye_slash_fill,
+                              color: Color(0xffAAAAAA),
+                            ),
+                          ),
+                          SizedBox(width: 15),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               SizedBox(height: 15),
-              DearTextField(TextFieldType.pwCheck, _bottomTextEditController,
-                  widget.isPwDifferent),
+              Container(
+                width: 340,
+                // height: 80,
+                child: Stack(
+                  // alignment: Alignment.center,
+                  children: [
+                    DearTextField(
+                      TextFieldType.pwCheck,
+                      _bottomTextEditController,
+                      showErrorText: widget.isPwDifferent,
+                      isObscureText: widget.isObscurePwCheck,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.only(top: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Spacer(flex: 1),
+                          IconButton(
+                            // splashColor: Colors.transparent,
+                            // highlightColor: Colors.transparent,
+                            onPressed: () {
+                              setState(() {
+                                widget.isObscurePwCheck = !widget.isObscurePwCheck!;
+                              });
+                              print("${widget.isObscurePw}");
+                            },
+                            icon: Icon(
+                              CupertinoIcons.eye_slash_fill,
+                              color: Color(0xffAAAAAA),
+                            ),
+                          ),
+                          SizedBox(width: 15),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () {
