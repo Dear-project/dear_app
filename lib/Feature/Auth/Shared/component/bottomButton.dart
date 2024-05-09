@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
+  final String? buttonText;
   final Function action;
   // BottomButton({super.key});
 
-  BottomButton({required this.action});
+  BottomButton({this.buttonText = "다음", required this.action});
 
   @override
   Widget build(BuildContext context) {

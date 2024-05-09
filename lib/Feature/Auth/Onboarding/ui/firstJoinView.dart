@@ -23,14 +23,13 @@ class _FirstJoinViewState extends State<FirstJoinView>
     super.initState();
 
     controller = AnimationController(
-      duration: Duration(milliseconds: 500),
+      duration: Duration(milliseconds: 400),
       vsync: this,
 
     )
     ..forward()
       ..addListener(() async {
         if (controller.isCompleted) {
-
 
           controller.stop();
 

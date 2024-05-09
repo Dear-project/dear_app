@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/repository/signup_repository.dart';
+import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
@@ -72,7 +73,8 @@ class SignUpViewModel extends GetxController {
     ApiResponse apiResponse = await _repository.signup(signupRequest: signupRequest);
     if(apiResponse.statusCode == HttpStatus.created){
       Get.delete<SignUpViewModel>();
-      // Get.toNamed(RouteName.homeView)!.then((value){});
+      Get.offAll(MainView());
+
       return true;
     }
     return false;

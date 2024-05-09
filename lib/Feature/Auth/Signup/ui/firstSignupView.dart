@@ -1,5 +1,7 @@
+import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
+import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -151,40 +153,27 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                 ],
               ),
               Spacer(flex: 1),
+
+              BottomDots(Dots.first),
+              SizedBox(
+                height: 30,
+              ),
               BottomButton(
                 action: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) => SecondSignupView()));
                 },
               ),
-              BottomDots(Dots.first),
-              SizedBox(
-                height: 30,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  Get.to(() => SecondSignupView());
-                },
-                style: ElevatedButton.styleFrom(
-                  fixedSize: Size(342, 56),
-                  foregroundColor: Colors.white,
-                  backgroundColor: Color(0xff0E2764),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                child: Text(
-                  "다음",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-              ),
               SizedBox(height: 10),
             ],
           ),
         ),
+        bottomNavigationBar: BottomAppBar(
+          elevation: 0.0,
+          color: Colors.white,
+          height: 30,
+        ),
       ),
+
     );
   }
 }
