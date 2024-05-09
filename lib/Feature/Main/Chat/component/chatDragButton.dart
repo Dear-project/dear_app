@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 enum ChatDragButtonType { silent, block, exit }
 
@@ -31,18 +34,27 @@ class ChatDragButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 56,
-      height: 70,
-      alignment: Alignment.center,
+    return MaterialButton(
+      minWidth: 0,
+      padding: EdgeInsets.zero,
+      shape: Border(),
+      onPressed: () {
+        print("버튼 클릭 됨");
+      },
       color: getButtonColor(),
-      child: Text(
-        "${getButtonText()}",
-        style: TextStyle(
-          fontFamily: "Pretendard",
-          fontWeight: FontWeight.w500,
-          fontSize: 12,
-          color: Color(0xffFFFFFF),
+      child: Container(
+        width: 56,
+        height: 70,
+        alignment: Alignment.center,
+        // color: getButtonColor(),
+        child: Text(
+          "${getButtonText()}",
+          style: TextStyle(
+            fontFamily: "Pretendard",
+            fontWeight: FontWeight.w500,
+            fontSize: 12,
+            color: Color(0xffFFFFFF),
+          ),
         ),
       ),
     );
