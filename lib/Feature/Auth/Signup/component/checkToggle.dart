@@ -32,6 +32,7 @@ class CheckToggle extends StatelessWidget {
             image: DearIcons.check.image,
             width: 13,
             height: 10,
+            color: toggle ? Color(0xff0E2764) : Colors.transparent,
 
           )
 

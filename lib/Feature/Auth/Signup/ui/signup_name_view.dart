@@ -1,9 +1,6 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/name/input_birthdate_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/name/input_name_widget.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_confirm_widget.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_widget.dart';
 
 import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
@@ -97,7 +94,6 @@ class _SignupNameViewState extends State<SignupNameView> {
                     ),
                   )),
               Spacer(flex: 1),
-              BottomDots(Dots.five),
               SizedBox(height: 30),
               BottomButton(action: () async {
                 if (_loginVM.nameController.value.text.isEmpty) {
