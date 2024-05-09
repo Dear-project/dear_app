@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
+import 'package:dear_app/Feature/Auth/Onboarding/ui/welcomeView.dart';
 import 'package:dear_app/Shared/theme/dear_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('ko', '')
       ],
-      home: OnboardingView()
+      home: WelcomeView()
 
     );
   }
