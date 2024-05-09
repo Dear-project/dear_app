@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Color(0xffFFFFFF),
         body: MainView(),
-        // body: ChatView(),
       ),
     );
   }

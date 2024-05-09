@@ -32,7 +32,9 @@ class _InChatViewState extends State<InChatView> {
                   fit: BoxFit.fitWidth,
                   color: Colors.black,
                 ),
-                onPressed: () {}),
+                onPressed: () {
+                  Navigator.pop(context);
+                }),
             SizedBox(width: 5),
             Image(
               image: DearIcons.my.image,

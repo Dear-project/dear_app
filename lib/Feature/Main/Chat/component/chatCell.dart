@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Chat/component/chatDragButton.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/inChatView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -19,71 +20,81 @@ class _ChatCellState extends State<ChatCell> {
       scrollDirection: Axis.horizontal,
       child: Row(
         children: [
-          SizedBox(width: 27),
-          SizedBox(
-            height: 50,
-            width: MediaQuery.of(context).size.width,
-            child: ColoredBox(
-              color: Colors.transparent,
-              child: Row(
-                children: [
-                  Transform.scale(
-                    scale: 2.3,
-                    child: Icon(
-                      CupertinoIcons.person_crop_circle_fill,
-                      color: Color(0xffD1D1D1),
+          MaterialButton(
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => InChatView()));
+            },
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(16))),
+            child: SizedBox(
+              height: 70,
+              width: MediaQuery.of(context).size.width - 30,
+              child: ColoredBox(
+                color: Colors.transparent,
+                child: Row(
+                  children: [
+                    SizedBox(width: 15),
+                    Transform.scale(
+                      scale: 2.5,
+                      child: Icon(
+                        CupertinoIcons.person_crop_circle_fill,
+                        color: Color(0xffD1D1D1),
+                      ),
                     ),
-                  ),
-                  SizedBox(width: 20),
-                  Column(
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Text(
-                            "이해준",
-                            style: TextStyle(
+                    SizedBox(width: 20),
+                    Column(
+                      children: [
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "이해준",
+                              style: TextStyle(
+                                  fontFamily: "Pretendard",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 17),
+                            ),
+                            SizedBox(width: 10),
+                            Text(
+                              "영남이공대학 박승철 헤어과",
+                              style: TextStyle(
                                 fontFamily: "Pretendard",
-                                fontWeight: FontWeight.w500,
-                                fontSize: 17),
-                          ),
-                          SizedBox(width: 10),
-                          Text(
-                            "영남이공대학 박승철 헤어과",
-                            style: TextStyle(
-                              fontFamily: "Pretendard",
-                              fontSize: 11,
-                              color: Color(0xffAAAAAA),
+                                fontSize: 11,
+                                color: Color(0xffAAAAAA),
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 100),
-                          Text(
-                            "어제",
-                            style: TextStyle(
-                              fontFamily: "Pretendard",
-                              fontSize: 10,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff787878),
+                            SizedBox(width: 90),
+                            Text(
+                              "어제",
+                              style: TextStyle(
+                                fontFamily: "Pretendard",
+                                fontSize: 10,
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff787878),
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 5),
-                      Padding(
-                        padding: EdgeInsets.only(right: 250),
-                        child: Text(
-                          "하이",
-                          style: TextStyle(
-                            fontFamily: "Pretendard",
-                            fontSize: 15,
-                            color: Color(0xff787878),
-                          ),
+                          ],
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                        SizedBox(height: 5),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            Text(
+                              "하이",
+                              style: TextStyle(
+                                fontFamily: "Pretendard",
+                                fontSize: 15,
+                                color: Color(0xff787878),
+                              ),
+                            ),
+                            SizedBox(width: 250),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
