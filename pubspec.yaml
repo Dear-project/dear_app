@@ -9,17 +9,25 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations: # Add
+    sdk: flutter
   cupertino_icons: ^1.0.6
   flutter_native_splash: ^2.3.7
-  flutter_bloc: ^8.1.0
-
-
-
+#  flutter_bloc: ^8.1.0
+  get: ^4.6.6
+  dio: ^5.4.2
+  dio_smart_retry: ^5.0.0
+  retrofit: 4.1.0
+  json_annotation: ^4.9.0
+  fluttertoast: ^8.1.2
+  intl: ^0.18.1
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
+  retrofit_generator: 7.0.7
+  build_runner: 2.4.5
+  json_serializable: ^6.7.0
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
   # activated in the `analysis_options.yaml` file located at the root of your

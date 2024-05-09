@@ -1,10 +1,18 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/dearTextFieldButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/dearTimer.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/chk_auth_num_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/req_auth_num_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/input_auth_number_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/input_email_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/signup_password_view.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
+import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'dart:async';
+import 'package:get/get.dart';
 
 enum AuthStep { first, second, third }
 
@@ -16,15 +24,7 @@ class ThirdSignupView extends StatefulWidget {
 }
 
 class _ThirdSignupViewState extends State<ThirdSignupView> {
-  bool isAuthButtonClicked = false;
-  bool isAuthChecked = false;
-
-  bool? isAuthenticated;
-
-  AuthStep authStep = AuthStep.first;
-
-  final _topTextEditController = TextEditingController();
-  final _bottomTextEditController = TextEditingController();
+  final _signupVM = Get.put(SignUpViewModel());
 
   // 타이머
   int _seconds = 300;
@@ -60,10 +60,15 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
-          leading: Icon(
-            CupertinoIcons.chevron_left,
-            color: Color(0xffAAAAAA),
-            size: 30,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              CupertinoIcons.chevron_left,
+              color: Color(0xffAAAAAA),
+              size: 30,
+            ),
           ),
         ),
         body: Center(
@@ -72,7 +77,7 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
               SizedBox(height: 50),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     "DEAR",
                     style: TextStyle(
@@ -97,7 +102,7 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Row(
-                  children: [
+                  children: const [
                     Text(
                       "계정에 필요한\n정보를 입력해 주세요.",
                       style: TextStyle(
@@ -123,306 +128,95 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        TextField(
-                          controller: _topTextEditController,
-                          onChanged: (value) {
-                            print("${value}");
-                          },
-                          cursorColor: Color(0xff0E2764),
-                          decoration: InputDecoration(
-                            hintText: "${getHint(authStep, "top")}",
-                            hintStyle: TextStyle(
-                              height: 1.3,
-                              fontFamily: "Pretendard",
-                              fontSize: 17,
-                              fontWeight: FontWeight.w300,
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
-                                    color: Color(0xff0E2764), width: 0.0),
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(16)),
-                                gapPadding: BorderSide.strokeAlignCenter),
-                            enabledBorder: const OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(16)),
-                              borderSide: BorderSide(
-                                  color: Color(0xffC5D0DA), width: 1.0),
-                            ),
-                          ),
-                          maxLines: 1,
-                        ),
+                        InputEmailWidget(),
                       ],
                     ),
                   ),
-                  if (!isAuthButtonClicked)
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
-                      child: DearTextFieldButton(
-                        action: () {
-                          _startTimer();
-                          setState(() {
-                            isAuthButtonClicked = true;
-                          });
-                        },
-                        buttonText: "인증요청",
-                      ),
-                    ),
+                  Obx(() => Visibility(
+                        visible: !_signupVM.isSentVerificationNumber.value
+                            ? true
+                            : false,
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 16),
+                          child: ReqAuthNumWidget(
+                            callback: () async {
+                              if (_signupVM
+                                  .emailController.value.text.isEmpty) {
+                                return;
+                              }
+                              if (await _signupVM.requestEmailAuthNumber(
+                                  email:
+                                      _signupVM.emailController.value.text)) {
+                                _startTimer();
+                                _signupVM.isSentVerificationNumber.value = true;
+                                Utils.toastMessage("인증 번호를 발송했습니다.");
+                              }
+                            },
+                          ),
+                        ),
+                      ))
                 ],
               ),
               SizedBox(height: 15),
-              isAuthButtonClicked
-                  ? Column(
-                      children: [
-                        Stack(
-                          alignment: Alignment.centerRight,
-                          children: [
-                            Container(
-                              width: 340,
-                              height: 56,
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  if (isAuthenticated == null)
-                                    TextField(
-                                      controller: _bottomTextEditController,
-                                      onChanged: (value) {
-                                        print("${value}");
-                                      },
-                                      cursorColor: Color(0xff0E2764),
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            "${getHint(authStep, "bottom")}",
-                                        hintStyle: TextStyle(
-                                          height: 1.3,
+              Obx(() => Visibility(
+                  visible:
+                      _signupVM.isSentVerificationNumber.value ? true : false,
+                  child: Column(
+                    children: [
+                      Stack(
+                        alignment: Alignment.centerRight,
+                        children: [
+                          Container(
+                            width: 340,
+                            height: 56,
+                            child: Stack(
+                              alignment: Alignment.center,
+                              children: [
+                                InputAuthNumberWidget(),
+                                Row(
+                                  children: [
+                                    Spacer(
+                                      flex: 1,
+                                    ),
+                                    Text('${_seconds ~/ 60}:',
+                                        style: TextStyle(
+                                          height: 1.2,
                                           fontFamily: "Pretendard",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff0E2764),
-                                                width: 0.0),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(16)),
-                                            gapPadding:
-                                                BorderSide.strokeAlignCenter),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(16)),
-                                          borderSide: BorderSide(
-                                              color: Color(0xffC5D0DA),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                    ),
-                                  if (isAuthenticated != null &&
-                                      isAuthenticated!)
-                                    TextField(
-                                      controller: _bottomTextEditController,
-                                      onChanged: (value) {
-                                        print("${value}");
-                                      },
-                                      cursorColor: Color(0xff0E2764),
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            "${getHint(authStep, "bottom")}",
-                                        hintStyle: TextStyle(
-                                          height: 1.3,
+                                          color: DearColors.main,
+                                          fontSize: 15,
+                                        )),
+                                    Text('${(_seconds % 60)}'.padLeft(2, "0"),
+                                        style: TextStyle(
+                                          height: 1.2,
                                           fontFamily: "Pretendard",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xff0E2764),
-                                                width: 0.0),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(16)),
-                                            gapPadding:
-                                                BorderSide.strokeAlignCenter),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(16)),
-                                          borderSide: BorderSide(
-                                              color: Color(0xffC5D0DA),
-                                              width: 1.0),
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                    ),
-                                  if (isAuthenticated != null &&
-                                      !isAuthenticated!)
-                                    TextField(
-                                      controller: _bottomTextEditController,
-                                      onChanged: (value) {
-                                        print("${value}");
-                                      },
-                                      cursorColor: Color(0xff0E2764),
-                                      decoration: InputDecoration(
-                                        hintText:
-                                            "${getHint(authStep, "bottom")}",
-                                        hintStyle: TextStyle(
-                                          height: 1.3,
-                                          fontFamily: "Pretendard",
-                                          fontSize: 17,
-                                          fontWeight: FontWeight.w300,
-                                        ),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Color(0xffEA0C0C),
-                                                width: 1.4),
-                                            borderRadius: BorderRadius.all(
-                                                Radius.circular(16)),
-                                            gapPadding:
-                                                BorderSide.strokeAlignCenter),
-                                        enabledBorder: const OutlineInputBorder(
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(16)),
-                                          borderSide: BorderSide(
-                                              color: Color(0xffEA0C0C),
-                                              width: 1),
-                                        ),
-                                      ),
-                                      maxLines: 1,
-                                    ),
-                                  // if (TextFieldType.authCheck == TextFieldType.authCheck)
-                                  if (authStep == AuthStep.first)
-                                    Row(
-                                      children: [
-                                        Spacer(
-                                          flex: 1,
-                                        ),
-                                        Text('${_seconds ~/ 60}:',
-                                            style: TextStyle(
-                                              height: 1.2,
-                                              fontFamily: "Pretendard",
-                                              color: Color(0xff0E2764),
-                                              fontSize: 15,
-                                            )),
-                                        Text(
-                                            '${(_seconds % 60)}'
-                                                .padLeft(2, "0"),
-                                            style: TextStyle(
-                                              height: 1.2,
-                                              fontFamily: "Pretendard",
-                                              color: Color(0xff0E2764),
-                                              fontSize: 15,
-                                            )),
-                                        SizedBox(width: 100),
-                                      ],
-                                    ),
-                                ],
-                              ),
-                            ),
-                            if (isAuthButtonClicked && !isAuthChecked)
-                              Padding(
-                                padding: EdgeInsets.symmetric(horizontal: 16),
-                                child: ElevatedButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isAuthChecked = true;
-                                      isAuthenticated =
-                                          (_bottomTextEditController.text ==
-                                                  "123")
-                                              ? true
-                                              : false;
-                                    });
-                                    if (_bottomTextEditController.text ==
-                                        "123") {
-                                      print("인증번호 맞음");
-                                    } else {
-                                      print("인증번호 틀림");
-                                    }
-                                    print("${isAuthenticated}");
-                                  },
-                                  style: ElevatedButton.styleFrom(
-                                    minimumSize: Size.zero,
-                                    padding: EdgeInsets.zero,
-                                    fixedSize: Size(73, 40),
-                                    foregroundColor: Colors.white,
-                                    backgroundColor: Color(0xff0E2764),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                  ),
-                                  child: Text(
-                                    "인증확인",
-                                    style: TextStyle(
-                                      height: 1.2,
-                                      fontFamily: "Pretendard",
-                                      fontSize: 15,
-                                    ),
-                                  ),
+                                          color: DearColors.main,
+                                          fontSize: 15,
+                                        )),
+                                    Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 16),
+                                      child: ChkAuthNumWidget(),
+                                    )
+                                  ],
                                 ),
-                              ),
-                          ],
-                        ),
-                        SizedBox(height: 31),
-                      ],
-                    )
-                  : SizedBox(height: 0, width: 0),
-              if (isAuthButtonClicked && authStep == AuthStep.first)
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          CupertinoIcons.question_circle,
-                          size: 9,
-                        ),
-                        SizedBox(width: 4),
-                        Text(
-                            style: TextStyle(
-                              height: 1.2,
-                              fontFamily: "Pretendard",
-                              fontSize: 12,
-                              fontWeight: FontWeight.w300,
+                              ],
                             ),
-                            "인증에 어려움이 있나요?"),
-                      ],
-                    ),
-                    SizedBox(height: 8),
-                    TextButton(
-                      style: TextButton.styleFrom(
-                          minimumSize: Size.zero,
-                          padding: EdgeInsets.zero,
-                          tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                      onPressed: () {
-                        print("인증번호 재전송 버튼 클릭됨");
-                      },
-                      child: Text(
-                        style: TextStyle(
-                            height: 1.2,
-                            fontFamily: "Pretendard",
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600,
-                            color: Color(0xff0E2764),
-                            decoration: TextDecoration.underline),
-                        "인증번호 재전송",
+                          ),
+                          // if (isAuthButtonClicked && !isAuthChecked)
+                        ],
                       ),
-                    )
-                  ],
-                ),
+                      SizedBox(height: 31),
+                    ],
+                  ))),
               Spacer(flex: 1),
               BottomDots(Dots.third),
               SizedBox(height: 30),
-              BottomButton(
-                  action: () {
-                print("${_topTextEditController.text}");
-                _topTextEditController.text = "";
-
-                print("${_bottomTextEditController.text.characters}");
-                _bottomTextEditController.text = "";
-
-                setState(() {
-                  authStep = (authStep == AuthStep.first)
-                      ? AuthStep.second
-                      : AuthStep.third;
-                });
+              BottomButton(action: () {
+                if (_signupVM.isVerifiedEmailAddress.value) {
+                  Get.to(() => const SignupPasswordView());
+                } else {
+                  Utils.snackBar('알림', '이메일 인증을 해주세요.');
+                }
               }),
               SizedBox(height: 45),
             ],
@@ -430,5 +224,11 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+
   }
 }

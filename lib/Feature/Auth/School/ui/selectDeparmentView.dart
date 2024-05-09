@@ -89,7 +89,7 @@ class SelectDeparmentView extends StatelessWidget {
           height: 80,
           padding: EdgeInsets.all(0),
           color: Colors.white,
-          child: CupertinoButton(onPressed: () {}, child: BottomButton()),
+          child: CupertinoButton(onPressed: () {}, child: BottomButton(action: (){},)),
         ));
   }
 }

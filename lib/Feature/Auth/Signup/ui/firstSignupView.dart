@@ -1,11 +1,19 @@
+import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
-class FirstSignupView extends StatelessWidget {
+class FirstSignupView extends StatefulWidget {
+  const FirstSignupView({super.key});
+
+  @override
+  State<FirstSignupView> createState() => _FirstSignupViewState();
+}
+
+class _FirstSignupViewState extends State<FirstSignupView> {
   var isClicked = false;
-
-  FirstSignupView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,14 +22,13 @@ class FirstSignupView extends StatelessWidget {
         appBar: AppBar(
           backgroundColor: Color(0xffFFFFFF),
           actions: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 30),
-              child: Icon(
-                CupertinoIcons.xmark,
-                size: 30,
-                color: Color(0xffAAAAAA),
-              ),
-            )
+            IconButton(
+                padding: EdgeInsets.symmetric(horizontal: 30),
+                onPressed: () {
+                  Get.back();
+                },
+                icon: Icon(CupertinoIcons.xmark,
+                    size: 30, color: Color(0xffAAAAAA)))
           ],
         ),
         backgroundColor: Color(0xffFFFFFF),
@@ -169,46 +176,14 @@ class FirstSignupView extends StatelessWidget {
               const SizedBox(
                 height: 160,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffD9D9D9),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffD9D9D9),
-                    ),
-                  ),
-                ],
-              ),
+              BottomDots(Dots.first),
               SizedBox(
                 height: 30,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => SecondSignupView());
+                },
                 style: ElevatedButton.styleFrom(
                   fixedSize: Size(342, 56),
                   foregroundColor: Colors.white,
@@ -265,7 +240,7 @@ class _tosSelectButtonState extends State<tosSelectButton> {
                   borderRadius: BorderRadius.circular(16),
                 ),
                 side: MaterialStateBorderSide.resolveWith(
-                      (states) => BorderSide(color: Color(0xffC5D0DA)),
+                  (states) => BorderSide(color: Color(0xffC5D0DA)),
                 ),
                 fillColor: MaterialStatePropertyAll(
                     Color(isClicked ? 0xffE6EDF7 : 0xffF1F2F3)),
@@ -354,10 +329,10 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
             // ),
             child: isChecked
                 ? Icon(
-              Icons.check,
-              size: widget.iconSize,
-              color: widget.checkColor,
-            )
+                    Icons.check,
+                    size: widget.iconSize,
+                    color: widget.checkColor,
+                  )
                 : null,
           ),
         ),

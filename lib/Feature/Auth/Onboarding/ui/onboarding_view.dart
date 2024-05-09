@@ -1,8 +1,16 @@
 import 'package:dear_app/Feature//Auth/Onboarding/component/speechBubble.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class OnboardingView extends StatelessWidget {
+class OnboardingView extends StatefulWidget {
   const OnboardingView({super.key});
+
+  @override
+  State<OnboardingView> createState() => _OnboardingViewState();
+}
+
+class _OnboardingViewState extends State<OnboardingView> {
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +53,15 @@ class OnboardingView extends StatelessWidget {
                   //   child: speechBubble(),
                   // ),
                   SpeechBubble(),
-
                 ],
               ),
               const SizedBox(
                 height: 15,
               ),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                    Get.to(() => FirstSignupView());
+                },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(342, 56),
                   foregroundColor: Colors.white,

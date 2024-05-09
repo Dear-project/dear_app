@@ -2,23 +2,20 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BottomButton extends StatelessWidget {
-  final Function? action;
-  Function a = () {
-    print("function a used!");
-  };
-
+  final Function action;
   // BottomButton({super.key});
 
-  BottomButton({this.action});
+  BottomButton({required this.action});
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
         onPressed: () {
           if(action != null) {
-            action!();
+            action();
           }
         },
+
         padding: EdgeInsets.symmetric(),
         color: Color(0xff0E2764),
         borderRadius: BorderRadius.all(Radius.circular(16)),

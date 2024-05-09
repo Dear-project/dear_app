@@ -3,6 +3,8 @@ import 'dart:ui';
 class DearColors {
   const DearColors._();
 
+  static const Color main =  Color(0xff0E2764);
+  static const Color white =  Color(0xffffffff);
   static _DearColorBlue blue = const _DearColorBlue._();
   static _DearColorRed red = const _DearColorRed._();
   static _DearColorBlack black = const _DearColorBlack._();

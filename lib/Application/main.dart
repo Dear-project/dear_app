@@ -1,6 +1,9 @@
+import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
+import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/inChatView.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:get/get_navigation/get_navigation.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,13 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-          textSelectionTheme: TextSelectionThemeData(
-              cursorColor: const Color(0xff0E2764),
-              selectionColor: const Color(0xff0E2764).withOpacity(0.2),
-              selectionHandleColor: const Color(0xff0E2764))),
-      home: InChatView()
+    return GetMaterialApp(
+      theme: DearTheme,
+      localizationsDelegates:  const [
+        GlobalMaterialLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: const [
+        Locale('ko', '')
+      ],
+      home: OnboardingView()
     );
   }
 }

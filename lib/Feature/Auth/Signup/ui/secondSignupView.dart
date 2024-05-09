@@ -1,20 +1,38 @@
+import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/select_type_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/thirdSignupView.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
+import 'package:dear_app/Shared/enums/user_type.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 import '../../Shared/component/bottomButton.dart';
 
-class SecondSignupView extends StatelessWidget {
+class SecondSignupView extends StatefulWidget {
   const SecondSignupView({super.key});
 
+  @override
+  State<SecondSignupView> createState() => _SecondSignupViewState();
+}
+
+class _SecondSignupViewState extends State<SecondSignupView> {
+  final _loginVM = Get.put(SignUpViewModel());
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          leading: Icon(
-            CupertinoIcons.chevron_left,
-            color: Color(0xffAAAAAA),
-            size: 30,
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              CupertinoIcons.chevron_left,
+              color: Color(0xffAAAAAA),
+              size: 30,
+            ),
           ),
         ),
         body: Center(
@@ -23,7 +41,7 @@ class SecondSignupView extends StatelessWidget {
             children: [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: const [
                   Text(
                     "DEAR",
                     style: TextStyle(
@@ -48,7 +66,7 @@ class SecondSignupView extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Row(
-                  children: [
+                  children: const [
                     Text(
                       "회원 타입을 선택해 주세요.",
                       style: TextStyle(
@@ -64,72 +82,47 @@ class SecondSignupView extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  typeSelectButton("학생"),
+                  SelectTypeWidget(userType: UserType.STUDENT),
+                  // TypeSelectButton("학생"),
                   SizedBox(width: 8),
-                  typeSelectButton("교수"),
+                  SelectTypeWidget(userType: UserType.PROFESSOR),
+                  // TypeSelectButton("교수"),
                 ],
               ),
-              SizedBox(height: 87,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffD9D9D9),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xff0E2764),
-                    ),
-                  ),
-                  SizedBox(
-                    width: 15,
-                  ),
-                  Container(
-                    height: 10,
-                    width: 10,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(0xffD9D9D9),
-                    ),
-                  ),
-                ],
+              SizedBox(
+                height: 87,
               ),
+              BottomDots(Dots.second),
               SizedBox(height: 30),
-              BottomButton(),
+              BottomButton(action: (){
+                if(_loginVM.type.value == null){
+                  Utils.snackBar('알림', '회원 타입을 선택해 주세요.');
+                  return;
+                }
+                Get.to(() => ThirdSignupView());
+              },),
             ],
           ),
         ),
-
       ),
     );
   }
 }
 
-class typeSelectButton extends StatefulWidget {
+class TypeSelectButton extends StatefulWidget {
   final String text;
 
-  typeSelectButton(this.text, {super.key});
+  TypeSelectButton(this.text, {super.key});
 
   @override
-  State<typeSelectButton> createState() => _typeSelectButtonState(text);
+  State<TypeSelectButton> createState() => _TypeSelectButtonState(text);
 }
 
-class _typeSelectButtonState extends State<typeSelectButton> {
+class _TypeSelectButtonState extends State<TypeSelectButton> {
   bool isClicked = false;
   final String text;
 
-  _typeSelectButtonState(this.text);
+  _TypeSelectButtonState(this.text);
 
   @override
   Widget build(BuildContext context) {
