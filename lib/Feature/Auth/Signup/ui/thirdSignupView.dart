@@ -14,10 +14,14 @@ import 'package:flutter/widgets.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 
-enum AuthStep { first, second, third }
-
 class ThirdSignupView extends StatefulWidget {
-  const ThirdSignupView({super.key});
+  ThirdSignupView({super.key});
+
+  bool isAuthButtonClicked = false;
+  bool? isAuthenticated;
+
+  bool isRunning = false;
+  Timer timer = Timer.periodic(Duration(seconds: 1), (timer) {});
 
   @override
   State<ThirdSignupView> createState() => _ThirdSignupViewState();
@@ -26,12 +30,10 @@ class ThirdSignupView extends StatefulWidget {
 class _ThirdSignupViewState extends State<ThirdSignupView> {
   final _signupVM = Get.put(SignUpViewModel());
 
-  // 타이머
   int _seconds = 300;
-  late Timer _timer;
 
   void _startTimer() {
-    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    widget.timer = Timer.periodic(Duration(seconds: 1), (timer) {
       setState(() {
         if (_seconds > 0) {
           _seconds--;
@@ -40,18 +42,11 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
     });
   }
 
-  Function getHint = (AuthStep authStep, String type) {
-    String hint = "";
-    switch (authStep) {
-      case AuthStep.first:
-        hint = (type == "top") ? "이메일" : "인증확인";
-      case AuthStep.second:
-        hint = (type == "top") ? "비밀번호" : "비밀번호 확인";
-      case AuthStep.third:
-        hint = (type == "top") ? "이름" : "생년월일";
-    }
-    return hint;
-  };
+  void _resetTimer() {
+    setState(() {
+      _seconds = 300;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {

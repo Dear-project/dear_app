@@ -24,7 +24,7 @@ class BottomButton extends StatelessWidget {
             height: 55,
             child: Center(
               child: Text(
-                "다음",
+                "${this.buttonText}",
                 style: TextStyle(
                     fontFamily: "Pretendard",
                     fontSize: 16,

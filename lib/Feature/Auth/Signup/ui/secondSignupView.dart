@@ -23,6 +23,7 @@ class _SecondSignupViewState extends State<SecondSignupView> {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Color(0xffFFFFFF),
         appBar: AppBar(
           leading: IconButton(
             onPressed: () {

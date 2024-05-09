@@ -1,31 +1,22 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class DearLogo extends StatelessWidget {
-  const DearLogo({super.key});
+  final double? size;
+  final Color? color;
+
+  DearLogo({this.size = 28, this.color = const Color(0xff0E2764)});
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: const [
-        Text(
-          "DEAR",
+    return Text(
+          "DEAR.",
           style: TextStyle(
             fontFamily: "Assistant",
             fontWeight: FontWeight.w800,
-            fontSize: 28,
-            color: Color(0xff0E2764),
+            fontSize: size,
+            color: color,
           ),
-        ),
-        Text(
-          ".",
-          style: TextStyle(
-            fontFamily: "Assistant",
-            fontWeight: FontWeight.w200,
-            fontSize: 28,
-            color: Color(0xff0E2764),
-          ),
-        ),
-      ],
-    );
+        );
   }
 }

@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Main/Chat/component/chatCell.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profileView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
