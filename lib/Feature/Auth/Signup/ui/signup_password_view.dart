@@ -1,5 +1,4 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_confirm_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/signup_name_view.dart';
@@ -97,7 +96,6 @@ class _SignupPasswordViewState extends State<SignupPasswordView> {
                     ),
                   )),
               Spacer(flex: 1),
-              BottomDots(Dots.four),
               SizedBox(height: 30),
               BottomButton(action: () {
                 if (_loginVM.passwordController.value.text.isEmpty) {

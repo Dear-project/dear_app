@@ -1,4 +1,3 @@
-import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/third/select_type_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/thirdSignupView.dart';
 import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
@@ -93,7 +92,6 @@ class _SecondSignupViewState extends State<SecondSignupView> {
               SizedBox(
                 height: 87,
               ),
-              BottomDots(Dots.second),
               SizedBox(height: 30),
               BottomButton(action: (){
                 if(_loginVM.type.value == null){

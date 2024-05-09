@@ -1,5 +1,4 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/checkToggle.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
@@ -207,7 +206,6 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                 ],
               ),
               Spacer(flex: 1),
-              BottomDots(Dots.first),
               SizedBox(
                 height: 30,
               ),

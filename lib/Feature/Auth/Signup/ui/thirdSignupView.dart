@@ -1,5 +1,4 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/third/chk_auth_num_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/third/req_auth_num_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/third/input_auth_number_widget.dart';
@@ -204,7 +203,6 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
                     ],
                   ))),
               Spacer(flex: 1),
-              BottomDots(Dots.third),
               SizedBox(height: 30),
               BottomButton(action: () {
                 if (_signupVM.isVerifiedEmailAddress.value) {
