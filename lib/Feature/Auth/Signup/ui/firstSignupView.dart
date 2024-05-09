@@ -1,5 +1,6 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/bottomDots.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/checkToggle.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:flutter/cupertino.dart';
@@ -8,14 +9,34 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class FirstSignupView extends StatefulWidget {
-  const FirstSignupView({super.key});
+  FirstSignupView({super.key});
+
+  Map<String, bool> terms = {"a": false, "b": false, "c": false};
+
+  bool entireTerms = false;
+
+  bool get getEntireTerm {
+    return terms["a"]! && terms["b"]! && terms["c"]!;
+  }
+
+  // set setEntireTerm(bool value) {
+  //  terms = terms.values.map((e) => e = value) + terms]ys;
+  // }
 
   @override
   State<FirstSignupView> createState() => _FirstSignupViewState();
+
 }
 
 class _FirstSignupViewState extends State<FirstSignupView> {
-  var isClicked = false;
+
+  @override
+  void setState(VoidCallback fn) {
+    super.setState((fn));
+    // setState(() {
+    //   widget.entireTerms = widget.getEntireTerm;
+    // });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,7 +100,16 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                     Spacer(
                       flex: 1,
                     ),
-                    tosSelectButton(),
+                    CheckToggle(
+                      toggle: widget.entireTerms,
+                      onPressed: () {
+                        setState(() {
+                           widget.entireTerms = !widget.entireTerms;
+                           print("object" );
+                           widget.terms.updateAll((key, value) => value = widget.entireTerms);
+                        });
+                      },
+                    ),
                   ],
                 ),
               ),
@@ -106,7 +136,15 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                         Spacer(
                           flex: 1,
                         ),
-                        tosSelectButton(),
+                        CheckToggle(
+                          toggle: widget.terms["a"]!,
+                          onPressed: () {
+                            setState(() {
+                              widget.terms["a"] = !widget.terms["a"]!;
+                              widget.entireTerms = (widget.terms.values.skipWhile((val) => val == true).isEmpty) ? true : false;
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -126,7 +164,15 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                         Spacer(
                           flex: 1,
                         ),
-                        tosSelectButton(),
+                        CheckToggle(
+                          toggle: widget.terms["b"]!,
+                          onPressed: () {
+                            setState(() {
+                              widget.terms["b"] = !widget.terms["b"]!;
+                              widget.entireTerms = (widget.terms.values.skipWhile((val) => val == true).isEmpty) ? true : false;
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ),
@@ -146,21 +192,31 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                         Spacer(
                           flex: 1,
                         ),
-                        tosSelectButton(),
+                        CheckToggle(
+                          toggle: widget.terms["c"]!,
+                          onPressed: () {
+                            setState(() {
+                              widget.terms["c"] = !widget.terms["c"]!;
+                              widget.entireTerms = (widget.terms.values.skipWhile((val) => val == true).isEmpty) ? true : false;
+                            });
+                          },
+                        ),
                       ],
                     ),
                   ),
                 ],
               ),
               Spacer(flex: 1),
-
               BottomDots(Dots.first),
               SizedBox(
                 height: 30,
               ),
               BottomButton(
                 action: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => SecondSignupView()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => SecondSignupView()));
                 },
               ),
               SizedBox(height: 10),
@@ -171,139 +227,6 @@ class _FirstSignupViewState extends State<FirstSignupView> {
           elevation: 0.0,
           color: Colors.white,
           height: 30,
-        ),
-      ),
-
-    );
-  }
-}
-
-class tosSelectButton extends StatefulWidget {
-  const tosSelectButton({super.key});
-
-  @override
-  State<tosSelectButton> createState() => _tosSelectButtonState();
-}
-
-class _tosSelectButtonState extends State<tosSelectButton> {
-  bool isClicked = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Transform.scale(
-            scale: 1.4,
-            child: Container(
-              width: 25,
-              height: 25,
-              child: Checkbox(
-                value: isClicked,
-                onChanged: (bool? value) {
-                  setState(() {
-                    isClicked = value!;
-                  });
-                },
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-                side: MaterialStateBorderSide.resolveWith(
-                  (states) => BorderSide(color: Color(0xffC5D0DA)),
-                ),
-                fillColor: MaterialStatePropertyAll(
-                    Color(isClicked ? 0xffE6EDF7 : 0xffF1F2F3)),
-                checkColor: Color(0xff0E2764),
-                splashRadius: 0,
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CustomCheckbox extends StatefulWidget {
-  const CustomCheckbox({
-    Key? key,
-    this.width = 25.0,
-    this.height = 25.0,
-    this.color,
-    this.iconSize = 18.0,
-    this.onChanged,
-    this.checkColor,
-  }) : super(key: key);
-
-  final double width;
-  final double height;
-  final Color? color;
-
-  // Now you can set the checkmark size of your own
-  final double? iconSize;
-  final Color? checkColor;
-  final Function(bool?)? onChanged;
-
-  @override
-  State<CustomCheckbox> createState() => _CustomCheckboxState();
-}
-
-class _CustomCheckboxState extends State<CustomCheckbox> {
-  bool isChecked = false;
-
-  @override
-  Widget build(BuildContext context) {
-    return Theme(
-      data: ThemeData(
-        splashColor: Colors.transparent,
-        highlightColor: Colors.transparent,
-      ),
-      child: InkWell(
-        radius: 16,
-        onTap: () {
-          setState(() => isChecked = !isChecked);
-          widget.onChanged?.call(isChecked);
-        },
-        child: AnimatedContainer(
-          duration: Duration(milliseconds: 100),
-          curve: Easing.standard,
-          // width: 25,
-          // height: 25,
-          width: isChecked ? 25 : 24,
-          height: isChecked ? 25 : 24,
-          // decoration: BoxDecoration(
-          //   border: isChecked
-          //       ? Border.all(color: Colors.green, width: 2)
-          //       : Border.all(color: Colors.grey, width: 1.5),
-          //   borderRadius: BorderRadius.circular(10),
-          // ),
-          decoration: BoxDecoration(
-            border: Border.all(
-              color: widget.color ?? Color(0xffC5D0DA),
-              width: 2.0,
-            ),
-            borderRadius: BorderRadius.circular(16.0),
-            color: isChecked ? Color(0xffE6EDF7) : Color(0xffF1F2F3),
-          ),
-          child: Container(
-            width: widget.width,
-            height: widget.height,
-            // decoration: BoxDecoration(
-            //   border: Border.all(
-            //     color: widget.color ?? Color(0xffC5D0DA),
-            //     width: 2.0,
-            //   ),
-            //   borderRadius: BorderRadius.circular(16.0),
-            //   color: isChecked ? Color(0xffE6EDF7) : Color(0xffF1F2F3),
-            // ),
-            child: isChecked
-                ? Icon(
-                    Icons.check,
-                    size: widget.iconSize,
-                    color: widget.checkColor,
-                  )
-                : null,
-          ),
         ),
       ),
     );
