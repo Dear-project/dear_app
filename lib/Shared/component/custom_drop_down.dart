@@ -1,3 +1,6 @@
+import 'package:dear_app/Shared/theme/dearIcons.dart';
+import 'package:flutter/cupertino.dart';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 
 class CustDropDown<T> extends StatefulWidget {
@@ -12,14 +15,14 @@ class CustDropDown<T> extends StatefulWidget {
 
   const CustDropDown(
       {required this.items,
-        required this.onChanged,
-        this.hintText = "",
-        this.borderRadius = 0,
-        this.borderWidth = 1,
-        this.maxListHeight = 100,
-        this.defaultSelectedIndex = -1,
-        Key? key,
-        this.enabled = true})
+      required this.onChanged,
+      this.hintText = "",
+      this.borderRadius = 0,
+      this.borderWidth = 1,
+      this.maxListHeight = 100,
+      this.defaultSelectedIndex = -1,
+      Key? key,
+      this.enabled = true})
       : super(key: key);
 
   @override
@@ -65,9 +68,6 @@ class _CustDropDownState extends State<CustDropDown>
         _isOpen = true;
       });
     }
-
-    _overlayEntry = _createOverlayEntry();
-    Overlay.of(context)!.insert(_overlayEntry);
   }
 
   void _removeOverlay() {
@@ -75,7 +75,6 @@ class _CustDropDownState extends State<CustDropDown>
       setState(() {
         _isOpen = false;
       });
-      _overlayEntry.remove();
     }
   }
 
@@ -83,81 +82,6 @@ class _CustDropDownState extends State<CustDropDown>
   dispose() {
     WidgetsBinding.instance!.removeObserver(this);
     super.dispose();
-  }
-
-  OverlayEntry _createOverlayEntry() {
-    _renderBox = context.findRenderObject() as RenderBox?;
-
-    var size = _renderBox!.size;
-
-    dropDownOffset = getOffset();
-
-    return OverlayEntry(
-        maintainState: false,
-        builder: (context) => Align(
-          alignment: Alignment.center,
-          child: CompositedTransformFollower(
-            link: _layerLink,
-            showWhenUnlinked: false,
-            offset: dropDownOffset,
-            child: SizedBox(
-              height: widget.maxListHeight,
-              width: size.width,
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: _isReverse
-                    ? MainAxisAlignment.end
-                    : MainAxisAlignment.start,
-                children: <Widget>[
-                  Padding(
-                    padding: const EdgeInsets.only(top: 0),
-                    child: Container(
-                      constraints: BoxConstraints(
-                          maxHeight: widget.maxListHeight,
-                          maxWidth: size.width),
-                      decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(0)),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(widget.borderRadius),
-                        ),
-                        child: Material(
-                          elevation: 0,
-                          shadowColor: Colors.white,
-                          color: Colors.white,
-                          child: ListView(
-                            padding: EdgeInsets.zero,
-                            shrinkWrap: true,
-                            children: widget.items
-                                .map((item) => GestureDetector(
-                              child: Padding(
-                                padding: const EdgeInsets.all(10.0),
-                                child: item.child,
-                              ),
-                              onTap: () {
-                                if (mounted) {
-                                  setState(() {
-                                    _isAnyItemSelected = true;
-                                    _itemSelected = item.child;
-                                    _removeOverlay();
-                                    if (widget.onChanged != null)
-                                      widget.onChanged(item.value);
-                                  });
-                                }
-                              },
-                            ))
-                                .toList(),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ));
   }
 
   Offset getOffset() {
@@ -190,54 +114,79 @@ class _CustDropDownState extends State<CustDropDown>
   Widget build(BuildContext context) {
     return CompositedTransformTarget(
       link: _layerLink,
-      child: GestureDetector(
-        onTap: widget.enabled
+      child: CupertinoButton(
+        padding: EdgeInsets.zero,
+        onPressed: widget.enabled
             ? () {
-          _isOpen ? _removeOverlay() : _addOverlay();
-        }
+                _isOpen ? _removeOverlay() : _addOverlay();
+              }
             : null,
         child: Container(
-          height: 55,
-          decoration: _getDecoration(),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Flexible(
-                flex: 3,
-                child: _isAnyItemSelected
-                    ? Padding(
-                  padding: const EdgeInsets.only(left: 10.0),
-                  child: _itemSelected!,
-                )
-                    : Padding(
-                  padding:
-                  const EdgeInsets.only(left: 10.0), // change it here
-                  child: Text(
-                    widget.hintText,
-                    maxLines: 1,
-                    overflow: TextOverflow.clip,
-                    style: TextStyle(fontSize: 17),
+            width: 350,
+            height: _isOpen ? widget.maxListHeight - 20 : 50,
+            decoration: _getDecoration(),
+            child: Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: <Widget>[
+                      Flexible(
+                        flex: 3,
+                        child: _isAnyItemSelected
+                            ? _itemSelected!
+                            : Text(
+                          widget.hintText,
+                          maxLines: 1,
+                          overflow: TextOverflow.clip,
+                          style: TextStyle(
+                              fontFamily: "Pretendard",
+                              fontSize: 17,
+                              color: Color(0xff787878)
+                          ),
+                        ),
+                      ),
+                      _isOpen ? Transform.rotate(angle: 180 * math.pi / 180, child: DearIcons.dropdown) : DearIcons.dropdown
+                    ],
                   ),
-                ),
-              ),
-              const Flexible(
-                flex: 1,
-                child: Icon(
-                  Icons.arrow_drop_down,
-                ),
-              ),
-            ],
-          ),
-        ),
+                  if (_isOpen) SizedBox(height: 10),
+                  if (_isOpen) ListView(
+                    padding: EdgeInsets.zero,
+                    shrinkWrap: true,
+                    children: widget.items
+                        .map((item) => GestureDetector(
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: item.child,
+                      ),
+                      onTap: () {
+                        if (mounted) {
+                          setState(() {
+                            _isAnyItemSelected = true;
+                            _itemSelected = item.child;
+                            _removeOverlay();
+                            if (widget.onChanged != null)
+                              widget.onChanged(item.value);
+                          });
+                        }
+                      },
+                    ))
+                        .toList(),
+                  ),
+                ],
+              )
+            )),
       ),
     );
   }
 
   Decoration? _getDecoration() {
-    return  BoxDecoration(
+    return BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(widget.borderRadius)),
-    border: Border.all(width: 1, color: Color(0xffC5D0DA)));
-    }
+        border: Border.all(width: 1, color: Color(0xffC5D0DA)));
+  }
 }
 
 class CustDropdownMenuItem<T> extends StatelessWidget {

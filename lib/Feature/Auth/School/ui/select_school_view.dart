@@ -1,5 +1,5 @@
+import 'package:dear_app/Feature/Auth/School/component/schoolSearchBar.dart';
 import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/school/component/search_school/input_search_widget.dart';
 import 'package:dear_app/Feature/Auth/school/component/search_school/select_gubun_type_widget.dart';
 import 'package:dear_app/Feature/Auth/school/model/school_info.dart';
 import 'package:dear_app/Feature/Auth/school/view_model/controller/school_view_model.dart';
@@ -18,6 +18,7 @@ class SelectSchoolView extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.white,
           title: Text(
             "학교 선택",
@@ -86,7 +87,7 @@ class SelectSchoolView extends StatelessWidget {
                     SizedBox(
                       height: 10,
                     ),
-                    InputSearchWidget(),
+                    SchoolSearchBar(),
                     Expanded(
                       child: Obx(() {
                         return ListView.builder(

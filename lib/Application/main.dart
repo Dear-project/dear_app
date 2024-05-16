@@ -1,8 +1,5 @@
-import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
-import 'package:dear_app/Feature/Auth/Onboarding/ui/welcomeView.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
-import 'package:dear_app/Feature/Auth/Signin/ui/firstSigninView.dart';
-import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
+import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/theme/dear_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -18,16 +15,17 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      theme: DearTheme,
-      localizationsDelegates:  const [
-        GlobalMaterialLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      supportedLocales: const [
-        Locale('ko', '')
-      ],
-      home: SelectSchoolView()
-
-    );
+        theme: DearTheme,
+        localizationsDelegates: const [
+          GlobalMaterialLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        supportedLocales: const [Locale('ko', '')],
+        home: Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(
+            child: ProfessorCell(),
+          ),
+        ));
   }
 }

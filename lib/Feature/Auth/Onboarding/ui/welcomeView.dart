@@ -16,9 +16,9 @@ class _WelcomeViewState extends State<WelcomeView> with SingleTickerProviderStat
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 400)
+      duration: Duration(milliseconds: 4000)
     )
-    ..reverse(from: 3);
+    ..reverse(from: 1);
 
   }
 
