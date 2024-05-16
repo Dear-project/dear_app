@@ -76,10 +76,7 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
         child: Column(
           children: [
             SizedBox(height: 22),
-            if (_index == 0)
-              AllChatView(),
-            if (_index == 1)
-              BlockedPersonView(),
+            _pages[_index],
           ],
         ),
       ),
