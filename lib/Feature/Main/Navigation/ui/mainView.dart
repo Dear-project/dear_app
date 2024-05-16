@@ -43,38 +43,6 @@ class _MainViewState extends State<MainView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.white,
-        leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 27),
-          child: DearLogo(),
-        ),
-        leadingWidth: 140,
-        actions: [
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            child: Container(
-              width: 22,
-              height: 25,
-              child: Stack(
-                  alignment: Alignment.topRight,
-                  children: [
-                    CupertinoButton(
-                        padding: EdgeInsets.zero,
-                        child: DearIcons.bell,
-                        onPressed: () {
-
-                    }),
-
-                    DearBadge()
-                  ]
-              )
-            )
-          )
-
-        ],
-      ),
       body: _pages[_index],
       bottomNavigationBar: BottomAppBar(
         elevation: 0,
