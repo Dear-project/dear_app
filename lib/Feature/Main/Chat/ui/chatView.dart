@@ -55,8 +55,7 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
               fontWeight: FontWeight.w600
           ),
         ),
-
-        bottom: DearTopTabBar(tabController: _tabController,),
+        bottom: DearTopTabBar(tabController: _tabController, topBarType: TopBarType.Chat,),
         actions: [
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),

@@ -1,12 +1,86 @@
+import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/ranking_view.dart';
+import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
+import 'package:dear_app/Shared/theme/dearBadge.dart';
+import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dearIcons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class DiscoverView extends StatelessWidget {
+class DiscoverView extends StatefulWidget {
+  const DiscoverView({super.key});
+
   @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Text("탐색뷰"),
-    );
+  State<DiscoverView> createState() => _DiscoverViewState();
+}
+
+class _DiscoverViewState extends State<DiscoverView>
+    with SingleTickerProviderStateMixin {
+  var _index = 0;
+
+  final List<Widget> _pages = [
+    ProfessorListView(),
+    DibProfessorView(),
+    RankingView(),
+  ];
+
+  late TabController _tabController = TabController(
+    length: 3,
+    vsync: this,
+    initialIndex: 0,
+  );
+
+  @override
+  void initState() {
+    _tabController.addListener(() {
+      setState(() {
+        _index = _tabController.index;
+      });
+    });
   }
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: DearColors.white,
+      appBar: AppBar(
+        toolbarHeight: 40,
+        elevation: 0,
+        title: Text(
+          "교수님 찾기",
+          style: TextStyle(
+              fontFamily: "Pretendard",
+              fontSize: 20,
+              fontWeight: FontWeight.w600),
+        ),
+        backgroundColor: DearColors.white,
+        bottom: DearTopTabBar(
+          tabController: _tabController,
+          topBarType: TopBarType.Discover,
+        ),
+        actions: [
+          Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Container(
+                  width: 22,
+                  height: 25,
+                  child: Stack(alignment: Alignment.topRight, children: [
+                    CupertinoButton(
+                        padding: EdgeInsets.zero,
+                        child: DearIcons.bell,
+                        onPressed: () {}),
+                    DearBadge()
+                  ])))
+        ],
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _pages[_index],
+        ],
+      ),
+    );
+  }
 }
