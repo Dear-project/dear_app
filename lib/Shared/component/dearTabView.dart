@@ -49,7 +49,7 @@ class _DearTabViewState extends State<DearTabView> {
         borderRadius: BorderRadius.circular(30)
       ),
       child: Padding(
-          padding: EdgeInsets.fromLTRB(30, 0, 30, 10),
+          padding: EdgeInsets.fromLTRB(30, 0, 30, 0),
           child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [

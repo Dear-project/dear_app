@@ -48,6 +48,7 @@ class _MainViewState extends State<MainView> {
         body: _pages[_index],
         bottomNavigationBar: BottomAppBar(
           elevation: 0,
+          height: 60,
           color: Colors.white,
           padding: EdgeInsets.zero,
           child: DearTabView(
