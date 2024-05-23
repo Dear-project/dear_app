@@ -1,3 +1,5 @@
+import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class DibProfessorView extends StatelessWidget {
@@ -6,9 +8,19 @@ class DibProfessorView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text("찜한 교수님")],
+      child: SizedBox(
+        height: 583,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              for (int i = 0; i < 20; i++)
+                Padding(
+                  padding: EdgeInsets.only(bottom: 14),
+                  child: ProfessorCell(),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }
