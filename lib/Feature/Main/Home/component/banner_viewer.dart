@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 class BannerViewer extends StatefulWidget {
   @override
@@ -8,20 +9,23 @@ class BannerViewer extends StatefulWidget {
 class _BannerViewerState extends State<BannerViewer> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: ListView(
-          padding: EdgeInsets.zero,
+    return SizedBox(
+        height: 200,
+        child: PageView(
           scrollDirection: Axis.horizontal,
           children: [
-            Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  width: 100,
-                  decoration: BoxDecoration(
-                    color: Color(0xffE6E6E6),
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ))
+            ...List.generate(100, (index) => Padding(
+              padding: EdgeInsets.symmetric(
+                  horizontal: 10
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                    color: Colors.black,
+                    borderRadius: BorderRadius.circular(16)
+                ),
+              ),
+            ))
+
           ],
         )
     );

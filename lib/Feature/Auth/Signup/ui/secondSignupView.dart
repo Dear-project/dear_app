@@ -1,6 +1,6 @@
 import 'package:dear_app/Feature/Auth/Signup/component/third/select_type_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/thirdSignupView.dart';
-import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
