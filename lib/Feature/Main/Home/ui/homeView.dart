@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dearBadge.dart';
@@ -42,7 +43,11 @@ class HomeView extends StatelessWidget {
           )
         ],
       ),
-      body: Text("홈뷰"),
+      body: Column(
+        children: [
+          BannerViewer()
+        ],
+      )
     );
   }
 

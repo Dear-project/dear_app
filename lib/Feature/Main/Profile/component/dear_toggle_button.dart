@@ -48,13 +48,6 @@ class _DearToggleButtonState extends State<DearToggleButton> {
           borderRadius: BorderRadius.circular(30),
           color: widget.isEnabled ? Color(0xff0E2764) : Color(0xff787880).withOpacity(0.16),
           border: Border.all(color: Colors.white, width: 2),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.grey.shade400,
-              // spreadRadius: 2,
-              // blurRadius: 10,
-            ),
-          ],
         ),
         child: AnimatedAlign(
           duration: animationDuration,
@@ -67,6 +60,13 @@ class _DearToggleButtonState extends State<DearToggleButton> {
               decoration: BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.shade400,
+                    // spreadRadius: 2,
+                    // blurRadius: 10,
+                  ),
+                ],
               ),
             ),
           ),

@@ -1,6 +1,7 @@
 import 'dart:ffi';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/chat_profile_view.dart';
+import 'package:dear_app/Feature/Main/Home/ui/homeView.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [Locale('ko', '')],
-        home: ChatProfileView()
+        home: HomeView()
     );
   }
 }
