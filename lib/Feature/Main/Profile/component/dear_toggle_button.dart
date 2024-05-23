@@ -46,7 +46,7 @@ class _DearToggleButtonState extends State<DearToggleButton> {
         duration: animationDuration,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
-          color: widget.isEnabled ? Color(0xff0E2764) : Color(0xff787880),
+          color: widget.isEnabled ? Color(0xff0E2764) : Color(0xff787880).withOpacity(0.16),
           border: Border.all(color: Colors.white, width: 2),
           boxShadow: [
             BoxShadow(

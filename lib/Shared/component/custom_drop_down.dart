@@ -1,4 +1,4 @@
-import 'package:dear_app/Shared/theme/dearIcons.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';

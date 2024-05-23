@@ -96,7 +96,9 @@ class _OnboardingViewState extends State<OnboardingView> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(
+                  height: 8
+              ),
             ],
           ),
         ),
