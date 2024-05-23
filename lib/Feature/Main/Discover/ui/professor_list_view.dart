@@ -1,5 +1,7 @@
 import 'dart:ui';
 
+import 'package:dear_app/Feature/Main/Discover/component/filter_button.dart';
+import 'package:dear_app/Feature/Main/Discover/component/search_word_bar.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:flutter/material.dart';
@@ -14,15 +16,20 @@ class ProfessorListView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Row(
-            children: [
-              Text("관련 검색어를 검색해 보세요"),
-              Text("필터"),
-            ],
+          Padding(
+            padding: EdgeInsets.fromLTRB(27, 15, 27, 0),
+            child: Row(
+              children: [
+                SearchWordBar(),
+                SizedBox(width: 4),
+                FilterButton(),
+              ],
+            ),
           ),
+          SizedBox(height: 10),
           Center(
             child: SizedBox(
-              height: 550,
+              height: 525,
               child: SingleChildScrollView(
                 child: Column(
                   children: [
