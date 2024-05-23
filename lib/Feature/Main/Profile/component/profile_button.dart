@@ -47,32 +47,30 @@ class ProfileButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
+    return CupertinoButton(
+      padding: EdgeInsets.zero,
       onPressed: () {},
-      style: OutlinedButton.styleFrom(
-        backgroundColor: Color(0xffFFFFFF),
-        shape: LinearBorder(),
-        fixedSize: Size(MediaQuery.of(context).size.width, 61),
-        side: BorderSide(
-          color: Colors.transparent,
-        ),
-      ),
       child: Container(
+        color: Colors.white,
+        height: 70,
         alignment: Alignment.centerLeft,
-        child: Row(
-          children: [
-            Text(
-              "${getProfileButtonText()}",
-              style: TextStyle(
-                fontFamily: "Pretendard",
-                fontSize: 18,
-                color: getProfileButtonColor(),
-                fontWeight: FontWeight.w500,
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 34),
+          child: Row(
+            children: [
+              Text(
+                "${getProfileButtonText()}",
+                style: TextStyle(
+                  fontFamily: "Pretendard",
+                  fontSize: 18,
+                  color: getProfileButtonColor(),
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            Spacer(flex: 1),
-          ],
-        ),
+              Spacer(flex: 1),
+            ],
+          ),
+        )
       ),
     );
   }

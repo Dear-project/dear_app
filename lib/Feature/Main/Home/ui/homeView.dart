@@ -1,4 +1,6 @@
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
+import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
+import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dearBadge.dart';
@@ -11,11 +13,12 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: DearColors.white,
+      backgroundColor: Color(0xffF8F9F9),
       appBar: AppBar(
         toolbarHeight: 40,
         elevation: 0,
-        backgroundColor: Colors.white,
+        scrolledUnderElevation: 0.0,
+        backgroundColor: Color(0xffF8F9F9),
         leading: Padding(
           padding: EdgeInsets.symmetric(horizontal: 27),
           child: DearLogo(),
@@ -43,11 +46,40 @@ class HomeView extends StatelessWidget {
           )
         ],
       ),
-      body: Column(
-        children: [
-          BannerViewer()
-        ],
-      )
+      body: ListView(
+          children: [
+            BannerViewer(),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 34),
+              child: Container(
+                height: 1,
+                decoration: BoxDecoration(
+                    color: Color(0xffE6E6E6)
+                ),
+              ),
+            ),
+            SuggestionCell(
+              title: "이런 교수님은 어때요?",
+              leading: CupertinoButton(
+                onPressed: () {  },
+                child: Image(
+                  image: DearIcons.next.image,
+                  width: 20,
+                  height: 20,
+                ),
+              ),
+              content: Column(
+                children: [
+
+                ],
+              ),
+
+            ),
+            SuggestionCell(
+              title: "오늘은 이런글이 올라왔어요",
+            ),
+          ],
+        )
     );
   }
 

@@ -8,6 +8,7 @@ class DearIcons {
   static Image my = Image.asset("assets/icons/my.png");
   static Image bell = Image.asset("assets/icons/bell.png");
   static Image back = Image.asset("assets/icons/back.png");
+  static Image next = Image.asset("assets/icons/next.png");
   static Image detail = Image.asset("assets/icons/detail.png");
   static Image attach = Image.asset("assets/icons/attach.png");
   static Image photo = Image.asset("assets/icons/photo.png");

@@ -48,7 +48,7 @@ class ProfileView extends StatelessWidget {
             ColoredBox(
               color: DearColors.white,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
+                padding: EdgeInsets.symmetric(horizontal: 34),
                 child: SizedBox(
                   width: MediaQuery.of(context).size.width,
                   height: 61,
