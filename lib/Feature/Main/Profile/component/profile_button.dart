@@ -8,7 +8,6 @@ enum ProfileButtonType {
   Inquiry,
   Logout,
   MemberSecession,
-  NotificationSettings,
 }
 
 class ProfileButton extends StatelessWidget {
@@ -18,8 +17,6 @@ class ProfileButton extends StatelessWidget {
 
   String getProfileButtonText() {
     switch (buttonType) {
-      case ProfileButtonType.NotificationSettings:
-        return "알림 설정";
       case ProfileButtonType.SeeMyReview:
         return "내가 남긴 후기보기";
       case ProfileButtonType.ServicePolicy:
@@ -35,8 +32,6 @@ class ProfileButton extends StatelessWidget {
 
   Color getProfileButtonColor() {
     switch (buttonType) {
-      case ProfileButtonType.NotificationSettings:
-        return Color(0xff000000);
       case ProfileButtonType.SeeMyReview:
         return Color(0xff000000);
       case ProfileButtonType.ServicePolicy:
@@ -63,23 +58,22 @@ class ProfileButton extends StatelessWidget {
         ),
       ),
       child: Container(
-          alignment: Alignment.centerLeft,
-          child: Row(
-            children: [
-              Text(
-                "${getProfileButtonText()}",
-                style: TextStyle(
-                  fontFamily: "Pretendard",
-                  fontSize: 18,
-                  color: getProfileButtonColor(),
-                  fontWeight: FontWeight.w500,
-                ),
+        alignment: Alignment.centerLeft,
+        child: Row(
+          children: [
+            Text(
+              "${getProfileButtonText()}",
+              style: TextStyle(
+                fontFamily: "Pretendard",
+                fontSize: 18,
+                color: getProfileButtonColor(),
+                fontWeight: FontWeight.w500,
               ),
-              Spacer(flex: 1),
-              if (buttonType == ProfileButtonType.NotificationSettings)
-                DearToggleButton(),
-            ],
-          )),
+            ),
+            Spacer(flex: 1),
+          ],
+        ),
+      ),
     );
   }
 }
