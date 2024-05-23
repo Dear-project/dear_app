@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Onboarding/ui/firstJoinView.dart';
 import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
 import 'package:dear_app/Feature/Auth/Onboarding/ui/welcomeView.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: const [
         Locale('ko', '')
       ],
-      home: SelectSchoolView()
+      home: FirstJoinView()
 
     );
   }
