@@ -66,39 +66,37 @@ class _FirstSigninViewState extends State<FirstSigninView> {
                 padding: EdgeInsets.fromLTRB(30, 8, 30, 0),
                 child: SizedBox(
                   height: 18,
-                  child: TextButton(
-                    style: TextButton.styleFrom(
-                        minimumSize: Size.zero,
-                        padding: EdgeInsets.zero,
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    onPressed: () {},
-                    child: Row(
-                      children: [
-                        if (widget.showAlert)
-                          Text(
-                            "이메일 또는 비밀번호가 올바르지 않습니다.",
-                            style: TextStyle(
-                              fontFamily: "Pretendard",
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xffEA0C0C),
-                              fontSize: 12,
-                            ),
-                          ),
-                        Spacer(flex: 1),
-                        Text(
-                          style: TextStyle(
-                              height: 1.2,
-                              fontFamily: "Pretendard",
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff0E2764),
-                              decoration: TextDecoration.underline),
-                          "비밀번호 찾기",
+                  child: Row(children: [
+                    if (widget.showAlert)
+                      Text(
+                        "이메일 또는 비밀번호가 올바르지 않습니다.",
+                        style: TextStyle(
+                          fontFamily: "Pretendard",
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xffEA0C0C),
+                          fontSize: 12,
                         ),
-                        // SizedBox(width: 29),
-                      ],
+                      ),
+                    Spacer(flex: 1),
+                    TextButton(
+                      style: TextButton.styleFrom(
+                          minimumSize: Size.zero,
+                          padding: EdgeInsets.zero,
+                          tapTargetSize: MaterialTapTargetSize.shrinkWrap),
+                      onPressed: () {},
+                      child: Text(
+                        style: TextStyle(
+                            height: 1.2,
+                            fontFamily: "Pretendard",
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff0E2764),
+                            decoration: TextDecoration.underline),
+                        "비밀번호 찾기",
+                      ),
+                      // SizedBox(width: 29),
                     ),
-                  ),
+                  ]),
                 ),
               ),
               Spacer(flex: 1),

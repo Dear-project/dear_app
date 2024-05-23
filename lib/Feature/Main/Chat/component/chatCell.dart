@@ -28,12 +28,12 @@ class _ChatCellState extends State<ChatCell> {
                 borderRadius: BorderRadius.all(Radius.circular(16))),
             child: SizedBox(
               height: 70,
-              width: MediaQuery.of(context).size.width - 30,
+              width: MediaQuery.of(context).size.width,
               child: ColoredBox(
                 color: Colors.transparent,
                 child: Row(
                   children: [
-                    SizedBox(width: 15),
+                    SizedBox(width: 27),
                     Transform.scale(
                       scale: 2.5,
                       child: Icon(
@@ -64,7 +64,7 @@ class _ChatCellState extends State<ChatCell> {
                                 color: Color(0xffAAAAAA),
                               ),
                             ),
-                            SizedBox(width: 90),
+                            SizedBox(width: 78),
                             Text(
                               "어제",
                               style: TextStyle(

@@ -1,4 +1,4 @@
-import 'package:dear_app/Shared/theme/dearIcons.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,9 +16,9 @@ class _WelcomeViewState extends State<WelcomeView> with SingleTickerProviderStat
 
     controller = AnimationController(
       vsync: this,
-      duration: Duration(milliseconds: 400)
+      duration: Duration(milliseconds: 4000)
     )
-    ..reverse(from: 3);
+    ..reverse(from: 1);
 
   }
 

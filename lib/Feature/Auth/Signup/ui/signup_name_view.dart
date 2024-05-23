@@ -2,7 +2,7 @@ import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/name/input_birthdate_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/name/input_name_widget.dart';
 
-import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

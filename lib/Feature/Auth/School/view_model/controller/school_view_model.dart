@@ -10,8 +10,6 @@ import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_rx/get_rx.dart';
-import 'package:get/state_manager.dart';
 
 class SchoolViewModel extends GetxController {
   final SchoolRepository _repository = SchoolRepositoryImpl();

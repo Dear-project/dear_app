@@ -13,6 +13,11 @@ class DearIcons {
   static Image photo = Image.asset("assets/icons/photo.png");
   static Image send = Image.asset("assets/icons/send.png");
   static Image check = Image.asset("assets/icons/check.png");
+  static Image dropdown = Image.asset("assets/icons/dropdown.png");
+  static Image book = Image.asset("assets/icons/book.png");
+  static Image banner = Image.asset("assets/icons/banner.png");
+  static Image profile = Image.asset("assets/icons/profile.png");
+  static Image detailH = Image.asset("assets/icons/detail_horizontal.png");
 }
 
 extension DearIconsFill on Image {

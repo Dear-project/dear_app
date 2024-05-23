@@ -4,7 +4,7 @@ import 'package:dear_app/Feature/Auth/Signup/component/third/req_auth_num_widget
 import 'package:dear_app/Feature/Auth/Signup/component/third/input_auth_number_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/third/input_email_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/signup_password_view.dart';
-import 'package:dear_app/Feature/Auth/Signup/view_model/controller/signup_view_model.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';

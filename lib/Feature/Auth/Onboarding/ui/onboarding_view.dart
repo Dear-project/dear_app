@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature//Auth/Onboarding/component/speechBubble.dart';
+import 'package:dear_app/Feature/Auth/Signin/ui/firstSigninView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -79,7 +80,9 @@ class _OnboardingViewState extends State<OnboardingView> {
               ),
               const SizedBox(height: 9),
               ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(() => FirstSigninView());
+                },
                 style: ElevatedButton.styleFrom(
                   fixedSize: const Size(342, 56),
                   foregroundColor: Colors.white,
@@ -96,7 +99,9 @@ class _OnboardingViewState extends State<OnboardingView> {
                       fontWeight: FontWeight.bold),
                 ),
               ),
-              const SizedBox(height: 8),
+              const SizedBox(
+                  height: 8
+              ),
             ],
           ),
         ),

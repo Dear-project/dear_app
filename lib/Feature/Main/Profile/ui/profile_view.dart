@@ -1,13 +1,22 @@
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
+import 'package:dear_app/Shared/component/dearLogo.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfileView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ColoredBox(
-      color: Color(0xffF8F9F9),
-      child: Center(
+    return Scaffold(
+      backgroundColor: Color(0xffF8F9F9),
+      appBar: AppBar(
+          leading: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 30),
+            child: DearLogo()
+          ),
+        leadingWidth: 200,
+      ),
+      body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -19,12 +28,14 @@ class ProfileView extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Icon(
-                      // CupertinoIcons.profile_circled,
-                      CupertinoIcons.person_crop_circle,
-                      size: 120,
-                      color: Color(0xffD1D1D1),
+                    Image(
+                      image: DearIcons.my.image,
+                      fit: BoxFit.fill,
+                      width: 100,
+
+                      height: 100,
                     ),
+
                     Text(
                       "이해준",
                       style: TextStyle(
