@@ -44,21 +44,21 @@ class _MainViewState extends State<MainView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
-        body: _pages[_index],
-        bottomNavigationBar: BottomAppBar(
-          elevation: 0,
-          height: 60,
-          color: Colors.white,
-          padding: EdgeInsets.zero,
-          child: DearTabView(
-            items: _items,
-            onClick: (value) {
-              setState(() {
-                _index = value;
-              });
-            },
-          ),
-        ));
+            body: _pages[_index],
+            extendBody: true,
+            bottomSheet: BottomAppBar(
+              elevation: 0,
+              height: 60 + MediaQuery.of(context).padding.bottom,
+              color: Colors.transparent,
+              padding: EdgeInsets.zero,
+              child: DearTabView(
+                items: _items,
+                onClick: (value) {
+                  setState(() {
+                    _index = value;
+                  });
+                },
+              ),
+            ));
   }
 }
