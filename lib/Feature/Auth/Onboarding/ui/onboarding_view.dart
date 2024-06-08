@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:dear_app/Feature//Auth/Onboarding/component/speechBubble.dart';
 import 'package:dear_app/Feature/Auth/Signin/ui/firstSigninView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
@@ -14,6 +16,7 @@ class OnboardingView extends StatefulWidget {
 
 class _OnboardingViewState extends State<OnboardingView> {
   ScrollController _scrollController = ScrollController();
+  List<Color> colorset = [Color(0xff0E2764), Color(0xffEBEFFF), Color(0xffFFB3B3).withOpacity(0.5)];
 
   @override
   void initState() {
@@ -74,7 +77,7 @@ class _OnboardingViewState extends State<OnboardingView> {
                                     height: 210,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30),
-                                      color: Colors.blue,
+                                      color: colorset[Random().nextInt(colorset.length)],
                                     ),
                                   )),
                             )),
