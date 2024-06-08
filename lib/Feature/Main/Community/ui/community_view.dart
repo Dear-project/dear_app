@@ -1,3 +1,5 @@
+import 'package:dear_app/Feature/Main/Community/component/community_cell.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CommunityView extends StatelessWidget {
@@ -5,6 +7,17 @@ class CommunityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("커뮤니티 뷰");
+    return const SizedBox(
+      height: 500,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            CommunityCell(),
+            CommunityCell(),
+            CommunityCell(),
+          ],
+        ),
+      ),
+    );
   }
 }
