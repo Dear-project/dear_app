@@ -30,15 +30,22 @@ class _MainViewState extends State<MainView> {
   ];
 
   final List<DearTabViewItem> _items = [
-    DearTabViewItem(icon: DearIcons.home, toggle: true),
-    DearTabViewItem(icon: DearIcons.chat),
+    DearTabViewItem(
+        icon: DearIcons.home,
+        toggle: true
+    ),
+    DearTabViewItem(
+        icon: DearIcons.chat
+    ),
     DearTabViewItem(
       icon: DearIcons.inventory,
     ),
     DearTabViewItem(
       icon: DearIcons.people,
     ),
-    DearTabViewItem(icon: DearIcons.my)
+    DearTabViewItem(
+        icon: DearIcons.my
+    )
   ];
 
   @override

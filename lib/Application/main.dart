@@ -1,4 +1,5 @@
 import 'dart:ffi';
+import 'package:dear_app/Feature/Auth/Onboarding/ui/firstJoinView.dart';
 import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Auth/Signin/ui/firstSigninView.dart';
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [Locale('ko', '')],
-        home: MainView()
+        home: OnboardingView()
     );
   }
 }
