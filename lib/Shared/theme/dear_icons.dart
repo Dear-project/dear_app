@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 class DearIcons {
   static Image home = Image.asset("assets/icons/home.png");
   static Image chat = Image.asset("assets/icons/chat.png");
+  static Image communityChat = Image.asset("assets/icons/community_chat.png");
   static Image communityProfile = Image.asset("assets/icons/community_profile.png");
   static Image inventory = Image.asset("assets/icons/inventory.png");
   static Image people = Image.asset("assets/icons/people.png");
