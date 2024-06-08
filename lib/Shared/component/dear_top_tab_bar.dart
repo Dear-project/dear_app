@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-enum TopBarType { Discover, Chat }
+enum TopBarType { Discover, Chat, Community }
 
 class DearTopTabBar extends StatefulWidget implements PreferredSizeWidget {
   DearTopTabBar({required this.tabController, required this.topBarType, super.key});
@@ -29,6 +29,8 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
         return [Tab(text: "교수님 목록"), Tab(text: "찜한 교수님"), Tab(text: "순위 보기")];
       case TopBarType.Chat:
         return [Tab(text: "전체"), Tab(text: "차단한 사람 보기")];
+      case TopBarType.Community:
+        return [Tab(text: "커뮤니티"), Tab(text: "멘토링"), Tab(text: "랭킹")];
     }
   }
 
@@ -52,6 +54,7 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
         controller: widget.tabController,
         tabAlignment: TabAlignment.center,
         indicatorColor: DearColors.main,
+        indicatorSize: widget.topBarType == TopBarType.Community ? TabBarIndicatorSize.tab : TabBarIndicatorSize.label,
         labelColor: DearColors.main,
         labelPadding: EdgeInsets.symmetric(horizontal: 26),
         labelStyle: TextStyle(
