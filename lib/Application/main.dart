@@ -29,7 +29,8 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [Locale('ko', '')],
-        home: OnboardingView()
+        // home: OnboardingView()
+      home: MainView(),
     );
   }
 }

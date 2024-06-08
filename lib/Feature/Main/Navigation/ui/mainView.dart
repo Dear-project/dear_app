@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Chat/component/chatCell.dart';
+import 'package:dear_app/Feature/Main/Community/ui/main_community_view.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
@@ -10,7 +11,6 @@ import 'package:flutter/material.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/chatView.dart';
 import 'package:dear_app/Feature/Main/Home/ui/homeView.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/discoverView.dart';
-import 'package:dear_app/Feature/Main/Community/ui/communityView.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 
 class MainView extends StatefulWidget {
@@ -25,7 +25,7 @@ class _MainViewState extends State<MainView> {
     HomeView(),
     ChatView(),
     DiscoverView(),
-    CommunityView(),
+    MainCommunityView(),
     ProfileView()
   ];
 
