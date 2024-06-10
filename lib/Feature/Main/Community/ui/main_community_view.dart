@@ -1,7 +1,7 @@
 import 'package:dear_app/Feature/Main/Community/component/my_writing_cell.dart';
-import 'package:dear_app/Feature/Main/Community/ui/community_ranking_view.dart';
-import 'package:dear_app/Feature/Main/Community/ui/community_view.dart';
-import 'package:dear_app/Feature/Main/Community/ui/mentoring_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/ranking/community_ranking_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/community/community_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_view.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
