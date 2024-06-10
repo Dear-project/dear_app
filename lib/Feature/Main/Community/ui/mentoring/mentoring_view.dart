@@ -1,3 +1,5 @@
+import 'package:dear_app/Feature/Main/Community/component/mentoring_cell.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/widgets.dart';
 
 class MentoringView extends StatelessWidget {
@@ -5,6 +7,23 @@ class MentoringView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("멘토링 뷰");
+    return Stack(
+      children: [
+        SizedBox(
+          height: 500,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                for (int i = 0; i < 10; i++) MentoringCell(),
+              ],
+            ),
+          ),
+        ),
+        Padding(
+          padding: EdgeInsets.fromLTRB(300, 400, 0, 0),
+          child: DearIcons.communityProfile,
+        ),
+      ],
+    );
   }
 }
