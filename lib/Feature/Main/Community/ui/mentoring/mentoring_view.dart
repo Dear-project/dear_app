@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Main/Community/component/mentoring_cell.dart';
+import 'package:dear_app/Feature/Main/Community/component/Mentoring/mentoring_cell.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/widgets.dart';
 
