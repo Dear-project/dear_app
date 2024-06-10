@@ -1,5 +1,5 @@
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextFieldButton.dart';
-import 'package:dear_app/Feature/Main/Community/component/in_community_comment.dart';
+import 'package:dear_app/Feature/Main/Community/component/community/in_community_comment.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -50,88 +50,88 @@ class _InCommunityViewState extends State<InCommunityView> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: 12),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 27),
-            child: Row(
-              children: [
-                SizedBox(
-                  width: 45,
-                  height: 45,
-                  child: DearIcons.communityProfile,
-                ),
-                SizedBox(width: 10),
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "박유현",
-                        style: TextStyle(
-                          fontFamily: "Pretendard",
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20,
-                        ),
-                      ),
-                      Text(
-                        "2024.06.08. 오후 12:12",
-                        style: TextStyle(
-                          fontFamily: "Pretendard",
-                          fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                          color: Color(0xff787878),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Spacer(flex: 1),
-                SizedBox(
-                  width: 20,
-                  height: 40,
-                  child: DearIcons.detail,
-                ),
-              ],
-            ),
-          ),
-          SizedBox(height: 22),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 27),
-            child: Text(
-              "스프링부트 알려주실 분 찾습니다ㅜㅜ",
-              style: TextStyle(
-                fontFamily: "Pretendard",
-                fontWeight: FontWeight.w700,
-                fontSize: 17,
-              ),
-            ),
-          ),
-          SizedBox(height: 15),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 27),
-            child: Text(
-              "지금 서버공부하고 싶은데 어떻게 시작하는지 모르겠어요ㅜㅜ 스프링부트좀 알려주세요",
-              style: TextStyle(
-                fontFamily: "Pretendard",
-                fontWeight: FontWeight.w500,
-                fontSize: 14,
-              ),
-            ),
-          ),
-          SizedBox(height: 22),
-          ColoredBox(
-            color: Color(0xffF4F5F9),
-            child: SizedBox(
-              width: MediaQuery.of(context).size.width,
-              height: 8,
-            ),
-          ),
           SizedBox(
-            // height: MediaQuery.of(context).ivew,
-            height: 460,
+            height: 735,
             child: SingleChildScrollView(
+              physics: ClampingScrollPhysics(),
               child: Column(
                 children: [
+                  SizedBox(height: 12),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 27),
+                    child: Row(
+                      children: [
+                        SizedBox(
+                          width: 45,
+                          height: 45,
+                          child: DearIcons.communityProfile,
+                        ),
+                        SizedBox(width: 10),
+                        Container(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                "박유현",
+                                style: TextStyle(
+                                  fontFamily: "Pretendard",
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 20,
+                                ),
+                              ),
+                              Text(
+                                "2024.06.08. 오후 12:12",
+                                style: TextStyle(
+                                  fontFamily: "Pretendard",
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 12,
+                                  color: Color(0xff787878),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Spacer(flex: 1),
+                        SizedBox(
+                          width: 20,
+                          height: 40,
+                          child: DearIcons.detail,
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 22),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 27),
+                    child: Text(
+                      "스프링부트 알려주실 분 찾습니다ㅜㅜ",
+                      style: TextStyle(
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w700,
+                        fontSize: 17,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 15),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 27),
+                    child: Text(
+                      "지금 서버공부하고 싶은데 어떻게 시작하는지 모르겠어요ㅜㅜ 스프링부트좀 알려주세요",
+                      style: TextStyle(
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 14,
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 22),
+                  ColoredBox(
+                    color: Color(0xffF4F5F9),
+                    child: SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 8,
+                    ),
+                  ),
                   InCommunityComment(),
                   InCommunityComment(commentType: CommunityCommentType.reply),
                   for (int i = 0; i < 10; i++) InCommunityComment(),

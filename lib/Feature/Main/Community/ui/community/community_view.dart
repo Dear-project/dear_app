@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Main/Community/component/community_cell.dart';
+import 'package:dear_app/Feature/Main/Community/component/community/community_cell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
