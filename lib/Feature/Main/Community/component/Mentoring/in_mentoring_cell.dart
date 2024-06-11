@@ -8,13 +8,13 @@ class InMentoringCell extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 27),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: 22),
-              Row(
+        Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 22),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 27),
+              child: Row(
                 children: [
                   SizedBox(
                     width: 45,
@@ -45,9 +45,12 @@ class InMentoringCell extends StatelessWidget {
                           SizedBox(
                             width: 10,
                             height: 12,
-                            child: DearIcons.book,
+                            child: Transform.scale(
+                              scale: 0.6,
+                              child: DearIcons.book,
+                            ),
                           ),
-                          SizedBox(width: 4),
+                          SizedBox(width: 2),
                           Text(
                             "전문과목 : 수능영어, 고등진로",
                             style: TextStyle(
@@ -62,16 +65,22 @@ class InMentoringCell extends StatelessWidget {
                   )
                 ],
               ),
-              SizedBox(height: 22),
-              Text(
+            ),
+            SizedBox(height: 22),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 27),
+              child: Text(
                 "해당 오류는 Optional 객체가 비어 있을 때 객체를 불러객체의 값을 찾지못해 그런데 이럴땐 Optional을 풀어 값이 없을 경우 null이 되도록 코드를 수정하면됩니다~~",
                 style: TextStyle(
                   fontFamily: "Pretendard",
                   fontSize: 15,
                 ),
               ),
-              SizedBox(height: 17),
-              Text(
+            ),
+            SizedBox(height: 17),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 27),
+              child: Text(
                 "2024.06.08. 오후 12:12",
                 style: TextStyle(
                   fontFamily: "Pretendard",
@@ -80,38 +89,50 @@ class InMentoringCell extends StatelessWidget {
                   color: Color(0xff787878),
                 ),
               ),
-              SizedBox(height: 17),
-              ColoredBox(
-                color: Color(0xffD1D1D1),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 0.5,
-                ),
+            ),
+            SizedBox(height: 17),
+            ColoredBox(
+              color: Color(0xffD1D1D1),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: 0.5,
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Row(
-                  children: [
-                    DearIcons.chat,
-                    SizedBox(width: 8),
-                    Text(
-                      "2",
-                      style: TextStyle(
-                        fontFamily: "Pretendard",
-                        fontSize: 13,
-                      ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(14, 8, 20, 8),
+              child: Row(
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      print("답글 button clicked!");
+                    },
+                    style: IconButton.styleFrom(
+                      minimumSize: Size.zero, // Set this
+                      padding: EdgeInsets.zero, // and this
                     ),
-                    Spacer(flex: 1),
-                    SizedBox(
-                      width: 20,
-                      height: 40,
-                      child: DearIcons.detail,
-                    )
-                  ],
-                ),
+                    constraints: BoxConstraints(),
+                    icon: Transform.scale(
+                      scale: 1.4,
+                      child: DearIcons.communityChat,
+                    ),
+                  ),
+                  Text(
+                    "2",
+                    style: TextStyle(
+                      fontFamily: "Pretendard",
+                      fontSize: 13,
+                    ),
+                  ),
+                  Spacer(flex: 1),
+                  SizedBox(
+                    width: 20,
+                    height: 40,
+                    child: DearIcons.detail,
+                  )
+                ],
               ),
-            ],
-          ),
+            ),
+          ],
         ),
         ColoredBox(
           color: Color(0xffF4F5F9),
