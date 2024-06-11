@@ -55,6 +55,7 @@ class _InCommunityViewState extends State<InCommunityView> {
             child: SingleChildScrollView(
               physics: ClampingScrollPhysics(),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 12),
                   Padding(
