@@ -24,36 +24,34 @@ class SpeechBubble extends StatelessWidget {
             width: 145,
             height: 40,
             color: Colors.white,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                    width: 11,
-                    height: 11,
-                    child: Image.asset("assets/icons/idcard.png")
-                ),
-                SizedBox(width: 3,),
-                Text("회원가입하고", style: TextStyle(
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.w600,
-                    fontSize: 10
-                ),
-                ),
-                SizedBox(width: 3,),
-                Text("숨은 꿀팁", style: TextStyle(
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.w800,
-                    fontSize: 10
-                ),
-                ),
-                SizedBox(width: 3,),
-                Text("받기", style: TextStyle(
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.w600,
-                    fontSize: 10
-                ),
-                ),
-              ],
+            child: Padding(
+              padding: EdgeInsets.fromLTRB(6, 0, 10, 0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Image(
+                      image: Image.asset("assets/icons/idcard.png").image,
+                      width: 15,
+                      height: 15,
+                      fit: BoxFit.fill,
+                  ),
+                  Text("회원가입하고", style: TextStyle(
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.w600,
+                      fontSize: 10
+                  )),
+                  Text("숨은 정보", style: TextStyle(
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.w800,
+                      fontSize: 10
+                  )),
+                  Text("받기", style: TextStyle(
+                      fontFamily: "Pretendard",
+                      fontWeight: FontWeight.w600,
+                      fontSize: 10
+                  )),
+                ],
+              )
             )
         )
       )

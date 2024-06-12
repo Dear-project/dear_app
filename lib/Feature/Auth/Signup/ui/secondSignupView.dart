@@ -24,6 +24,9 @@ class _SecondSignupViewState extends State<SecondSignupView> {
       home: Scaffold(
         backgroundColor: Color(0xffFFFFFF),
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
+          elevation: 0.0,
+          backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () {
               Get.back();

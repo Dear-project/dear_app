@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:dear_app/Feature//Auth/Onboarding/component/speechBubble.dart';
+import 'package:dear_app/Feature/Auth/Onboarding/component/onboarding_button.dart';
 import 'package:dear_app/Feature/Auth/Signin/ui/firstSigninView.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
 import 'package:flutter/material.dart';
@@ -135,48 +136,20 @@ class _OnboardingViewState extends State<OnboardingView> {
             const SizedBox(
               height: 15,
             ),
-            ElevatedButton(
-              onPressed: () {
-                Get.to(() => FirstSignupView());
-              },
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size(342, 56),
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xff0E2764),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              child: const Text(
-                "시작하기",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.bold),
-              ),
+            OnboardingButton(
+              content: "시작하기",
+              background: Color(0xff0E2764),
+              foreground: Colors.white,
+              onPressed: () {  },
+
             ),
-            const SizedBox(height: 9),
-            ElevatedButton(
-              onPressed: () {
-                Get.to(() => FirstSigninView());
-              },
-              style: ElevatedButton.styleFrom(
-                fixedSize: const Size(342, 56),
-                foregroundColor: Colors.white,
-                backgroundColor: const Color(0xffD5DCEC),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              child: const Text(
-                "로그인",
-                style: TextStyle(
-                    fontSize: 16,
-                    fontFamily: "Pretendard",
-                    fontWeight: FontWeight.bold),
-              ),
+            OnboardingButton(
+              content: "로그인",
+              background: Color(0xffD5DCEC),
+              foreground: Colors.white,
+              onPressed: () {  },
             ),
-            const SizedBox(height: 100),
+            SizedBox(height: 100)
           ],
         ),
       ),
