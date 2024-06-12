@@ -71,7 +71,7 @@ class _InChatViewState extends State<InChatView> {
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 10),
               child: Image(
-                image: DearIcons.detail.image,
+                image: DearIcons.detailVertical.image,
                 width: 29,
                 height: 30,
                 fit: BoxFit.fitWidth,

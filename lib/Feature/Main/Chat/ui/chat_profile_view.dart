@@ -60,7 +60,7 @@ class ChatProfileView extends StatelessWidget {
                     title: "즐겨찾기",
                   ),
                   ChatProfileItem(
-                    image: DearIcons.detailH,
+                    image: DearIcons.detailHorizontal,
                     title: "옵션",
                   )
 

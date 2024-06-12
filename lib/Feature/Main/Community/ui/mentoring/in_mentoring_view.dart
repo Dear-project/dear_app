@@ -119,7 +119,7 @@ class InMentoringView extends StatelessWidget {
                         SizedBox(
                           width: 17,
                           height: 17,
-                          child: DearIcons.detail,
+                          child: DearIcons.detailVertical,
                         ),
                       ],
                     ),

@@ -11,7 +11,7 @@ class DearIcons {
   static Image bell = Image.asset("assets/icons/bell.png");
   static Image back = Image.asset("assets/icons/back.png");
   static Image next = Image.asset("assets/icons/next.png");
-  static Image detail = Image.asset("assets/icons/detail.png");
+  static Image detailVertical = Image.asset("assets/icons/detail.png");
   static Image attach = Image.asset("assets/icons/attach.png");
   static Image photo = Image.asset("assets/icons/photo.png");
   static Image send = Image.asset("assets/icons/send.png");
@@ -20,7 +20,9 @@ class DearIcons {
   static Image book = Image.asset("assets/icons/book.png");
   static Image banner = Image.asset("assets/icons/banner.png");
   static Image profile = Image.asset("assets/icons/profile.png");
-  static Image detailH = Image.asset("assets/icons/detail_horizontal.png");
+  static Image detailHorizontal = Image.asset("assets/icons/detail_horizontal.png");
+  static Image arrowLeft = Image.asset("assets/icons/left_arrow.png");
+
 }
 
 extension DearIconsFill on Image {
