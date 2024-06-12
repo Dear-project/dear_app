@@ -141,7 +141,7 @@ class _OnboardingViewState extends State<OnboardingView> {
               background: Color(0xff0E2764),
               foreground: Colors.white,
               onPressed: () {
-
+                Get.to(() => FirstSignupView());
               },
 
             ),
@@ -149,7 +149,10 @@ class _OnboardingViewState extends State<OnboardingView> {
               content: "로그인",
               background: Color(0xffD5DCEC),
               foreground: Colors.white,
-              onPressed: () {  },
+              onPressed: () {
+                Get.to(() => FirstSigninView());
+
+              },
             ),
             SizedBox(height: 100)
           ],
