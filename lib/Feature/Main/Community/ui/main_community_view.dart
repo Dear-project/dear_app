@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Community/component/my_writing_cell.dart';
 import 'package:dear_app/Feature/Main/Community/ui/ranking/community_ranking_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/community/community_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/shared/writing_view.dart';
 import 'package:dear_app/Shared/component/dearLogo.dart';
 import 'package:dear_app/Shared/component/dearTabView.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
@@ -16,7 +17,8 @@ class MainCommunityView extends StatefulWidget {
   State<MainCommunityView> createState() => _MainCommunityViewState();
 }
 
-class _MainCommunityViewState extends State<MainCommunityView> with SingleTickerProviderStateMixin {
+class _MainCommunityViewState extends State<MainCommunityView>
+    with SingleTickerProviderStateMixin {
   var _index = 0;
 
   final List<Widget> _pages = [
@@ -43,28 +45,52 @@ class _MainCommunityViewState extends State<MainCommunityView> with SingleTicker
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: DearColors.white,
-      appBar: AppBar(
-        toolbarHeight: 40,
-        elevation: 0,
-        scrolledUnderElevation: 0.0,
         backgroundColor: DearColors.white,
-        leading: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 27),
-          child: DearLogo(),
+        appBar: AppBar(
+          toolbarHeight: 40,
+          elevation: 0,
+          scrolledUnderElevation: 0.0,
+          backgroundColor: DearColors.white,
+          leading: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 27),
+            child: DearLogo(),
+          ),
+          leadingWidth: 140,
         ),
-        leadingWidth: 140,
-      ),
-      body: Column(
-        children: [
-          SizedBox(height: 16),
-          MyWritingCell(),
-          SizedBox(height: 18),
-          DearTopTabBar(tabController: _tabController, topBarType: TopBarType.Community),
-          SizedBox(height: 14,),
-          _pages[_index],
-        ],
-      ),
-    );
+        body: Stack(
+          children: [
+            Column(
+              children: [
+                SizedBox(height: 16),
+                MyWritingCell(),
+                SizedBox(height: 18),
+                DearTopTabBar(
+                    tabController: _tabController,
+                    topBarType: TopBarType.Community),
+                SizedBox(
+                  height: 14,
+                ),
+                _pages[_index],
+              ],
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(300, 560, 0, 0),
+              child: IconButton(onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => WritingView()));
+              }, icon: DearIcons.communityProfile),
+            ),
+          ],
+        )
+        // Column(
+        //   children: [
+        //     SizedBox(height: 16),
+        //     MyWritingCell(),
+        //     SizedBox(height: 18),
+        //     DearTopTabBar(tabController: _tabController, topBarType: TopBarType.Community),
+        //     SizedBox(height: 14,),
+        //     _pages[_index],
+        //   ],
+        // ),
+        );
   }
 }

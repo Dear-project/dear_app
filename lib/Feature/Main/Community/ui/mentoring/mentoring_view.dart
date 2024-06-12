@@ -1,5 +1,8 @@
 import 'package:dear_app/Feature/Main/Community/component/Mentoring/mentoring_cell.dart';
+import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_comment_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/shared/writing_view.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MentoringView extends StatelessWidget {
@@ -19,10 +22,12 @@ class MentoringView extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.fromLTRB(300, 400, 0, 0),
-          child: DearIcons.communityProfile,
-        ),
+        // Padding(
+        //   padding: EdgeInsets.fromLTRB(300, 400, 0, 0),
+        //   child: IconButton(onPressed: () {
+        //     Navigator.push(context, MaterialPageRoute(builder: (context) => WritingView()));
+        //   }, icon: DearIcons.communityProfile),
+        // ),
       ],
     );
   }
