@@ -1,5 +1,6 @@
 import 'package:dear_app/Feature/Auth/Signup/component/dearTextFieldButton.dart';
 import 'package:dear_app/Feature/Main/Community/component/Mentoring/in_mentoring_cell.dart';
+import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_comment_view.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -104,27 +105,31 @@ class InMentoringView extends StatelessWidget {
                       height: 0.5,
                     ),
                   ),
-                  SizedBox(height: 15),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 27),
-                    child: Row(
-                      children: [
-                        SizedBox(
-                          width: 17,
-                          height: 17,
+                  SizedBox(height: 5),
+                  Row(
+                    children: [
+                      SizedBox(width: 14),
+                      CupertinoButton(
+                        onPressed: () {
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => MentoringCommentView()));
+                        },
+                        padding: EdgeInsets.zero,
+                        child: Transform.scale(
+                          scale: 1.4,
                           child: DearIcons.communityChat,
                         ),
-                        Text("${2}"),
-                        Spacer(flex: 1),
-                        SizedBox(
-                          width: 17,
-                          height: 17,
-                          child: DearIcons.detail,
-                        ),
-                      ],
-                    ),
+                      ),
+                      Text("${2}"),
+                      Spacer(flex: 1),
+                      SizedBox(
+                        width: 17,
+                        height: 17,
+                        child: DearIcons.detail,
+                      ),
+                      SizedBox(width: 27),
+                    ],
                   ),
-                  SizedBox(height: 16),
+                  SizedBox(height: 6),
                   Column(
                     children: [
                       ColoredBox(

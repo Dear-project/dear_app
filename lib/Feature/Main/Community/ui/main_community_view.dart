@@ -80,17 +80,7 @@ class _MainCommunityViewState extends State<MainCommunityView>
               }, icon: DearIcons.communityProfile),
             ),
           ],
-        )
-        // Column(
-        //   children: [
-        //     SizedBox(height: 16),
-        //     MyWritingCell(),
-        //     SizedBox(height: 18),
-        //     DearTopTabBar(tabController: _tabController, topBarType: TopBarType.Community),
-        //     SizedBox(height: 14,),
-        //     _pages[_index],
-        //   ],
-        // ),
+        ),
         );
   }
 }

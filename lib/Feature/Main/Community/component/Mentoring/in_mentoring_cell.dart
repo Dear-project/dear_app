@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_comment_view.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -104,7 +105,7 @@ class InMentoringCell extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      print("답글 button clicked!");
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => MentoringCommentView()));
                     },
                     style: IconButton.styleFrom(
                       minimumSize: Size.zero, // Set this

@@ -22,12 +22,6 @@ class MentoringView extends StatelessWidget {
             ),
           ),
         ),
-        // Padding(
-        //   padding: EdgeInsets.fromLTRB(300, 400, 0, 0),
-        //   child: IconButton(onPressed: () {
-        //     Navigator.push(context, MaterialPageRoute(builder: (context) => WritingView()));
-        //   }, icon: DearIcons.communityProfile),
-        // ),
       ],
     );
   }
