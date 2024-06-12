@@ -140,14 +140,19 @@ class _OnboardingViewState extends State<OnboardingView> {
               content: "시작하기",
               background: Color(0xff0E2764),
               foreground: Colors.white,
-              onPressed: () {  },
+              onPressed: () {
+                Get.to(() => FirstSignupView());
+              },
 
             ),
             OnboardingButton(
               content: "로그인",
               background: Color(0xffD5DCEC),
               foreground: Colors.white,
-              onPressed: () {  },
+              onPressed: () {
+                Get.to(() => FirstSigninView());
+
+              },
             ),
             SizedBox(height: 100)
           ],

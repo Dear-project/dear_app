@@ -96,7 +96,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                         SizedBox(
                           width: 20,
                           height: 40,
-                          child: DearIcons.detail,
+                          child: DearIcons.detailVertical,
                         ),
                       ],
                     ),

@@ -124,10 +124,19 @@ class InMentoringView extends StatelessWidget {
                       SizedBox(
                         width: 17,
                         height: 17,
-                        child: DearIcons.detail,
+                        child: DearIcons.detailVertical,
                       ),
                       SizedBox(width: 27),
+                      Spacer(flex: 1),
+                      SizedBox(
+                        width: 17,
+                        height: 17,
+                        child: DearIcons.detailVertical,
+                      ),
                     ],
+                  ),
+                      ],
+                    ),
                   ),
                   SizedBox(height: 6),
                   Column(
@@ -198,9 +207,6 @@ class InMentoringView extends StatelessWidget {
                 ],
               ),
             ),
-          ],
-        ),
-      ),
     );
   }
 }
