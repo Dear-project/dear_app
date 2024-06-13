@@ -1,6 +1,6 @@
 import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/check_toggle.dart';
-import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/second_signup_view.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -104,7 +104,6 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                       onPressed: () {
                         setState(() {
                            widget.entireTerms = !widget.entireTerms;
-                           print("object" );
                            widget.terms.updateAll((key, value) => value = widget.entireTerms);
                         });
                       },
