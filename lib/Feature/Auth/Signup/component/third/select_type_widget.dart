@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Auth/Signup/component/checkToggle.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/check_toggle.dart';
 import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:flutter/material.dart';

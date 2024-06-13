@@ -3,10 +3,10 @@ import 'package:dear_app/Feature/Main/Community/ui/ranking/community_ranking_vie
 import 'package:dear_app/Feature/Main/Community/ui/community/community_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/shared/writing_view.dart';
-import 'package:dear_app/Shared/component/dearLogo.dart';
-import 'package:dear_app/Shared/component/dearTabView.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
+import 'package:dear_app/Shared/component/dear_tab_view.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 

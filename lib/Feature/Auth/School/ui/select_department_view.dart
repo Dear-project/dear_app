@@ -1,11 +1,11 @@
-import 'package:dear_app/Feature//Auth/School/component/schoolSearchBar.dart';
-import 'package:dear_app/Feature/Auth/School/component/categoryCell.dart';
-import 'package:dear_app/Feature/Auth/School/component/deparmentCell.dart';
+import 'package:dear_app/Feature//Auth/School/component/school_search_bar.dart';
+import 'package:dear_app/Feature/Auth/School/component/category_cell.dart';
+import 'package:dear_app/Feature/Auth/School/component/deparment_cell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
-import '../../Shared/component/bottomButton.dart';
+import '../../Shared/component/bottom_button.dart';
 
 class SelectDeparmentView extends StatelessWidget {
   const SelectDeparmentView({super.key});

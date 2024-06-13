@@ -1,7 +1,7 @@
-import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/checkToggle.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/check_toggle.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/secondSignupView.dart';
-import 'package:dear_app/Shared/component/dearLogo.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -44,12 +44,12 @@ class _FirstSignupViewState extends State<FirstSignupView> {
         appBar: AppBar(
           backgroundColor: Color(0xffFFFFFF),
           actions: [
-            IconButton(
+            CupertinoButton(
                 padding: EdgeInsets.symmetric(horizontal: 30),
                 onPressed: () {
                   Get.back();
                 },
-                icon: Icon(CupertinoIcons.xmark,
+                child: Icon(CupertinoIcons.xmark,
                     size: 30, color: Color(0xffAAAAAA)))
           ],
         ),

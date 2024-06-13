@@ -1,8 +1,8 @@
 import 'dart:math';
 
-import 'package:dear_app/Feature//Auth/Onboarding/component/speechBubble.dart';
+import 'package:dear_app/Feature//Auth/Onboarding/component/speech_bubble.dart';
 import 'package:dear_app/Feature/Auth/Onboarding/component/onboarding_button.dart';
-import 'package:dear_app/Feature/Auth/Signin/ui/firstSigninView.dart';
+import 'package:dear_app/Feature/Auth/Signin/ui/first_signin_view.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/firstSignupView.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';

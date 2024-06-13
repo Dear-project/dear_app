@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_confirm_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/signup_name_view.dart';
