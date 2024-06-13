@@ -1,5 +1,5 @@
 import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
