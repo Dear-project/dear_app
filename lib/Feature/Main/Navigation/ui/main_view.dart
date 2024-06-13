@@ -1,16 +1,16 @@
-import 'package:dear_app/Feature/Main/Chat/component/chatCell.dart';
+import 'package:dear_app/Feature/Main/Chat/component/chat_cell.dart';
 import 'package:dear_app/Feature/Main/Community/ui/main_community_view.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
-import 'package:dear_app/Shared/component/dearLogo.dart';
-import 'package:dear_app/Shared/component/dearTabView.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
+import 'package:dear_app/Shared/component/dear_tab_view.dart';
 import 'package:dear_app/Shared/model/dearTabViewItem.dart';
-import 'package:dear_app/Shared/theme/dearBadge.dart';
+import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/chatView.dart';
-import 'package:dear_app/Feature/Main/Home/ui/homeView.dart';
-import 'package:dear_app/Feature/Main/Discover/ui/discoverView.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
+import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 
 class MainView extends StatefulWidget {

@@ -4,8 +4,8 @@ import 'package:dear_app/Feature/Main/Discover/component/filter_button.dart';
 import 'package:dear_app/Feature/Main/Discover/component/search_word_bar.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/professor_profile_view.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

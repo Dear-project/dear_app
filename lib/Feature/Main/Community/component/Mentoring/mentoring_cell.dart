@@ -1,6 +1,6 @@
 import 'package:dear_app/Feature/Main/Community/component/Mentoring/mentoring_context_cell.dart';
 import 'package:dear_app/Feature/Main/Community/ui/mentoring/in_mentoring_view.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 class MentoringCell extends StatelessWidget {

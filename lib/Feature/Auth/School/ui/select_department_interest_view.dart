@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/school/component/search_department/input_search_major_widget.dart';
 import 'package:dear_app/Feature/Auth/school/component/search_department/select_major_widget.dart';
 import 'package:dear_app/Feature/Auth/school/component/search_department/select_subject_widget.dart';

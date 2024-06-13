@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/repository/signup_repository.dart';
-import 'package:dear_app/Feature/Main/Navigation/ui/mainView.dart';
+import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/utils/utils.dart';

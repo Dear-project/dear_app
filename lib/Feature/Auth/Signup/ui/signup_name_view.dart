@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/name/input_birthdate_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/name/input_name_widget.dart';
 

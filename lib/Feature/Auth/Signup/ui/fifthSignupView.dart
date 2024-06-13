@@ -1,9 +1,9 @@
-import 'package:dear_app/Feature/Auth/Shared/component/dearTextField.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/dear_textfield.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../Shared/component/dearLogo.dart';
-import '../../Shared/component/bottomButton.dart';
+import '../../../../Shared/component/dear_logo.dart';
+import '../../Shared/component/bottom_button.dart';
 
 class FifthSignupView extends StatelessWidget {
   FifthSignupView({super.key});

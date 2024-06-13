@@ -1,9 +1,10 @@
-import 'package:dear_app/Feature/Auth/Shared/component/dearTextField.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/dear_textfield.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../Shared/component/dearLogo.dart';
-import '../../Shared/component/bottomButton.dart';
+import '../../../../Shared/component/dear_logo.dart';
+import '../../Shared/component/bottom_button.dart';
 
 class FirstSigninView extends StatefulWidget {
   FirstSigninView({super.key});
@@ -25,14 +26,16 @@ class _FirstSigninViewState extends State<FirstSigninView> {
         backgroundColor: Colors.white,
         appBar: AppBar(
             backgroundColor: Colors.white,
-            leading: IconButton(
+            leading: CupertinoButton(
               onPressed: () {
                 Navigator.pop(context);
               },
-              icon: Icon(
-                CupertinoIcons.chevron_left,
+              child: Image(
+                image: DearIcons.back.image,
                 color: Color(0xffAAAAAA),
-                size: 30,
+                width: 24,
+                height: 24,
+                fit: BoxFit.fitWidth,
               ),
             )),
         body: Center(
@@ -45,7 +48,7 @@ class _FirstSigninViewState extends State<FirstSigninView> {
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
+                  children: const [
                     Text(
                       "기다리고 있었어요!",
                       style: TextStyle(

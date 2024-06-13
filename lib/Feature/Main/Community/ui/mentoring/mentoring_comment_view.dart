@@ -1,5 +1,5 @@
 import 'package:dear_app/Feature/Main/Community/component/Community/in_community_comment.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 class MentoringCommentView extends StatelessWidget {

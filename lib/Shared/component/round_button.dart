@@ -1,6 +1,6 @@
 
 
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

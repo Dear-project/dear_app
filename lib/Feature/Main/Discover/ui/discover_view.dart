@@ -1,31 +1,33 @@
-import 'package:dear_app/Feature/Main/Chat/component/chatCell.dart';
-import 'package:dear_app/Feature/Main/Chat/component/chatDragButton.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/all_chat_view.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/blocked_person_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/ranking_view.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
-import 'package:dear_app/Shared/theme/dearBadge.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/Shared/theme/dear_badge.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
-class ChatView extends StatefulWidget {
-  const ChatView({super.key});
+class DiscoverView extends StatefulWidget {
+  const DiscoverView({super.key});
 
   @override
-  State<ChatView> createState() => _ChatViewState();
+  State<DiscoverView> createState() => _DiscoverViewState();
 }
 
-class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin{
+class _DiscoverViewState extends State<DiscoverView>
+    with SingleTickerProviderStateMixin {
   var _index = 0;
 
   final List<Widget> _pages = [
-    AllChatView(),
-    BlockedPersonView(),
+    ProfessorListView(),
+    DibProfessorView(),
+    RankingView(),
   ];
 
   late TabController _tabController = TabController(
-    length: 2,
+    length: 3,
     vsync: this,
     initialIndex: 0,
   );
@@ -44,18 +46,21 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
     return Scaffold(
       backgroundColor: DearColors.white,
       appBar: AppBar(
-        backgroundColor: DearColors.white,
         toolbarHeight: 40,
+        scrolledUnderElevation: 0.0,
         elevation: 0,
         title: Text(
-          "채팅",
+          "교수님 찾기",
           style: TextStyle(
               fontFamily: "Pretendard",
               fontSize: 20,
-              fontWeight: FontWeight.w600
-          ),
+              fontWeight: FontWeight.w600),
         ),
-        bottom: DearTopTabBar(tabController: _tabController, topBarType: TopBarType.Chat,),
+        backgroundColor: DearColors.white,
+        bottom: DearTopTabBar(
+          tabController: _tabController,
+          topBarType: TopBarType.Discover,
+        ),
         actions: [
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),
@@ -71,13 +76,11 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
                   ])))
         ],
       ),
-      body: Center(
-        child: Column(
-          children: [
-            SizedBox(height: 22),
-            _pages[_index],
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _pages[_index],
+        ],
       ),
     );
   }

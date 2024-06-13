@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Main/Chat/component/chatCell.dart';
+import 'package:dear_app/Feature/Main/Chat/component/chat_cell.dart';
 import 'package:flutter/widgets.dart';
 
 class AllChatView extends StatelessWidget {

@@ -7,7 +7,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import '../../Shared/component/bottomButton.dart';
+import '../../Shared/component/bottom_button.dart';
 
 class SecondSignupView extends StatefulWidget {
   const SecondSignupView({super.key});

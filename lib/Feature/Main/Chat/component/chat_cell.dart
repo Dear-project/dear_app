@@ -1,5 +1,5 @@
-import 'package:dear_app/Feature/Main/Chat/component/chatDragButton.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/inChatView.dart';
+import 'package:dear_app/Feature/Main/Chat/component/chat_drag_button.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/in_chat_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

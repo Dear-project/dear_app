@@ -1,5 +1,5 @@
 import 'dart:io';
-import 'package:dear_app/Shared/component/dearLogo.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
