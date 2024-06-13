@@ -2,8 +2,10 @@ import 'dart:ui';
 
 import 'package:dear_app/Feature/Main/Discover/component/filter_button.dart';
 import 'package:dear_app/Feature/Main/Discover/component/search_word_bar.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_profile_view.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -36,7 +38,13 @@ class ProfessorListView extends StatelessWidget {
                     for (int i = 0; i < 10; i++)
                       Padding(
                         padding: EdgeInsets.only(bottom: 14),
-                        child: ProfessorCell(),
+                        child: CupertinoButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessorProfileView()));
+                          },
+                          child: ProfessorCell(),
+                        ),
                       ),
                   ],
                 ),
