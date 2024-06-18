@@ -1,0 +1,54 @@
+import 'dart:io';
+
+import 'package:dear_app/Feature/Main/Home/ui/homeView.dart';
+import 'package:dear_app/Shared/model/authentication.dart';
+import 'package:dear_app/Shared/service/secure_storage_service.dart';
+import 'package:dear_app/feature/auth/signin/model/signin_request.dart';
+import 'package:dear_app/shared/model/api_response.dart';
+import 'package:dear_app/shared/utils/utils.dart';
+import 'package:dear_app/feature/auth/signin/repository/signin_repository.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:get/get.dart';
+
+class SigninViewModel extends GetxController {
+  final storageService = Get.find<SecureStorageService>();
+  final SignInRepository _repository = SignInRepositoryImpl();
+
+  final emailController = TextEditingController().obs;
+  final passwordController = TextEditingController().obs;
+  final emailFocusNode = FocusNode().obs;
+  final passwordFocusNode = FocusNode().obs;
+
+  RxBool loading = false.obs;
+
+  Future<bool> signIn() async {
+    if (emailController.value.text.isEmpty) {
+      Utils.snackBar('알림', '이메일을 입력해 주세요.');
+      return false;
+    }
+
+    if (passwordController.value.text.isEmpty) {
+      Utils.snackBar('알림', '비밀번호를 입력해 주세요.');
+      return false;
+    }
+    loading.value = true;
+    ApiResponse apiResponse = await _repository.signIn(
+        signInRequest: SignInRequest(
+            email: emailController.value.text,
+            password: passwordController.value.text));
+    if (apiResponse.statusCode == HttpStatus.ok) {
+      Authentication authentication = apiResponse.data;
+      await storageService.saveAccessToken(authentication.accessToken);
+      await storageService.saveRefreshToken(authentication.refreshToken);
+      Get.delete<SigninViewModel>();
+      Get.offAll(() => HomeView());
+      return true;
+    } else if (apiResponse.statusCode == HttpStatus.notFound) {
+      Utils.snackBar('알림', 'Dear 회원이 아닙니다.');
+    } else {
+      Utils.snackBar('알림', '이메일 또는 비밀번호를 다시 확인해 주세요.');
+    }
+    loading.value = false;
+    return false;
+  }
+}
