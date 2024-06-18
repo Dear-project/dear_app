@@ -1,10 +1,10 @@
-import 'package:dear_app/Feature/Auth/school/model/major_info.dart';
-import 'package:dear_app/Feature/Auth/school/model/school_info.dart';
-import 'package:dear_app/Feature/Auth/school/model/search_major_response.dart';
+import 'package:dear_app/Feature/Auth/School/model/major_info.dart';
+import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_major_response.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_school_response.dart';
+import 'package:dear_app/Feature/Auth/School/repository/school_repository.dart';
+import 'package:dear_app/Feature/Auth/School/ui/select_department_interest_view.dart';
 import 'package:dear_app/Feature/Auth/school/model/search_school_request.dart';
-import 'package:dear_app/Feature/Auth/school/model/search_school_response.dart';
-import 'package:dear_app/Feature/Auth/school/repository/school_repository.dart';
-import 'package:dear_app/Feature/Auth/school/ui/select_department_interest_view.dart';
 import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
@@ -35,11 +35,14 @@ class SchoolViewModel extends GetxController {
       Utils.snackBar('알림', '검색어를 입력해 주세요.');
       return;
     }
+
     ApiResponse response = await _repository.search(
-        searchSchoolRequest: SearchSchoolRequest(
-            gubunType: schoolType.value!.key, keyword: keyword));
+        searchSchoolRequest: SearchSchoolRequest(gubunType: schoolType.value!.key, keyword: keyword)
+    );
+
     SearchSchoolResponse searchSchoolResponse =
         response.data as SearchSchoolResponse;
+
     selectedSchoolInfoIndex.value = -1;
     schoolInfoList.value = searchSchoolResponse.data;
   }
@@ -52,7 +55,8 @@ class SchoolViewModel extends GetxController {
  // 전공 검색 시 계열 param 없음 , api 요청해야됨
     ApiResponse response = await _repository.searchMajor(
         searchSchoolRequest: SearchSchoolRequest(
-            gubunType:  SchoolType.UNIV.key, keyword: keyword));
+            gubunType: SchoolType.UNIV.key, keyword: keyword)
+    );
     SearchMajorResponse searchMajorResponse =
     response.data as SearchMajorResponse;
     selectedMajorlInfoIndex.value = -1;

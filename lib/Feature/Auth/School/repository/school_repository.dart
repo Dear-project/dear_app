@@ -26,8 +26,6 @@ class SchoolRepositoryImpl implements SchoolRepository{
               ? HttpStatus.badRequest
               : e.response!.statusCode!,
           (e.response == null) ? "" : e.response!.statusMessage!);
-    }).catchError((onError) {
-      return ApiResponse.error(HttpStatus.badRequest, "");
     });
     return apiResponse;
   }
@@ -45,8 +43,6 @@ class SchoolRepositoryImpl implements SchoolRepository{
               ? HttpStatus.badRequest
               : e.response!.statusCode!,
           (e.response == null) ? "" : e.response!.statusMessage!);
-    }).catchError((onError) {
-      return ApiResponse.error(HttpStatus.badRequest, "");
     });
     return apiResponse;
   }

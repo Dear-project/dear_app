@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         ],
         supportedLocales: const [Locale('ko', '')],
         // home: OnboardingView()
-      home: OnboardingView(),
+      home: ProfileView()
     );
   }
 }

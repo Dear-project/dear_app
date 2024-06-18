@@ -1,12 +1,29 @@
 import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
+import 'package:dear_app/Feature/Main/Profile/view_model/profile_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ProfileViewState();
+
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final _profileVM = Get.put(ProfileViewModel());
+
+  @override
+  void initState() {
+    super.initState();
+
+    _profileVM.getProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,7 +41,10 @@ class ProfileView extends StatelessWidget {
             ColoredBox(
               color: Color(0xffFFFFFF),
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 210,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -50,7 +70,10 @@ class ProfileView extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 34),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 61,
                   child: Row(
                     children: [
@@ -85,4 +108,5 @@ class ProfileView extends StatelessWidget {
       ),
     );
   }
+
 }

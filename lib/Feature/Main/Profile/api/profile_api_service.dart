@@ -9,5 +9,7 @@ abstract class ProfileApiService {
   factory ProfileApiService(Dio dio) = _ProfileApiService;
 
   @GET('/profile')
-  Future<HttpResponse> getProfile();
+  Future<HttpResponse> getProfile(
+      @Header('Authorization') String accessToken,
+  );
 }

@@ -1,5 +1,5 @@
-import 'package:dear_app/Feature/Auth/school/model/major_info.dart';
-import 'package:dear_app/Feature/Auth/school/view_model/controller/school_view_model.dart';
+import 'package:dear_app/Feature/Auth/School/model/major_info.dart';
+import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
 import 'package:dear_app/Shared/enums/major_subject_type.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';

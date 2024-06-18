@@ -7,9 +7,9 @@ part of 'school_info.dart';
 // **************************************************************************
 
 SchoolInfo _$SchoolInfoFromJson(Map<String, dynamic> json) => SchoolInfo(
-      schoolType: json['schoolType'] as String,
-      link: json['link'] as String,
-      schoolGubun: json['schoolGubun'] as String,
+      schoolType: json['schoolType'] as String?,
+      link: json['link'] as String?,
+      schoolGubun: json['schoolGubun'] as String?,
       adres: json['adres'] as String,
       schoolName: json['schoolName'] as String,
       region: json['region'] as String,
