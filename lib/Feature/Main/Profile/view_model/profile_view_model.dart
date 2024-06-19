@@ -8,14 +8,15 @@ class ProfileViewModel extends GetxController {
   final ProfileRepository _repository = ProfileRepositoryImpl();
   Rxn<ProfileInfo> model = Rxn<ProfileInfo>();
 
+
   void getProfile() async {
     ApiResponse response = await _repository.getProfile();
 
     ProfileResponse profileResponse = ProfileResponse.fromJson(response.data);
     model.value = profileResponse.data;
+
     // 테스트
     print(model.value!.name);
+    print(model.value!.imgPath);
   }
-
-
 }

@@ -6,12 +6,12 @@ import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ProfileView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ProfileViewState();
-
 }
 
 class _ProfileViewState extends State<ProfileView> {
@@ -49,14 +49,56 @@ class _ProfileViewState extends State<ProfileView> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(
-                        image: DearIcons.my.image,
-                        fit: BoxFit.fill,
-                        width: 100,
-                        height: 100,
-                      ),
+                      Container(
+                          width: 116,
+                          height: 116,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color(0xff0E2764), width: 5),
+                              shape: BoxShape.circle),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image(
+                                  image: _profileVM.model.value?.imgPath != null
+                                      ? NetworkImage(
+                                      _profileVM.model.value!.imgPath!)
+                                      : DearIcons.my.image,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Container(
+                                      width: 28,
+                                      height: 28,
+                                      padding: EdgeInsets.all(2),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xffD1D1D1),
+                                        border: Border.all(
+                                            color: Colors.white,
+                                            width: 4
+                                        ),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: DearIcons.write,
+                                    )
+                                )
+                              )
+
+
+
+                            ],
+                          )),
                       Text(
-                        "이해준",
+                        _profileVM.model.value?.name ?? "",
                         style: TextStyle(
                             fontFamily: "Pretendard",
                             fontSize: 24,
@@ -108,5 +150,4 @@ class _ProfileViewState extends State<ProfileView> {
       ),
     );
   }
-
 }
