@@ -1,14 +1,14 @@
 
-import 'package:dear_app/Feature/Auth/school/model/major_info.dart';
-import 'package:dear_app/Feature/Auth/school/model/school_info.dart';
+import 'package:dear_app/feature/auth/school/model/major_info.dart';
+import 'package:dear_app/feature/auth/school/model/school_info.dart';
 
-import 'package:dear_app/Feature/Auth/school/repository/school_repository.dart';
-import 'package:dear_app/Feature/Auth/school/model/search_school_request.dart';
+import 'package:dear_app/feature/auth/school/repository/school_repository.dart';
+import 'package:dear_app/feature/auth/school/model/search_school_request.dart';
 
-import 'package:dear_app/Feature/Auth/school/ui/select_department_interest_view.dart';
-import 'package:dear_app/Shared/enums/school_type.dart';
-import 'package:dear_app/Shared/model/api_response.dart';
-import 'package:dear_app/Shared/utils/utils.dart';
+import 'package:dear_app/feature/auth/school/ui/select_department_interest_view.dart';
+import 'package:dear_app/shared/enums/school_type.dart';
+import 'package:dear_app/shared/model/api_response.dart';
+import 'package:dear_app/shared/utils/utils.dart';
 import 'package:dear_app/feature/auth/school/model/search_major_response.dart';
 import 'package:dear_app/feature/auth/school/model/search_school_response.dart';
 import 'package:flutter/material.dart';

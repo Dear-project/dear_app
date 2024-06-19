@@ -1,6 +1,6 @@
-import 'package:dear_app/Feature/Auth/school/view_model/controller/school_view_model.dart';
-import 'package:dear_app/Shared/enums/major_subject_type.dart';
-import 'package:dear_app/Shared/theme/dearColors.dart';
+import 'package:dear_app/feature/auth/school/view_model/controller/school_view_model.dart';
+import 'package:dear_app/shared/enums/major_subject_type.dart';
+import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

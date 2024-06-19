@@ -1,11 +1,11 @@
 import 'dart:io';
 
-import 'package:dear_app/Feature/Auth/Signup/api/signup_api_service.dart';
-import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
-// import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
+import 'package:dear_app/feature/auth/signup/api/signup_api_service.dart';
+import 'package:dear_app/feature/auth/signup/model/email_auth_number_request.dart';
+// import 'package:dear_app/feature/auth/signup/model/signup_request.dart';
 import 'package:dear_app/feature/auth/signup/model/signup_request.dart';
-import 'package:dear_app/Shared/model/api_response.dart';
-import 'package:dear_app/Shared/net/http_client.dart';
+import 'package:dear_app/shared/model/api_response.dart';
+import 'package:dear_app/shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class SignUpRepository {

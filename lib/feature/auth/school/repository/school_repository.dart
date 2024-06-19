@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:dear_app/Feature/Auth/school/api/school_api_service.dart';
-import 'package:dear_app/Feature/Auth/school/model/search_school_request.dart';
-import 'package:dear_app/Shared/model/api_response.dart';
-import 'package:dear_app/Shared/net/http_client.dart';
+import 'package:dear_app/feature/auth/school/api/school_api_service.dart';
+import 'package:dear_app/feature/auth/school/model/search_school_request.dart';
+import 'package:dear_app/shared/model/api_response.dart';
+import 'package:dear_app/shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class SchoolRepository {

@@ -1,9 +1,9 @@
-import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_confirm_widget.dart';
-import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_widget.dart';
-import 'package:dear_app/Feature/Auth/Signup/ui/signup_name_view.dart';
-import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
-import 'package:dear_app/Shared/utils/utils.dart';
+import 'package:dear_app/feature/auth/shared/component/bottom_button.dart';
+import 'package:dear_app/feature/auth/signup/component/password/input_password_confirm_widget.dart';
+import 'package:dear_app/feature/auth/signup/component/password/input_password_widget.dart';
+import 'package:dear_app/feature/auth/signup/ui/signup_name_view.dart';
+import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
+import 'package:dear_app/shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

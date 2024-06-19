@@ -1,5 +1,6 @@
-import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
-import 'package:dear_app/Shared/enums/user_type.dart';
+import 'package:dear_app/feature/auth/signup/component/check_toggle.dart';
+import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
+import 'package:dear_app/shared/enums/user_type.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,27 +28,17 @@ class SelectTypeWidget extends StatelessWidget {
       ),
       child: Column(
         children: [
-          SizedBox(height: 3),
           Transform.scale(
-              scale: 1.4,
+              scale: 1.16,
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18),
+                padding: EdgeInsets.fromLTRB(16, 6, 0, 0),
                 child: Row(
                   children: [
-                    Checkbox(
-                      value: isSelected,
-                      onChanged: (value) {
-                        _signupVM.type.value = userType;
-                      },
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(16),
-                      ),
-                      side: MaterialStateBorderSide.resolveWith(
-                            (states) => BorderSide(color: Color(0xffC5D0DA)),
-                      ),
-                      fillColor: MaterialStatePropertyAll(
-                          Color(isSelected ? 0xffE6EDF7 : 0xffF1F2F3)),
-                      checkColor: Color(0xff0E2764),
+                    CheckToggle(
+                        toggle: isSelected,
+                        onPressed: () {
+                          _signupVM.type.value = userType;
+                        },
                     ),
                     Spacer(flex: 1),
                   ],

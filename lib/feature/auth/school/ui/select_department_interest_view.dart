@@ -1,8 +1,8 @@
-import 'package:dear_app/Feature/Auth/Shared/component/bottomButton.dart';
-import 'package:dear_app/Feature/Auth/school/component/search_department/input_search_major_widget.dart';
-import 'package:dear_app/Feature/Auth/school/component/search_department/select_major_widget.dart';
-import 'package:dear_app/Feature/Auth/school/component/search_department/select_subject_widget.dart';
-import 'package:dear_app/Feature/Auth/school/view_model/controller/school_view_model.dart';
+import 'package:dear_app/feature/auth/shared/component/bottom_button.dart';
+import 'package:dear_app/feature/auth/school/component/search_department/input_search_major_widget.dart';
+import 'package:dear_app/feature/auth/school/component/search_department/select_major_widget.dart';
+import 'package:dear_app/feature/auth/school/component/search_department/select_subject_widget.dart';
+import 'package:dear_app/feature/auth/school/view_model/controller/school_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
