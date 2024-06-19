@@ -5,8 +5,24 @@ import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
-class ProfileView extends StatelessWidget {
+class ProfileView extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => _ProfileViewState();
+}
+
+class _ProfileViewState extends State<ProfileView> {
+  final _profileVM = Get.put(ProfileViewModel());
+
+  @override
+  void initState() {
+    super.initState();
+
+    _profileVM.getProfile();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,19 +40,64 @@ class ProfileView extends StatelessWidget {
             ColoredBox(
               color: Color(0xffFFFFFF),
               child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 210,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Image(
-                        image: DearIcons.my.image,
-                        fit: BoxFit.fill,
-                        width: 100,
-                        height: 100,
-                      ),
+                      Container(
+                          width: 116,
+                          height: 116,
+                          decoration: BoxDecoration(
+                              border: Border.all(
+                                  color: Color(0xff0E2764), width: 5),
+                              shape: BoxShape.circle),
+                          child: Stack(
+                            alignment: Alignment.center,
+                            children: [
+                              Container(
+                                padding: EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                ),
+                                child: Image(
+                                  image: _profileVM.model.value?.imgPath != null
+                                      ? NetworkImage(
+                                      _profileVM.model.value!.imgPath!)
+                                      : DearIcons.my.image,
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.all(4),
+                                child: Align(
+                                    alignment: Alignment.bottomRight,
+                                    child: Container(
+                                      width: 28,
+                                      height: 28,
+                                      padding: EdgeInsets.all(2),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Color(0xffD1D1D1),
+                                        border: Border.all(
+                                            color: Colors.white,
+                                            width: 4
+                                        ),
+                                      ),
+                                      alignment: Alignment.center,
+                                      child: DearIcons.write,
+                                    )
+                                )
+                              )
+
+
+
+                            ],
+                          )),
                       Text(
-                        "이해준",
+                        _profileVM.model.value?.name ?? "",
                         style: TextStyle(
                             fontFamily: "Pretendard",
                             fontSize: 24,
@@ -50,7 +111,10 @@ class ProfileView extends StatelessWidget {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 34),
                 child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
+                  width: MediaQuery
+                      .of(context)
+                      .size
+                      .width,
                   height: 61,
                   child: Row(
                     children: [

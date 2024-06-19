@@ -25,13 +25,13 @@ class _SchoolApiService implements SchoolApiService {
     String gubunType,
     String keyword,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'gubunType': gubunType,
       r'keyword': keyword,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<SearchSchoolResponse>>(Options(
       method: 'GET',
@@ -59,13 +59,13 @@ class _SchoolApiService implements SchoolApiService {
     String gubunType,
     String keyword,
   ) async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'gubunType': gubunType,
       r'keyword': keyword,
     };
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<SearchMajorResponse>>(Options(
       method: 'GET',

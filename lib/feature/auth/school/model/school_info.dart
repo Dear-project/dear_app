@@ -6,11 +6,11 @@ part 'school_info.g.dart';
 class SchoolInfo {
 
   @JsonKey(name: "schoolType")
-  String schoolType;
+  String? schoolType;
   @JsonKey(name: "link")
-  String link;
+  String? link;
   @JsonKey(name: "schoolGubun")
-  String schoolGubun;
+  String? schoolGubun;
   @JsonKey(name: "adres")
   String adres;
   @JsonKey(name: "schoolName")

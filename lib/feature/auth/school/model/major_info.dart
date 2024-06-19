@@ -6,13 +6,16 @@ part 'major_info.g.dart';
 class MajorInfo {
   @JsonKey(name: "lClass")
   String lClass;
+
   @JsonKey(name: "facilName")
   String facilName;
+
   @JsonKey(name: "majorSeq")
   String majorSeq;
 
   @JsonKey(name: "mClass")
   String mClass;
+
   @JsonKey(name: "totalCount")
   String totalCount;
 
