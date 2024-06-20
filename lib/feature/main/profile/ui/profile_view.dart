@@ -18,7 +18,6 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   void initState() {
     super.initState();
-    _profileVM.getProfile();
   }
 
   @override

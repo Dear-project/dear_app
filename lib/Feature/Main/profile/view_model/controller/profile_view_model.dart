@@ -15,7 +15,6 @@ class ProfileViewModel extends GetxController {
     storageService.clearAllTokens();
     Get.delete<ProfileViewModel>();
     Get.offAll(() => OnboardingView());
-
   }
 
   void getProfile() async {
