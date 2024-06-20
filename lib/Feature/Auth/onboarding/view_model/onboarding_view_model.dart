@@ -26,6 +26,7 @@ class OnboardingViewModel extends GetxController {
       if (userProfileResponse.schoolName == null) {
         Get.to(() => SelectSchoolView());
       } else {
+        Get.delete<OnboardingViewModel>();
         Get.offAll(() => MainView());
       }
     } else if (apiResponse.statusCode == HttpStatus.notFound) {
@@ -33,4 +34,5 @@ class OnboardingViewModel extends GetxController {
       Get.to(() => SelectSchoolView());
     } else {}
   }
+
 }
