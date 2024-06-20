@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:dear_app/Feature/Auth/Signin/model/signin_request.dart';
 import 'package:dear_app/Feature/Auth/Signin/repository/signin_repository.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
-import 'package:dear_app/Feature/main/home/ui/home_view.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/authentication.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
@@ -38,6 +37,8 @@ class SigninViewModel extends GetxController {
         signInRequest: SignInRequest(
             email: emailController.value.text,
             password: passwordController.value.text));
+
+
     if (apiResponse.statusCode == HttpStatus.ok) {
       ResponseData<Authentication> responseData = apiResponse.data;
       Authentication authentication = responseData.data;

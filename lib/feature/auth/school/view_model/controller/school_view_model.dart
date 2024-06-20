@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dear_app/Feature/Auth/School/model/major_info.dart';
 import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
@@ -76,9 +78,9 @@ class SchoolViewModel extends GetxController {
             seq: info.seq,
             schoolName: info.schoolName));
 
-    print(response);
-
-    Get.to(() => SelectDepartmentInterestView());
+    if (response.statusCode == HttpStatus.created) {
+      Get.to(() => SelectDepartmentInterestView());
+    }
 
 
   }
