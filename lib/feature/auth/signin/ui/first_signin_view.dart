@@ -23,6 +23,8 @@ class _FirstSigninViewState extends State<FirstSigninView> {
       resizeToAvoidBottomInset: true,
       backgroundColor: Colors.white,
       appBar: AppBar(
+        elevation: 0.0,
+          scrolledUnderElevation: 0.0,
           backgroundColor: Colors.white,
           leading: IconButton(
             onPressed: () {
@@ -38,6 +40,7 @@ class _FirstSigninViewState extends State<FirstSigninView> {
         child: InkWell(
           onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
           child: Container(
+            color: Colors.white,
             width: double.infinity,
             height: double.infinity,
             child: SingleChildScrollView(

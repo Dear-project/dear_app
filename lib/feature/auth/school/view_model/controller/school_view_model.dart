@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Auth/School/model/major_info.dart';
+import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_major_response.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_request.dart';
@@ -62,6 +63,26 @@ class SchoolViewModel extends GetxController {
     print(majorInfoList.value.map((e) => {e.mClass}).join(", "));
   }
 
+  void register() async {
+    if (selectedSchoolInfoIndex.value == -1) {
+      Utils.snackBar('알림', '학교를 선택해 주세요.');
+      return;
+    }
+
+    SchoolInfo info = schoolInfoList[selectedSchoolInfoIndex.value];
+
+    ApiResponse response = await _repository.registerSchool(
+        registerSchoolRequest: RegisterSchoolRequest(
+            seq: info.seq,
+            schoolName: info.schoolName));
+
+    print(response);
+
+    Get.to(() => SelectDepartmentInterestView());
+
+
+  }
+
   void toDepartmentView() {
     if (selectedSchoolInfoIndex.value == -1) {
       Utils.snackBar('알림', '학교를 선택해 주세요.');
@@ -71,12 +92,5 @@ class SchoolViewModel extends GetxController {
     Get.to(() => SelectDepartmentInterestView());
   }
 
-  void register() {
-    if (selectedSchoolInfoIndex.value == -1) {
-      Utils.snackBar('알림', '학교를 선택해 주세요.');
-      return;
-    }
 
-    Get.to(() => SelectDepartmentInterestView());
-  }
 }

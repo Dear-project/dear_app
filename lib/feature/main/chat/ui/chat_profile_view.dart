@@ -1,5 +1,5 @@
-import 'package:dear_app/Feature/main/chat/component/chat_profile_item.dart';
-import 'package:dear_app/Feature/main/profile/component/dear_toggle_button.dart';
+import 'package:dear_app/Feature/Main/Chat/component/chat_profile_item.dart';
+import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

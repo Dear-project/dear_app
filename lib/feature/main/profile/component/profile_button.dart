@@ -11,8 +11,9 @@ enum ProfileButtonType {
 
 class ProfileButton extends StatelessWidget {
   ProfileButtonType buttonType;
+  Function onPressed;
 
-  ProfileButton({required this.buttonType, super.key});
+  ProfileButton({required this.buttonType, required this.onPressed, super.key});
 
   String getProfileButtonText() {
     switch (buttonType) {
@@ -48,7 +49,9 @@ class ProfileButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return CupertinoButton(
       padding: EdgeInsets.zero,
-      onPressed: () {},
+      onPressed: () {
+        onPressed();
+      },
       child: Container(
           color: Colors.white,
           height: 70,

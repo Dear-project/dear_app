@@ -7,7 +7,7 @@ class EmailAuthNumberRequest {
   @JsonKey(name: "email")
   String email;
 
-  @JsonKey(name: "authCode")
+  @JsonKey(name: "AuthCode")
   String authCode;
 
   EmailAuthNumberRequest({required this.email, required this.authCode});

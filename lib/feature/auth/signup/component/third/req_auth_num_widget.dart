@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/auth/signup/view_model/signup_view_model.dart';
+import 'package:dear_app/Feature/Auth/signup/view_model/signup_view_model.dart';
 import 'package:dear_app/Shared/component/round_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

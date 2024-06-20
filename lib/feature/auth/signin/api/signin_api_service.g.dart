@@ -36,7 +36,7 @@ class _SignInApiService implements SignInApiService {
     )
             .compose(
               _dio.options,
-              '/auth',
+              '/Auth',
               queryParameters: queryParameters,
               data: _data,
             )

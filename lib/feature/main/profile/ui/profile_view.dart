@@ -1,9 +1,11 @@
 import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
+import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfileView extends StatefulWidget {
   @override
@@ -11,6 +13,10 @@ class ProfileView extends StatefulWidget {
 }
 
 class _ProfileViewState extends State<ProfileView> {
+
+  final _profileVM = Get.put(ProfileViewModel());
+
+
   @override
   void initState() {
     super.initState();
@@ -115,15 +121,35 @@ class _ProfileViewState extends State<ProfileView> {
               ),
             ),
             SizedBox(height: 10),
-            ProfileButton(buttonType: ProfileButtonType.SeeMyReview),
-            ProfileButton(buttonType: ProfileButtonType.ServicePolicy),
-            ProfileButton(buttonType: ProfileButtonType.Inquiry),
+            ProfileButton(
+              buttonType: ProfileButtonType.SeeMyReview,
+              onPressed: () {
+
+              },),
+            ProfileButton(
+              buttonType: ProfileButtonType.ServicePolicy,
+              onPressed: () {
+
+              },),
+            ProfileButton(
+              buttonType: ProfileButtonType.Inquiry,
+              onPressed: () {
+
+              },),
             Divider(
               height: 1,
               color: Color(0xffE6E6E6),
             ),
-            ProfileButton(buttonType: ProfileButtonType.Logout),
-            ProfileButton(buttonType: ProfileButtonType.MemberSecession),
+            ProfileButton(
+              buttonType: ProfileButtonType.Logout,
+              onPressed: () {
+                _profileVM.signOut();
+              },),
+            ProfileButton(
+              buttonType: ProfileButtonType.MemberSecession,
+              onPressed: () {
+
+              }),
             Spacer(flex: 1),
           ],
         ),

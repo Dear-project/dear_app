@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/main/community/component/Mentoring/mentoring_cell.dart';
+import 'package:dear_app/Feature/Main/Community/component/Mentoring/mentoring_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

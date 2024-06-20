@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/auth/signin/view_model/controller/signin_view_model.dart';
+import 'package:dear_app/Feature/Auth/Signin/view_model/controller/signin_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

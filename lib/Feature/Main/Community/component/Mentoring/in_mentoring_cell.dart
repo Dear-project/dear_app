@@ -1,5 +1,5 @@
-import 'package:dear_app/Feature/main/community/ui/mentoring/mentoring_comment_view.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Feature/Main/Community/ui/mentoring/mentoring_comment_view.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class InMentoringCell extends StatelessWidget {

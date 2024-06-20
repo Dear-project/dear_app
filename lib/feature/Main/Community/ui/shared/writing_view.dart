@@ -1,6 +1,6 @@
-import 'package:dear_app/Feature/auth/signup/component/dear_textfield_button.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Feature/Auth/signup/component/dear_textfield_button.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

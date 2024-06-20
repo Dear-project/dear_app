@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/auth/signup/component/dear_textfield_button.dart';
+import 'package:dear_app/Feature/Auth/signup/component/dear_textfield_button.dart';
 import 'package:dear_app/Feature/main/community/component/mentoring/in_mentoring_cell.dart';
 import 'package:dear_app/Feature/main/community/ui/mentoring/mentoring_comment_view.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';

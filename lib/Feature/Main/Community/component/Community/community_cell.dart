@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/main/community/ui/community/in_community_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/community/in_community_view.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 

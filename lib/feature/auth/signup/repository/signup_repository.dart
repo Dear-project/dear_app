@@ -2,8 +2,6 @@ import 'dart:io';
 
 import 'package:dear_app/Feature/Auth/Signup/api/signup_api_service.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
-
-// import 'package:dear_app/Feature/auth/signup/model/signup_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/net/http_client.dart';

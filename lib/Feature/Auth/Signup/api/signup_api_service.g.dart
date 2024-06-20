@@ -35,7 +35,7 @@ class _SignUpApiService implements SignUpApiService {
     )
             .compose(
               _dio.options,
-              '/auth/signup',
+              '/Auth/signup',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -63,7 +63,7 @@ class _SignUpApiService implements SignUpApiService {
     )
             .compose(
               _dio.options,
-              '/auth/email',
+              '/Auth/email',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -85,7 +85,7 @@ class _SignUpApiService implements SignUpApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'email': email,
-      r'authCode': authCode,
+      r'AuthCode': authCode,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
@@ -97,7 +97,7 @@ class _SignUpApiService implements SignUpApiService {
     )
             .compose(
               _dio.options,
-              '/auth/email/verifications',
+              '/Auth/email/verifications',
               queryParameters: queryParameters,
               data: _data,
             )

@@ -1,5 +1,5 @@
-import 'package:dear_app/Feature/auth/signup/component/dear_textfield_button.dart';
-import 'package:dear_app/Feature/main/community/component/community/in_community_comment.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/dear_textfield_button.dart';
+import 'package:dear_app/Feature/Main/Community/component/community/in_community_comment.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';

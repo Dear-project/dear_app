@@ -1,12 +1,12 @@
-import 'package:dear_app/Feature/main/community/component/my_writing_cell.dart';
-import 'package:dear_app/Feature/main/community/ui/community/community_view.dart';
-import 'package:dear_app/Feature/main/community/ui/mentoring/mentoring_view.dart';
-import 'package:dear_app/Feature/main/community/ui/ranking/community_ranking_view.dart';
-import 'package:dear_app/Feature/main/community/ui/shared/writing_view.dart';
-import 'package:dear_app/shared/component/dear_logo.dart';
-import 'package:dear_app/shared/component/dear_top_tab_bar.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Feature/Main/community/component/my_writing_cell.dart';
+import 'package:dear_app/Feature/Main/community/ui/community/community_view.dart';
+import 'package:dear_app/Feature/Main/community/ui/mentoring/mentoring_view.dart';
+import 'package:dear_app/Feature/Main/community/ui/ranking/community_ranking_view.dart';
+import 'package:dear_app/Feature/Main/community/ui/shared/writing_view.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
+import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class MainCommunityView extends StatefulWidget {

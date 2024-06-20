@@ -146,9 +146,7 @@ class SelectSchoolView extends StatelessWidget {
           color: Colors.white,
           child: Center(child: BottomButton(
             action: () {
-              print(_schoolVM
-                  .schoolInfoList[_schoolVM.selectedSchoolInfoIndex.value].seq);
-              _schoolVM.toDepartmentView();
+              _schoolVM.register();
             },
           )),
         ));

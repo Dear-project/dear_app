@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dear_app/Feature/Auth/Signin/model/signin_request.dart';
 import 'package:dear_app/Feature/Auth/Signin/repository/signin_repository.dart';
+import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
 import 'package:dear_app/Feature/main/home/ui/home_view.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/authentication.dart';
@@ -43,7 +44,7 @@ class SigninViewModel extends GetxController {
       await storageService.saveAccessToken(authentication.accessToken);
       await storageService.saveRefreshToken(authentication.refreshToken);
       Get.delete<SigninViewModel>();
-      Get.offAll(() => HomeView());
+      Get.offAll(() => MainView());
       return true;
     } else if (apiResponse.statusCode == HttpStatus.notFound) {
       Utils.snackBar('알림', 'Dear 회원이 아닙니다.');
