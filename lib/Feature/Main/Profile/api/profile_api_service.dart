@@ -8,6 +8,6 @@ part 'profile_api_service.g.dart';
 abstract class ProfileApiService {
   factory ProfileApiService(Dio dio) = _ProfileApiService;
 
-  @GET('/profile')
+  @GET('/Profile')
   Future<HttpResponse> getProfile();
 }
