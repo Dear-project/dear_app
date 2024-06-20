@@ -35,7 +35,7 @@ class _SignUpApiService implements SignUpApiService {
     )
             .compose(
               _dio.options,
-              '/Auth/signup',
+              '/auth/signup',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -63,7 +63,7 @@ class _SignUpApiService implements SignUpApiService {
     )
             .compose(
               _dio.options,
-              '/Auth/email',
+              '/auth/email',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -97,7 +97,7 @@ class _SignUpApiService implements SignUpApiService {
     )
             .compose(
               _dio.options,
-              '/Auth/email/verifications',
+              '/auth/email/verifications',
               queryParameters: queryParameters,
               data: _data,
             )

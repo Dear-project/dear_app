@@ -16,10 +16,10 @@ class _ProfileViewState extends State<ProfileView> {
 
   final _profileVM = Get.put(ProfileViewModel());
 
-
   @override
   void initState() {
     super.initState();
+    _profileVM.getProfile();
   }
 
   @override
@@ -61,8 +61,8 @@ class _ProfileViewState extends State<ProfileView> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                     fit: BoxFit.fitWidth,
-                                    image: "" != null
-                                        ? NetworkImage("image")
+                                    image: _profileVM.model.value?.imgPath != null
+                                        ? NetworkImage(_profileVM.model.value!.imgPath!)
                                         : DearIcons.my.image,
                                   ),
                                 ),
@@ -87,7 +87,7 @@ class _ProfileViewState extends State<ProfileView> {
                             ],
                           )),
                       Text(
-                        "",
+                        _profileVM.model.value != null ? _profileVM.model.value!.name : "",
                         style: TextStyle(
                             fontFamily: "Pretendard",
                             fontSize: 24,
