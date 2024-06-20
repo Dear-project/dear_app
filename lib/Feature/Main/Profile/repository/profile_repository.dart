@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:dear_app/feature/main/profile/api/profile_api_service.dart';
 import 'package:dear_app/shared/net/http_client.dart';
-
+import 'package:dio/dio.dart';
 import 'package:dear_app/shared/model/api_response.dart';
 
 abstract class ProfileRepository {

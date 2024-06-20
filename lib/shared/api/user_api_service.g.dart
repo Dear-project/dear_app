@@ -22,10 +22,10 @@ class _UserApiService implements UserApiService {
 
   @override
   Future<HttpResponse<ResponseData<UserProfileResponse>>> profile() async {
-    const _extra = <String, dynamic>{};
+    final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
     final _headers = <String, dynamic>{};
-    final Map<String, dynamic>? _data = null;
+    const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
         _setStreamType<HttpResponse<ResponseData<UserProfileResponse>>>(Options(
       method: 'GET',

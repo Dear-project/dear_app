@@ -5,7 +5,6 @@ import 'package:dear_app/feature/auth/school/model/school_info.dart';
 import 'package:dear_app/feature/auth/school/view_model/controller/school_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class SelectSchoolView extends StatelessWidget {
@@ -145,11 +144,11 @@ class SelectSchoolView extends StatelessWidget {
           height: 80,
           padding: EdgeInsets.all(0),
           color: Colors.white,
-          child: CupertinoButton(
-              onPressed: () {
-              },
+          child: Center(
+
               child: BottomButton(
                 action: () {
+                  print(_schoolVM.schoolInfoList[_schoolVM.selectedSchoolInfoIndex.value].seq);
                   _schoolVM.toDepartmentView();
                 },
               )),

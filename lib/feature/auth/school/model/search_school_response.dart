@@ -1,4 +1,4 @@
-import 'package:dear_app/feature/auth/school/model/school_info.dart';
+import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'search_school_response.g.dart';

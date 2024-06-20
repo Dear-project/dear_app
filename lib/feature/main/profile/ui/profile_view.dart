@@ -1,14 +1,15 @@
-import 'package:dear_app/feature/main/profile/component/dear_toggle_button.dart';
-import 'package:dear_app/feature/main/profile/component/profile_button.dart';
-import 'package:dear_app/shared/component/dear_logo.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:dear_app/Feature/Main/Profile/view_model/profile_view_model.dart';
+import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
+import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ProfileView extends StatefulWidget {
+
+
   @override
   State<StatefulWidget> createState() => _ProfileViewState();
 }
@@ -59,16 +60,18 @@ class _ProfileViewState extends State<ProfileView> {
                             alignment: Alignment.center,
                             children: [
                               Container(
-                                padding: EdgeInsets.all(8),
+                                width: 100,
+                                height: 100,
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
+                                  image: DecorationImage(
+                                    fit: BoxFit.fitWidth,
+                                    image: _profileVM.model.value?.imgPath != null
+                                        ? NetworkImage(_profileVM.model.value!.imgPath!)
+                                        : DearIcons.my.image,
+                                  ),
                                 ),
-                                child: Image(
-                                  image: _profileVM.model.value?.imgPath != null
-                                      ? NetworkImage(
-                                      _profileVM.model.value!.imgPath!)
-                                      : DearIcons.my.image,
-                                ),
+
                               ),
                               Padding(
                                 padding: EdgeInsets.all(4),

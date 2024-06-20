@@ -7,7 +7,6 @@ import 'package:dear_app/feature/main/shared/component/professor_cell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class ProfessorListView extends StatelessWidget {
   const ProfessorListView({super.key});

@@ -1,12 +1,12 @@
 import 'dart:io';
 
-import 'package:dear_app/feature/auth/signup/model/email_auth_number_request.dart';
-import 'package:dear_app/feature/auth/signup/model/signup_request.dart';
-import 'package:dear_app/feature/auth/signup/repository/signup_repository.dart';
-import 'package:dear_app/feature/main/navigation/ui/main_view.dart';
-import 'package:dear_app/shared/enums/user_type.dart';
-import 'package:dear_app/shared/model/api_response.dart';
-import 'package:dear_app/shared/utils/utils.dart';
+import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
+import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
+import 'package:dear_app/Feature/Auth/Signup/repository/signup_repository.dart';
+import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
+import 'package:dear_app/Shared/enums/user_type.dart';
+import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

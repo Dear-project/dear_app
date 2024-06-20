@@ -4,7 +4,6 @@ import 'package:dear_app/feature/main/profile/ui/profile_view.dart';
 import 'package:dear_app/shared/component/dear_tab_view.dart';
 import 'package:dear_app/shared/model/dearTabViewItem.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:dear_app/feature/main/chat/ui/chat_view.dart';
 import 'package:dear_app/feature/main/Home/ui/home_view.dart';

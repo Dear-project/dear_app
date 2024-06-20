@@ -9,7 +9,6 @@ import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'dart:async';
 import 'package:get/get.dart';
 

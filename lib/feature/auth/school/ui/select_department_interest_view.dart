@@ -17,6 +17,8 @@ class SelectDepartmentInterestView extends StatelessWidget {
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
+          scrolledUnderElevation: 0.0,
+          elevation: 0.0,
           backgroundColor: Colors.white,
           title: Text(
             "관심 학과 선택",
@@ -102,8 +104,7 @@ class SelectDepartmentInterestView extends StatelessWidget {
           height: 80,
           padding: EdgeInsets.all(0),
           color: Colors.white,
-          child: CupertinoButton(
-              onPressed: () {},
+          child: Center(
               child: BottomButton(
                 action: () {
                   _schoolVM.toDepartmentView();

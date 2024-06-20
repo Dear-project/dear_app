@@ -1,13 +1,12 @@
-import 'package:dear_app/feature/auth/signup/component/third/select_type_widget.dart';
-import 'package:dear_app/feature/auth/signup/ui/third_signup_view.dart';
-import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
-import 'package:dear_app/shared/enums/user_type.dart';
-import 'package:dear_app/shared/utils/utils.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/select_type_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/third_signup_view.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
+import 'package:dear_app/Shared/enums/user_type.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import '../../shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 
 class SecondSignupView extends StatefulWidget {
   const SecondSignupView({super.key});

@@ -1,8 +1,6 @@
 import 'dart:async';
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class BannerViewer extends StatefulWidget {
   @override
@@ -38,7 +36,6 @@ class _BannerViewerState extends State<BannerViewer> {
   @override
   void deactivate() {
     super.deactivate();
-
     widget._timer?.cancel();
   }
 

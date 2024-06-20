@@ -76,7 +76,7 @@ class HomeView extends StatelessWidget {
 
             ),
             SuggestionCell(
-              title: "오늘은 이런글이 올라왔어요",
+              title: "오늘의 글을 확인해 보세요",
             ),
           ],
         )

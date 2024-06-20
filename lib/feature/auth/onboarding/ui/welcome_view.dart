@@ -1,5 +1,4 @@
 import 'package:dear_app/shared/theme/dear_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeView extends StatefulWidget {

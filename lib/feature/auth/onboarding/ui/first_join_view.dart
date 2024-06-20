@@ -1,9 +1,7 @@
 import 'dart:async';
 import 'package:dear_app/shared/component/dear_logo.dart';
 import 'package:dear_app/feature/auth/onboarding/ui/onboarding_view.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class FirstJoinView extends StatefulWidget {
@@ -67,7 +65,6 @@ class _FirstJoinViewState extends State<FirstJoinView>
   @override
   void dispose() {
     super.dispose();
-    controller.dispose();
   }
 
 

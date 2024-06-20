@@ -3,7 +3,6 @@ import 'package:dear_app/feature/auth/School/component/category_cell.dart';
 import 'package:dear_app/feature/auth/School/component/deparment_cell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 import '../../shared/component/bottom_button.dart';
 
@@ -89,7 +88,13 @@ class SelectDeparmentView extends StatelessWidget {
           height: 80,
           padding: EdgeInsets.all(0),
           color: Colors.white,
-          child: CupertinoButton(onPressed: () {}, child: BottomButton(action: (){},)),
+          child: Center(
+              child: BottomButton(
+                action: (){
+
+                },
+              )
+          ),
         ));
   }
 }

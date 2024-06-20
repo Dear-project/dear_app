@@ -1,7 +1,6 @@
-import 'package:dear_app/feature/auth/signup/model/signup_request.dart';
-import 'package:dear_app/shared/net/api_constants.dart';
+import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
+import 'package:dear_app/Shared/net/api_constants.dart';
 import 'package:dio/dio.dart';
-import 'package:retrofit/http.dart';
 import 'package:retrofit/retrofit.dart';
 
 part 'signup_api_service.g.dart';

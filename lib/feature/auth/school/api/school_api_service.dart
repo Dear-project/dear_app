@@ -1,7 +1,8 @@
 
-import 'package:dear_app/feature/auth/school/model/search_major_response.dart';
-import 'package:dear_app/feature/auth/school/model/search_school_response.dart';
-import 'package:dear_app/shared/net/api_constants.dart';
+import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_major_response.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_school_response.dart';
+import 'package:dear_app/Shared/net/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 
@@ -16,5 +17,8 @@ abstract class SchoolApiService {
 
   @GET('/school/major/list')
   Future<HttpResponse<SearchMajorResponse>> searchMajor(@Query('gubunType') String gubunType, @Query('keyword') String keyword);
+  
+  @POST('/school')
+  Future<HttpResponse> regiterSchool(@Body() RegisterSchoolRequest registerSchoolRequest);
 
 }

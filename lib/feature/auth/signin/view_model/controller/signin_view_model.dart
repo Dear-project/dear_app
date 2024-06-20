@@ -1,12 +1,12 @@
 import 'dart:io';
-import 'package:dear_app/feature/auth/signin/model/signin_request.dart';
-import 'package:dear_app/feature/main/home/ui/home_view.dart';
-import 'package:dear_app/shared/model/api_response.dart';
-import 'package:dear_app/shared/model/authentication.dart';
-import 'package:dear_app/shared/model/response_data.dart';
-import 'package:dear_app/shared/service/secure_storage_service.dart';
-import 'package:dear_app/shared/utils/utils.dart';
-import 'package:dear_app/feature/auth/signin/repository/signin_repository.dart';
+import 'package:dear_app/Feature/Auth/Signin/model/signin_request.dart';
+import 'package:dear_app/Feature/main/home/ui/home_view.dart';
+import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/model/authentication.dart';
+import 'package:dear_app/Shared/model/response_data.dart';
+import 'package:dear_app/Shared/service/secure_storage_service.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
+import 'package:dear_app/Feature/Auth/Signin/repository/signin_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 

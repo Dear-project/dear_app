@@ -64,6 +64,7 @@ class SchoolViewModel extends GetxController {
     response.data;
     selectedMajorlInfoIndex.value = -1;
     majorInfoList.value = searchMajorResponse.data as List<MajorInfo>;
+    print(majorInfoList.value.map((e) => { e.mClass }).join(", "));
   }
 
   void toDepartmentView() {

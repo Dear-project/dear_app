@@ -4,7 +4,6 @@ import 'package:dear_app/feature/auth/signup/ui/second_signup_view.dart';
 import 'package:dear_app/shared/component/dear_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class FirstSignupView extends StatefulWidget {

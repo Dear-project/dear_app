@@ -1,8 +1,6 @@
 
 import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 enum TopBarType { Discover, Chat, Community }
 

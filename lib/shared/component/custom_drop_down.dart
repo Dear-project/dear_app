@@ -1,7 +1,6 @@
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
 
 class CustDropDown<T> extends StatefulWidget {
   final List<CustDropdownMenuItem> items;
