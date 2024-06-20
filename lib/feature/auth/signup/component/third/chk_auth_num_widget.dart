@@ -5,7 +5,6 @@ import 'package:dear_app/Shared/component/round_button.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_connect/http/src/request/request.dart';
 
 class ChkAuthNumWidget extends StatelessWidget {
   ChkAuthNumWidget({Key? key}) : super(key: key);
@@ -24,17 +23,18 @@ class ChkAuthNumWidget extends StatelessWidget {
             return;
           }
 
-          EmailAuthNumberRequest emailAuthNumberRequest = EmailAuthNumberRequest(
-              email: _signUpVM.emailController.value.text,
-              authCode: _signUpVM.emailAuthNumberController.value.text);
+          EmailAuthNumberRequest emailAuthNumberRequest =
+              EmailAuthNumberRequest(
+                  email: _signUpVM.emailController.value.text,
+                  authCode: _signUpVM.emailAuthNumberController.value.text);
 
-          if(await _signUpVM.verificationAuthNumber(emailAuthNumberRequest: emailAuthNumberRequest)){
+          if (await _signUpVM.verificationAuthNumber(
+              emailAuthNumberRequest: emailAuthNumberRequest)) {
             _signUpVM.isVerifiedEmailAddress.value = true;
             Get.to(() => const SignupPasswordView());
           } else {
             Utils.toastMessage("인증 번호를 확인해 주세요.");
           }
-
         }));
   }
 }

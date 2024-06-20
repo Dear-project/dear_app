@@ -1,17 +1,16 @@
 import 'dart:io';
 
-import 'package:dear_app/shared/api/user_api_service.dart';
-import 'package:dear_app/shared/net/http_client.dart';
-import 'package:dear_app/shared/model/api_response.dart';
+import 'package:dear_app/Shared/api/user_api_service.dart';
+import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class UserRepository {
-  Future<ApiResponse>  getProfile();
+  Future<ApiResponse> getProfile();
 }
 
-class UserRepositoryImpl implements UserRepository{
-
-  final _apiService  = UserApiService(HttpClient().client) ;
+class UserRepositoryImpl implements UserRepository {
+  final _apiService = UserApiService(HttpClient().client);
 
   @override
   Future<ApiResponse> getProfile() async {
@@ -31,8 +30,4 @@ class UserRepositoryImpl implements UserRepository{
     });
     return apiResponse;
   }
-
-
-
 }
-

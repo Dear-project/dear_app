@@ -4,7 +4,6 @@ part 'school_info.g.dart';
 
 @JsonSerializable()
 class SchoolInfo {
-
   @JsonKey(name: "schoolType")
   String? schoolType;
   @JsonKey(name: "link")
@@ -24,10 +23,16 @@ class SchoolInfo {
   @JsonKey(name: "seq")
   String seq;
 
-  SchoolInfo({required this.schoolType, required this.link,
-  required this.schoolGubun, required this.adres, required this.schoolName, required this.region,
-    required this.totalCount, required this.estType, required this.seq
-  });
+  SchoolInfo(
+      {required this.schoolType,
+      required this.link,
+      required this.schoolGubun,
+      required this.adres,
+      required this.schoolName,
+      required this.region,
+      required this.totalCount,
+      required this.estType,
+      required this.seq});
 
   factory SchoolInfo.fromJson(Map<String, dynamic> json) =>
       _$SchoolInfoFromJson(json);

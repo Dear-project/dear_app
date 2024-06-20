@@ -1,4 +1,4 @@
-import 'package:dear_app/feature/main/community/ui/mentoring/mentoring_comment_view.dart';
+import 'package:dear_app/Feature/main/community/ui/mentoring/mentoring_comment_view.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
@@ -105,7 +105,10 @@ class InMentoringCell extends StatelessWidget {
                 children: [
                   IconButton(
                     onPressed: () {
-                      Navigator.push(context, MaterialPageRoute(builder: (context) => MentoringCommentView()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MentoringCommentView()));
                     },
                     style: IconButton.styleFrom(
                       minimumSize: Size.zero, // Set this

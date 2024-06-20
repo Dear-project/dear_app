@@ -1,6 +1,6 @@
-import 'package:dear_app/feature/main/community/component/mentoring/mentoring_context_cell.dart';
-import 'package:dear_app/feature/main/community/ui/mentoring/in_mentoring_view.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
+import 'package:dear_app/Feature/main/community/component/mentoring/mentoring_context_cell.dart';
+import 'package:dear_app/Feature/main/community/ui/mentoring/in_mentoring_view.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 class MentoringCell extends StatelessWidget {
@@ -16,7 +16,8 @@ class MentoringCell extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 27),
           child: MaterialButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => InMentoringView()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InMentoringView()));
             },
             minWidth: 0,
             height: 0,

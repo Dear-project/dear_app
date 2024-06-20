@@ -1,10 +1,9 @@
-import 'package:dear_app/feature/auth/School/component/school_search_bar.dart';
-import 'package:dear_app/feature/auth/School/component/category_cell.dart';
-import 'package:dear_app/feature/auth/School/component/deparment_cell.dart';
+import 'package:dear_app/Feature/Auth/School/component/category_cell.dart';
+import 'package:dear_app/Feature/Auth/School/component/deparment_cell.dart';
+import 'package:dear_app/Feature/Auth/School/component/school_search_bar.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 
 class SelectDeparmentView extends StatelessWidget {
   const SelectDeparmentView({super.key});
@@ -23,8 +22,8 @@ class SelectDeparmentView extends StatelessWidget {
                 SchoolSearchBar(),
                 SizedBox(height: 10),
                 Divider(
-                    color: Color(0xffC5D0DA),
-                  ),
+                  color: Color(0xffC5D0DA),
+                ),
               ],
             ),
           ),
@@ -69,18 +68,19 @@ class SelectDeparmentView extends StatelessWidget {
                   ),
                 )),
             Expanded(
-              child: Container(
-                color: Colors.white,
-                child: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      SizedBox(height: 20,),
-                      ...List.generate(50, (index) => DeparmentCell())
-                    ],
-                  ),
+                child: Container(
+              color: Colors.white,
+              child: SingleChildScrollView(
+                child: Column(
+                  children: [
+                    SizedBox(
+                      height: 20,
+                    ),
+                    ...List.generate(50, (index) => DeparmentCell())
+                  ],
                 ),
-              )
-            )
+              ),
+            ))
           ],
         ),
         bottomNavigationBar: BottomAppBar(
@@ -90,11 +90,8 @@ class SelectDeparmentView extends StatelessWidget {
           color: Colors.white,
           child: Center(
               child: BottomButton(
-                action: (){
-
-                },
-              )
-          ),
+            action: () {},
+          )),
         ));
   }
 }

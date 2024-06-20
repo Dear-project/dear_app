@@ -4,7 +4,6 @@ part 'signup_request.g.dart';
 
 @JsonSerializable()
 class SignupRequest {
-
   @JsonKey(name: "email")
   String email;
 
@@ -20,7 +19,12 @@ class SignupRequest {
   @JsonKey(name: "type")
   String type;
 
-  SignupRequest({required this.email, required this.password, required this.name, required this.birthDay, required this.type});
+  SignupRequest(
+      {required this.email,
+      required this.password,
+      required this.name,
+      required this.birthDay,
+      required this.type});
 
   factory SignupRequest.fromJson(Map<String, dynamic> json) =>
       _$SignupRequestFromJson(json);

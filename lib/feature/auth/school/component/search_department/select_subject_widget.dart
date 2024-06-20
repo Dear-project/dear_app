@@ -1,6 +1,6 @@
-import 'package:dear_app/feature/auth/school/view_model/controller/school_view_model.dart';
-import 'package:dear_app/shared/enums/major_subject_type.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
+import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
+import 'package:dear_app/Shared/enums/major_subject_type.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,11 +13,11 @@ class SelectSubjectWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
         child: Container(
-          color: DearColors.black.black200,
-          child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: MajorSubjectTypeUtils.majorSubjects.length,
-                itemBuilder: (context, index) {
+      color: DearColors.black.black200,
+      child: ListView.builder(
+        shrinkWrap: true,
+        itemCount: MajorSubjectTypeUtils.majorSubjects.length,
+        itemBuilder: (context, index) {
           MajorSubjectType majorSubjectType =
               MajorSubjectTypeUtils.majorSubjects[index];
           return GestureDetector(
@@ -33,12 +33,15 @@ class SelectSubjectWidget extends StatelessWidget {
                       maxLines: 1,
                       style: (_schoolVM.selectedMajorSubject.value ==
                               majorSubjectType.key)
-                          ? TextStyle(fontSize: 17, color: DearColors.main, fontWeight: FontWeight.bold)
+                          ? TextStyle(
+                              fontSize: 17,
+                              color: DearColors.main,
+                              fontWeight: FontWeight.bold)
                           : TextStyle(fontSize: 16, color: Colors.black),
                     ))),
           );
-                },
-              ),
-        ));
+        },
+      ),
+    ));
   }
 }

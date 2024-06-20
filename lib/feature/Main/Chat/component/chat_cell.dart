@@ -1,5 +1,5 @@
-import 'package:dear_app/feature/main/chat/component/chat_drag_button.dart';
-import 'package:dear_app/feature/main/chat/ui/in_chat_view.dart';
+import 'package:dear_app/Feature/Main/Chat/component/chat_drag_button.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/in_chat_view.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +22,8 @@ class _ChatCellState extends State<ChatCell> {
         children: [
           MaterialButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => InChatView()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InChatView()));
             },
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(16))),

@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
 class DearTextFieldButton extends StatelessWidget {
-
   Function action;
   String buttonText;
 
-  DearTextFieldButton({
-    required this.action,
-    required this.buttonText
-  });
+  DearTextFieldButton({required this.action, required this.buttonText});
+
   // const DearTextFieldButton({super.key});
 
   @override
@@ -37,5 +34,4 @@ class DearTextFieldButton extends StatelessWidget {
       ),
     );
   }
-
 }

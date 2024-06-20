@@ -8,5 +8,4 @@ class CommunityView extends StatelessWidget {
       child: Text("커뮤니티뷰"),
     );
   }
-
 }

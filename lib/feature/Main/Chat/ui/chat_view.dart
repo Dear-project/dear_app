@@ -1,10 +1,9 @@
-
-import 'package:dear_app/feature/main/chat/ui/all_chat_view.dart';
-import 'package:dear_app/feature/main/chat/ui/blocked_person_view.dart';
-import 'package:dear_app/shared/component/dear_top_tab_bar.dart';
-import 'package:dear_app/shared/theme/dear_badge.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/all_chat_view.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/blocked_person_view.dart';
+import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
+import 'package:dear_app/Shared/theme/dear_badge.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -15,7 +14,8 @@ class ChatView extends StatefulWidget {
   State<ChatView> createState() => _ChatViewState();
 }
 
-class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin{
+class _ChatViewState extends State<ChatView>
+    with SingleTickerProviderStateMixin {
   var _index = 0;
 
   final List<Widget> _pages = [
@@ -51,10 +51,12 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
           style: TextStyle(
               fontFamily: "Pretendard",
               fontSize: 20,
-              fontWeight: FontWeight.w600
-          ),
+              fontWeight: FontWeight.w600),
         ),
-        bottom: DearTopTabBar(tabController: _tabController, topBarType: TopBarType.Chat,),
+        bottom: DearTopTabBar(
+          tabController: _tabController,
+          topBarType: TopBarType.Chat,
+        ),
         actions: [
           Padding(
               padding: EdgeInsets.symmetric(horizontal: 30),

@@ -1,9 +1,9 @@
-import 'package:dear_app/feature/auth/shared/component/bottom_button.dart';
-import 'package:dear_app/feature/auth/signup/component/password/input_password_confirm_widget.dart';
-import 'package:dear_app/feature/auth/signup/component/password/input_password_widget.dart';
-import 'package:dear_app/feature/auth/signup/ui/signup_name_view.dart';
-import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
-import 'package:dear_app/shared/utils/utils.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_confirm_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/password/input_password_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/signup_name_view.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -109,14 +109,14 @@ class _SignupPasswordViewState extends State<SignupPasswordView> {
                   _loginVM.passwordFocusNode.value.requestFocus();
                   return;
                 }
-                if(_loginVM.passwordController.value.text != _loginVM.passwordConfirmController.value.text){
+                if (_loginVM.passwordController.value.text !=
+                    _loginVM.passwordConfirmController.value.text) {
                   Utils.snackBar('알림', '비밀번호를 확인해주세요.');
                   _loginVM.passwordFocusNode.value.requestFocus();
                   return;
                 }
 
-                Get.to(()=> const SignupNameView());
-
+                Get.to(() => const SignupNameView());
               }),
               SizedBox(height: 45),
             ],

@@ -12,11 +12,10 @@ abstract class SignUpApiService {
   @POST('/auth/signup')
   Future<HttpResponse> signup(@Body() SignupRequest request);
 
-
   @POST('/auth/email')
   Future<HttpResponse> emailVerification(@Query("email") String email);
 
   @GET('/auth/email/verifications')
-  Future<HttpResponse> verificationAuthNumber(@Query("email") String email, @Query("authCode") String authCode);
-
+  Future<HttpResponse> verificationAuthNumber(
+      @Query("email") String email, @Query("authCode") String authCode);
 }

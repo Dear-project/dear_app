@@ -4,7 +4,6 @@ part 'refresh_token_request.g.dart';
 
 @JsonSerializable()
 class RefreshTokenRequest {
-
   @JsonKey(name: "refreshToken")
   String refreshToken;
 

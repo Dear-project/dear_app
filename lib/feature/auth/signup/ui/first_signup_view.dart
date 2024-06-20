@@ -1,7 +1,7 @@
-import 'package:dear_app/feature/auth/shared/component/bottom_button.dart';
-import 'package:dear_app/feature/auth/signup/component/check_toggle.dart';
-import 'package:dear_app/feature/auth/signup/ui/second_signup_view.dart';
-import 'package:dear_app/shared/component/dear_logo.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/check_toggle.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/second_signup_view.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,11 +23,9 @@ class FirstSignupView extends StatefulWidget {
 
   @override
   State<FirstSignupView> createState() => _FirstSignupViewState();
-
 }
 
 class _FirstSignupViewState extends State<FirstSignupView> {
-
   @override
   void setState(VoidCallback fn) {
     super.setState((fn));
@@ -102,8 +100,9 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                       toggle: widget.entireTerms,
                       onPressed: () {
                         setState(() {
-                           widget.entireTerms = !widget.entireTerms;
-                           widget.terms.updateAll((key, value) => value = widget.entireTerms);
+                          widget.entireTerms = !widget.entireTerms;
+                          widget.terms.updateAll(
+                              (key, value) => value = widget.entireTerms);
                         });
                       },
                     ),
@@ -138,7 +137,11 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                           onPressed: () {
                             setState(() {
                               widget.terms["a"] = !widget.terms["a"]!;
-                              widget.entireTerms = (widget.terms.values.skipWhile((val) => val == true).isEmpty) ? true : false;
+                              widget.entireTerms = (widget.terms.values
+                                      .skipWhile((val) => val == true)
+                                      .isEmpty)
+                                  ? true
+                                  : false;
                             });
                           },
                         ),
@@ -166,7 +169,11 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                           onPressed: () {
                             setState(() {
                               widget.terms["b"] = !widget.terms["b"]!;
-                              widget.entireTerms = (widget.terms.values.skipWhile((val) => val == true).isEmpty) ? true : false;
+                              widget.entireTerms = (widget.terms.values
+                                      .skipWhile((val) => val == true)
+                                      .isEmpty)
+                                  ? true
+                                  : false;
                             });
                           },
                         ),
@@ -194,7 +201,11 @@ class _FirstSignupViewState extends State<FirstSignupView> {
                           onPressed: () {
                             setState(() {
                               widget.terms["c"] = !widget.terms["c"]!;
-                              widget.entireTerms = (widget.terms.values.skipWhile((val) => val == true).isEmpty) ? true : false;
+                              widget.entireTerms = (widget.terms.values
+                                      .skipWhile((val) => val == true)
+                                      .isEmpty)
+                                  ? true
+                                  : false;
                             });
                           },
                         ),

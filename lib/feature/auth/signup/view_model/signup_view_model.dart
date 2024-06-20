@@ -10,7 +10,6 @@ import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-
 class SignUpViewModel extends GetxController {
   final SignUpRepository _repository = SignUpRepositoryImpl();
 
@@ -70,8 +69,9 @@ class SignUpViewModel extends GetxController {
         name: nameController.value.text,
         birthDay: birthdateController.value.text,
         type: type.value!.key);
-    ApiResponse apiResponse = await _repository.signup(signupRequest: signupRequest);
-    if(apiResponse.statusCode == HttpStatus.created){
+    ApiResponse apiResponse =
+        await _repository.signup(signupRequest: signupRequest);
+    if (apiResponse.statusCode == HttpStatus.created) {
       Get.delete<SignUpViewModel>();
       Get.offAll(MainView());
 

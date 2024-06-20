@@ -1,11 +1,11 @@
-
-import 'package:dear_app/shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 enum TopBarType { Discover, Chat, Community }
 
 class DearTopTabBar extends StatefulWidget implements PreferredSizeWidget {
-  DearTopTabBar({required this.tabController, required this.topBarType, super.key});
+  DearTopTabBar(
+      {required this.tabController, required this.topBarType, super.key});
 
   TabController tabController;
 
@@ -19,7 +19,6 @@ class DearTopTabBar extends StatefulWidget implements PreferredSizeWidget {
 }
 
 class _DearTopTabBarState extends State<DearTopTabBar> {
-
   List<Widget> getTabs() {
     switch (widget.topBarType) {
       case TopBarType.Discover:
@@ -51,7 +50,9 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
         controller: widget.tabController,
         tabAlignment: TabAlignment.center,
         indicatorColor: DearColors.main,
-        indicatorSize: widget.topBarType == TopBarType.Community ? TabBarIndicatorSize.tab : TabBarIndicatorSize.label,
+        indicatorSize: widget.topBarType == TopBarType.Community
+            ? TabBarIndicatorSize.tab
+            : TabBarIndicatorSize.label,
         labelColor: DearColors.main,
         labelPadding: EdgeInsets.symmetric(horizontal: 26),
         labelStyle: TextStyle(

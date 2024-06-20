@@ -3,15 +3,15 @@ class SchoolTypeUtils {
     switch (type) {
       case SchoolType.ELEM:
         return '초등학교';
-        case SchoolType.MIDD:
+      case SchoolType.MIDD:
         return '중학교';
-        case SchoolType.HIGH:
+      case SchoolType.HIGH:
         return '고등학교';
-        case SchoolType.UNIV:
+      case SchoolType.UNIV:
         return '대학교';
-        case SchoolType.SEET:
+      case SchoolType.SEET:
         return '특수학교';
-        case SchoolType.ALTE:
+      case SchoolType.ALTE:
         return '기타';
       default:
         return '';

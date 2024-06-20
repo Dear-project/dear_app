@@ -4,7 +4,6 @@ part 'signin_request.g.dart';
 
 @JsonSerializable()
 class SignInRequest {
-
   @JsonKey(name: "email")
   String email;
 

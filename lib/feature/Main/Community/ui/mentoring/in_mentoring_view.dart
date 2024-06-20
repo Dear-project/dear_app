@@ -1,6 +1,6 @@
-import 'package:dear_app/feature/auth/signup/component/dear_textfield_button.dart';
-import 'package:dear_app/feature/main/community/component/mentoring/in_mentoring_cell.dart';
-import 'package:dear_app/feature/main/community/ui/mentoring/mentoring_comment_view.dart';
+import 'package:dear_app/Feature/auth/signup/component/dear_textfield_button.dart';
+import 'package:dear_app/Feature/main/community/component/mentoring/in_mentoring_cell.dart';
+import 'package:dear_app/Feature/main/community/ui/mentoring/mentoring_comment_view.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -111,7 +111,11 @@ class InMentoringView extends StatelessWidget {
                       SizedBox(width: 14),
                       CupertinoButton(
                         onPressed: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => MentoringCommentView()));
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      MentoringCommentView()));
                         },
                         padding: EdgeInsets.zero,
                         child: Transform.scale(
@@ -135,78 +139,78 @@ class InMentoringView extends StatelessWidget {
                       ),
                     ],
                   ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 6),
-                  Column(
-                    children: [
-                      ColoredBox(
-                        color: Color(0xffF4F5F9),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 8,
-                        ),
-                      ),
-                      SizedBox(height: 12),
-                      Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 27),
-                        child: Row(
-                          children: [
-                            SizedBox(
-                              width: 30,
-                              height: 30,
-                              child: DearIcons.communityProfile,
-                            ),
-                            SizedBox(width: 10),
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "김가영님,",
-                                  style: TextStyle(
-                                    fontFamily: "Pretendard",
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 11,
-                                    color: Color(0xffAAAAAA),
-                                  ),
-                                ),
-                                Text(
-                                  "소중한 정보를 공유해 주세요.",
-                                  style: TextStyle(
-                                    fontFamily: "Pretendard",
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 13,
-                                  ),
-                                ),
-                              ],
-                            ),
-                            Spacer(flex: 1),
-                            Transform.scale(
-                              scale: 0.8,
-                              child: DearTextFieldButton(
-                                  action: () {
-                                    print("답변하기 button Clicked!");
-                                  },
-                                  buttonText: "답변하기"),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 12),
-                      ColoredBox(
-                        color: Color(0xffF4F5F9),
-                        child: SizedBox(
-                          width: MediaQuery.of(context).size.width,
-                          height: 8,
-                        ),
-                      ),
-                      for (int i = 0; i < 10; i++) InMentoringCell(),
-                    ],
-                  ),
                 ],
               ),
             ),
+            SizedBox(height: 6),
+            Column(
+              children: [
+                ColoredBox(
+                  color: Color(0xffF4F5F9),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 8,
+                  ),
+                ),
+                SizedBox(height: 12),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 27),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: DearIcons.communityProfile,
+                      ),
+                      SizedBox(width: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            "김가영님,",
+                            style: TextStyle(
+                              fontFamily: "Pretendard",
+                              fontWeight: FontWeight.w500,
+                              fontSize: 11,
+                              color: Color(0xffAAAAAA),
+                            ),
+                          ),
+                          Text(
+                            "소중한 정보를 공유해 주세요.",
+                            style: TextStyle(
+                              fontFamily: "Pretendard",
+                              fontWeight: FontWeight.w600,
+                              fontSize: 13,
+                            ),
+                          ),
+                        ],
+                      ),
+                      Spacer(flex: 1),
+                      Transform.scale(
+                        scale: 0.8,
+                        child: DearTextFieldButton(
+                            action: () {
+                              print("답변하기 button Clicked!");
+                            },
+                            buttonText: "답변하기"),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 12),
+                ColoredBox(
+                  color: Color(0xffF4F5F9),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 8,
+                  ),
+                ),
+                for (int i = 0; i < 10; i++) InMentoringCell(),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

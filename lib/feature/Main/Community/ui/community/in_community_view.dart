@@ -1,10 +1,9 @@
-import 'package:dear_app/feature/auth/signup/component/dear_textfield_button.dart';
-import 'package:dear_app/feature/main/community/component/community/in_community_comment.dart';
+import 'package:dear_app/Feature/auth/signup/component/dear_textfield_button.dart';
+import 'package:dear_app/Feature/main/community/component/community/in_community_comment.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class InCommunityView extends StatefulWidget {
   const InCommunityView({super.key});

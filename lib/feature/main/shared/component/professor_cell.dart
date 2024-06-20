@@ -1,4 +1,4 @@
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class ProfessorCell extends StatelessWidget {
@@ -18,7 +18,9 @@ class ProfessorCell extends StatelessWidget {
                   border: Border.all(color: Color(0xffD1D1D1)),
                   color: Colors.white),
             ),
-            SizedBox(width: 15,),
+            SizedBox(
+              width: 15,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -31,7 +33,6 @@ class ProfessorCell extends StatelessWidget {
                       fontWeight: FontWeight.w700,
                       color: Colors.black),
                 ),
-
                 Text(
                   "영남이공대학 박승철 헤어과",
                   style: TextStyle(

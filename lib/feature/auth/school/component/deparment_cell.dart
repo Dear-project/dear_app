@@ -8,23 +8,20 @@ class DeparmentCell extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Text("가정교육과", style:  TextStyle(
-              fontFamily: "Pretendard",
-              fontSize: 17,
-              fontWeight: FontWeight.w600,
-              color: Color(0xff787878)
-          )
-          ),
+          Text("가정교육과",
+              style: TextStyle(
+                  fontFamily: "Pretendard",
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                  color: Color(0xff787878))),
           Padding(
             padding: EdgeInsets.fromLTRB(20, 10, 20, 0),
             child: Divider(
               color: Color(0xffD9D9D9),
             ),
           )
-
         ],
       ),
     );
   }
-
 }

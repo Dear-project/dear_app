@@ -1,17 +1,14 @@
-
 import 'package:json_annotation/json_annotation.dart';
 
 part 'authentication.g.dart';
 
 @JsonSerializable()
 class Authentication {
-
   @JsonKey(name: "accessToken")
   String accessToken;
 
   @JsonKey(name: "refreshToken")
   String refreshToken;
-
 
   Authentication({required this.accessToken, required this.refreshToken});
 

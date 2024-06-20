@@ -1,15 +1,13 @@
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class InChatView extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _InChatViewState();
-
 }
 
 class _InChatViewState extends State<InChatView> {
-
   final _textEditController = TextEditingController();
 
   @override
@@ -81,10 +79,10 @@ class _InChatViewState extends State<InChatView> {
         child: Text("s"),
       ),
       bottomNavigationBar: BottomAppBar(
-        height: (110) + MediaQuery.of(context).viewInsets.bottom,
-        padding: EdgeInsets.zero,
-        color: Colors.white,
-        elevation: 0,
+          height: (110) + MediaQuery.of(context).viewInsets.bottom,
+          padding: EdgeInsets.zero,
+          color: Colors.white,
+          elevation: 0,
           child: Column(
             children: [
               CupertinoTextField(
@@ -105,7 +103,9 @@ class _InChatViewState extends State<InChatView> {
                         height: 26,
                         fit: BoxFit.fitWidth,
                       ),
-                      SizedBox(width: 10,),
+                      SizedBox(
+                        width: 10,
+                      ),
                       Image(
                         image: DearIcons.photo.image,
                         width: 26,
@@ -120,11 +120,9 @@ class _InChatViewState extends State<InChatView> {
                         fit: BoxFit.fitWidth,
                       )
                     ],
-                  )
-              )
+                  ))
             ],
-        )
-        ),
+          )),
     );
   }
 }

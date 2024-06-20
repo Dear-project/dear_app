@@ -1,9 +1,9 @@
-import 'package:dear_app/feature/auth/signup/component/name/select_date_widget.dart';
-import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
-import 'package:intl/intl.dart';
+import 'package:dear_app/Feature/auth/signup/component/name/select_date_widget.dart';
+import 'package:dear_app/Feature/auth/signup/view_model/signup_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class InputBirthdateWidget extends StatelessWidget {
   InputBirthdateWidget({Key? key}) : super(key: key);

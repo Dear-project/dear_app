@@ -1,4 +1,3 @@
-
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/net/api_constants.dart';
@@ -10,10 +9,8 @@ part 'user_api_service.g.dart';
 
 @RestApi(baseUrl: BASE_URL)
 abstract class UserApiService {
-
   factory UserApiService(Dio dio) = _UserApiService;
 
   @GET('/profile')
   Future<HttpResponse<ResponseData<UserProfileResponse>>> profile();
-
 }

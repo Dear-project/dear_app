@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -51,27 +50,26 @@ class ProfileButton extends StatelessWidget {
       padding: EdgeInsets.zero,
       onPressed: () {},
       child: Container(
-        color: Colors.white,
-        height: 70,
-        alignment: Alignment.centerLeft,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 34),
-          child: Row(
-            children: [
-              Text(
-                "${getProfileButtonText()}",
-                style: TextStyle(
-                  fontFamily: "Pretendard",
-                  fontSize: 18,
-                  color: getProfileButtonColor(),
-                  fontWeight: FontWeight.w500,
+          color: Colors.white,
+          height: 70,
+          alignment: Alignment.centerLeft,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 34),
+            child: Row(
+              children: [
+                Text(
+                  "${getProfileButtonText()}",
+                  style: TextStyle(
+                    fontFamily: "Pretendard",
+                    fontSize: 18,
+                    color: getProfileButtonColor(),
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
-              ),
-              Spacer(flex: 1),
-            ],
-          ),
-        )
-      ),
+                Spacer(flex: 1),
+              ],
+            ),
+          )),
     );
   }
 }

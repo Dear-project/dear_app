@@ -1,7 +1,4 @@
-import 'package:dear_app/feature/main/community/component/Mentoring/mentoring_cell.dart';
-import 'package:dear_app/feature/main/community/ui/mentoring/mentoring_comment_view.dart';
-import 'package:dear_app/feature/main/community/ui/shared/writing_view.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Feature/main/community/component/Mentoring/mentoring_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

@@ -1,10 +1,10 @@
 import 'dart:math';
 
-import 'package:dear_app/feature/auth/onboarding/component/onboarding_button.dart';
-import 'package:dear_app/feature/auth/onboarding/component/speech_bubble.dart';
-import 'package:dear_app/feature/auth/onboarding/view_model/onboarding_view_model.dart';
-import 'package:dear_app/feature/auth/signin/ui/first_signin_view.dart';
-import 'package:dear_app/feature/auth/signup/ui/first_signup_view.dart';
+import 'package:dear_app/Feature/Auth/onboarding/component/onboarding_button.dart';
+import 'package:dear_app/Feature/Auth/onboarding/component/speech_bubble.dart';
+import 'package:dear_app/Feature/Auth/onboarding/view_model/onboarding_view_model.dart';
+import 'package:dear_app/Feature/Auth/signin/ui/first_signin_view.dart';
+import 'package:dear_app/Feature/Auth/signup/ui/first_signup_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:get/get.dart';
@@ -18,7 +18,11 @@ class OnboardingView extends StatefulWidget {
 
 class _OnboardingViewState extends State<OnboardingView> {
   ScrollController _scrollController = ScrollController();
-  List<Color> colorset = [Color(0xff0E2764), Color(0xffEBEFFF), Color(0xffFFB3B3).withOpacity(0.5)];
+  List<Color> colorset = [
+    Color(0xff0E2764),
+    Color(0xffEBEFFF),
+    Color(0xffFFB3B3).withOpacity(0.5)
+  ];
 
   final _obVM = Get.put(OnboardingViewModel());
 
@@ -28,23 +32,20 @@ class _OnboardingViewState extends State<OnboardingView> {
 
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       animateScroll(
-          _scrollController.position.maxScrollExtent,
-          10,
-          _scrollController
-      );
+          _scrollController.position.maxScrollExtent, 10, _scrollController);
     });
 
     _obVM.login();
-
   }
 
-  animateScroll(double direction, int seconds, ScrollController scrollController) {
+  animateScroll(
+      double direction, int seconds, ScrollController scrollController) {
     scrollController
         .animateTo(direction,
             duration: Duration(seconds: seconds), curve: Curves.linear)
         .then((value) {
-          scrollController.jumpTo(scrollController.position.minScrollExtent);
-          animateScroll(direction, seconds, scrollController);
+      scrollController.jumpTo(scrollController.position.minScrollExtent);
+      animateScroll(direction, seconds, scrollController);
     });
   }
 
@@ -83,7 +84,8 @@ class _OnboardingViewState extends State<OnboardingView> {
                                     height: 210,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(30),
-                                      color: colorset[Random().nextInt(colorset.length)],
+                                      color: colorset[
+                                          Random().nextInt(colorset.length)],
                                     ),
                                   )),
                             )),
@@ -92,15 +94,13 @@ class _OnboardingViewState extends State<OnboardingView> {
                     alignment: Alignment.bottomCenter,
                     height: 190,
                     decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
+                        gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
                           Colors.white.withOpacity(0),
                           Colors.white
-                        ]
-                      )
-                    ),
+                        ])),
                   ),
                   const Padding(
                     padding: EdgeInsets.only(bottom: 3),
@@ -148,7 +148,6 @@ class _OnboardingViewState extends State<OnboardingView> {
               onPressed: () {
                 Get.to(() => FirstSignupView());
               },
-
             ),
             OnboardingButton(
               content: "로그인",

@@ -1,15 +1,16 @@
-import 'package:dear_app/feature/auth/shared/component/bottom_button.dart';
-import 'package:dear_app/feature/auth/signup/component/third/chk_auth_num_widget.dart';
-import 'package:dear_app/feature/auth/signup/component/third/req_auth_num_widget.dart';
-import 'package:dear_app/feature/auth/signup/component/third/input_auth_number_widget.dart';
-import 'package:dear_app/feature/auth/signup/component/third/input_email_widget.dart';
-import 'package:dear_app/feature/auth/signup/ui/signup_password_view.dart';
-import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/utils/utils.dart';
+import 'dart:async';
+
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/chk_auth_num_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/input_auth_number_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/input_email_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/third/req_auth_num_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/ui/signup_password_view.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
 import 'package:get/get.dart';
 
 class ThirdSignupView extends StatefulWidget {
@@ -221,6 +222,5 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
   @override
   void dispose() {
     super.dispose();
-
   }
 }

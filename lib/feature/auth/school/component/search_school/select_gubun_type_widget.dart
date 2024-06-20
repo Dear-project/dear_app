@@ -1,6 +1,6 @@
-import 'package:dear_app/feature/auth/school/view_model/controller/school_view_model.dart';
-import 'package:dear_app/shared/component/custom_drop_down.dart';
-import 'package:dear_app/shared/enums/school_type.dart';
+import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
+import 'package:dear_app/Shared/component/custom_drop_down.dart';
+import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class SelectGubunTypeWidget extends StatelessWidget {
       borderWidth: 1,
       borderRadius: 16,
       maxListHeight: 200,
-      items:  [
+      items: [
         CustDropdownMenuItem(
           value: SchoolType.ELEM,
           child: Text(
@@ -43,6 +43,5 @@ class SelectGubunTypeWidget extends StatelessWidget {
         _schoolVM.schoolType.value = val;
       },
     );
-
   }
 }

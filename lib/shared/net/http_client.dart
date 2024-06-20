@@ -1,11 +1,11 @@
 import 'dart:convert';
 import 'dart:io';
 
-import 'package:dear_app/feature/auth/onboarding/ui/onboarding_view.dart';
-import 'package:dear_app/shared/model/authentication.dart';
-import 'package:dear_app/shared/model/refresh_token_request.dart';
-import 'package:dear_app/shared/net/api_constants.dart';
-import 'package:dear_app/shared/service/secure_storage_service.dart';
+import 'package:dear_app/Feature/Auth/onboarding/ui/onboarding_view.dart';
+import 'package:dear_app/Shared/model/authentication.dart';
+import 'package:dear_app/Shared/model/refresh_token_request.dart';
+import 'package:dear_app/Shared/net/api_constants.dart';
+import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dio/dio.dart';
 import 'package:dio_smart_retry/dio_smart_retry.dart';
 import 'package:get/get.dart' as getx;

@@ -1,22 +1,28 @@
 import 'dart:io';
 
-import 'package:dear_app/feature/auth/school/api/school_api_service.dart';
-import 'package:dear_app/feature/auth/school/model/search_school_request.dart';
-import 'package:dear_app/shared/model/api_response.dart';
-import 'package:dear_app/shared/net/http_client.dart';
+import 'package:dear_app/Feature/Auth/School/api/school_api_service.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_school_request.dart';
+import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class SchoolRepository {
-  Future<ApiResponse>  search({required SearchSchoolRequest searchSchoolRequest});
-  Future<ApiResponse>  searchMajor({required SearchSchoolRequest searchSchoolRequest});
+  Future<ApiResponse> search(
+      {required SearchSchoolRequest searchSchoolRequest});
+
+  Future<ApiResponse> searchMajor(
+      {required SearchSchoolRequest searchSchoolRequest});
 }
 
-class SchoolRepositoryImpl implements SchoolRepository{
-  final _apiService  = SchoolApiService(HttpClient().client) ;
+class SchoolRepositoryImpl implements SchoolRepository {
+  final _apiService = SchoolApiService(HttpClient().client);
+
   @override
-  Future<ApiResponse> search({required SearchSchoolRequest searchSchoolRequest}) async {
-    ApiResponse apiResponse =
-    await _apiService.search(searchSchoolRequest.gubunType, searchSchoolRequest.keyword).then((httpResponse) async {
+  Future<ApiResponse> search(
+      {required SearchSchoolRequest searchSchoolRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .search(searchSchoolRequest.gubunType, searchSchoolRequest.keyword)
+        .then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode!,
           data: httpResponse.data ?? "");
@@ -31,9 +37,11 @@ class SchoolRepositoryImpl implements SchoolRepository{
   }
 
   @override
-  Future<ApiResponse> searchMajor({required SearchSchoolRequest searchSchoolRequest}) async {
-    ApiResponse apiResponse =
-    await _apiService.searchMajor(searchSchoolRequest.gubunType, searchSchoolRequest.keyword).then((httpResponse) async {
+  Future<ApiResponse> searchMajor(
+      {required SearchSchoolRequest searchSchoolRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .searchMajor(searchSchoolRequest.gubunType, searchSchoolRequest.keyword)
+        .then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode!,
           data: httpResponse.data ?? "");
@@ -46,5 +54,4 @@ class SchoolRepositoryImpl implements SchoolRepository{
     });
     return apiResponse;
   }
-
 }

@@ -1,4 +1,4 @@
-import 'package:dear_app/feature/main/shared/component/professor_cell.dart';
+import 'package:dear_app/Feature/main/Shared/component/professor_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 

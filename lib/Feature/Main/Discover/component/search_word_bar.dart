@@ -1,4 +1,3 @@
-import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 class SearchWordBar extends StatefulWidget {

@@ -1,11 +1,7 @@
-import 'package:dear_app/shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/cupertino.dart';
 
-enum BadgeSize {
-  small,
-  medium,
-  large
-}
+enum BadgeSize { small, medium, large }
 
 class DearBadge extends StatelessWidget {
   final BadgeSize? size;
@@ -26,11 +22,8 @@ class DearBadge extends StatelessWidget {
     return Container(
       width: getSize(),
       height: getSize(),
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: DearColors.red.red300
-      ),
+      decoration:
+          BoxDecoration(shape: BoxShape.circle, color: DearColors.red.red300),
     );
   }
-
 }

@@ -1,18 +1,18 @@
 import 'dart:io';
 
-import 'package:dear_app/Shared/model/api_response.dart';
-import 'package:dear_app/Shared/net/http_client.dart';
 import 'package:dear_app/Feature/Auth/Signin/api/signin_api_service.dart';
 import 'package:dear_app/Feature/Auth/Signin/model/signin_request.dart';
+import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class SignInRepository {
-  Future<ApiResponse>  signIn({required SignInRequest signInRequest});
+  Future<ApiResponse> signIn({required SignInRequest signInRequest});
 }
 
-
 class SignInRepositoryImpl implements SignInRepository {
-  final _apiService  = SignInApiService(HttpClient().client) ;
+  final _apiService = SignInApiService(HttpClient().client);
+
   @override
   Future<ApiResponse> signIn({required SignInRequest signInRequest}) async {
     ApiResponse apiResponse =
@@ -31,5 +31,4 @@ class SignInRepositoryImpl implements SignInRepository {
     });
     return apiResponse;
   }
-
 }

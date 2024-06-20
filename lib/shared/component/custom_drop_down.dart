@@ -1,6 +1,7 @@
-import 'package:dear_app/shared/theme/dear_icons.dart';
-import 'package:flutter/cupertino.dart';
 import 'dart:math' as math;
+
+import 'package:dear_app/Shared/theme/dear_icons.dart';
+import 'package:flutter/cupertino.dart';
 
 class CustDropDown<T> extends StatefulWidget {
   final List<CustDropdownMenuItem> items;
@@ -125,58 +126,61 @@ class _CustDropDownState extends State<CustDropDown>
             height: _isOpen ? widget.maxListHeight - 20 : 50,
             decoration: _getDecoration(),
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
-              child: Column(
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: <Widget>[
-                      Flexible(
-                        flex: 3,
-                        child: _isAnyItemSelected
-                            ? _itemSelected!
-                            : Text(
-                          widget.hintText,
-                          maxLines: 1,
-                          overflow: TextOverflow.clip,
-                          style: TextStyle(
-                              fontFamily: "Pretendard",
-                              fontSize: 17,
-                              color: Color(0xff787878)
-                          ),
+                padding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Flexible(
+                          flex: 3,
+                          child: _isAnyItemSelected
+                              ? _itemSelected!
+                              : Text(
+                                  widget.hintText,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.clip,
+                                  style: TextStyle(
+                                      fontFamily: "Pretendard",
+                                      fontSize: 17,
+                                      color: Color(0xff787878)),
+                                ),
                         ),
+                        _isOpen
+                            ? Transform.rotate(
+                                angle: 180 * math.pi / 180,
+                                child: DearIcons.dropdown)
+                            : DearIcons.dropdown
+                      ],
+                    ),
+                    if (_isOpen) SizedBox(height: 10),
+                    if (_isOpen)
+                      ListView(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        children: widget.items
+                            .map((item) => GestureDetector(
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(10.0),
+                                    child: item.child,
+                                  ),
+                                  onTap: () {
+                                    if (mounted) {
+                                      setState(() {
+                                        _isAnyItemSelected = true;
+                                        _itemSelected = item.child;
+                                        _removeOverlay();
+                                        if (widget.onChanged != null)
+                                          widget.onChanged(item.value);
+                                      });
+                                    }
+                                  },
+                                ))
+                            .toList(),
                       ),
-                      _isOpen ? Transform.rotate(angle: 180 * math.pi / 180, child: DearIcons.dropdown) : DearIcons.dropdown
-                    ],
-                  ),
-                  if (_isOpen) SizedBox(height: 10),
-                  if (_isOpen) ListView(
-                    padding: EdgeInsets.zero,
-                    shrinkWrap: true,
-                    children: widget.items
-                        .map((item) => GestureDetector(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: item.child,
-                      ),
-                      onTap: () {
-                        if (mounted) {
-                          setState(() {
-                            _isAnyItemSelected = true;
-                            _itemSelected = item.child;
-                            _removeOverlay();
-                            if (widget.onChanged != null)
-                              widget.onChanged(item.value);
-                          });
-                        }
-                      },
-                    ))
-                        .toList(),
-                  ),
-                ],
-              )
-            )),
+                  ],
+                ))),
       ),
     );
   }

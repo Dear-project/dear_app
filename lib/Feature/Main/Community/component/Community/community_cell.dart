@@ -1,6 +1,5 @@
-import 'package:dear_app/feature/main/community/ui/community/in_community_view.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Feature/main/community/ui/community/in_community_view.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class CommunityCell extends StatelessWidget {
@@ -14,7 +13,8 @@ class CommunityCell extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10),
           child: MaterialButton(
             onPressed: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => InCommunityView()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => InCommunityView()));
             },
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

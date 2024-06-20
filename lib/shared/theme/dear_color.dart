@@ -3,14 +3,12 @@ import 'dart:ui';
 class DearColors {
   const DearColors._();
 
-  static const Color main =  Color(0xff0E2764);
-  static const Color white =  Color(0xffffffff);
+  static const Color main = Color(0xff0E2764);
+  static const Color white = Color(0xffffffff);
   static _DearColorBlue blue = const _DearColorBlue._();
   static _DearColorRed red = const _DearColorRed._();
   static _DearColorBlack black = const _DearColorBlack._();
-
 }
-
 
 class _DearColorBlue {
   const _DearColorBlue._();
@@ -24,7 +22,6 @@ class _DearColorBlue {
   final Color primary800 = const Color(0xffEBEFFF);
   final Color primary900 = const Color(0xff708FFF);
   final Color primary1000 = const Color(0xffC5D0DA);
-
 }
 
 class _DearColorRed {
@@ -34,7 +31,6 @@ class _DearColorRed {
   final Color red200 = const Color(0xff780000);
   final Color red300 = const Color(0xffF90707);
   final Color red400 = const Color(0xffEA0C0C);
-
 }
 
 class _DearColorBlack {

@@ -5,10 +5,8 @@ part 'search_school_response.g.dart';
 
 @JsonSerializable()
 class SearchSchoolResponse {
-
   @JsonKey(name: "data", defaultValue: [])
   List<SchoolInfo> data;
-
 
   SearchSchoolResponse({required this.data});
 

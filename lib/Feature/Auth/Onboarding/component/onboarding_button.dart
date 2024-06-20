@@ -6,7 +6,12 @@ class OnboardingButton extends StatelessWidget {
   Color foreground;
   void Function() onPressed;
 
-  OnboardingButton({ super.key, required this.content, required this.background, required this.foreground, required this.onPressed  });
+  OnboardingButton(
+      {super.key,
+      required this.content,
+      required this.background,
+      required this.foreground,
+      required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -14,24 +19,20 @@ class OnboardingButton extends StatelessWidget {
       padding: EdgeInsets.symmetric(vertical: 4),
       onPressed: onPressed,
       child: Container(
-        width: 342,
-        height: 56,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(16),
-          color: background
-        ),
-        child: Center(
-          child: Text(
-            content,
-            style: TextStyle(
-                fontSize: 16,
-                fontFamily: "Pretendard",
-                color: foreground,
-                fontWeight: FontWeight.bold),
-          ),
-        )
-      ),
+          width: 342,
+          height: 56,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16), color: background),
+          child: Center(
+            child: Text(
+              content,
+              style: TextStyle(
+                  fontSize: 16,
+                  fontFamily: "Pretendard",
+                  color: foreground,
+                  fontWeight: FontWeight.bold),
+            ),
+          )),
     );
   }
-
 }

@@ -1,5 +1,3 @@
-
-
 class ApiResponse<T> {
   final int? statusCode;
   final T? data;

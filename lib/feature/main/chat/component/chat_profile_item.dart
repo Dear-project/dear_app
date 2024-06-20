@@ -1,18 +1,16 @@
-import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ChatProfileItem extends StatelessWidget {
   Image image;
   String title;
-  ChatProfileItem( { super.key,  required this.image, required this.title } );
+
+  ChatProfileItem({super.key, required this.image, required this.title});
 
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      onPressed: () {
-
-      },
+      onPressed: () {},
       child: Column(
         children: [
           Image(

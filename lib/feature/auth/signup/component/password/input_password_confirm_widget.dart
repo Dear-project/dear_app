@@ -1,5 +1,4 @@
-import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
-import 'package:dear_app/shared/utils/utils.dart';
+import 'package:dear_app/Feature/auth/signup/view_model/signup_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

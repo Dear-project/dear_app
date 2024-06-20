@@ -4,7 +4,6 @@ part 'search_school_request.g.dart';
 
 @JsonSerializable()
 class SearchSchoolRequest {
-
   @JsonKey(name: "gubunType")
   String gubunType;
 

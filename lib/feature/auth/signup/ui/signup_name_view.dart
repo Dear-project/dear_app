@@ -1,9 +1,8 @@
-import 'package:dear_app/feature/auth/shared/component/bottom_button.dart';
-import 'package:dear_app/feature/auth/signup/component/name/input_birthdate_widget.dart';
-import 'package:dear_app/feature/auth/signup/component/name/input_name_widget.dart';
-
-import 'package:dear_app/feature/auth/signup/view_model/signup_view_model.dart';
-import 'package:dear_app/shared/utils/utils.dart';
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/name/input_birthdate_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/component/name/input_name_widget.dart';
+import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,7 +15,6 @@ class SignupNameView extends StatefulWidget {
 }
 
 class _SignupNameViewState extends State<SignupNameView> {
-
   final _loginVM = Get.put(SignUpViewModel());
 
   @override
@@ -84,15 +82,15 @@ class _SignupNameViewState extends State<SignupNameView> {
               SizedBox(height: 45),
               Form(
                   child: Container(
-                    width: 340,
-                    child: Column(
-                      children: [
-                        InputNameWidget(),
-                        SizedBox(height: 15),
-                        InputBirthdateWidget(),
-                      ],
-                    ),
-                  )),
+                width: 340,
+                child: Column(
+                  children: [
+                    InputNameWidget(),
+                    SizedBox(height: 15),
+                    InputBirthdateWidget(),
+                  ],
+                ),
+              )),
               Spacer(flex: 1),
               SizedBox(height: 30),
               BottomButton(action: () async {
@@ -108,7 +106,6 @@ class _SignupNameViewState extends State<SignupNameView> {
                 }
 
                 await _loginVM.signup();
-
               }),
               SizedBox(height: 45),
             ],

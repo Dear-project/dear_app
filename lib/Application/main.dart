@@ -1,7 +1,6 @@
-
-import 'package:dear_app/feature/auth/onboarding/ui/first_join_view.dart';
-import 'package:dear_app/shared/service/secure_storage_service.dart';
-import 'package:dear_app/shared/theme/dear_theme.dart';
+import 'package:dear_app/Feature/Auth/Onboarding/ui/first_join_view.dart';
+import 'package:dear_app/Shared/service/secure_storage_service.dart';
+import 'package:dear_app/Shared/theme/dear_theme.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
           GlobalCupertinoLocalizations.delegate,
         ],
         supportedLocales: const [Locale('ko', '')],
-        home: FirstJoinView()
-    );
+        home: FirstJoinView());
   }
 }

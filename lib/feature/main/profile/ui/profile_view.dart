@@ -1,27 +1,19 @@
-import 'package:dear_app/Feature/Main/Profile/view_model/profile_view_model.dart';
 import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class ProfileView extends StatefulWidget {
-
-
   @override
   State<StatefulWidget> createState() => _ProfileViewState();
 }
 
 class _ProfileViewState extends State<ProfileView> {
-  final _profileVM = Get.put(ProfileViewModel());
-
   @override
   void initState() {
     super.initState();
-
-    _profileVM.getProfile();
   }
 
   @override
@@ -41,10 +33,7 @@ class _ProfileViewState extends State<ProfileView> {
             ColoredBox(
               color: Color(0xffFFFFFF),
               child: SizedBox(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  width: MediaQuery.of(context).size.width,
                   height: 210,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -66,41 +55,33 @@ class _ProfileViewState extends State<ProfileView> {
                                   shape: BoxShape.circle,
                                   image: DecorationImage(
                                     fit: BoxFit.fitWidth,
-                                    image: _profileVM.model.value?.imgPath != null
-                                        ? NetworkImage(_profileVM.model.value!.imgPath!)
+                                    image: "" != null
+                                        ? NetworkImage("image")
                                         : DearIcons.my.image,
                                   ),
                                 ),
-
                               ),
                               Padding(
-                                padding: EdgeInsets.all(4),
-                                child: Align(
-                                    alignment: Alignment.bottomRight,
-                                    child: Container(
-                                      width: 28,
-                                      height: 28,
-                                      padding: EdgeInsets.all(2),
-                                      decoration: BoxDecoration(
-                                        shape: BoxShape.circle,
-                                        color: Color(0xffD1D1D1),
-                                        border: Border.all(
-                                            color: Colors.white,
-                                            width: 4
+                                  padding: EdgeInsets.all(4),
+                                  child: Align(
+                                      alignment: Alignment.bottomRight,
+                                      child: Container(
+                                        width: 28,
+                                        height: 28,
+                                        padding: EdgeInsets.all(2),
+                                        decoration: BoxDecoration(
+                                          shape: BoxShape.circle,
+                                          color: Color(0xffD1D1D1),
+                                          border: Border.all(
+                                              color: Colors.white, width: 4),
                                         ),
-                                      ),
-                                      alignment: Alignment.center,
-                                      child: DearIcons.write,
-                                    )
-                                )
-                              )
-
-
-
+                                        alignment: Alignment.center,
+                                        child: DearIcons.write,
+                                      )))
                             ],
                           )),
                       Text(
-                        _profileVM.model.value?.name ?? "",
+                        "",
                         style: TextStyle(
                             fontFamily: "Pretendard",
                             fontSize: 24,
@@ -114,10 +95,7 @@ class _ProfileViewState extends State<ProfileView> {
               child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 34),
                 child: SizedBox(
-                  width: MediaQuery
-                      .of(context)
-                      .size
-                      .width,
+                  width: MediaQuery.of(context).size.width,
                   height: 61,
                   child: Row(
                     children: [

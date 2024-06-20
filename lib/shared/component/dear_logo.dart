@@ -10,13 +10,13 @@ class DearLogo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-          "DEAR.",
-          style: TextStyle(
-            fontFamily: "Assistant",
-            fontWeight: FontWeight.w800,
-            fontSize: size,
-            color: color,
-          ),
-        );
+      "DEAR.",
+      style: TextStyle(
+        fontFamily: "Assistant",
+        fontWeight: FontWeight.w800,
+        fontSize: size,
+        color: color,
+      ),
+    );
   }
 }

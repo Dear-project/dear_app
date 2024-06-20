@@ -1,5 +1,4 @@
 class MajorSubjectTypeUtils {
-
   static List<MajorSubjectType> majorSubjects = [
     MajorSubjectType.ALL,
     MajorSubjectType.HUMANITIES,
@@ -37,10 +36,10 @@ enum MajorSubjectType {
   ALL(""), // 전체
   HUMANITIES("100391"), // 인문계열
   SOCIAL("100392"), // 사회계열
-  EDUCATION("100393"),  // 교육
-  ENGINEERING("100394"),  // 공학
+  EDUCATION("100393"), // 교육
+  ENGINEERING("100394"), // 공학
   NATURAL("100395"), //  자연
-  MEDICINE("100396"),  //  의약
+  MEDICINE("100396"), //  의약
   ARTS("100397"); //  예체능
 
   final String key;

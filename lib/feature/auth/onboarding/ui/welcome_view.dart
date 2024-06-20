@@ -1,4 +1,4 @@
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class WelcomeView extends StatefulWidget {
@@ -6,19 +6,17 @@ class WelcomeView extends StatefulWidget {
   State<StatefulWidget> createState() => _WelcomeViewState();
 }
 
-class _WelcomeViewState extends State<WelcomeView> with SingleTickerProviderStateMixin {
+class _WelcomeViewState extends State<WelcomeView>
+    with SingleTickerProviderStateMixin {
   late AnimationController controller;
 
   @override
   void initState() {
     super.initState();
 
-    controller = AnimationController(
-      vsync: this,
-      duration: Duration(milliseconds: 4000)
-    )
-    ..reverse(from: 1);
-
+    controller =
+        AnimationController(vsync: this, duration: Duration(milliseconds: 4000))
+          ..reverse(from: 1);
   }
 
   @override
@@ -59,29 +57,21 @@ class _WelcomeViewState extends State<WelcomeView> with SingleTickerProviderStat
                     shape: BoxShape.circle),
                 child: Padding(
                   padding: EdgeInsets.symmetric(vertical: 20, horizontal: 15),
-                  child: Stack(
-                      alignment: Alignment.centerRight,
-                      children: [
+                  child: Stack(alignment: Alignment.centerRight, children: [
                     DearIcons.check,
                     AnimatedBuilder(
-                        builder: (BuildContext context, Widget? child) {
-                          return Transform.scale(
-                            alignment: Alignment.centerRight,
-                            scaleX: controller.value,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.white
-                                )
-                            ),
-                          );
-                        },
+                      builder: (BuildContext context, Widget? child) {
+                        return Transform.scale(
+                          alignment: Alignment.centerRight,
+                          scaleX: controller.value,
+                          child: Container(
+                              decoration: BoxDecoration(color: Colors.white)),
+                        );
+                      },
                       animation: controller,
-
                     )
-                  ]
-                  ),
-                )
-            ),
+                  ]),
+                )),
             Text(
               "화면을 터치하세요.",
               style: TextStyle(

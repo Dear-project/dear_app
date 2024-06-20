@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/Signup/component/third/select_type_widget.dart';
 import 'package:dear_app/Feature/Auth/Signup/ui/third_signup_view.dart';
 import 'package:dear_app/Feature/Auth/Signup/view_model/signup_view_model.dart';
@@ -6,7 +7,6 @@ import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 
 class SecondSignupView extends StatefulWidget {
   const SecondSignupView({super.key});
@@ -17,6 +17,7 @@ class SecondSignupView extends StatefulWidget {
 
 class _SecondSignupViewState extends State<SecondSignupView> {
   final _loginVM = Get.put(SignUpViewModel());
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -95,13 +96,15 @@ class _SecondSignupViewState extends State<SecondSignupView> {
                 height: 87,
               ),
               SizedBox(height: 30),
-              BottomButton(action: (){
-                if(_loginVM.type.value == null){
-                  Utils.snackBar('알림', '회원 타입을 선택해 주세요.');
-                  return;
-                }
-                Get.to(() => ThirdSignupView());
-              },),
+              BottomButton(
+                action: () {
+                  if (_loginVM.type.value == null) {
+                    Utils.snackBar('알림', '회원 타입을 선택해 주세요.');
+                    return;
+                  }
+                  Get.to(() => ThirdSignupView());
+                },
+              ),
             ],
           ),
         ),

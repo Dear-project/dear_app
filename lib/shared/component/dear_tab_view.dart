@@ -1,6 +1,5 @@
-import 'package:dear_app/feature/auth/Onboarding/ui/onboarding_view.dart';
-import 'package:dear_app/shared/model/dearTabViewItem.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/model/dear_tab_view_item.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

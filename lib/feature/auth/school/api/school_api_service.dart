@@ -1,4 +1,3 @@
-
 import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_major_response.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_response.dart';
@@ -13,12 +12,14 @@ abstract class SchoolApiService {
   factory SchoolApiService(Dio dio) = _SchoolApiService;
 
   @GET('/school/list')
-  Future<HttpResponse<SearchSchoolResponse>> search(@Query('gubunType') String gubunType, @Query('keyword') String keyword);
+  Future<HttpResponse<SearchSchoolResponse>> search(
+      @Query('gubunType') String gubunType, @Query('keyword') String keyword);
 
   @GET('/school/major/list')
-  Future<HttpResponse<SearchMajorResponse>> searchMajor(@Query('gubunType') String gubunType, @Query('keyword') String keyword);
-  
-  @POST('/school')
-  Future<HttpResponse> regiterSchool(@Body() RegisterSchoolRequest registerSchoolRequest);
+  Future<HttpResponse<SearchMajorResponse>> searchMajor(
+      @Query('gubunType') String gubunType, @Query('keyword') String keyword);
 
+  @POST('/school')
+  Future<HttpResponse> regiterSchool(
+      @Body() RegisterSchoolRequest registerSchoolRequest);
 }

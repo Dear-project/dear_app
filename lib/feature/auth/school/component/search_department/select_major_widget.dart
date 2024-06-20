@@ -1,6 +1,5 @@
-
-import 'package:dear_app/feature/auth/school/model/major_info.dart';
-import 'package:dear_app/feature/auth/school/view_model/controller/school_view_model.dart';
+import 'package:dear_app/Feature/Auth/School/model/major_info.dart';
+import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

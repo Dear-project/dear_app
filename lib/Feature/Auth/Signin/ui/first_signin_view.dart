@@ -1,9 +1,8 @@
-
-import 'package:dear_app/feature/auth/signin/component/input_email_widget.dart';
-import 'package:dear_app/feature/auth/signin/component/input_password_widget.dart';
-import 'package:dear_app/feature/auth/signin/view_model/controller/signin_view_model.dart';
-import 'package:dear_app/shared/component/dear_logo.dart';
-import 'package:dear_app/shared/component/round_button.dart';
+import 'package:dear_app/Feature/Auth/Signin/component/input_email_widget.dart';
+import 'package:dear_app/Feature/Auth/Signin/component/input_password_widget.dart';
+import 'package:dear_app/Feature/Auth/Signin/view_model/controller/signin_view_model.dart';
+import 'package:dear_app/Shared/component/dear_logo.dart';
+import 'package:dear_app/Shared/component/round_button.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

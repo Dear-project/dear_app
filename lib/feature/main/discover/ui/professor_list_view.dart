@@ -1,11 +1,8 @@
-import 'dart:ui';
-
-import 'package:dear_app/feature/main/discover/component/filter_button.dart';
-import 'package:dear_app/feature/main/discover/component/search_word_bar.dart';
-import 'package:dear_app/feature/main/discover/ui/professor_profile_view.dart';
-import 'package:dear_app/feature/main/shared/component/professor_cell.dart';
+import 'package:dear_app/Feature/main/discover/component/filter_button.dart';
+import 'package:dear_app/Feature/main/discover/component/search_word_bar.dart';
+import 'package:dear_app/Feature/main/discover/ui/professor_profile_view.dart';
+import 'package:dear_app/Feature/main/Shared/component/professor_cell.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 class ProfessorListView extends StatelessWidget {
@@ -40,7 +37,11 @@ class ProfessorListView extends StatelessWidget {
                         child: CupertinoButton(
                           padding: EdgeInsets.zero,
                           onPressed: () {
-                            Navigator.push(context, MaterialPageRoute(builder: (context) => ProfessorProfileView()));
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        ProfessorProfileView()));
                           },
                           child: ProfessorCell(),
                         ),

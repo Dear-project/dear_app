@@ -5,10 +5,8 @@ part 'search_major_response.g.dart';
 
 @JsonSerializable()
 class SearchMajorResponse {
-
   @JsonKey(name: "data", defaultValue: [])
   List<MajorInfo> data;
-
 
   SearchMajorResponse({required this.data});
 

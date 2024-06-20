@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 class DearTabViewItem {
@@ -6,5 +5,4 @@ class DearTabViewItem {
 
   Image icon;
   bool toggle;
-
 }
