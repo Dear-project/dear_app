@@ -1,10 +1,14 @@
+import 'dart:io';
+
 import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 
 class ProfileView extends StatefulWidget {
@@ -49,44 +53,50 @@ class _ProfileViewState extends State<ProfileView> {
                                   border: Border.all(
                                       color: Color(0xff0E2764), width: 5),
                                   shape: BoxShape.circle),
-                              child: Stack(
-                                alignment: Alignment.center,
-                                children: [
-                                  Container(
-                                    width: 100,
-                                    height: 100,
-                                    decoration: BoxDecoration(
-                                      shape: BoxShape.circle,
-                                      image: DecorationImage(
-                                        fit: BoxFit.fitWidth,
-                                        image:
-                                            _profileVM.model.value?.imgPath !=
-                                                    null
-                                                ? NetworkImage(_profileVM
-                                                    .model.value!.imgPath!)
-                                                : DearIcons.my.image,
+                              child: CupertinoButton(
+                                padding: EdgeInsets.zero,
+                                onPressed: () {
+                                  _profileVM.setProfileImage();
+                                },
+                                child: Stack(
+                                  alignment: Alignment.center,
+                                  children: [
+                                    Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        image: DecorationImage(
+                                          fit: BoxFit.fill,
+                                          image:
+                                          _profileVM.model.value?.imgPath !=
+                                              null
+                                              ? NetworkImage(_profileVM
+                                              .model.value!.imgPath!)
+                                              : DearIcons.my.image,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Padding(
-                                      padding: EdgeInsets.all(4),
-                                      child: Align(
-                                          alignment: Alignment.bottomRight,
-                                          child: Container(
-                                            width: 28,
-                                            height: 28,
-                                            padding: EdgeInsets.all(2),
-                                            decoration: BoxDecoration(
-                                              shape: BoxShape.circle,
-                                              color: Color(0xffD1D1D1),
-                                              border: Border.all(
-                                                  color: Colors.white,
-                                                  width: 4),
-                                            ),
-                                            alignment: Alignment.center,
-                                            child: DearIcons.write,
-                                          )))
-                                ],
+                                    Padding(
+                                        padding: EdgeInsets.all(4),
+                                        child: Align(
+                                            alignment: Alignment.bottomRight,
+                                            child: Container(
+                                              width: 28,
+                                              height: 28,
+                                              padding: EdgeInsets.all(2),
+                                              decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: Color(0xffD1D1D1),
+                                                border: Border.all(
+                                                    color: Colors.white,
+                                                    width: 4),
+                                              ),
+                                              alignment: Alignment.center,
+                                              child: DearIcons.write,
+                                            )))
+                                  ],
+                                )
                               )),
                           Text(
                             _profileVM.model.value != null

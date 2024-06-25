@@ -45,6 +45,12 @@
 		<true/>
 		<key>UIApplicationSupportsIndirectInputEvents</key>
 		<true/>
+        <key>NSCameraUsageDescription</key>
+        <string>이미지를 설정하기 위해 카메라 사용을 허용하시겠습니까?</string>
+        <key>NSPhotoLibraryUsageDescription</key>
+        <string>이미지를 설정하기 위해 갤러리를 허용하시겠습니까?</string>
+        <key>NSMicrophoneUsageDescription</key>
+        <string>이미지를 설정하기 위해 마이크를 허용하시겠습니까?</string>
 		<key>UIStatusBarHidden</key>
 		<false/>
 	</dict>

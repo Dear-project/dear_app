@@ -82,7 +82,7 @@ class HttpClient {
   Future<bool> refresh(String refreshToken) async {
     try {
       Response response = await retryClient.post(
-        '${BASE_URL}/Auth/refresh',
+        '${BASE_URL}/auth/refresh',
         data: RefreshTokenRequest(refreshToken: refreshToken).toJson(),
       );
       if (response.statusCode == HttpStatus.ok) {
