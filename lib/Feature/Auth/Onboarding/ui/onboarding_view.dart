@@ -17,7 +17,8 @@ class OnboardingView extends StatefulWidget {
 }
 
 class _OnboardingViewState extends State<OnboardingView> {
-  ScrollController _scrollController = ScrollController();
+  final ScrollController _scrollController = ScrollController();
+
   List<Color> colorset = [
     Color(0xff0E2764),
     Color(0xffEBEFFF),
@@ -30,23 +31,29 @@ class _OnboardingViewState extends State<OnboardingView> {
   void initState() {
     super.initState();
 
-    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      animateScroll(
-          _scrollController.position.maxScrollExtent, 10, _scrollController);
-    });
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        if (_scrollController.hasClients) {
+          animateScroll(
+              _scrollController.position.maxScrollExtent, 8, _scrollController);
+        }
+      });
 
     _obVM.login();
   }
 
   animateScroll(
-      double direction, int seconds, ScrollController scrollController) {
-    scrollController
-        .animateTo(direction,
-            duration: Duration(seconds: seconds), curve: Curves.linear)
-        .then((value) {
-      scrollController.jumpTo(scrollController.position.minScrollExtent);
-      animateScroll(direction, seconds, scrollController);
-    });
+      double direction, int seconds, ScrollController scrollController) async {
+    try {
+      await scrollController
+          .animateTo(direction,
+          duration: Duration(seconds: seconds), curve: Curves.linear)
+          .then((value) {
+        scrollController.jumpTo(scrollController.position.minScrollExtent);
+        animateScroll(direction, seconds, scrollController);
+      });
+    } catch(e) {
+      print(e);
+    }
   }
 
   @override

@@ -1,10 +1,10 @@
 import 'dart:io';
 
 import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
-import 'package:dear_app/Feature/Main/Profile/model/profile_info.dart';
-import 'package:dear_app/Feature/Main/Profile/model/profile_response.dart';
 import 'package:dear_app/Feature/Main/Profile/repository/profile_repository.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/model/response_data.dart';
+import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
@@ -13,7 +13,7 @@ class ProfileViewModel extends GetxController {
   final storageService = Get.find<SecureStorageService>();
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
-  Rxn<ProfileInfo> model = Rxn<ProfileInfo>();
+  Rxn<UserProfileResponse> model = Rxn<UserProfileResponse>();
 
   Rxn<File> file = Rxn<File>();
 
@@ -26,11 +26,11 @@ class ProfileViewModel extends GetxController {
   void getProfile() async {
     ApiResponse response = await _repository.getProfile();
 
-    ProfileResponse profileResponse = ProfileResponse.fromJson(response.data);
-    model.value = profileResponse.data;
-    // 테스트
-    print(model.value!.name);
-    print(model.value!.imgPath);
+    if (response.statusCode == HttpStatus.ok) {
+      ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(response.data, (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
+      print(profileResponse.data);
+      model.value = profileResponse.data;
+    }
 
   }
 
@@ -44,7 +44,7 @@ class ProfileViewModel extends GetxController {
     
     ApiResponse response = await _repository.setProfileImage(file ?? File(""));
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == HttpStatus.ok) {
       getProfile();
     }
   }

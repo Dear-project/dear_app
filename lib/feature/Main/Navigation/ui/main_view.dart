@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/main_community_view.dart';
+import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/component/dear_tab_view.dart';
@@ -17,6 +18,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final _profileVM = Get.put(ProfileViewModel());
+  final _homeVM = Get.put(HomeViewModel());
 
   var _index = 0;
 
@@ -24,6 +26,7 @@ class _MainViewState extends State<MainView> {
   void initState() {
     super.initState();
     _profileVM.getProfile();
+    _homeVM.getBanner();
   }
 
   final List<Widget> _pages = [

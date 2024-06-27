@@ -1,6 +1,9 @@
 import 'dart:io';
 
+import 'package:dear_app/Feature/Auth/School/ui/select_department_interest_view.dart';
+import 'package:dear_app/Feature/Auth/School/ui/select_department_view.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
+import 'package:dear_app/Feature/Auth/Signin/ui/first_signin_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
@@ -23,15 +26,18 @@ class OnboardingViewModel extends GetxController {
       print("login OK");
       ResponseData<UserProfileResponse> responseData = apiResponse.data;
       UserProfileResponse userProfileResponse = responseData.data;
+      print(userProfileResponse.toJson());
       if (userProfileResponse.schoolName == null) {
         Get.to(() => SelectSchoolView());
+      } else if (userProfileResponse.mClass == null) {
+        Get.to(() => SelectDepartmentInterestView());
       } else {
         Get.delete<OnboardingViewModel>();
         Get.offAll(() => MainView());
       }
     } else if (apiResponse.statusCode == HttpStatus.notFound) {
       print("login not found");
-      Get.to(() => SelectSchoolView());
+      Get.to(() => FirstSigninView());
     } else {}
   }
 

@@ -19,10 +19,10 @@ class UserProfileResponse {
   @JsonKey(name: "schoolName")
   String? schoolName;
 
-  @JsonKey(name: "lClass")
+  @JsonKey(name: "lclass")
   String? lClass;
 
-  @JsonKey(name: "mClass")
+  @JsonKey(name: "mclass")
   String? mClass;
 
   @JsonKey(name: "introduce", defaultValue: "")

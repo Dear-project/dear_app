@@ -18,7 +18,7 @@ class UserRepositoryImpl implements UserRepository {
         await _apiService.profile().then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode!,
-          data: httpResponse.data ?? "");
+          data: httpResponse.data);
     }).onError((DioException e, stackTrace) async {
       return ApiResponse.error(
           (e.response == null)

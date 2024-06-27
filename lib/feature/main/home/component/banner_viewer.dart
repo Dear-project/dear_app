@@ -1,8 +1,15 @@
 import 'dart:async';
 
+import 'package:dear_app/Feature/Main/Home/model/banner_response.dart';
+import 'package:dear_app/Shared/theme/dear_images.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class BannerViewer extends StatefulWidget {
+  List<BannerResponse> list;
+
+  BannerViewer({required this.list, super.key});
+
   @override
   State<StatefulWidget> createState() => _BannerViewerState();
 
@@ -12,11 +19,9 @@ class BannerViewer extends StatefulWidget {
 }
 
 class _BannerViewerState extends State<BannerViewer> {
-  int count = 5;
-
   void startTimer() {
     widget._timer = Timer.periodic(Duration(seconds: 5), (timer) {
-      if (widget._pageController.page == count - 1) {
+      if (widget._pageController.page == widget.list.length - 1) {
         widget._pageController.animateToPage(0,
             duration: Duration(milliseconds: 500), curve: Curves.easeInOut);
       } else {
@@ -29,7 +34,9 @@ class _BannerViewerState extends State<BannerViewer> {
   @override
   void initState() {
     super.initState();
-    startTimer();
+    if (widget.list.length > 1) {
+      startTimer();
+    }
   }
 
   @override
@@ -46,7 +53,7 @@ class _BannerViewerState extends State<BannerViewer> {
           children: [
             SizedBox(
                 height: 200,
-                child: PageView(
+                child:  PageView(
                   scrollDirection: Axis.horizontal,
                   controller: widget._pageController,
                   onPageChanged: (value) {
@@ -56,15 +63,25 @@ class _BannerViewerState extends State<BannerViewer> {
                   },
                   children: [
                     ...List.generate(
-                        count,
+                        widget.list.length,
                         (index) => Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 25),
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            child: CupertinoButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {},
                               child: Container(
                                 decoration: BoxDecoration(
-                                    color: Color(0xffE6E6E6),
-                                    borderRadius: BorderRadius.circular(16)),
+                                  borderRadius: BorderRadius.circular(16),
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: widget.list[index].imgPath != null
+                                        ? NetworkImage(
+                                            widget.list[index].imgPath!)
+                                        : DearImages.bannerPlaceholder.image
+                                  ),
+                                ),
                               ),
-                            ))
+                            )))
                   ],
                 )),
             Padding(
@@ -73,7 +90,7 @@ class _BannerViewerState extends State<BannerViewer> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     ...List.generate(
-                        count,
+                        widget.list.length,
                         (index) => Padding(
                             padding: EdgeInsets.symmetric(horizontal: 6),
                             child: InkWell(

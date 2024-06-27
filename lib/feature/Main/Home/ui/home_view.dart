@@ -1,12 +1,30 @@
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
+import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class HomeView extends StatelessWidget {
+class HomeView extends StatefulWidget {
+  const HomeView({super.key});
+
+  @override
+  State<StatefulWidget> createState() => _HomeViewState();
+}
+
+class _HomeViewState extends State<HomeView> {
+  final _homeVM = Get.put(HomeViewModel());
+
+
+  @override
+  void initState() {
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,9 +54,9 @@ class HomeView extends StatelessWidget {
                     ])))
           ],
         ),
-        body: ListView(
+        body: Obx(() => ListView(
           children: [
-            BannerViewer(),
+            if (_homeVM.model.value!.isNotEmpty) BannerViewer(list: _homeVM.model.value!),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 34),
               child: Container(
@@ -64,6 +82,6 @@ class HomeView extends StatelessWidget {
               title: "오늘의 글을 확인해 보세요",
             ),
           ],
-        ));
+        )));
   }
 }
