@@ -159,7 +159,9 @@ class _ProfileViewState extends State<ProfileView> {
                 ),
                 ProfileButton(
                     buttonType: ProfileButtonType.MemberSecession,
-                    onPressed: () {}),
+                    onPressed: () {
+                      _profileVM.deleteUser();
+                    }),
                 Spacer(flex: 1),
               ],
             )),

@@ -18,5 +18,8 @@ abstract class ProfileApiService {
   Future<HttpResponse> setProfileImage({
       @Part() File? file
     });
+  
+  @DELETE('/user')
+  Future<HttpResponse> deleteUser();
 
 }

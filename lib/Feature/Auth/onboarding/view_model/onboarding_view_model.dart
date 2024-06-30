@@ -10,6 +10,7 @@ import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/repository/user_repository.dart';
+import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:get/get.dart';
 
 class OnboardingViewModel extends GetxController {
@@ -38,7 +39,9 @@ class OnboardingViewModel extends GetxController {
     } else if (apiResponse.statusCode == HttpStatus.notFound) {
       print("login not found");
       Get.to(() => FirstSigninView());
-    } else {}
+    } else {
+      SecureStorageService().clearAllTokens();
+    }
   }
 
 }

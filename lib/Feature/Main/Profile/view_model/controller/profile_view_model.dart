@@ -66,5 +66,15 @@ class ProfileViewModel extends GetxController {
     return null;
   }
 
+  void deleteUser() async {
+    ApiResponse response = await _repository.deleteUser();
+
+    print([response.statusCode, response.errorMessage]);
+
+    if (response.statusCode == HttpStatus.ok) {
+      signOut();
+    }
+  }
+
 
 }

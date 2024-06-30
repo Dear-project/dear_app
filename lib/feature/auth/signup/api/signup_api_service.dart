@@ -17,5 +17,5 @@ abstract class SignUpApiService {
 
   @GET('/auth/email/verifications')
   Future<HttpResponse> verificationAuthNumber(
-      @Query("email") String email, @Query("AuthCode") String authCode);
+      @Query("email") String email, @Query("authCode") String authCode);
 }

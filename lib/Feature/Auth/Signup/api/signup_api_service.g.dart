@@ -85,7 +85,7 @@ class _SignUpApiService implements SignUpApiService {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'email': email,
-      r'AuthCode': authCode,
+      r'authCode': authCode,
     };
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
