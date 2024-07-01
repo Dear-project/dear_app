@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class EditProfileView extends StatelessWidget {
+  const EditProfileView({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,11 +11,6 @@ class EditProfileView extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Text("S"),
-            Text("E"),
-            Text("X")
-
-
 
           ],
         ),

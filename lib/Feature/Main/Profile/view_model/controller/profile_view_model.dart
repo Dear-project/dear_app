@@ -14,8 +14,15 @@ class ProfileViewModel extends GetxController {
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
   Rxn<UserProfileResponse> model = Rxn<UserProfileResponse>();
+  Rxn<List<String>> badgeList = Rxn<List<String>>([]);
 
   Rxn<File> file = Rxn<File>();
+
+  @override
+  void onInit() {
+    super.onInit();
+    badgeList.value = [];
+  }
 
   void signOut() {
     storageService.clearAllTokens();
@@ -30,6 +37,10 @@ class ProfileViewModel extends GetxController {
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(response.data, (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
       print(profileResponse.data);
       model.value = profileResponse.data;
+      
+      if(model.value!.schoolName!.isNotEmpty) {
+        badgeList.value?.add(model.value!.schoolName!);
+      }
     }
 
   }

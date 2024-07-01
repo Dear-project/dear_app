@@ -2,9 +2,10 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum ProfileButtonType {
-  SeeMyReview,
+  Alert,
   ServicePolicy,
-  Inquiry,
+  Version,
+  Support,
   Logout,
   MemberSecession,
 }
@@ -17,31 +18,29 @@ class ProfileButton extends StatelessWidget {
 
   String getProfileButtonText() {
     switch (buttonType) {
-      case ProfileButtonType.SeeMyReview:
-        return "내가 남긴 후기보기";
+      case ProfileButtonType.Alert:
+        return "알림설정";
       case ProfileButtonType.ServicePolicy:
         return "서비스 정책";
-      case ProfileButtonType.Inquiry:
-        return "문의 하기";
+      case ProfileButtonType.Version:
+        return "버전";
+      case ProfileButtonType.Support:
+        return "고객센터";
       case ProfileButtonType.Logout:
         return "로그아웃";
       case ProfileButtonType.MemberSecession:
-        return "회원 탈퇴";
+        return "탈퇴하기";
     }
   }
 
   Color getProfileButtonColor() {
     switch (buttonType) {
-      case ProfileButtonType.SeeMyReview:
-        return Color(0xff000000);
-      case ProfileButtonType.ServicePolicy:
-        return Color(0xff000000);
-      case ProfileButtonType.Inquiry:
-        return Color(0xff000000);
       case ProfileButtonType.Logout:
         return Color(0xffF90707);
       case ProfileButtonType.MemberSecession:
         return Color(0xffF90707);
+      default:
+        return Color(0xff000000);
     }
   }
 
