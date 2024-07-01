@@ -49,8 +49,8 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
         backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
@@ -215,8 +215,7 @@ class _ThirdSignupViewState extends State<ThirdSignupView> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 
   @override

@@ -37,7 +37,7 @@ class ProfileViewModel extends GetxController {
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(response.data, (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
       print(profileResponse.data);
       model.value = profileResponse.data;
-      
+
       if(model.value!.schoolName!.isNotEmpty) {
         badgeList.value?.add(model.value!.schoolName!);
       }

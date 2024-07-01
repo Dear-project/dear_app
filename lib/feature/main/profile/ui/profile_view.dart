@@ -123,7 +123,7 @@ class _ProfileViewState extends State<ProfileView> {
                                       fontWeight: FontWeight.w700),
                                 ),
                                 Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 14),
+                                    padding: EdgeInsets.symmetric(vertical: 10),
                                     child: CupertinoButton(
                                       padding: EdgeInsets.zero,
                                       onPressed: () {},
@@ -139,9 +139,7 @@ class _ProfileViewState extends State<ProfileView> {
                                 Flexible(
                                     child: SingleChildScrollView(
                                         child: Row(children: [
-                                  SizedBox(
-                                    width: 20,
-                                  ),
+                                  SizedBox(width: 20),
                                   if ( _profileVM.badgeList.value!.isNotEmpty)
                                     for(var content in _profileVM.badgeList
                                         .value!)

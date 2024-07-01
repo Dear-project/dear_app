@@ -12,8 +12,7 @@ class FifthSignupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
             backgroundColor: Colors.white,
@@ -62,7 +61,6 @@ class FifthSignupView extends StatelessWidget {
             ],
           ),
         ),
-      ),
     );
   }
 }

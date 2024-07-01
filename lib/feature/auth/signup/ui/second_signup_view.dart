@@ -20,8 +20,7 @@ class _SecondSignupViewState extends State<SecondSignupView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Color(0xffFFFFFF),
         appBar: AppBar(
           scrolledUnderElevation: 0.0,
@@ -108,8 +107,7 @@ class _SecondSignupViewState extends State<SecondSignupView> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
 
