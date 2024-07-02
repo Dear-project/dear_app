@@ -1,6 +1,7 @@
 import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_badge.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
+import 'package:dear_app/Feature/Main/Profile/ui/edit_profile_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -126,7 +127,9 @@ class _ProfileViewState extends State<ProfileView> {
                                     padding: EdgeInsets.symmetric(vertical: 10),
                                     child: CupertinoButton(
                                       padding: EdgeInsets.zero,
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Get.to(() => EditProfileView());
+                                      },
                                       child: Text("내 정보 수정하기",
                                           style: TextStyle(
                                               color: Color(0xffAAAAAA),
@@ -136,18 +139,26 @@ class _ProfileViewState extends State<ProfileView> {
                                               decoration:
                                                   TextDecoration.underline)),
                                     )),
-                                Flexible(
+                                Expanded(
                                     child: SingleChildScrollView(
-                                        child: Row(children: [
-                                  SizedBox(width: 20),
-                                  if ( _profileVM.badgeList.value!.isNotEmpty)
-                                    for(var content in _profileVM.badgeList
-                                        .value!)
-                                      Padding(
-                                        padding: EdgeInsets.symmetric(horizontal: 10),
-                                        child: ProfileBadge(content: content),
-                                      )
-                                ])))
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.horizontal,
+                                        child: SizedBox(
+                                          width: context.width,
+                                          child: Row(
+                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              children: [
+                                                SizedBox(width: 15),
+                                                if (_profileVM.badgeList.value!.isNotEmpty)
+                                                  for (var content in _profileVM.badgeList.value!)
+                                                    Padding(
+                                                      padding: EdgeInsets.symmetric(horizontal: 10),
+                                                      child: ProfileBadge(content: content),
+                                                    ),
+                                                SizedBox(width: 15)
+                                              ])
+                                        )),
+                                        )
                               ],
                             ))),
                     SizedBox(height: 10),

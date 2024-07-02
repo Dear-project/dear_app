@@ -7,23 +7,22 @@ import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileViewModel extends GetxController {
   final storageService = Get.find<SecureStorageService>();
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
+  final imageCropper = ImageCropper();
+  final TextEditingController editPWController = TextEditingController();
+
   Rxn<UserProfileResponse> model = Rxn<UserProfileResponse>();
   Rxn<List<String>> badgeList = Rxn<List<String>>([]);
 
   Rxn<File> file = Rxn<File>();
-
-  @override
-  void onInit() {
-    super.onInit();
-    badgeList.value = [];
-  }
 
   void signOut() {
     storageService.clearAllTokens();
@@ -33,22 +32,21 @@ class ProfileViewModel extends GetxController {
 
   void getProfile() async {
     ApiResponse response = await _repository.getProfile();
+    badgeList.value = [];
 
     if (response.statusCode == HttpStatus.ok) {
-      ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(response.data, (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
-      print(profileResponse.data);
+      ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(
+          response.data,
+          (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
       model.value = profileResponse.data;
 
-      if(model.value?.schoolName != null) {
-        print(model.value?.schoolName);
+      if (model.value?.schoolName != null) {
         badgeList.value?.add(model.value!.schoolName!);
-      }
-      else {
+      } else {
         Get.delete<ProfileViewModel>();
         Get.offAll(() => SelectSchoolView());
       }
     }
-
   }
 
   void setProfileImage() async {
@@ -58,7 +56,7 @@ class ProfileViewModel extends GetxController {
         .onError((error, stackTrace) => file = null);
 
     this.file.value = file;
-    
+
     ApiResponse response = await _repository.setProfileImage(file ?? File(""));
 
     if (response.statusCode == HttpStatus.ok) {
@@ -74,24 +72,30 @@ class ProfileViewModel extends GetxController {
           maxWidth: 200
       );
 
-      if (image != null) {
+      if (image != null && image.path != "") {
+        // final croppedFile = await imageCropper.cropImage(
+        //     sourcePath: File(image.path).path,
+        //     compressFormat: ImageCompressFormat.jpg,
+        //     compressQuality: 100,
+        //     aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
+        // );
+
+        // if (croppedFile != null) {
         return File(image.path);
+        // }
+      } else {
+        return null;
       }
-    } catch(e) {
-      print(e);
+    } catch (e) {
+      return null;
     }
-    return null;
   }
 
   void deleteUser() async {
     ApiResponse response = await _repository.deleteUser();
 
-    print([response.statusCode, response.errorMessage]);
-
     if (response.statusCode == HttpStatus.ok) {
       signOut();
     }
   }
-
-
 }
