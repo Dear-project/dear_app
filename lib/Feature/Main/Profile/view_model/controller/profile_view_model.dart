@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
+import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Main/Profile/repository/profile_repository.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
@@ -38,8 +39,13 @@ class ProfileViewModel extends GetxController {
       print(profileResponse.data);
       model.value = profileResponse.data;
 
-      if(model.value!.schoolName!.isNotEmpty) {
+      if(model.value?.schoolName != null) {
+        print(model.value?.schoolName);
         badgeList.value?.add(model.value!.schoolName!);
+      }
+      else {
+        Get.delete<ProfileViewModel>();
+        Get.offAll(() => SelectSchoolView());
       }
     }
 

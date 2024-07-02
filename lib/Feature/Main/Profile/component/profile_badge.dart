@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 
 class ProfileBadge extends StatelessWidget {
+  final String content;
+  ProfileBadge({required this.content, super.key});
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -10,7 +13,7 @@ class ProfileBadge extends StatelessWidget {
       ),
       child: Padding(
           padding: EdgeInsets.all(10),
-          child: Text("대구소프트웨어마이스터고등학교",
+          child: Text(content,
             style: TextStyle(
               color: Color(0xff000000),
               fontFamily: "Pretendard",

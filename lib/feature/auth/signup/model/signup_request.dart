@@ -16,15 +16,15 @@ class SignupRequest {
   @JsonKey(name: "birthDay")
   String birthDay;
 
-  @JsonKey(name: "type")
-  String type;
+  @JsonKey(name: "userRole")
+  String userRole;
 
   SignupRequest(
       {required this.email,
       required this.password,
       required this.name,
       required this.birthDay,
-      required this.type});
+      required this.userRole});
 
   factory SignupRequest.fromJson(Map<String, dynamic> json) =>
       _$SignupRequestFromJson(json);

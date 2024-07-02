@@ -53,7 +53,8 @@ class SchoolViewModel extends GetxController {
         response.data as SearchSchoolResponse;
 
     selectedSchoolInfoIndex.value = -1;
-    schoolInfoList.value = searchSchoolResponse.data as List<SchoolInfo>;
+    schoolInfoList.value = searchSchoolResponse.data;
+    print(searchSchoolResponse.data);
   }
 
   void searchMajorSubject({required String keyword}) async {

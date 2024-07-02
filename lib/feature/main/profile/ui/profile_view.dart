@@ -145,7 +145,7 @@ class _ProfileViewState extends State<ProfileView> {
                                         .value!)
                                       Padding(
                                         padding: EdgeInsets.symmetric(horizontal: 10),
-                                        child: ProfileBadge(),
+                                        child: ProfileBadge(content: content),
                                       )
                                 ])))
                               ],

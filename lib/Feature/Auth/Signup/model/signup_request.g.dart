@@ -12,7 +12,7 @@ SignupRequest _$SignupRequestFromJson(Map<String, dynamic> json) =>
       password: json['password'] as String,
       name: json['name'] as String,
       birthDay: json['birthDay'] as String,
-      type: json['type'] as String,
+      userRole: json['userRole'] as String,
     );
 
 Map<String, dynamic> _$SignupRequestToJson(SignupRequest instance) =>
@@ -21,5 +21,5 @@ Map<String, dynamic> _$SignupRequestToJson(SignupRequest instance) =>
       'password': instance.password,
       'name': instance.name,
       'birthDay': instance.birthDay,
-      'type': instance.type,
+      'userRole': instance.userRole,
     };

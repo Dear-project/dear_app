@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
@@ -69,15 +70,16 @@ class SignUpViewModel extends GetxController {
         password: passwordController.value.text,
         name: nameController.value.text,
         birthDay: birthdateController.value.text,
-        type: type.value!.key);
+        userRole: type.value!.key);
 
     ApiResponse apiResponse =
         await _repository.signup(signupRequest: signupRequest);
 
+    print([apiResponse.statusCode, apiResponse.errorMessage]);
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       Get.delete<SignUpViewModel>();
-      Get.offAll(SelectSchoolView());
+      Get.offAll(() => OnboardingView());
 
       return true;
     }
