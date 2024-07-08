@@ -1,18 +1,21 @@
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class MyWritingCell extends StatelessWidget {
-  const MyWritingCell({super.key});
+  String name;
+
+  MyWritingCell({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
     return ColoredBox(
-      color: Color(0xffF4F5F9),
+      color: DearColors.white,
       child: SizedBox(
         // width: MediaQuery.of(context).size.width,
-        height: 81,
+        height: 97,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 27),
+          padding: EdgeInsets.fromLTRB(27, 20, 27, 0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -21,7 +24,7 @@ class MyWritingCell extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    "조영우",
+                    name,
                     style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 20,

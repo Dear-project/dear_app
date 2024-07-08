@@ -7,17 +7,24 @@ class CommunityView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const SizedBox(
-      height: 500,
+    return Expanded(
       child: SingleChildScrollView(
-        child: Column(
-          children: [
-            CommunityCell(),
-            CommunityCell(),
-            CommunityCell(),
-          ],
+          child: Column(
+            children: [
+              for(var i = 0; i<10; i++)
+                Column(
+                  children: [
+                    CommunityCell(),
+                    SizedBox(height: 6,)
+                  ],
+                ),
+              SizedBox(
+                height: 100,
+              )
+
+            ],
+          ),
         ),
-      ),
     );
   }
 }

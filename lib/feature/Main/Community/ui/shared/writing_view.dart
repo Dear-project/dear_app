@@ -3,6 +3,7 @@ import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class WritingView extends StatefulWidget {
   const WritingView({super.key});
@@ -29,14 +30,13 @@ class _WritingViewState extends State<WritingView> {
               padding: EdgeInsets.zero,
               child: Image(
                 image: DearIcons.back.image,
-                // 이 아이콘 피그마랑 다름. 추가해야함.
                 width: 32,
                 height: 32,
                 fit: BoxFit.fitWidth,
                 color: Colors.black,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Get.back();
               }),
         ),
         title: Text(
