@@ -6,7 +6,7 @@ part of 'signup_api_service.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
 class _SignUpApiService implements SignUpApiService {
   _SignUpApiService(
@@ -44,8 +44,8 @@ class _SignUpApiService implements SignUpApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data;
-    final httpResponse = HttpResponse(value, _result);
+    final _value = _result.data;
+    final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
@@ -72,8 +72,8 @@ class _SignUpApiService implements SignUpApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data;
-    final httpResponse = HttpResponse(value, _result);
+    final _value = _result.data;
+    final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 
@@ -106,8 +106,8 @@ class _SignUpApiService implements SignUpApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = _result.data;
-    final httpResponse = HttpResponse(value, _result);
+    final _value = _result.data;
+    final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 

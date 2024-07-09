@@ -20,6 +20,7 @@ class MainView extends StatefulWidget {
 class _MainViewState extends State<MainView> {
   final _profileVM = Get.put(ProfileViewModel());
   final _homeVM = Get.put(HomeViewModel());
+  final _communityVM = Get.put(CommunityViewModel());
 
   var _index = 0;
 
@@ -28,6 +29,7 @@ class _MainViewState extends State<MainView> {
     super.initState();
     _profileVM.getProfile();
     _homeVM.getBanner();
+    _communityVM.getPosts();
   }
 
   final List<Widget> _pages = [

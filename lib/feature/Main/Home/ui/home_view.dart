@@ -65,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             SuggestionCell(
-              title: "이런 교수님은 어때요?",
+              title: "매칭요청이 왔어요",
               leading: CupertinoButton(
                 onPressed: () {},
                 child: Image(

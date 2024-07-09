@@ -36,6 +36,7 @@ class RankingView extends StatelessWidget {
                       ),
                     ],
                   ),
+                  SizedBox(height: 10),
                   for (int i = 0; i < 20; i++)
                     Padding(
                       padding: EdgeInsets.only(bottom: 14),
