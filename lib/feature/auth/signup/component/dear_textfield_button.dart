@@ -1,3 +1,5 @@
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DearTextFieldButton extends StatelessWidget {
@@ -10,28 +12,29 @@ class DearTextFieldButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
+    return CupertinoButton(
       onPressed: () {
         action();
       },
-      style: ElevatedButton.styleFrom(
-        minimumSize: Size.zero,
-        padding: EdgeInsets.zero,
-        fixedSize: Size(73, 40),
-        foregroundColor: Colors.white,
-        backgroundColor: Color(0xff0E2764),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Color(0xff0E2764),
+            border: Border.all(color: Color(0xff0E2764)),
+            borderRadius: BorderRadius.circular(10)
         ),
-      ),
-      child: Text(
-        "${buttonText}",
-        style: TextStyle(
-          height: 1.2,
-          fontFamily: "Pretendard",
-          fontSize: 15,
-        ),
-      ),
+        child: Padding(
+          padding: EdgeInsets.all(10),
+          child: Text(
+            buttonText,
+            style: TextStyle(
+              color: DearColors.white,
+              fontFamily: "Pretendard",
+              fontSize: 13,
+              fontWeight: FontWeight.w500
+            ),
+          ),
+        )
+      )
     );
   }
 }

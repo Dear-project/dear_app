@@ -1,11 +1,14 @@
+import 'package:dear_app/Feature/Main/Community/model/community_response.dart';
 import 'package:dear_app/Feature/Main/Community/ui/community/in_community_view.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CommunityCell extends StatelessWidget {
-  const CommunityCell({super.key});
+  CommunityResponse model;
+  CommunityCell({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -15,43 +18,49 @@ class CommunityCell extends StatelessWidget {
         ),
         child: Column(
           children: [
-            Container(
-              padding: EdgeInsets.symmetric(horizontal: 10),
-              child: MaterialButton(
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 25),
+              child: CupertinoButton(
+                padding: EdgeInsets.zero,
                 onPressed: () {
                   Get.to(() => InCommunityView());
                 },
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SizedBox(height: 24),
-                    Text(
-                      "스프링부트 알려주실 분 찾습니다ㅜㅜ",
-                      style: TextStyle(
-                          fontFamily: "Pretendard",
-                          fontSize: 17,
-                          fontWeight: FontWeight.w600),
-                    ),
-                    SizedBox(height: 5),
-                    Text(
-                      "2024년 6월 8일 오후 2시 11분",
-                      style: TextStyle(
-                        fontFamily: "Pretendard",
-                        fontSize: 10,
-                        fontWeight: FontWeight.w500,
-                        color: Color(0xff787878),
-                      ),
-                    ),
-                    SizedBox(height: 11),
-                    Text(
-                      "지금 서버공부하고 싶은데 어떻게 시작하는지 모르겠어요ㅜㅜ스프링부트좀 알려주세요",
-                      style: TextStyle(
-                        fontFamily: "Pretendard",
-                        fontSize: 14,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
+                child: SizedBox(
+                  width: double.infinity,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(height: 24),
+                        Text(
+                          model.title,
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Pretendard",
+                              fontSize: 17,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(height: 5),
+                        Text(
+                          "2024년 6월 8일 오후 2시 11분",
+                          style: TextStyle(
+                            fontFamily: "Pretendard",
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xff787878),
+                          ),
+                        ),
+                        SizedBox(height: 11),
+                        Text(
+                          model.content,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontFamily: "Pretendard",
+                            fontSize: 14,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
+                    )
                 ),
               ),
             ),
@@ -77,7 +86,7 @@ class CommunityCell extends StatelessWidget {
                       ),
                       SizedBox(width: 7),
                       Text(
-                        "박유현 • 2024.06.08",
+                        "${model.userId} • 2024.06.08",
                         style: TextStyle(
                           fontFamily: "Pretendard",
                           fontWeight: FontWeight.w500,
