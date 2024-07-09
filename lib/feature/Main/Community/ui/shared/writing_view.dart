@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Auth/signup/component/dear_textfield_button.dart';
+import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -13,8 +14,15 @@ class WritingView extends StatefulWidget {
 }
 
 class _WritingViewState extends State<WritingView> {
-  TextEditingController _titleController = TextEditingController();
-  TextEditingController _contextController = TextEditingController();
+
+
+  final _communityVM = Get.put(CommunityViewModel());
+
+  @override
+  void initState() {
+    super.initState();
+    _communityVM.initTextController();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,18 +55,16 @@ class _WritingViewState extends State<WritingView> {
             fontSize: 20,
           ),
         ),
+        toolbarHeight: 80,
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 16),
-            child: Transform.scale(
-              scale: 0.8,
-              child: DearTextFieldButton(
+            child: DearTextFieldButton(
                   action: () {
-                    print("게시하기 button clicked!");
+                    _communityVM.addPosts();
                   },
                   buttonText: "게시하기"),
             ),
-          ),
         ],
       ),
       body: Column(
@@ -66,7 +72,7 @@ class _WritingViewState extends State<WritingView> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 27),
             child: TextField(
-              controller: _titleController,
+              controller: _communityVM.titleController,
               style: TextStyle(
                 fontFamily: "Pretendard",
               ),
@@ -92,7 +98,7 @@ class _WritingViewState extends State<WritingView> {
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 27),
             child: TextField(
-              controller: _contextController,
+              controller: _communityVM.contentController,
               style: TextStyle(
                 fontFamily: "Pretendard",
               ),
