@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Main/Profile/repository/profile_repository.dart';
+import 'package:dear_app/Shared/controller/user_controller.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/model/user_profile_response.dart';
@@ -14,6 +15,8 @@ import 'package:image_picker/image_picker.dart';
 
 class ProfileViewModel extends GetxController {
   final storageService = Get.find<SecureStorageService>();
+  final UserController userController = Get.find();
+
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
   final imageCropper = ImageCropper();
@@ -35,10 +38,13 @@ class ProfileViewModel extends GetxController {
     badgeList.value = [];
 
     if (response.statusCode == HttpStatus.ok) {
+
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(
           response.data,
           (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
       model.value = profileResponse.data;
+
+      userController.updateUser(profileResponse.data);
 
       if (model.value?.schoolName != null) {
         badgeList.value?.add(model.value!.schoolName!);

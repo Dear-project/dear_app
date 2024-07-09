@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "991212627103",
+    "project_id": "dear-49a5e",
+    "storage_bucket": "dear-49a5e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:991212627103:android:50bdc3caa7d53bd095aeaa",
+        "android_client_info": {
+          "package_name": "kr.hs.dgsw.dear_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDr4GUwH9zIQH0qHAiRyVz1Be3MN0zCF4c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
