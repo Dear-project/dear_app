@@ -20,7 +20,6 @@ class _ProfessorListViewState extends State<ProfessorListView> {
 
   @override
   void initState() {
-    print("professor initState 실행됨");
     _discoverVM.getProfessor();
     super.initState();
   }

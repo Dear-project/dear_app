@@ -16,7 +16,6 @@ class DiscoverRepositoryImpl implements DiscoverRepository {
   @override
   Future<ApiResponse> getProfessor({required DiscoverRequest discoverRequest}) async {
     ApiResponse apiResponse = await _apiService.getProfessor(discoverRequest.page, discoverRequest.size).then((httpResponse) async {
-      print(httpResponse.response.data);
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
           data: httpResponse.data
