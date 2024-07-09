@@ -60,7 +60,7 @@ class _ProfessorListViewState extends State<ProfessorListView> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                            ProfessorProfileView()));
+                                            ProfessorProfileView(professorInfo: _discoverVM.model.value != null ? _discoverVM.model.value!.elementAt(index) : null,)));
                               },
                               child: ProfessorCell(professorInfo: _discoverVM.model.value != null ? _discoverVM.model.value!.elementAt(index) : null,),
                             ),
