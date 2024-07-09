@@ -75,11 +75,11 @@ class _UserApiService implements UserApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final value = ResponseData<UserProfileResponse>.fromJson(
+    final _value = ResponseData<UserProfileResponse>.fromJson(
       _result.data!,
       (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>),
     );
-    final httpResponse = HttpResponse(value, _result);
+    final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }
 

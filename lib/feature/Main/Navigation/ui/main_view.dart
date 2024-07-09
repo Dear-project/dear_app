@@ -1,11 +1,11 @@
 import 'package:dear_app/Feature/Main/Chat/ui/conversation_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/main_community_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
+import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
 import 'package:dear_app/Shared/component/dear_tab_view.dart';
 import 'package:dear_app/Shared/model/dear_tab_view_item.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
