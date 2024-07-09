@@ -23,6 +23,7 @@ class _ProfileViewState extends State<ProfileView> {
   @override
   void initState() {
     super.initState();
+    print("${_profileVM.model.value?.name}");
   }
 
   @override

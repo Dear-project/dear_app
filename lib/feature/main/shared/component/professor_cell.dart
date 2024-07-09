@@ -1,7 +1,13 @@
+import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 
 class ProfessorCell extends StatelessWidget {
+
+  DiscoverResponse? professorInfo;
+
+  ProfessorCell({this.professorInfo});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,7 +32,7 @@ class ProfessorCell extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  "이해준",
+                  "${professorInfo != null ? professorInfo!.name : ""}",
                   style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 14,
@@ -34,31 +40,14 @@ class ProfessorCell extends StatelessWidget {
                       color: Colors.black),
                 ),
                 Text(
-                  "영남이공대학 박승철 헤어과",
+                  "${professorInfo != null ? professorInfo!.school : ""} ${professorInfo != null ? professorInfo!.major : ""}",
                   style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 12,
                       fontWeight: FontWeight.w400,
                       color: Color(0xff787878)),
                 ),
-                Row(
-                  children: [
-                    Image(
-                      image: DearIcons.book.image,
-                      width: 7,
-                      height: 9,
-                    ),
-                    SizedBox(width: 2),
-                    Text(
-                      "전문과목 : 수능영어, 고등진로",
-                      style: TextStyle(
-                          fontFamily: "Pretendard",
-                          fontSize: 10,
-                          fontWeight: FontWeight.w400,
-                          color: Color(0xff787878)),
-                    )
-                  ],
-                ),
+                SizedBox(height: 30),
               ],
             ),
             Spacer(),
