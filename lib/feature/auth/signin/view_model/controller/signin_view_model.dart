@@ -5,6 +5,7 @@ import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Auth/Signin/model/signin_request.dart';
 import 'package:dear_app/Feature/Auth/Signin/repository/signin_repository.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
+import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/authentication.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
@@ -13,6 +14,7 @@ import 'package:dear_app/Shared/repository/user_repository.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SigninViewModel extends GetxController {
@@ -27,7 +29,10 @@ class SigninViewModel extends GetxController {
 
   RxBool loading = false.obs;
 
+  Rx<UserType> userRole = Rx<UserType>(UserType.STUDENT);
+
   Future<bool> signIn() async {
+
     if (emailController.value.text.isEmpty) {
       Utils.snackBar('알림', '이메일을 입력해 주세요.');
       return false;
