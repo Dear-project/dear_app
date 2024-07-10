@@ -66,7 +66,7 @@ class _FirstSigninViewState extends State<FirstSigninView> {
                   SizedBox(height: 15),
                   InputPasswordWidget(),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
@@ -89,6 +89,7 @@ class _FirstSigninViewState extends State<FirstSigninView> {
                       ),
                     ),
                   ),
+                  SizedBox(height: 220),
                   Obx(() => RoundButton(
                       width: 340,
                       height: 55,

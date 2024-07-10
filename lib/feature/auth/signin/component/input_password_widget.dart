@@ -11,6 +11,7 @@ class InputPasswordWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 340,
+      height: 56,
       child: TextFormField(
         controller: _signinVM.passwordController.value,
         focusNode: _signinVM.passwordFocusNode.value,

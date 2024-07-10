@@ -11,6 +11,7 @@ class InputEmailWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 340,
+      height: 56,
       child: TextFormField(
         controller: _signInVM.emailController.value,
         onChanged: (value) {},
