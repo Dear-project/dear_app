@@ -18,8 +18,11 @@ class ProfessorCell extends StatelessWidget {
             Container(
               width: 75,
               height: 75,
-              child: SizedBox(
-                child: Image(
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.all(Radius.circular(16)),
+                image: DecorationImage(
+                  fit: BoxFit.fill,
                   image: professorInfo != null
                       ? professorInfo!.profileImage != null
                           ? NetworkImage(professorInfo!.profileImage!)
