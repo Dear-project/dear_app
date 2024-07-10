@@ -23,7 +23,7 @@ class CommunityResponse {
   String? modifiedDateTime;
 
   @JsonKey(name: "imagePath")
-  String? imagePath;
+  dynamic imagePath;
 
   @JsonKey(name: "profileImage")
   String? profileImage;
