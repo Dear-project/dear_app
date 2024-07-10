@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dear_app/Feature/Auth/School/api/school_api_service.dart';
 import 'package:dear_app/Feature/Auth/School/model/register_major_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_major_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_request.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/net/http_client.dart';
@@ -13,7 +14,7 @@ abstract class SchoolRepository {
       {required SearchSchoolRequest searchSchoolRequest});
 
   Future<ApiResponse> searchMajor(
-      {required SearchSchoolRequest searchSchoolRequest});
+      {required SearchMajorRequest searchMajorRequest});
 
   Future<ApiResponse> registerSchool(
   {required RegisterSchoolRequest registerSchoolRequest});
@@ -46,9 +47,9 @@ class SchoolRepositoryImpl implements SchoolRepository {
 
   @override
   Future<ApiResponse> searchMajor(
-      {required SearchSchoolRequest searchSchoolRequest}) async {
+      {required SearchMajorRequest searchMajorRequest}) async {
     ApiResponse apiResponse = await _apiService
-        .searchMajor(searchSchoolRequest.gubunType, searchSchoolRequest.keyword)
+        .searchMajor(searchMajorRequest.keyword)
         .then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode!,

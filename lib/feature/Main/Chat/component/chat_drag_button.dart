@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum ChatDragButtonType { silent, block, exit }
@@ -31,15 +32,16 @@ class ChatDragButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialButton(
-      minWidth: 0,
+    return CupertinoButton(
       padding: EdgeInsets.zero,
-      shape: Border(),
       onPressed: () {
         print("버튼 클릭 됨");
       },
-      color: getButtonColor(),
       child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.rectangle,
+          color: getButtonColor()
+        ),
         width: 56,
         height: 70,
         alignment: Alignment.center,

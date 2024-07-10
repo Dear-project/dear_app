@@ -16,15 +16,15 @@ abstract class SchoolApiService {
   Future<HttpResponse<SearchSchoolResponse>> search(
       @Query('gubunType') String gubunType, @Query('keyword') String keyword);
 
-  @GET('/school/major/list')
+  @GET('/major/list')
   Future<HttpResponse<SearchMajorResponse>> searchMajor(
-      @Query('gubunType') String gubunType, @Query('keyword') String keyword);
+      @Query('keyword') String keyword);
 
   @POST('/school')
   Future<HttpResponse> registerSchool(
       @Body() RegisterSchoolRequest registerSchoolRequest);
 
-  @POST('/school/major')
+  @POST('/major')
   Future<HttpResponse> registerMajor(
       @Body() RegisterMajorRequest registerMajorRequest);
 }

@@ -4,6 +4,7 @@ import 'package:dear_app/Feature/Auth/School/model/major_info.dart';
 import 'package:dear_app/Feature/Auth/School/model/register_major_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
+import 'package:dear_app/Feature/Auth/School/model/search_major_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_major_response.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_response.dart';
@@ -63,8 +64,7 @@ class SchoolViewModel extends GetxController {
     }
     // 전공 검색 시 계열 param 없음 , api 요청해야됨
     ApiResponse response = await _repository.searchMajor(
-        searchSchoolRequest: SearchSchoolRequest(
-            gubunType: SchoolType.UNIV.key, keyword: keyword));
+        searchMajorRequest: SearchMajorRequest(keyword: keyword));
     SearchMajorResponse searchMajorResponse = response.data;
     selectedMajorlInfoIndex.value = -1;
     majorInfoList.value = searchMajorResponse.data as List<MajorInfo>;

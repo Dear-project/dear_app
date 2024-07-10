@@ -21,7 +21,6 @@ class DiscoverRepositoryImpl implements DiscoverRepository {
           data: httpResponse.data
       );
     }).onError((DioException e, stackTrace) async {
-      print(e);
       return ApiResponse.error(
           (e.response == null)
               ? HttpStatus.badRequest : e.response!.statusCode!,

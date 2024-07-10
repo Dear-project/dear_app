@@ -12,6 +12,7 @@ DiscoverResponse _$DiscoverResponseFromJson(Map<String, dynamic> json) =>
       json['name'] as String,
       json['school'] as String,
       json['major'] as String,
+      json['profileImage'] as String,
     );
 
 Map<String, dynamic> _$DiscoverResponseToJson(DiscoverResponse instance) =>
@@ -20,4 +21,5 @@ Map<String, dynamic> _$DiscoverResponseToJson(DiscoverResponse instance) =>
       'name': instance.name,
       'school': instance.school,
       'major': instance.major,
+      'profileImage': instance.profileImage,
     };

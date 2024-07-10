@@ -6,12 +6,10 @@ class AllChatView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        ChatCell(),
-        ChatCell(),
-        ChatCell(),
-      ],
-    );
+    return Expanded(
+        child: SingleChildScrollView(
+            child: Column(
+      children: [for (int i = 0; i < 30; i++) ChatCell()],
+    )));
   }
 }
