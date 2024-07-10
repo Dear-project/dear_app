@@ -4,7 +4,6 @@ import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/material.dart';
 
 class ProfessorCell extends StatelessWidget {
-
   DiscoverResponse? professorInfo;
 
   ProfessorCell({this.professorInfo});
@@ -25,7 +24,13 @@ class ProfessorCell extends StatelessWidget {
                   border: Border.all(color: Color(0xffD1D1D1)),
                   color: Colors.white),
               child: SizedBox(
-                child: Image(image: DearImages.professorPlaceholder.image),
+                child: Image(
+                  image: professorInfo != null
+                      ? professorInfo!.profileImage != null
+                          ? NetworkImage(professorInfo!.profileImage!)
+                          : DearImages.professorPlaceholder.image
+                      : DearImages.professorPlaceholder.image,
+                ),
               ),
             ),
             SizedBox(

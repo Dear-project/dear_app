@@ -17,7 +17,7 @@ class DiscoverResponse {
   String major;
 
   @JsonKey(name: "profileImage")
-  String profileImage;
+  String? profileImage;
 
   DiscoverResponse(
       this.professorId,

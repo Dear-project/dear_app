@@ -49,20 +49,6 @@ class _ProfessorListViewState extends State<ProfessorListView> {
                   child: SingleChildScrollView(
                     child: Column(
                       children: [
-                        Padding( // 이 패딩 위젯 지워야함(더미)
-                          padding: EdgeInsets.only(bottom: 14),
-                          child: CupertinoButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          ProfessorProfileView(professorInfo: null,)));
-                            },
-                            child: ProfessorCell(professorInfo:  null,),
-                          ),
-                        ),
                         ...List.generate(
                           _discoverVM.model.value!.length,
                           (index) => Padding(
