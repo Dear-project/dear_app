@@ -13,6 +13,9 @@ class UserProfileResponse {
   @JsonKey(name: "name")
   String name;
 
+  @JsonKey(name: "role")
+  String role;
+
   @JsonKey(name: "schoolName")
   String? schoolName;
 
@@ -35,6 +38,7 @@ class UserProfileResponse {
       this.id,
       this.email,
       this.name,
+      this.role,
       this.schoolName,
       this.lClass,
       this.mClass,
