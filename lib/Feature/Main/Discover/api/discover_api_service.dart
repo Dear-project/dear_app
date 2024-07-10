@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Discover/model/discover_request.dart';
+import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
 import 'package:dear_app/Shared/model/authentication.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/net/api_constants.dart';
@@ -16,4 +17,9 @@ abstract class DiscoverApiService {
       @Query("page") int page,
       @Query("size") int size
       );
+
+  @POST('/matching')
+  Future<HttpResponse> sendMatchingRequest({
+    @Body() MatchingRequest? matchingRequest
+  });
 }

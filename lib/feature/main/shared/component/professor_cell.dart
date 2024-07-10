@@ -1,5 +1,6 @@
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/material.dart';
 
 class ProfessorCell extends StatelessWidget {
@@ -23,6 +24,9 @@ class ProfessorCell extends StatelessWidget {
                   borderRadius: BorderRadius.all(Radius.circular(5)),
                   border: Border.all(color: Color(0xffD1D1D1)),
                   color: Colors.white),
+              child: SizedBox(
+                child: Image(image: DearImages.professorPlaceholder.image),
+              ),
             ),
             SizedBox(
               width: 15,

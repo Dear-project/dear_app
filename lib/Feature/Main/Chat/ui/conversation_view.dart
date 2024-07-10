@@ -40,9 +40,7 @@ class _ConversationViewState extends State<ConversationView> {
 
   @override
   void didChangeDependencies() async {
-    // TODO: implement didChangeDependencies
     super.didChangeDependencies();
-
   }
 
   @override
@@ -53,6 +51,7 @@ class _ConversationViewState extends State<ConversationView> {
         backgroundColor: DearColors.white,
         toolbarHeight: 40,
         elevation: 0,
+        scrolledUnderElevation: 0.0,
         title: Text(
           "채팅",
           style: TextStyle(
@@ -76,37 +75,35 @@ class _ConversationViewState extends State<ConversationView> {
         ],
       ),
       body: SafeArea(
-        child: Expanded(
-          child: Obx(
-            () {
-              try {
-                QuerySnapshot<Map<String, dynamic>> conversations =
-                    _vm.conversations;
-                if (conversations.docs.isNotEmpty) {
-                  return ListView.separated(
-                    shrinkWrap: true,
-                    separatorBuilder: (context, index) =>
-                        const Divider(height: 10),
-                    itemCount: conversations.docs.length,
-                    itemBuilder: ((context, index) {
-                      final DocumentSnapshot<Map<String, dynamic>>
-                          conversation = conversations.docs[index];
-                      return ChatListItem(
-                        conversation: conversation,
-                        onTap: handleTap,
-                      );
-                    }),
-                  );
-                } else {
-                  return const NoData(svgName: 'chat', text: "대화가 없습니다.");
-                }
-              } catch (e) {
-                return CircularProgressIndicator(
-                    valueColor: AlwaysStoppedAnimation<Color>(
-                        Theme.of(context).primaryColor));
+        child: Obx(
+          () {
+            try {
+              QuerySnapshot<Map<String, dynamic>> conversations =
+                  _vm.conversations;
+              if (conversations.docs.isNotEmpty) {
+                return ListView.separated(
+                  shrinkWrap: true,
+                  separatorBuilder: (context, index) =>
+                      const Divider(height: 10),
+                  itemCount: conversations.docs.length,
+                  itemBuilder: ((context, index) {
+                    final DocumentSnapshot<Map<String, dynamic>> conversation =
+                        conversations.docs[index];
+                    return ChatListItem(
+                      conversation: conversation,
+                      onTap: handleTap,
+                    );
+                  }),
+                );
+              } else {
+                return const NoData(svgName: 'chat', text: "대화가 없습니다.");
               }
-            },
-          ),
+            } catch (e) {
+              return CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      Theme.of(context).primaryColor));
+            }
+          },
         ),
       ),
     );
@@ -120,9 +117,12 @@ class _ConversationViewState extends State<ConversationView> {
         CustomIndicatorDialog(context, isDismissible: false);
     await pr.show();
 
-    await _vm.toChatView(conversation: conversation, onSuccess: () async {
-      await pr.hide();
-    },);
+    await _vm.toChatView(
+      conversation: conversation,
+      onSuccess: () async {
+        await pr.hide();
+      },
+    );
 
     // await pr.hide();
   }

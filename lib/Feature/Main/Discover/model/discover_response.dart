@@ -16,11 +16,16 @@ class DiscoverResponse {
   @JsonKey(name: "major")
   String major;
 
+  @JsonKey(name: "profileImage")
+  String profileImage;
+
   DiscoverResponse(
       this.professorId,
       this.name,
       this.school,
-      this.major);
+      this.major,
+      this.profileImage
+      );
 
   factory DiscoverResponse.fromJson(Map<String, dynamic> json) =>
       _$DiscoverResponseFromJson(json);

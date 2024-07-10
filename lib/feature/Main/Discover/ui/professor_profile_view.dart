@@ -1,12 +1,16 @@
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
+import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
+import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfessorProfileView extends StatelessWidget {
   DiscoverResponse? professorInfo;
+  final _discoverVM = Get.put(DiscoverViewModel());
 
   ProfessorProfileView({this.professorInfo});
 
@@ -153,6 +157,7 @@ class ProfessorProfileView extends StatelessWidget {
             child: CupertinoButton(
               onPressed: () {
                 print("채팅하기 button clicked!");
+                _discoverVM.sendMatchingRequest(MatchingRequest(subjectId: professorInfo != null ? professorInfo!.professorId : null));
               },
               color: DearColors.main,
               child: Container(

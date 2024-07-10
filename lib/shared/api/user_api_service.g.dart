@@ -6,7 +6,7 @@ part of 'user_api_service.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
 
 class _UserApiService implements UserApiService {
   _UserApiService(
@@ -43,11 +43,11 @@ class _UserApiService implements UserApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = ResponseData<UserProfileResponse>.fromJson(
+    final value = ResponseData<UserProfileResponse>.fromJson(
       _result.data!,
       (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>),
     );
-    final httpResponse = HttpResponse(_value, _result);
+    final httpResponse = HttpResponse(value, _result);
     return httpResponse;
   }
 

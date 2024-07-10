@@ -55,15 +55,9 @@ class _SchoolApiService implements SchoolApiService {
   }
 
   @override
-  Future<HttpResponse<SearchMajorResponse>> searchMajor(
-    String gubunType,
-    String keyword,
-  ) async {
+  Future<HttpResponse<SearchMajorResponse>> searchMajor(String keyword) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'gubunType': gubunType,
-      r'keyword': keyword,
-    };
+    final queryParameters = <String, dynamic>{r'keyword': keyword};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result = await _dio.fetch<Map<String, dynamic>>(
@@ -74,7 +68,7 @@ class _SchoolApiService implements SchoolApiService {
     )
             .compose(
               _dio.options,
-              '/school/major/list',
+              '/major/list',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -134,7 +128,7 @@ class _SchoolApiService implements SchoolApiService {
     )
             .compose(
               _dio.options,
-              '/school/major',
+              '/major',
               queryParameters: queryParameters,
               data: _data,
             )
