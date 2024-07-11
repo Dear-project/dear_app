@@ -1,5 +1,6 @@
 import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/conversation_view.dart';
+import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/main_community_view.dart';
@@ -22,6 +23,7 @@ class _MainViewState extends State<MainView> {
   final _profileVM = Get.put(ProfileViewModel());
   final _homeVM = Get.put(HomeViewModel());
   final _communityVM = Get.put(CommunityViewModel());
+  final _chatVM = Get.put(ChatViewModel());
 
 
   var _index = 0;

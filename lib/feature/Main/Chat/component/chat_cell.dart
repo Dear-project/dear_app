@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Chat/component/chat_drag_button.dart';
+import 'package:dear_app/Feature/Main/Chat/model/room_response.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/in_chat_view.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,7 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatCell extends StatefulWidget {
-  ChatCell({super.key});
+  final RoomResponse model;
+  ChatCell({super.key, required this.model});
 
   @override
   State<ChatCell> createState() => _ChatCellState();
@@ -84,31 +86,22 @@ class _ChatCellState extends State<ChatCell> {
                               child: SizedBox(
                                 width: MediaQuery.of(context).size.width * 0.68,
                                 child: Column(
-                                  children: const [
+                                  children: [
                                     Row(
                                       mainAxisAlignment:
                                           MainAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "이해준",
+                                          widget.model.chatName,
                                           style: TextStyle(
                                               fontFamily: "Pretendard",
                                               fontWeight: FontWeight.w500,
                                               fontSize: 17,
                                               color: Colors.black),
                                         ),
-                                        SizedBox(width: 10),
-                                        Text(
-                                          "영남이공대학 박승철 헤어과",
-                                          style: TextStyle(
-                                            fontFamily: "Pretendard",
-                                            fontSize: 11,
-                                            color: Color(0xffAAAAAA),
-                                          ),
-                                        ),
                                         Spacer(),
                                         Text(
-                                          "어제",
+                                          widget.model.lastMessageTimeStamp.split('T').first,
                                           style: TextStyle(
                                             fontFamily: "Pretendard",
                                             fontSize: 10,
@@ -124,7 +117,7 @@ class _ChatCellState extends State<ChatCell> {
                                           MainAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "하이",
+                                          widget.model.lastMessage,
                                           style: TextStyle(
                                             fontFamily: "Pretendard",
                                             fontSize: 15,

@@ -38,6 +38,7 @@ class _FirstSignupViewState extends State<FirstSignupView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         backgroundColor: Color(0xffFFFFFF),
         actions: [
           CupertinoButton(

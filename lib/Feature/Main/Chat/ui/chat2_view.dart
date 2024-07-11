@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dear_app/Feature/Main/Chat/component/chat_message.dart';
-import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
+import 'package:dear_app/Feature/Main/Chat/view_model/chat2_view_model.dart';
 import 'package:dear_app/Shared/constants/constants.dart';
 import 'package:dear_app/Shared/controller/user_controller.dart';
 import 'package:dear_app/Shared/model/message.dart';
@@ -25,7 +25,7 @@ class Chat2View extends StatefulWidget {
 
 class _Chat2ViewState extends State<Chat2View>
     with AutomaticKeepAliveClientMixin {
-  final _vm = Get.put(ChatViewModel());
+  final _vm = Get.put(Chat2ViewModel());
   final UserController userController = Get.find();
 
   @override
@@ -228,7 +228,7 @@ class _Chat2ViewState extends State<Chat2View>
     _vm.textController.value.dispose();
     _vm.messageScrollController.value.dispose();
     _vm.dispose();
-    Get.delete<ChatViewModel>();
+    Get.delete<Chat2ViewModel>();
     super.dispose();
   }
 

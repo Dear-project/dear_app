@@ -20,12 +20,13 @@ class MyWritingCell extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               DearIcons.communityProfile,
-              Column(
+              Padding(
+                padding: EdgeInsets.only(left: 14),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.only(left: 14),
-                    child: Text(
+                    Text(
                       name,
                       style: TextStyle(
                         fontFamily: "Pretendard",
@@ -33,7 +34,6 @@ class MyWritingCell extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                       ),
                     ),
-                  ),
                   Text(
                     "내가 쓴 글 ${2}",
                     style: TextStyle(
@@ -41,7 +41,7 @@ class MyWritingCell extends StatelessWidget {
                       fontSize: 13,
                     ),
                   ),
-                ],
+                ]),
               )
             ],
           ),

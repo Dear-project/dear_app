@@ -1,3 +1,5 @@
+import 'package:dear_app/Feature/Main/Chat/model/room_request.dart';
+import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
 import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
@@ -11,6 +13,7 @@ import 'package:get/get.dart';
 class ProfessorProfileView extends StatelessWidget {
   DiscoverResponse? professorInfo;
   final _discoverVM = Get.put(DiscoverViewModel());
+  final _chatVM = Get.put(ChatViewModel());
 
   ProfessorProfileView({this.professorInfo});
 
@@ -36,7 +39,7 @@ class ProfessorProfileView extends StatelessWidget {
                 color: Colors.black,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Get.back();
               }),
         ),
         title: Text(
@@ -156,8 +159,10 @@ class ProfessorProfileView extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 54,
             child: CupertinoButton(
               onPressed: () {
-                print("채팅하기 button clicked!");
-                _discoverVM.sendMatchingRequest(MatchingRequest(subjectId: professorInfo != null ? professorInfo!.professorId : null));
+                if (professorInfo != null) {
+                  _chatVM.createRoom(RoomRequest(roomName: professorInfo!.name,
+                      joinUserId: professorInfo!.professorId));
+                }
               },
               color: DearColors.main,
               child: Container(

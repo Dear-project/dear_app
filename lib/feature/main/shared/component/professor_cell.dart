@@ -1,6 +1,3 @@
-import 'dart:io';
-import 'dart:typed_data';
-
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
@@ -12,7 +9,7 @@ class ProfessorCell extends StatelessWidget {
 
   final Function? action;
 
-  ProfessorCell({this.professorInfo, required this.action});
+  ProfessorCell({this.professorInfo, this.action});
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +44,7 @@ class ProfessorCell extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "${professorInfo != null ? professorInfo!.name : ""}",
+                      professorInfo != null ? professorInfo!.name : "",
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 14,
