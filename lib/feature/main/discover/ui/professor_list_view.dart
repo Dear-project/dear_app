@@ -53,19 +53,41 @@ class _ProfessorListViewState extends State<ProfessorListView> {
                           _discoverVM.model.value!.length,
                           (index) => Padding(
                             padding: EdgeInsets.only(bottom: 14),
-                            child: CupertinoButton(
-                              padding: EdgeInsets.zero,
-                              onPressed: () {
+                            child: ProfessorCell(
+                              professorInfo: _discoverVM.model.value != null
+                                  ? _discoverVM.model.value!.elementAt(index)
+                                  : null,
+                              action: () {
                                 Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            ProfessorProfileView(professorInfo: _discoverVM.model.value != null ? _discoverVM.model.value!.elementAt(index) : null,)));
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => ProfessorProfileView(
+                                      professorInfo:
+                                          _discoverVM.model.value != null
+                                              ? _discoverVM.model.value!
+                                                  .elementAt(index)
+                                              : null,
+                                    ),
+                                  ),
+                                );
                               },
-                              child: ProfessorCell(professorInfo: _discoverVM.model.value != null ? _discoverVM.model.value!.elementAt(index) : null,),
                             ),
                           ),
+                          // child: CupertinoButton(
+                          //   padding: EdgeInsets.zero,
+                          //   onPressed: () {
+                          //     Navigator.push(
+                          //         context,
+                          //         MaterialPageRoute(
+                          //             builder: (context) =>
+                          //                 ProfessorProfileView(professorInfo: _discoverVM.model.value != null ? _discoverVM.model.value!.elementAt(index) : null,)));
+                          //   },
+                          //   child: ProfessorCell(professorInfo: _discoverVM.model.value != null ? _discoverVM.model.value!.elementAt(index) : null, action: () {
+                          //
+                          //   },),
+                          // ),
                         ),
+                        // ),
                       ],
                     ),
                   ),
