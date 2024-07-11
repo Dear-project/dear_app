@@ -23,22 +23,22 @@ class MyWritingCell extends StatelessWidget {
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    name,
-                    style: TextStyle(
-                      fontFamily: "Pretendard",
-                      fontSize: 20,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
                   Padding(
-                    padding: EdgeInsets.only(left: 12),
+                    padding: EdgeInsets.only(left: 14),
                     child: Text(
-                      "내가 쓴 글 ${2}",
+                      name,
                       style: TextStyle(
                         fontFamily: "Pretendard",
-                        fontSize: 13,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
                       ),
+                    ),
+                  ),
+                  Text(
+                    "내가 쓴 글 ${2}",
+                    style: TextStyle(
+                      fontFamily: "Pretendard",
+                      fontSize: 13,
                     ),
                   ),
                 ],
