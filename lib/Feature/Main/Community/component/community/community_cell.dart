@@ -8,7 +8,10 @@ import 'package:get/get.dart';
 
 class CommunityCell extends StatelessWidget {
   CommunityResponse model;
-  CommunityCell({super.key, required this.model});
+  int id;
+  CommunityCell({super.key, required this.model, required this.id});
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +26,7 @@ class CommunityCell extends StatelessWidget {
               child: CupertinoButton(
                 padding: EdgeInsets.zero,
                 onPressed: () {
-                  Get.to(() => InCommunityView());
+                  Get.to(() => InCommunityView(id: id));
                 },
                 child: SizedBox(
                   width: double.infinity,
@@ -41,7 +44,7 @@ class CommunityCell extends StatelessWidget {
                         ),
                         SizedBox(height: 5),
                         Text(
-                          "2024년 6월 8일 오후 2시 11분",
+                          model.getDate(),
                           style: TextStyle(
                             fontFamily: "Pretendard",
                             fontSize: 10,
@@ -86,7 +89,7 @@ class CommunityCell extends StatelessWidget {
                       ),
                       SizedBox(width: 7),
                       Text(
-                        "${model.userId} • 2024.06.08",
+                        "${model.userName} • ${model.createdDateTime?.split('T').first.split('-').join('.') ?? "날짜를 불러올 수 없습니다"}.",
                         style: TextStyle(
                           fontFamily: "Pretendard",
                           fontWeight: FontWeight.w500,

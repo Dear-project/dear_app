@@ -13,24 +13,32 @@ class CommunityView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Expanded(
       child: SingleChildScrollView(
-        child: Column(
+          child: Obx(
+        () => Column(
           children: [
-            ...List.generate(
-                _communityVM.model.value!.length,
-                (index) => Column(
-                      children: [
-                        CommunityCell(model: _communityVM.model.value![index]),
-                        SizedBox(
-                          height: 6,
-                        )
-                      ],
-                    )),
+            ...List.generate(_communityVM.model.value!.length, (index) {
+              if (_communityVM.model.value![index].title.trim() != "") {
+                return Column(
+                  children: [
+                    CommunityCell(
+                        model: _communityVM.model.value![index],
+                        id: _communityVM.model.value![index].id),
+                    SizedBox(
+                      height: 6,
+                    )
+                  ],
+                );
+              }
+              else {
+                return Container();
+              }
+            }),
             SizedBox(
               height: 100,
             )
           ],
         ),
-      ),
+      )),
     );
   }
 }

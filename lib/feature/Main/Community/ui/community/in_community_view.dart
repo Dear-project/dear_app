@@ -1,12 +1,16 @@
 import 'package:dear_app/Feature/Auth/Signup/component/dear_textfield_button.dart';
 import 'package:dear_app/Feature/Main/Community/component/community/in_community_comment.dart';
+import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class InCommunityView extends StatefulWidget {
-  const InCommunityView({super.key});
+  final int id;
+  const InCommunityView({super.key, required this.id});
+
 
   @override
   State<InCommunityView> createState() => _InCommunityViewState();
@@ -14,6 +18,13 @@ class InCommunityView extends StatefulWidget {
 
 class _InCommunityViewState extends State<InCommunityView> {
   TextEditingController _commentController = TextEditingController();
+  final _communityVM = Get.put(CommunityViewModel());
+
+  @override
+  void initState() {
+    super.initState();
+    _communityVM.getPostbyId(widget.id);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,14 +50,14 @@ class _InCommunityViewState extends State<InCommunityView> {
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    Navigator.pop(context);
+                    Get.back();
                   }),
             ],
           ),
         ),
         leadingWidth: 64,
       ),
-      body: Column(
+      body: Obx(() => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(
@@ -72,7 +83,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                "박유현",
+                                _communityVM.idInfo.value?.userName ?? "",
                                 style: TextStyle(
                                   fontFamily: "Pretendard",
                                   fontWeight: FontWeight.w700,
@@ -80,7 +91,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                                 ),
                               ),
                               Text(
-                                "2024.06.08. 오후 12:12",
+                                _communityVM.idInfo.value?.getDate() ?? "",
                                 style: TextStyle(
                                   fontFamily: "Pretendard",
                                   fontWeight: FontWeight.w500,
@@ -104,7 +115,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 27),
                     child: Text(
-                      "스프링부트 알려주실 분 찾습니다ㅜㅜ",
+                      _communityVM.idInfo.value?.title ?? "제목",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontWeight: FontWeight.w700,
@@ -116,7 +127,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 27),
                     child: Text(
-                      "지금 서버공부하고 싶은데 어떻게 시작하는지 모르겠어요ㅜㅜ 스프링부트좀 알려주세요",
+                      _communityVM.idInfo.value?.content ?? "내용",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontWeight: FontWeight.w500,
@@ -147,7 +158,7 @@ class _InCommunityViewState extends State<InCommunityView> {
             ),
           ),
         ],
-      ),
+      )),
       bottomSheet: BottomAppBar(
         color: DearColors.white,
         surfaceTintColor: DearColors.white,

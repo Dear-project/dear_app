@@ -84,7 +84,7 @@ class _InChatViewState extends State<InChatView> {
             child: SingleChildScrollView(
                 child: Column(
               children: [
-                for (int i = 0; i < 20; i++) MessageCell(isSelf: i % 2 != 0, message: "${i}")
+                for (int i = 0; i < 20; i++) MessageCell(isSelf: i % 2 != 0, message: "${i + 1}")
               ],
             )),
           ),
