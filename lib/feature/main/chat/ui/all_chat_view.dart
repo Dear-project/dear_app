@@ -37,6 +37,9 @@ class _AllChatViewState extends State<AllChatView> {
                           _chatVM.roomList.value!.length,
                           (index) => ChatCell(
                                 model: _chatVM.roomList.value![index],
+                                modAction: () {
+                                  _chatVM.clickedIndex = index;
+                                }
                               )),
                     ],
                   )

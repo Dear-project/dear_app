@@ -1,6 +1,7 @@
 import 'package:dear_app/Feature/Main/Chat/component/chat_drag_button.dart';
 import 'package:dear_app/Feature/Main/Chat/model/room_response.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/in_chat_view.dart';
+import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -8,7 +9,8 @@ import 'package:get/get.dart';
 
 class ChatCell extends StatefulWidget {
   final RoomResponse model;
-  ChatCell({super.key, required this.model});
+  final Function modAction;
+  ChatCell({super.key, required this.model, required this.modAction});
 
   @override
   State<ChatCell> createState() => _ChatCellState();
@@ -68,7 +70,8 @@ class _ChatCellState extends State<ChatCell> {
                   child: CupertinoButton(
                     padding: EdgeInsets.zero,
                     onPressed: () {
-                      Get.to(() => InChatView());
+                      widget.modAction();
+                      Get.to(() => InChatView(roomResponse: widget.model));
                     },
                     child: Container(
                       color: Colors.white,
