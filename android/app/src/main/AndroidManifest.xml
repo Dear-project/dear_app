@@ -3,6 +3,8 @@
         android:label="dear_app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
+        android:requestLegacyExternalStorage="true"
+        android:label="flutter_image_picker"
         <activity
             android:name=".MainActivity"
             android:exported="true"

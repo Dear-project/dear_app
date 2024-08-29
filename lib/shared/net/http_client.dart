@@ -38,10 +38,12 @@ class HttpClient {
     ));
   }
 
+
   Interceptor _interceptor() {
     return InterceptorsWrapper(
       onRequest: (options, handler) async {
         String? accessToken = await storageService.getAccessToken();
+
 
         if (accessToken == null) {
           handler.next(options);
@@ -50,7 +52,7 @@ class HttpClient {
 
         DateTime? expirationDateTime = getExp(accessToken!);
 
-        if (expirationDateTime == null) {
+        if (expirationDateTime  == null) {
           handler.next(options);
           return;
         }
@@ -82,7 +84,7 @@ class HttpClient {
   Future<bool> refresh(String refreshToken) async {
     try {
       Response response = await retryClient.post(
-        '${BASE_URL}/Auth/refresh',
+        '${BASE_URL}/auth/refresh',
         data: RefreshTokenRequest(refreshToken: refreshToken).toJson(),
       );
       if (response.statusCode == HttpStatus.ok) {
@@ -90,6 +92,9 @@ class HttpClient {
         await storageService.saveAccessToken(authentication.accessToken);
         await storageService.saveRefreshToken(authentication.refreshToken);
         return true;
+      }
+      else {
+        await storageService.clearAllTokens();
       }
     } catch (e) {
       await storageService.clearAllTokens();

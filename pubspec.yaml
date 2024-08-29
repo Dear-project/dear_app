@@ -23,6 +23,16 @@ dependencies:
   json_annotation: ^4.9.0
   fluttertoast: ^8.1.2
   flutter_secure_storage: ^9.2.2
+  image_picker: ^1.1.2
+  image_cropper: ^7.1.0
+  firebase_core: ^3.2.0
+  cached_network_image: ^3.3.1
+  cloud_firestore: ^5.1.0
+  timeago: ^3.7.0
+  infinite_scroll_pagination: ^4.0.0
+  shared_preferences: ^2.2.3
+  stomp_dart_client: ^2.0.0
+
 
 dev_dependencies:
   flutter_test:

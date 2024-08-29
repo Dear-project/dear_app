@@ -22,9 +22,10 @@ class _SignupPasswordViewState extends State<SignupPasswordView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.white,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+
+      backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
@@ -122,7 +123,6 @@ class _SignupPasswordViewState extends State<SignupPasswordView> {
             ],
           ),
         ),
-      ),
     );
   }
 }

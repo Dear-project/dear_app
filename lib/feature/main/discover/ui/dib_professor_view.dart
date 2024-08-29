@@ -13,11 +13,12 @@ class DibProfessorView extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              for (int i = 0; i < 20; i++)
-                Padding(
-                  padding: EdgeInsets.only(bottom: 14),
-                  child: ProfessorCell(),
-                ),
+              SizedBox(height: 26),
+              // for (int i = 0; i < 20; i++)
+              //   Padding(
+              //     padding: EdgeInsets.only(bottom: 14),
+              //     child: ProfessorCell(),
+              //   ),
             ],
           ),
         ),

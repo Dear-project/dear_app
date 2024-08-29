@@ -7,6 +7,8 @@ import 'package:dio/dio.dart';
 
 abstract class UserRepository {
   Future<ApiResponse> getProfile();
+  Future<ApiResponse> getProfileByEmail({required String email});
+
 }
 
 class UserRepositoryImpl implements UserRepository {
@@ -18,7 +20,26 @@ class UserRepositoryImpl implements UserRepository {
         await _apiService.profile().then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode!,
-          data: httpResponse.data ?? "");
+          data: httpResponse.data);
+    }).onError((DioException e, stackTrace) async {
+      return ApiResponse.error(
+          (e.response == null)
+              ? HttpStatus.badRequest
+              : e.response!.statusCode!,
+          (e.response == null) ? "" : e.response!.statusMessage!);
+    }).catchError((onError) {
+      return ApiResponse.error(HttpStatus.badRequest, "");
+    });
+    return apiResponse;
+  }
+
+  @override
+  Future<ApiResponse> getProfileByEmail({required String email}) async {
+    ApiResponse apiResponse =
+    await _apiService.getProfileByEmail(email).then((httpResponse) async {
+      return ApiResponse(
+          statusCode: httpResponse.response.statusCode!,
+          data: httpResponse.data);
     }).onError((DioException e, stackTrace) async {
       return ApiResponse.error(
           (e.response == null)

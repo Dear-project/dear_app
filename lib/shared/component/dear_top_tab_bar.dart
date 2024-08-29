@@ -1,4 +1,5 @@
 import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 enum TopBarType { Discover, Chat, Community }
@@ -36,6 +37,8 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
     super.dispose();
   }
 
+
+
   @override
   Widget build(BuildContext context) {
     return _tabBar();
@@ -45,9 +48,10 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
     return SizedBox(
       height: 40,
       child: TabBar(
-        // padding: EdgeInsets.symmetric(horizontal: 27),
+        splashFactory: NoSplash.splashFactory,
         isScrollable: true,
         controller: widget.tabController,
+        overlayColor: MaterialStateColor.resolveWith((states) => Colors.white),
         tabAlignment: TabAlignment.center,
         indicatorColor: DearColors.main,
         indicatorSize: widget.topBarType == TopBarType.Community

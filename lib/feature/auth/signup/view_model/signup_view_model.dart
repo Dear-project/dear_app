@@ -1,9 +1,9 @@
 import 'dart:io';
-
+import 'package:dear_app/Feature/Auth/Onboarding/ui/onboarding_view.dart';
+import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/email_auth_number_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/model/signup_request.dart';
 import 'package:dear_app/Feature/Auth/Signup/repository/signup_repository.dart';
-import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
@@ -40,6 +40,7 @@ class SignUpViewModel extends GetxController {
     loading.value = true;
     ApiResponse apiResponse = await _repository.emailVerification(email: email);
     loading.value = false;
+
     if (apiResponse.statusCode == HttpStatus.conflict) {
       Utils.snackBar('알림', '이미 사용중인 이메일입니다.');
       return false;
@@ -47,6 +48,7 @@ class SignUpViewModel extends GetxController {
       Utils.snackBar('알림', '이메일 주소를 확인해주세요.');
       return false;
     }
+
     return true;
   }
 
@@ -68,12 +70,16 @@ class SignUpViewModel extends GetxController {
         password: passwordController.value.text,
         name: nameController.value.text,
         birthDay: birthdateController.value.text,
-        type: type.value!.key);
+        userRole: type.value!.key);
+
     ApiResponse apiResponse =
         await _repository.signup(signupRequest: signupRequest);
-    if (apiResponse.statusCode == HttpStatus.created) {
+
+    print([apiResponse.statusCode, apiResponse.errorMessage]);
+
+    if (apiResponse.statusCode == HttpStatus.ok) {
       Get.delete<SignUpViewModel>();
-      Get.offAll(MainView());
+      Get.offAll(() => OnboardingView());
 
       return true;
     }

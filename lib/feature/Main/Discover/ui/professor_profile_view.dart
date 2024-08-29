@@ -1,11 +1,21 @@
-import 'package:dear_app/Feature/main/discover/component/professor_profile_cell.dart';
+import 'package:dear_app/Feature/Main/Chat/model/room_request.dart';
+import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
+import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
+import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
+import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
+import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProfessorProfileView extends StatelessWidget {
-  const ProfessorProfileView({super.key});
+  DiscoverResponse? professorInfo;
+  final _discoverVM = Get.put(DiscoverViewModel());
+  final _chatVM = Get.put(ChatViewModel());
+
+  ProfessorProfileView({this.professorInfo});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +39,7 @@ class ProfessorProfileView extends StatelessWidget {
                 color: Colors.black,
               ),
               onPressed: () {
-                Navigator.pop(context);
+                Get.back();
               }),
         ),
         title: Text(
@@ -39,7 +49,12 @@ class ProfessorProfileView extends StatelessWidget {
               fontWeight: FontWeight.w600,
               fontSize: 20),
         ),
-        actions: [DearIcons.bell],
+        actions: [
+          Padding(
+            padding: EdgeInsets.only(right: 27),
+            child: DearIcons.bell,
+          ),
+        ],
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -53,7 +68,7 @@ class ProfessorProfileView extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "이해준",
+                      "${professorInfo != null ? professorInfo!.name : ""}",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontWeight: FontWeight.w600,
@@ -61,7 +76,7 @@ class ProfessorProfileView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "영남이공대학 박승철 헤어과 ",
+                      "${professorInfo != null ? professorInfo!.school : ""} ${professorInfo != null ? professorInfo!.major : ""}",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontSize: 12,
@@ -75,64 +90,64 @@ class ProfessorProfileView extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 27),
-            child: Row(
-              children: [
-                Transform.scale(
-                  scale: 0.3,
-                  child: DearIcons.book,
-                ),
-                Text(
-                  "전문과목 : 수능영어, 고등진로",
-                  style: TextStyle(
-                      fontFamily: "Pretendard",
-                      fontSize: 10,
-                      color: Color(0xff787878),
-                      height: 1.2),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 27),
-            child: Text(
-              "헤어 봉사하는것을 좋아합니다",
-              style: TextStyle(
-                fontFamily: "Pretendard",
-                fontWeight: FontWeight.w700,
-                fontSize: 13,
-                color: Color(0xffAAAAAA),
-              ),
-            ),
-          ),
-          SizedBox(height: 36),
-          Padding(
-            padding: EdgeInsets.symmetric(horizontal: 27),
-            child: Text(
-              "경력",
-              style: TextStyle(
-                fontFamily: "Pretendard",
-                fontWeight: FontWeight.w700,
-                fontSize: 20,
-              ),
-            ),
-          ),
-          SizedBox(height: 20),
-          SizedBox(
-            height: 430,
-            child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  for (int i = 0; i < 20; i++)
-                    Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 27),
-                      child: ProfessorProfileCell(),
-                    ),
-                ],
-              ),
-            ),
-          ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 27),
+          //   child: Row(
+          //     children: [
+          //       Transform.scale(
+          //         scale: 0.3,
+          //         child: DearIcons.book,
+          //       ),
+          //       Text(
+          //         "전문과목 : 수능영어, 고등진로",
+          //         style: TextStyle(
+          //             fontFamily: "Pretendard",
+          //             fontSize: 10,
+          //             color: Color(0xff787878),
+          //             height: 1.2),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 27),
+          //   child: Text(
+          //     "헤어 봉사하는것을 좋아합니다",
+          //     style: TextStyle(
+          //       fontFamily: "Pretendard",
+          //       fontWeight: FontWeight.w700,
+          //       fontSize: 13,
+          //       color: Color(0xffAAAAAA),
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(height: 36),
+          // Padding(
+          //   padding: EdgeInsets.symmetric(horizontal: 27),
+          //   child: Text(
+          //     "경력",
+          //     style: TextStyle(
+          //       fontFamily: "Pretendard",
+          //       fontWeight: FontWeight.w700,
+          //       fontSize: 20,
+          //     ),
+          //   ),
+          // ),
+          // SizedBox(height: 20),
+          // SizedBox(
+          //   height: 430,
+          //   child: SingleChildScrollView(
+          //     child: Column(
+          //       children: [
+          //         for (int i = 0; i < 20; i++)
+          //           Padding(
+          //             padding: EdgeInsets.symmetric(horizontal: 27),
+          //             child: ProfessorProfileCell(),
+          //           ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
           Spacer(flex: 1),
         ],
       ),
@@ -144,7 +159,10 @@ class ProfessorProfileView extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 54,
             child: CupertinoButton(
               onPressed: () {
-                print("채팅하기 button clicked!");
+                if (professorInfo != null) {
+                  _chatVM.createRoom(RoomRequest(roomName: professorInfo!.name,
+                      joinUserId: professorInfo!.professorId));
+                }
               },
               color: DearColors.main,
               child: Container(

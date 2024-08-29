@@ -19,9 +19,10 @@ class _SignupNameViewState extends State<SignupNameView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Colors.white,
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+
+      backgroundColor: Colors.white,
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(
@@ -111,7 +112,6 @@ class _SignupNameViewState extends State<SignupNameView> {
             ],
           ),
         ),
-      ),
     );
   }
 }

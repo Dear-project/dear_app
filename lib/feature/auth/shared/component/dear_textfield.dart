@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
-enum TextFieldType { email, authCheck, pw, pwCheck, name, birth }
+enum TextFieldType { email, authCheck, pw, pwCheck, name, birth, newPw }
 
 class DearTextField extends StatefulWidget {
   final TextFieldType textFieldType;
@@ -57,6 +57,8 @@ class _DearTextFieldState extends State<DearTextField> {
         hintText = "이름";
       case TextFieldType.birth:
         hintText = "생년월일";
+      case TextFieldType.newPw:
+        hintText = "새로운 비밀번호를 입력해주세요";
     }
     return hintText;
   }

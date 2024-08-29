@@ -31,7 +31,7 @@ class RoundButton extends StatelessWidget {
         height: height,
         width: width,
         decoration: BoxDecoration(
-            color: buttonColor, borderRadius: BorderRadius.circular(10)),
+            color: buttonColor, borderRadius: BorderRadius.circular(16)),
         child: loading
             ? Center(
                 child: CupertinoActivityIndicator(
@@ -40,10 +40,12 @@ class RoundButton extends StatelessWidget {
             : Center(
                 child: Text(
                   title,
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleMedium!
-                      .copyWith(color: Colors.white),
+                  style: TextStyle(
+                    fontFamily: "Pretendard",
+                    fontWeight: FontWeight.w700,
+                    fontSize: 16,
+                    color: DearColors.white,
+                  ),
                 ),
               ),
       ),

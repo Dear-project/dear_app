@@ -3,6 +3,7 @@ import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart'
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ChatProfileView extends StatelessWidget {
   @override
@@ -12,10 +13,11 @@ class ChatProfileView extends StatelessWidget {
         appBar: AppBar(
           scrolledUnderElevation: 0.0,
           backgroundColor: Color(0xffF8F9F9),
-          leading: CupertinoButton(onPressed: () {}, child: DearIcons.back),
+          leading: CupertinoButton(onPressed: () {
+            Get.back();
+          }, child: DearIcons.back),
         ),
-        body: Center(
-            child: Column(
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
@@ -23,6 +25,7 @@ class ChatProfileView extends StatelessWidget {
                 fit: BoxFit.fill,
                 width: 100,
                 height: 100),
+            SizedBox(height: 18),
             Text(
               "이해준",
               style: TextStyle(
@@ -37,7 +40,7 @@ class ChatProfileView extends StatelessWidget {
                     fontSize: 15,
                     color: Color(0xffAAAAAA))),
             Padding(
-                padding: EdgeInsets.symmetric(horizontal: 70),
+                padding: EdgeInsets.symmetric(vertical: 30, horizontal: 70),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -66,10 +69,20 @@ class ChatProfileView extends StatelessWidget {
                       padding: EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [Text("알림 숨기기"), DearToggleButton()],
+                        children: [
+                          Text("알림 숨기기",
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontFamily: "Pretendard",
+                              fontSize: 15,
+                              fontWeight: FontWeight.w500
+                            ),
+                          ),
+                          DearToggleButton()
+                        ],
                       ),
                     )))
           ],
-        )));
+        ));
   }
 }

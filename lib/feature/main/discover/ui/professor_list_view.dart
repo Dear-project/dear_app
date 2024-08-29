@@ -1,58 +1,90 @@
-import 'package:dear_app/Feature/main/discover/component/filter_button.dart';
-import 'package:dear_app/Feature/main/discover/component/search_word_bar.dart';
-import 'package:dear_app/Feature/main/discover/ui/professor_profile_view.dart';
-import 'package:dear_app/Feature/main/Shared/component/professor_cell.dart';
+import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
+import 'package:dear_app/Feature/Main/Discover/component/filter_button.dart';
+import 'package:dear_app/Feature/Main/Discover/component/search_word_bar.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_profile_view.dart';
+import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
-class ProfessorListView extends StatelessWidget {
+class ProfessorListView extends StatefulWidget {
   const ProfessorListView({super.key});
 
   @override
+  State<ProfessorListView> createState() => _ProfessorListViewState();
+}
+
+class _ProfessorListViewState extends State<ProfessorListView> {
+  final _discoverVM = Get.put(DiscoverViewModel());
+
+  @override
+  void initState() {
+    _discoverVM.getProfessor();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Padding(
-            padding: EdgeInsets.fromLTRB(27, 15, 27, 0),
-            child: Row(
-              children: [
-                SearchWordBar(),
-                SizedBox(width: 4),
-                FilterButton(),
-              ],
-            ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Padding(
+          padding: EdgeInsets.symmetric(horizontal: 27, vertical: 15),
+          child: Row(
+            children: [
+              SearchWordBar(),
+              SizedBox(width: 4),
+              FilterButton(),
+            ],
           ),
-          SizedBox(height: 10),
-          Center(
-            child: SizedBox(
-              height: 525,
-              child: SingleChildScrollView(
-                child: Column(
-                  children: [
-                    for (int i = 0; i < 10; i++)
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 14),
-                        child: CupertinoButton(
-                          padding: EdgeInsets.zero,
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        ProfessorProfileView()));
-                          },
-                          child: ProfessorCell(),
-                        ),
-                      ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ],
-      ),
+        ),
+        Expanded(child: LayoutBuilder(
+          builder: (context, constraints) {
+            return SingleChildScrollView(
+                child: ConstrainedBox(
+                    constraints:
+                        BoxConstraints(minHeight: constraints.minHeight),
+                    child: Obx(() => IntrinsicHeight(
+                          child: Column(
+                            children: [
+                              ...List.generate(
+                                _discoverVM.model.value!.length,
+                                (index) => Padding(
+                                  padding: EdgeInsets.only(bottom: 14),
+                                  child: CupertinoButton(
+                                    padding: EdgeInsets.zero,
+                                    onPressed: () {
+                                      Get.to(() => ProfessorProfileView(
+                                            professorInfo: _discoverVM
+                                                .model.value
+                                                ?.elementAt(index),
+                                          ));
+                                    },
+                                    child: ProfessorCell(
+                                      professorInfo: _discoverVM.model.value
+                                          ?.elementAt(index),
+                                      action: () {
+                                        Get.to( () =>
+                                                ProfessorProfileView(
+                                              professorInfo: _discoverVM.model.value?.elementAt(index),
+                                          ),
+                                        );
+                                      },
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              SizedBox(
+                                height: 100,
+                              )
+                            ],
+                          ),
+                        ))));
+          },
+        )),
+      ],
     );
   }
 }

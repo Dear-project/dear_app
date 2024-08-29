@@ -16,31 +16,32 @@ class RankingView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Padding(
-                        padding: EdgeInsets.only(top: 47),
-                        child: ProfessorRankingCell(
-                            RankingText: ProfessorRanking.second),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(bottom: 47),
-                        child: ProfessorRankingCell(
-                            RankingText: ProfessorRanking.first),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(top: 47),
-                        child: ProfessorRankingCell(
-                            RankingText: ProfessorRanking.third),
-                      ),
-                    ],
-                  ),
-                  for (int i = 0; i < 20; i++)
-                    Padding(
-                      padding: EdgeInsets.only(bottom: 14),
-                      child: ProfessorCell(),
-                    ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: [
+                  //     Padding(
+                  //       padding: EdgeInsets.only(top: 47),
+                  //       child: ProfessorRankingCell(
+                  //           RankingText: ProfessorRanking.second),
+                  //     ),
+                  //     Padding(
+                  //       padding: EdgeInsets.only(bottom: 47),
+                  //       child: ProfessorRankingCell(
+                  //           RankingText: ProfessorRanking.first),
+                  //     ),
+                  //     Padding(
+                  //       padding: EdgeInsets.only(top: 47),
+                  //       child: ProfessorRankingCell(
+                  //           RankingText: ProfessorRanking.third),
+                  //     ),
+                  //   ],
+                  // ),
+                  // SizedBox(height: 10),
+                  // for (int i = 0; i < 20; i++)
+                  //   Padding(
+                  //     padding: EdgeInsets.only(bottom: 14),
+                  //     child: ProfessorCell(),
+                  //   ),
                 ],
               ),
             ),

@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/School/model/register_major_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/register_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_major_response.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_response.dart';
@@ -15,11 +16,15 @@ abstract class SchoolApiService {
   Future<HttpResponse<SearchSchoolResponse>> search(
       @Query('gubunType') String gubunType, @Query('keyword') String keyword);
 
-  @GET('/school/major/list')
+  @GET('/major/list')
   Future<HttpResponse<SearchMajorResponse>> searchMajor(
-      @Query('gubunType') String gubunType, @Query('keyword') String keyword);
+      @Query('keyword') String keyword);
 
   @POST('/school')
-  Future<HttpResponse> regiterSchool(
+  Future<HttpResponse> registerSchool(
       @Body() RegisterSchoolRequest registerSchoolRequest);
+
+  @POST('/major')
+  Future<HttpResponse> registerMajor(
+      @Body() RegisterMajorRequest registerMajorRequest);
 }

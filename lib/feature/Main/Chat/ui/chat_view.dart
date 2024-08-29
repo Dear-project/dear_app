@@ -46,6 +46,7 @@ class _ChatViewState extends State<ChatView>
         backgroundColor: DearColors.white,
         toolbarHeight: 40,
         elevation: 0,
+        scrolledUnderElevation: 0.0,
         title: Text(
           "채팅",
           style: TextStyle(

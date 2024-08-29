@@ -5,6 +5,6 @@ class BlockedPersonView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text("차단한 사람 보기 뷰");
+    return const Text("개발 중입니다.");
   }
 }

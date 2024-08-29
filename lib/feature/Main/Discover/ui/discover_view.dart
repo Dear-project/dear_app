@@ -75,12 +75,7 @@ class _DiscoverViewState extends State<DiscoverView>
                   ])))
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          _pages[_index],
-        ],
-      ),
+      body: _pages[_index]
     );
   }
 }

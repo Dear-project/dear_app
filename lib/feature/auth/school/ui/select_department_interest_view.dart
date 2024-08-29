@@ -106,7 +106,7 @@ class SelectDepartmentInterestView extends StatelessWidget {
           color: Colors.white,
           child: Center(child: BottomButton(
             action: () {
-              _schoolVM.toDepartmentView();
+              _schoolVM.registerMajor();
             },
           )),
         ));

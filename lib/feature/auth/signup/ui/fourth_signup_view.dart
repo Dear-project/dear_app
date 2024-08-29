@@ -22,8 +22,7 @@ class _FourthSignupViewState extends State<FourthSignupView> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
             backgroundColor: Colors.white,
@@ -173,7 +172,6 @@ class _FourthSignupViewState extends State<FourthSignupView> {
             ],
           ),
         ),
-      ),
-    );
+      );
   }
 }
