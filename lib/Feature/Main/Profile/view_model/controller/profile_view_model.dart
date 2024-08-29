@@ -48,9 +48,6 @@ class ProfileViewModel extends GetxController {
 
       if (model.value?.schoolName != null) {
         badgeList.value?.add(model.value!.schoolName!);
-      } else {
-        Get.delete<ProfileViewModel>();
-        Get.offAll(() => SelectSchoolView());
       }
     }
   }

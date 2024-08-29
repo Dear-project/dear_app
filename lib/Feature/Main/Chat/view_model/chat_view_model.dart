@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:dear_app/Feature/Main/Chat/model/message_request.dart';
+import 'package:dear_app/Feature/Main/Chat/model/message_response.dart';
+import 'package:dear_app/Feature/Main/Chat/model/messages_response.dart';
 import 'package:dear_app/Feature/Main/Chat/model/room_request.dart';
 import 'package:dear_app/Feature/Main/Chat/model/room_response.dart';
 import 'package:dear_app/Feature/Main/Chat/repository/chat_repository.dart';
@@ -10,17 +12,23 @@ import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/net/api_constants.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:stomp_dart_client/stomp_dart_client.dart';
 
 class ChatViewModel extends GetxController {
   final ChatRepository _repository = ChatRepositoryImpl();
   Rxn<List<RoomResponse>> roomList = Rxn<List<RoomResponse>>([]);
+
+  Rxn<List<MessageResponse>> messages = Rxn<List<MessageResponse>>([]);
+
   int clickedIndex = 0;
   String? accessToken;
 
   StompClient? stompClient;
   RoomResponse? currentValue;
+
+  final scrollController = ScrollController();
 
 
   void onConnect(StompFrame frame) {
@@ -33,14 +41,14 @@ class ChatViewModel extends GetxController {
         callback: (StompFrame frame) {
           if (frame.body != null) {
             Map<String, dynamic> object = json.decode(frame.body!);
-            print(object);
-          }
-          else {
-            print("body is null");
+
+            MessageResponse response = MessageResponse.fromJson(object);
+            messages.value!.insert(0, response);
+            messages.refresh();
+
+            scrollController.jumpTo(0);
           }
         });
-
-
 
   }
 
@@ -49,23 +57,21 @@ class ChatViewModel extends GetxController {
       return;
     }
 
-    print(currentValue?.toJson());
-
     stompClient!.send(
-        destination: "/pub/chat.exchange",
+        destination: "/pub/chat.message",
       headers: {
         "Authorization": "Bearer $accessToken"
       },
       body: jsonEncode(
           {
-            "roomId": currentValue?.id,
-            "type": "message",
+            "roomId": currentValue!.id,
+            "type": "MESSAGE",
             "message": message
           }
       )
     );
-  }
 
+  }
 
   void getRooms() async {
     ApiResponse apiResponse = await _repository.getRooms();
@@ -101,7 +107,12 @@ class ChatViewModel extends GetxController {
 
     ApiResponse apiResponse = await _repository.getMessages(currentValue!.id, null, null);
 
-    print(apiResponse.data);
+    if (apiResponse.statusCode == HttpStatus.ok) {
+      MessagesResponse messagesResponse = MessagesResponse.fromJson(apiResponse.data);
+
+      messages.value = messagesResponse.messages;
+    }
+
   }
 
 }

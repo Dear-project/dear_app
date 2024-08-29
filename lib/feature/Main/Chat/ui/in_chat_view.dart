@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Chat/component/message_cell.dart';
 import 'package:dear_app/Feature/Main/Chat/model/room_response.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/chat_profile_view.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
+import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/net/api_constants.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
@@ -22,10 +23,11 @@ class InChatView extends StatefulWidget {
 
 class _InChatViewState extends State<InChatView> {
   final _textEditController = TextEditingController();
+
   final _chatVM = Get.put(ChatViewModel());
+  final _profileVM = Get.put(ProfileViewModel());
 
   final storageService = Get.find<SecureStorageService>();
-
 
   _initAccess() async {
     _chatVM.accessToken = await storageService.getAccessToken();
@@ -35,12 +37,10 @@ class _InChatViewState extends State<InChatView> {
   void initState() {
     super.initState();
 
-
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _initAccess();
 
       _chatVM.getMessages();
-
 
       _chatVM.stompClient = StompClient(
           config: StompConfig(
@@ -53,25 +53,29 @@ class _InChatViewState extends State<InChatView> {
                 "Upgrade": "websocket",
               },
               onConnect: _chatVM.onConnect,
+              connectionTimeout: Duration(seconds: 5),
+              onDebugMessage: (s) {
+                print(s);
+              },
+              onDisconnect: (e) {
+                print(e);
+              },
               onStompError: (e) {
-                print(e.headers);
+                print(e);
                 _chatVM.stompClient?.deactivate();
               },
-              onWebSocketError: (e) => print(e)
-          ));
+              onWebSocketError: (e) => print(e)));
 
       if (_chatVM.stompClient != null) {
         _chatVM.stompClient!.activate();
-        print(_chatVM.currentValue?.adminId);
       }
     });
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       backgroundColor: Color(0xffF1F1F1),
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -130,68 +134,79 @@ class _InChatViewState extends State<InChatView> {
           ]),
         ),
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: SingleChildScrollView(
-                child: Column(
-              children: [
-                for (int i = 0; i < 20; i++)
-                  MessageCell(isSelf: i % 2 != 0, message: "${i + 1}")
-              ],
-            )),
-          ),
-          ColoredBox(
-              color: Colors.white,
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
-                child: Column(
-                  children: [
-                    CupertinoTextField(
-                      minLines: 1,
-                      maxLines: 4,
-                      cursorColor: Colors.black,
-                      controller: _textEditController,
-                      autocorrect: false,
-                      padding: EdgeInsets.all(25),
-                      decoration: BoxDecoration(),
-                      keyboardType: TextInputType.multiline,
-                      placeholder: "메시지를 입력해보세요.",
-                      style: TextStyle(fontFamily: "Pretendard", fontSize: 15),
+      body: Obx(() => Column(
+            children: [
+              Expanded(
+                  child: Align(
+                      alignment: Alignment.topCenter,
+                      child: ListView.separated(
+                          controller: _chatVM.scrollController,
+                          itemCount: _chatVM.messages.value!.length,
+                          shrinkWrap: true,
+                          reverse: true,
+                          itemBuilder: (context, index) {
+                            return MessageCell(
+                                message: _chatVM.messages.value![index].message,
+                                isSelf: _chatVM.messages.value![index].userId ==
+                                    _profileVM.model.value!.id);
+                          },
+                          separatorBuilder: (_, __) => const SizedBox()))),
+              ColoredBox(
+                  color: Colors.white,
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 10),
+                    child: Column(
+                      children: [
+                        CupertinoTextField(
+                          minLines: 1,
+                          maxLines: 4,
+                          cursorColor: Colors.black,
+                          controller: _textEditController,
+                          autocorrect: false,
+                          padding: EdgeInsets.all(25),
+                          decoration: BoxDecoration(),
+                          keyboardType: TextInputType.multiline,
+                          placeholder: "메시지를 입력해보세요.",
+                          style:
+                              TextStyle(fontFamily: "Pretendard", fontSize: 15),
+                        ),
+                        Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 25),
+                            child: Row(
+                              children: [
+                                Image(
+                                  image: DearIcons.attach.image,
+                                  width: 26,
+                                  height: 26,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                Image(
+                                  image: DearIcons.photo.image,
+                                  width: 26,
+                                  height: 26,
+                                  fit: BoxFit.fitWidth,
+                                ),
+                                Spacer(),
+                                CupertinoButton(
+                                    onPressed: () {
+                                      _chatVM.sendMessage("테스트");
+                                    },
+                                    child: Image(
+                                      image: DearIcons.send.toFill(false).image,
+                                      width: 25,
+                                      height: 25,
+                                      fit: BoxFit.fitWidth,
+                                    ))
+                              ],
+                            ))
+                      ],
                     ),
-                    Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 25),
-                        child: Row(
-                          children: [
-                            Image(
-                              image: DearIcons.attach.image,
-                              width: 26,
-                              height: 26,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            SizedBox(
-                              width: 10,
-                            ),
-                            Image(
-                              image: DearIcons.photo.image,
-                              width: 26,
-                              height: 26,
-                              fit: BoxFit.fitWidth,
-                            ),
-                            Spacer(),
-                            Image(
-                              image: DearIcons.send.toFill(false).image,
-                              width: 25,
-                              height: 25,
-                              fit: BoxFit.fitWidth,
-                            )
-                          ],
-                        ))
-                  ],
-                ),
-              ))
-        ],
-      ),
+                  ))
+            ],
+          )),
       bottomNavigationBar: BottomAppBar(
         padding: EdgeInsets.zero,
         height: 0,

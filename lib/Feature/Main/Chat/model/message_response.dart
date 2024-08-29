@@ -26,7 +26,7 @@ class MessageResponse {
   int read;
 
   @JsonKey(name: "chatStatus")
-  String chatStatus;
+  String? chatStatus;
 
   MessageResponse(this.id, this.roomId, this.type, this.userId, this.message,
       this.timeStamp, this.read, this.chatStatus);

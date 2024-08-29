@@ -15,7 +15,7 @@ MessageResponse _$MessageResponseFromJson(Map<String, dynamic> json) =>
       json['message'] as String,
       json['timeStamp'] as String,
       (json['read'] as num).toInt(),
-      json['chatStatus'] as String,
+      json['chatStatus'] as String?,
     );
 
 Map<String, dynamic> _$MessageResponseToJson(MessageResponse instance) =>
