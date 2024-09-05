@@ -10,7 +10,6 @@ import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileViewModel extends GetxController {
@@ -19,7 +18,6 @@ class ProfileViewModel extends GetxController {
 
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
-  final imageCropper = ImageCropper();
   final TextEditingController editPWController = TextEditingController();
 
   Rxn<UserProfileResponse> model = Rxn<UserProfileResponse>();

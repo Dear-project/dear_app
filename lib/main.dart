@@ -4,18 +4,82 @@ import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dear_app/Shared/theme/dear_theme.dart';
 import 'package:dear_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:get/get.dart';
 
-
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //   options: DefaultFirebaseOptions.currentPlatform,
-  // );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  await initFCM();
   await initServices();
+  FirebaseMessaging.instance.getToken().then((value) => print(value));
   runApp(MyApp());
+}
+
+Future<void> initFCM() async {
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+  NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      provisional: false,
+      sound: true);
+
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true, badge: true, sound: true);
+
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+      'high_importance_channel', 'high_importance_notification',
+      importance: Importance.max);
+
+  final FlutterLocalNotificationsPlugin plugin =
+  FlutterLocalNotificationsPlugin();
+
+  AndroidInitializationSettings initSettingsAndroid =
+  const AndroidInitializationSettings('@mipmap/ic_launcher');
+
+  DarwinInitializationSettings initSettingsIOS =
+  const DarwinInitializationSettings(
+      requestAlertPermission: false,
+      requestBadgePermission: false,
+      requestSoundPermission: false);
+
+  final InitializationSettings initSettings = InitializationSettings(
+      android: initSettingsAndroid, iOS: initSettingsIOS);
+
+  plugin.initialize(initSettings);
+
+  await plugin
+      .resolvePlatformSpecificImplementation<
+      AndroidFlutterLocalNotificationsPlugin>()
+      ?.createNotificationChannel(channel);
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? android = message.notification?.android;
+
+    if (notification != null && android != null) {
+      plugin.show(
+          notification.hashCode,
+          notification.title,
+          notification.body,
+          NotificationDetails(
+            android: AndroidNotificationDetails(
+              channel.id,
+              channel.name,
+              icon: android.smallIcon,
+            ),
+          )
+      );
+    }
+  });
+
 }
 
 Future<void> initServices() async {
@@ -29,7 +93,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         theme: DearTheme,
         localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,

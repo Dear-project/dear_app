@@ -1,5 +1,4 @@
 import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
-import 'package:dear_app/Feature/Main/Chat/ui/conversation_view.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';

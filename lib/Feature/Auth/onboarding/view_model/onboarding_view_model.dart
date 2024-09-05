@@ -17,6 +17,8 @@ import 'package:get/get.dart';
 class OnboardingViewModel extends GetxController {
   final UserRepository _userRepository = UserRepositoryImpl();
 
+
+
   RxBool loading = false.obs;
 
   // late UserProfileResponse userProfileResponse;
@@ -30,7 +32,6 @@ class OnboardingViewModel extends GetxController {
       print("login OK");
       ResponseData<UserProfileResponse> responseData = apiResponse.data;
       UserProfileResponse userProfileResponse = responseData.data;
-      print(userProfileResponse.toJson());
       if (userProfileResponse.schoolName == null) {
         Get.to(() => SelectSchoolView());
       } else if (userProfileResponse.mClass == null) {
