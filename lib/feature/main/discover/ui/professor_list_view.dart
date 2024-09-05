@@ -50,29 +50,17 @@ class _ProfessorListViewState extends State<ProfessorListView> {
                           child: Column(
                             children: [
                               ...List.generate(
-                                _discoverVM.model.value!.length,
+                                _discoverVM.professorList.value!.length,
                                 (index) => Padding(
                                   padding: EdgeInsets.only(bottom: 14),
-                                  child: CupertinoButton(
-                                    padding: EdgeInsets.zero,
-                                    onPressed: () {
-                                      Get.to(() => ProfessorProfileView(
-                                            professorInfo: _discoverVM
-                                                .model.value
-                                                ?.elementAt(index),
-                                          ));
-                                    },
-                                    child: ProfessorCell(
-                                      professorInfo: _discoverVM.model.value
+                                  child:  ProfessorCell(
+                                      professorInfo: _discoverVM.professorList.value
                                           ?.elementAt(index),
                                       action: () {
                                         Get.to( () =>
                                                 ProfessorProfileView(
-                                              professorInfo: _discoverVM.model.value?.elementAt(index),
-                                          ),
-                                        );
+                                              professorInfo: _discoverVM.professorList.value?.elementAt(index) ));
                                       },
-                                    ),
                                   ),
                                 ),
                               ),

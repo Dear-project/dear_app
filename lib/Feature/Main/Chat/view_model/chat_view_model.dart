@@ -46,7 +46,7 @@ class ChatViewModel extends GetxController {
             messages.value!.insert(0, response);
             messages.refresh();
 
-            scrollController.jumpTo(0);
+            scrollController.animateTo(0, duration: Duration(milliseconds: 300), curve: Curves.linear);
           }
         });
 

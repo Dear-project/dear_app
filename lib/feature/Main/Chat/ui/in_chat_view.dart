@@ -142,6 +142,7 @@ class _InChatViewState extends State<InChatView> {
                       child: ListView.separated(
                           controller: _chatVM.scrollController,
                           itemCount: _chatVM.messages.value!.length,
+
                           shrinkWrap: true,
                           reverse: true,
                           itemBuilder: (context, index) {

@@ -1,6 +1,6 @@
-import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/ranking_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/university_view.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -21,18 +21,20 @@ class _DiscoverViewState extends State<DiscoverView>
 
   final List<Widget> _pages = [
     ProfessorListView(),
-    DibProfessorView(),
+    UniversityView(),
     RankingView(),
   ];
 
-  late TabController _tabController = TabController(
+  late final TabController _tabController = TabController(
     length: 3,
     vsync: this,
-    initialIndex: 0,
+    initialIndex: 0
   );
 
   @override
   void initState() {
+    super.initState();
+
     _tabController.addListener(() {
       setState(() {
         _index = _tabController.index;
@@ -49,7 +51,7 @@ class _DiscoverViewState extends State<DiscoverView>
         scrolledUnderElevation: 0.0,
         elevation: 0,
         title: Text(
-          "교수님 찾기",
+          "학교 알아보기",
           style: TextStyle(
               fontFamily: "Pretendard",
               fontSize: 20,

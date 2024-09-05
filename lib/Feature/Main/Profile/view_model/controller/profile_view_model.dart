@@ -38,7 +38,6 @@ class ProfileViewModel extends GetxController {
     badgeList.value = [];
 
     if (response.statusCode == HttpStatus.ok) {
-
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(
           response.data,
           (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
@@ -62,6 +61,8 @@ class ProfileViewModel extends GetxController {
 
     ApiResponse response = await _repository.setProfileImage(file ?? File(""));
 
+    print(response.statusCode);
+
     if (response.statusCode == HttpStatus.ok) {
       getProfile();
     }
@@ -70,22 +71,10 @@ class ProfileViewModel extends GetxController {
   Future<File?> selectImage() async {
     try {
       final XFile? image = await imagePicker.pickImage(
-          source: ImageSource.gallery,
-          maxHeight: 200,
-          maxWidth: 200
-      );
+          source: ImageSource.gallery, maxHeight: 200, maxWidth: 200);
 
       if (image != null && image.path != "") {
-        // final croppedFile = await imageCropper.cropImage(
-        //     sourcePath: File(image.path).path,
-        //     compressFormat: ImageCompressFormat.jpg,
-        //     compressQuality: 100,
-        //     aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
-        // );
-
-        // if (croppedFile != null) {
         return File(image.path);
-        // }
       } else {
         return null;
       }

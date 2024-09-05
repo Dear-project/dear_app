@@ -31,14 +31,14 @@ class OnboardingViewModel extends GetxController {
       ResponseData<UserProfileResponse> responseData = apiResponse.data;
       UserProfileResponse userProfileResponse = responseData.data;
       print(userProfileResponse.toJson());
-      // if (userProfileResponse.schoolName == null) {
-      //   Get.to(() => SelectSchoolView());
-      // } else if (userProfileResponse.mClass == null) {
-      //   Get.to(() => SelectDepartmentInterestView());
-      // } else {
+      if (userProfileResponse.schoolName == null) {
+        Get.to(() => SelectSchoolView());
+      } else if (userProfileResponse.mClass == null) {
+        Get.to(() => SelectDepartmentInterestView());
+      } else {
         Get.delete<OnboardingViewModel>();
         Get.offAll(() => MainView());
-      // }
+      }
     } else if (apiResponse.statusCode == HttpStatus.notFound) {
       print("login not found");
       Get.to(() => FirstSigninView());
