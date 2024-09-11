@@ -28,10 +28,9 @@ class OnboardingViewModel extends GetxController {
     ApiResponse apiResponse = await _userRepository.getProfile();
     loading.value = false;
     if (apiResponse.statusCode == HttpStatus.ok) {
-      // 프로필 처리
-      print("login OK");
       ResponseData<UserProfileResponse> responseData = apiResponse.data;
       UserProfileResponse userProfileResponse = responseData.data;
+
       if (userProfileResponse.schoolName == null) {
         Get.to(() => SelectSchoolView());
       } else if (userProfileResponse.mClass == null) {
@@ -41,7 +40,6 @@ class OnboardingViewModel extends GetxController {
         Get.offAll(() => MainView());
       }
     } else if (apiResponse.statusCode == HttpStatus.notFound) {
-      print("login not found");
       Get.to(() => FirstSigninView());
     } else {
       SecureStorageService().clearAllTokens();

@@ -9,6 +9,7 @@ import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -38,7 +39,8 @@ class ProfileViewModel extends GetxController {
     if (response.statusCode == HttpStatus.ok) {
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(
           response.data,
-          (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
+              (json) =>
+              UserProfileResponse.fromJson(json as Map<String, dynamic>));
       model.value = profileResponse.data;
 
       userController.updateUser(profileResponse.data);

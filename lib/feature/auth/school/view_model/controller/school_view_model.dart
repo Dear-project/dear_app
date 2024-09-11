@@ -62,7 +62,6 @@ class SchoolViewModel extends GetxController {
       Utils.snackBar('알림', '검색어를 입력해 주세요.');
       return;
     }
-    // 전공 검색 시 계열 param 없음 , api 요청해야됨
     ApiResponse response = await _repository.searchMajor(
         searchMajorRequest: SearchMajorRequest(keyword: keyword));
     SearchMajorResponse searchMajorResponse = response.data;
@@ -80,9 +79,10 @@ class SchoolViewModel extends GetxController {
 
     ApiResponse response = await _repository.registerSchool(
         registerSchoolRequest:
-            RegisterSchoolRequest(seq: info.seq, schoolName: info.schoolName));
+            RegisterSchoolRequest(seq: info.seq, schoolName: info.schoolName, adres: info.adres, link: info.link ?? ""));
 
-    if (response.statusCode == HttpStatus.created) {
+    print([response.statusCode, response.data, response.errorMessage ]);
+    if (response.statusCode == HttpStatus.ok) {
       Get.to(() => SelectDepartmentInterestView());
     }
   }

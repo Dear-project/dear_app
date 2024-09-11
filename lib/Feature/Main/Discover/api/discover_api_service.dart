@@ -16,7 +16,7 @@ abstract class DiscoverApiService {
   Future<HttpResponse> getProfessor(
       @Query("page") int page,
       @Query("size") int size
-      );
+  );
 
   @POST('/matching')
   Future<HttpResponse> sendMatchingRequest({

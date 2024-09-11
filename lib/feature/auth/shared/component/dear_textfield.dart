@@ -22,7 +22,6 @@ class DearTextField extends StatefulWidget {
 class _DearTextFieldState extends State<DearTextField> {
   @override
   void dispose() {
-    widget._TextEditController.dispose();
     super.dispose();
   }
 

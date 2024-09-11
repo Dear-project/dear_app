@@ -23,6 +23,7 @@ class DiscoverViewModel extends GetxController {
         await _repository.getProfessor(discoverRequest: _request);
 
     print([response.statusCode, response.errorMessage, response.data]);
+
     if (response.statusCode == HttpStatus.ok) {
       ResponseData<List<DiscoverResponse>> responseData = ResponseData.fromJson(
           response.data,

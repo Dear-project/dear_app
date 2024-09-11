@@ -141,25 +141,30 @@ class _ProfileViewState extends State<ProfileView> {
                                                   TextDecoration.underline)),
                                     )),
                                 Expanded(
-                                    child: SingleChildScrollView(
-                                        padding: EdgeInsets.zero,
-                                        scrollDirection: Axis.horizontal,
-                                        child: SizedBox(
+                                  child: SingleChildScrollView(
+                                      padding: EdgeInsets.zero,
+                                      scrollDirection: Axis.horizontal,
+                                      child: SizedBox(
                                           width: context.width,
                                           child: Row(
-                                              mainAxisAlignment: MainAxisAlignment.start,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.start,
                                               children: [
                                                 SizedBox(width: 15),
-                                                if (_profileVM.badgeList.value!.isNotEmpty)
-                                                  for (var content in _profileVM.badgeList.value!)
+                                                if (_profileVM.badgeList.value!
+                                                    .isNotEmpty)
+                                                  for (var content in _profileVM
+                                                      .badgeList.value!)
                                                     Padding(
-                                                      padding: EdgeInsets.symmetric(horizontal: 10),
-                                                      child: ProfileBadge(content: content),
+                                                      padding:
+                                                          EdgeInsets.symmetric(
+                                                              horizontal: 10),
+                                                      child: ProfileBadge(
+                                                          content: content),
                                                     ),
                                                 SizedBox(width: 15)
-                                              ])
-                                        )),
-                                        )
+                                              ]))),
+                                )
                               ],
                             ))),
                     SizedBox(height: 10),
@@ -197,7 +202,33 @@ class _ProfileViewState extends State<ProfileView> {
                     ProfileButton(
                         buttonType: ProfileButtonType.MemberSecession,
                         onPressed: () {
-                          _profileVM.deleteUser();
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext context) =>
+                                  CupertinoAlertDialog(
+                                    title: Text("알림"),
+                                    content: Text("정말 회원 탈퇴를 진행하시겠습니까?"),
+                                    actions: [
+                                      CupertinoButton(
+                                          onPressed: () => {Get.back()},
+                                          child: Text(
+                                            "취소",
+                                            style: TextStyle(
+                                                fontFamily: "Pretendard",
+                                                color: Color(0xff0E2764)),
+                                          )),
+                                      CupertinoButton(
+                                        onPressed: () =>
+                                            {_profileVM.deleteUser()},
+                                        child: Text(
+                                          "확인",
+                                          style: TextStyle(
+                                              fontFamily: "Pretendard",
+                                              color: Color(0xffF90707)),
+                                        ),
+                                      )
+                                    ],
+                                  ));
                         }),
                     Spacer(flex: 1),
                   ],

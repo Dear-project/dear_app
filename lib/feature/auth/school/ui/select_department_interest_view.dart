@@ -29,7 +29,9 @@ class SelectDepartmentInterestView extends StatelessWidget {
           ),
           leading: CupertinoButton(
             onPressed: () {
-              Get.back();
+              Get.back(result: (e) => {
+                print(e)
+              });
             },
             child: Icon(
               Icons.chevron_left,

@@ -14,8 +14,7 @@ class ChatView extends StatefulWidget {
   State<ChatView> createState() => _ChatViewState();
 }
 
-class _ChatViewState extends State<ChatView>
-    with SingleTickerProviderStateMixin {
+class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin {
   var _index = 0;
 
   final List<Widget> _pages = [

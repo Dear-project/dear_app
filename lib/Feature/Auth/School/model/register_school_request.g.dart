@@ -11,6 +11,8 @@ RegisterSchoolRequest _$RegisterSchoolRequestFromJson(
     RegisterSchoolRequest(
       seq: json['seq'] as String,
       schoolName: json['schoolName'] as String,
+      link: json['link'] as String,
+      adres: json['adres'] as String,
     );
 
 Map<String, dynamic> _$RegisterSchoolRequestToJson(
@@ -18,4 +20,6 @@ Map<String, dynamic> _$RegisterSchoolRequestToJson(
     <String, dynamic>{
       'seq': instance.seq,
       'schoolName': instance.schoolName,
+      'link': instance.link,
+      'adres': instance.adres,
     };
