@@ -1,5 +1,7 @@
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
+import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
+import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
@@ -18,10 +20,8 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final _homeVM = Get.put(HomeViewModel());
 
-
   @override
   void initState() {
-
     super.initState();
   }
 
@@ -55,33 +55,41 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
         body: Obx(() => ListView(
-          children: [
-            if (_homeVM.model.value!.isNotEmpty) BannerViewer(list: _homeVM.model.value!),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 34),
-              child: Container(
-                height: 1,
-                decoration: BoxDecoration(color: Color(0xffE6E6E6)),
-              ),
-            ),
-            SuggestionCell(
-              title: "매칭요청이 왔어요",
-              leading: CupertinoButton(
-                onPressed: () {},
-                child: Image(
-                  image: DearIcons.next.image,
-                  width: 20,
-                  height: 20,
+              children: [
+                if (_homeVM.model.value!.isNotEmpty)
+                  BannerViewer(list: _homeVM.model.value!),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 34),
+                  child: Container(
+                    height: 1,
+                    decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                  ),
                 ),
-              ),
-              content: Column(
-                children: [],
-              ),
-            ),
-            SuggestionCell(
-              title: "오늘의 글을 확인해 보세요",
-            ),
-          ],
-        )));
+                SizedBox(
+                  height: 10,
+                ),
+                CupertinoButton(child: ScheduleCell(), onPressed: () {
+                  Get.to(ScheduleView());
+                  // Get.to(ScheduleView(title: "학사일정"));
+                }),
+                SuggestionCell(
+                  title: "매칭요청이 왔어요",
+                  leading: CupertinoButton(
+                    onPressed: () {},
+                    child: Image(
+                      image: DearIcons.next.image,
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                  content: Column(
+                    children: [],
+                  ),
+                ),
+                SuggestionCell(
+                  title: "오늘의 글을 확인해 보세요",
+                ),
+              ],
+            )));
   }
 }
