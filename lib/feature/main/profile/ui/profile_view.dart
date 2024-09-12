@@ -110,7 +110,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                       ),
                                                       alignment:
                                                           Alignment.center,
-                                                      child: DearIcons.write,
+                                                      child: DearIcons.editProfile,
                                                     )))
                                           ],
                                         ))),

@@ -86,7 +86,7 @@ class SelectSchoolView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Column(
                   children: [
-                    SelectGubunTypeWidget(),
+                    SelectGubunTypeWidget(schoolType: _schoolVM.schoolType),
                     SizedBox(
                       height: 10,
                     ),

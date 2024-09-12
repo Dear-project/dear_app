@@ -16,5 +16,4 @@ abstract class UserApiService {
 
   @GET('/profile/{email}')
   Future<HttpResponse<ResponseData<UserProfileResponse>>> getProfileByEmail(@Path('email') String email);
-
 }

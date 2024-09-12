@@ -122,8 +122,8 @@ class _CustDropDownState extends State<CustDropDown>
               }
             : null,
         child: Container(
-            width: 350,
-            height: _isOpen ? widget.maxListHeight - 20 : 50,
+            width: 340,
+            height: _isOpen ? widget.maxListHeight - 20 : 56,
             decoration: _getDecoration(),
             child: Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 13),

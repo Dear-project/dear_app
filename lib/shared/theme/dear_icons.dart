@@ -25,6 +25,7 @@ class DearIcons {
       Image.asset("assets/icons/detail_horizontal.png");
   static Image arrowLeft = Image.asset("assets/icons/left_arrow.png");
   static Image write = Image.asset("assets/icons/write.png");
+  static Image editProfile = Image.asset("assets/icons/edit_profile.png");
 }
 
 extension DearIconsFill on Image {

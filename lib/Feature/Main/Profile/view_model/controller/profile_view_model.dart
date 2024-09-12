@@ -20,6 +20,7 @@ class ProfileViewModel extends GetxController {
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
   final TextEditingController editPWController = TextEditingController();
+  final TextEditingController editSchoolController = TextEditingController();
 
   Rxn<UserProfileResponse> model = Rxn<UserProfileResponse>();
   Rxn<List<String>> badgeList = Rxn<List<String>>([]);
