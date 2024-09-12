@@ -1,8 +1,8 @@
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class ScheduleInCell extends StatefulWidget {
-
   String title;
   String date;
 
@@ -13,6 +13,18 @@ class ScheduleInCell extends StatefulWidget {
 }
 
 class _ScheduleInCellState extends State<ScheduleInCell> {
+  String getDate(String dateString) {
+    var dateTime;
+
+    String date = dateString.substring(0, 8);
+    String time = "0000";
+    dateTime = DateTime.parse('${date}T$time');
+
+    String formattedDate = DateFormat('yyyy.M.dd(E)', 'ko_KR').format(dateTime);
+
+    return formattedDate;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +48,7 @@ class _ScheduleInCellState extends State<ScheduleInCell> {
             ),
             Spacer(flex: 1),
             Text(
-              "${widget.date}",
+              "${getDate(widget.date)}",
               style: TextStyle(
                 fontFamily: "Pretendard",
                 fontWeight: FontWeight.w500,
