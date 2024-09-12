@@ -28,7 +28,7 @@ class _ScheduleInCellState extends State<ScheduleInCell> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 41,
+      height: 50,
       decoration: BoxDecoration(
         color: Color(0xffF7F8FA),
         borderRadius: BorderRadius.all(Radius.circular(12)),
@@ -38,11 +38,11 @@ class _ScheduleInCellState extends State<ScheduleInCell> {
         child: Row(
           children: [
             Text(
-              "${widget.title}",
+              "${widget.title.split("/ ·  ")[0]} ${widget.title.split("/ ·  ").length-1 == 0 ? "" : "외 ${widget.title.split("/ ·  ").length-1}" }",
               style: TextStyle(
                 fontFamily: "Pretendard",
-                fontWeight: FontWeight.w700,
-                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
                 color: Colors.black,
               ),
             ),
@@ -51,8 +51,7 @@ class _ScheduleInCellState extends State<ScheduleInCell> {
               "${getDate(widget.date)}",
               style: TextStyle(
                 fontFamily: "Pretendard",
-                fontWeight: FontWeight.w500,
-                fontSize: 11,
+                fontSize: 16,
                 color: Colors.black,
               ),
             ),
