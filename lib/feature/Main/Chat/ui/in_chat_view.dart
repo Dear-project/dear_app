@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Chat/component/message_cell.dart';
+import 'package:dear_app/Feature/Main/Chat/model/message_response.dart';
 import 'package:dear_app/Feature/Main/Chat/model/room_response.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/chat_profile_view.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
@@ -69,7 +70,10 @@ class _InChatViewState extends State<InChatView> {
       if (_chatVM.stompClient != null) {
         _chatVM.stompClient!.activate();
       }
+      
     });
+
+    
   }
 
   @override
@@ -142,14 +146,13 @@ class _InChatViewState extends State<InChatView> {
                       child: ListView.separated(
                           controller: _chatVM.scrollController,
                           itemCount: _chatVM.messages.value!.length,
-
                           shrinkWrap: true,
                           reverse: true,
                           itemBuilder: (context, index) {
-                            return MessageCell(
-                                message: _chatVM.messages.value![index].message,
-                                isSelf: _chatVM.messages.value![index].userId ==
-                                    _profileVM.model.value!.id);
+                              return MessageCell(
+                                  message: _chatVM.messages.value![index],
+                                  isSelf: _chatVM.messages.value![index].userId ==
+                                      _profileVM.model.value!.id);
                           },
                           separatorBuilder: (_, __) => const SizedBox()))),
               ColoredBox(

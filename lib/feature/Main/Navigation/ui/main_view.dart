@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
@@ -10,6 +12,7 @@ import 'package:dear_app/Feature/Main/Community/view_model/controller/community_
 import 'package:dear_app/Shared/component/dear_tab_view.dart';
 import 'package:dear_app/Shared/model/dear_tab_view_item.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -24,7 +27,6 @@ class _MainViewState extends State<MainView> {
   final _communityVM = Get.put(CommunityViewModel());
   final _chatVM = Get.put(ChatViewModel());
 
-
   var _index = 0;
 
   @override
@@ -34,6 +36,51 @@ class _MainViewState extends State<MainView> {
     _homeVM.getBanner();
     _communityVM.getPosts();
     _communityVM.getPostsMy();
+
+    _initFirebaseMessage();
+    _requestPermissionForIOS();
+  }
+
+  Future<void> _initFirebaseMessage() async {
+    // Get inicial message if the application
+    // has been opened from a terminated state.
+    final message = await FirebaseMessaging.instance.getInitialMessage();
+    // Check notification data
+    if (message != null) {
+      // Debug
+      debugPrint('getInitialMessage() -> data: ${message.data}');
+      // Handle notification data
+      await _handleNotificationClick(message.data);
+    }
+
+    // Returns a [Stream] that is called when a user
+    // presses a notification message displayed via FCM.
+    // Note: A Stream event will be sent if the app has
+    // opened from a background state (not terminated).
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+      // Debug
+      debugPrint('onMessageOpenedApp() -> data: ${message.data}');
+      // Handle notification data
+      await _handleNotificationClick(message.data);
+    });
+
+    // Listen for incoming push notifications
+    FirebaseMessaging.onMessage.listen((RemoteMessage? message) async {
+      // Debug
+      debugPrint('onMessage() -> data: ${message?.data}');
+      // Handle notification data
+      await _handleNotificationClick(message?.data);
+    });
+  }
+
+  Future<void> _handleNotificationClick(Map<String, dynamic>? data) async {
+
+  }
+
+  void _requestPermissionForIOS() async {
+    if (Platform.isIOS) {
+      await FirebaseMessaging.instance.requestPermission();
+    }
   }
 
   final List<Widget> _pages = [

@@ -22,48 +22,36 @@ class _ProfessorListViewState extends State<ProfessorListView> {
   void initState() {
     super.initState();
     _discoverVM.getProfessor();
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: 27, vertical: 15),
-          child: Row(
-            children: [
-              SearchWordBar(),
-              SizedBox(width: 4),
-              FilterButton(),
-            ],
-          ),
-        ),
-        Expanded(child: LayoutBuilder(
-          builder: (context, constraints) {
-            return SingleChildScrollView(
-                child: ConstrainedBox(
-                    constraints:
-                        BoxConstraints(minHeight: constraints.minHeight),
-                    child: Obx(() => IntrinsicHeight(
+        Expanded(
+            child: LayoutBuilder(
+              builder: (context, constraints) {
+                return SingleChildScrollView(
+                    child: ConstrainedBox(
+                        constraints: BoxConstraints(minHeight: constraints.minHeight),
+                        child: Obx(() => IntrinsicHeight(
                           child: Column(
                             children: [
+                              SizedBox(
+                                height: 20,
+                              ),
                               ...List.generate(
                                 _discoverVM.professorList.value!.length,
-                                (index) => Padding(
-                                  padding: EdgeInsets.only(bottom: 14),
-                                  child:  ProfessorCell(
-                                      professorInfo: _discoverVM.professorList.value
-                                          ?.elementAt(index),
+                                    (index) => Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        horizontal: 26, vertical: 7),
+                                    child: ProfessorCell(
+                                      professorInfo:
+                                      _discoverVM.professorList.value![index],
                                       action: () {
-                                        Get.to( () =>
-                                                ProfessorProfileView(
-                                              professorInfo: _discoverVM.professorList.value?.elementAt(index) ));
+                                        Get.to(ProfessorProfileView(professorInfo: _discoverVM.professorList.value![index]));
                                       },
-                                  ),
-                                ),
+                                    )),
                               ),
                               SizedBox(
                                 height: 100,
@@ -71,8 +59,8 @@ class _ProfessorListViewState extends State<ProfessorListView> {
                             ],
                           ),
                         ))));
-          },
-        )),
+              },
+            ))
       ],
     );
   }

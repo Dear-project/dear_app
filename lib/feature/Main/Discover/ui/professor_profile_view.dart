@@ -32,7 +32,6 @@ class ProfessorProfileView extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: Image(
                 image: DearIcons.back.image,
-                // 이 아이콘 피그마랑 다름. 추가해야함.
                 width: 36,
                 height: 36,
                 fit: BoxFit.fitWidth,
@@ -76,7 +75,7 @@ class ProfessorProfileView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "${professorInfo != null ? professorInfo!.school : ""} ${professorInfo != null ? professorInfo!.major : ""}",
+                      "${professorInfo?.school != null ? professorInfo!.school : ""}${professorInfo?.major != null ? " ${professorInfo!.major}" : ""}",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontSize: 12,
@@ -161,7 +160,7 @@ class ProfessorProfileView extends StatelessWidget {
               onPressed: () {
                 if (professorInfo != null) {
                   _chatVM.createRoom(RoomRequest(roomName: professorInfo!.name,
-                      joinUserId: professorInfo!.professorId));
+                      joinUserId: professorInfo!.professorId ?? 0));
                 }
               },
               color: DearColors.main,

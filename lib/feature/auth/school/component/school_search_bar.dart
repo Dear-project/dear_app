@@ -30,7 +30,8 @@ class SchoolSearchBar extends StatelessWidget {
                     onSubmitted: (_) {
                       _schoolVM.searchSchool(
                           keyword:
-                              _schoolVM.searchKeywordController.value.text);
+                              _schoolVM.searchKeywordController.value.text,
+                      );
                     })),
             Container(
                 child: CupertinoButton(
@@ -42,7 +43,8 @@ class SchoolSearchBar extends StatelessWidget {
                     onPressed: () {
                       _schoolVM.searchSchool(
                           keyword:
-                              _schoolVM.searchKeywordController.value.text);
+                              _schoolVM.searchKeywordController.value.text,
+                      );
                     }))
           ],
         ));

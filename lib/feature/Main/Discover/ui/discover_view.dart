@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/ranking_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/university_view.dart';
@@ -22,7 +23,7 @@ class _DiscoverViewState extends State<DiscoverView>
   final List<Widget> _pages = [
     ProfessorListView(),
     UniversityView(),
-    RankingView(),
+    DibProfessorView(),
   ];
 
   late final TabController _tabController = TabController(

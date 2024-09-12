@@ -16,7 +16,7 @@ class SuggestionCell extends StatelessWidget {
           decoration: BoxDecoration(
               color: Colors.white, borderRadius: BorderRadius.circular(20)),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(25, 24, 25, 18),
+            padding: EdgeInsets.symmetric(vertical: 20, horizontal: 24),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

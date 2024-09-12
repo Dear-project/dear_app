@@ -1,21 +1,25 @@
+import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:dear_app/Feature/Main/Discover/model/university_response.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class UniversityCell extends StatelessWidget {
-  UniversityResponse? universityResponse;
+  SchoolInfo? schoolInfo;
   final Function? action;
 
-  UniversityCell({ this.universityResponse, this.action});
+  UniversityCell({this.schoolInfo, this.action});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
         CupertinoButton(
-            padding: EdgeInsets.symmetric(horizontal: 27, vertical: 0),
+          padding: EdgeInsets.zero,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -27,11 +31,7 @@ class UniversityCell extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: universityResponse != null
-                          ? universityResponse!.img != null
-                          ? NetworkImage(universityResponse!.img!)
-                          : DearImages.professorPlaceholder.image
-                          : DearImages.professorPlaceholder.image,
+                      image: DearImages.professorPlaceholder.image,
                     ),
                   ),
                 ),
@@ -43,7 +43,7 @@ class UniversityCell extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      universityResponse != null ? universityResponse!.name : "",
+                      schoolInfo != null ? schoolInfo!.schoolName : "",
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 14,
@@ -60,24 +60,22 @@ class UniversityCell extends StatelessWidget {
                 action!();
               }
             }),
-        Row(
-          children: [
-            Spacer(),
-            CupertinoButton(
-              child: Image(
-                image: DearIcons.banner.image,
-                width: 12,
-                height: 17,
-              ),
-              onPressed: () {
-                print("찜하기 버튼 클릭됨");
-              },
+        Align(
+          alignment: Alignment.centerRight,
+          child: CupertinoButton(
+            child: Image(
+              image: DearIcons.banner.image,
+              width: 12,
+              height: 17,
             ),
-            SizedBox(width: 27),
-          ],
-        ),
+            onPressed: () {
+              print("찜하기 버튼 클릭됨");
+            },
+          ),
+        )
+
+
       ],
     );
   }
-
 }

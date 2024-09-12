@@ -1,6 +1,8 @@
+import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
+import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
@@ -65,7 +67,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
             SuggestionCell(
-              title: "매칭요청이 왔어요",
+              title: "이런 교수님은 어때요?",
               leading: CupertinoButton(
                 onPressed: () {},
                 child: Image(
@@ -75,11 +77,10 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
               content: Column(
-                children: [],
+                children: [
+                  ProfessorCell(professorInfo: DiscoverResponse(1, "대학교", "ㄴ", "ㅉ", null),)
+                ],
               ),
-            ),
-            SuggestionCell(
-              title: "오늘의 글을 확인해 보세요",
             ),
           ],
         )));

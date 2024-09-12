@@ -177,7 +177,9 @@ class _ProfileViewState extends State<ProfileView> {
                         ),
                         Padding(
                           padding: EdgeInsets.symmetric(horizontal: 25),
-                          child: DearToggleButton(),
+                          child: DearToggleButton(
+
+                          ),
                         )
                       ],
                     ),

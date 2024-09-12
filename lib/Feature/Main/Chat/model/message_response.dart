@@ -1,3 +1,4 @@
+import 'package:intl/intl.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'message_response.g.dart';
@@ -36,4 +37,8 @@ class MessageResponse {
       _$MessageResponseFromJson(json);
 
   Map<String, dynamic> toJson() => _$MessageResponseToJson(this);
+
+  String getDate() {
+    return DateFormat("a hh:mm", "ko").format(DateTime.parse(timeStamp));
+  }
 }

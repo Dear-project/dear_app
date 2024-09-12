@@ -41,10 +41,6 @@ class SchoolViewModel extends GetxController {
       Utils.snackBar('알림', '학교구분을 선택해 주세요.');
       return;
     }
-    if (keyword.trim().isEmpty) {
-      Utils.snackBar('알림', '검색어를 입력해 주세요.');
-      return;
-    }
 
     ApiResponse response = await _repository.search(
         searchSchoolRequest: SearchSchoolRequest(

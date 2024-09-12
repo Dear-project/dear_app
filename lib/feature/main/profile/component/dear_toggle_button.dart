@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class DearToggleButton extends StatefulWidget {
   DearToggleButton({super.key});
 
-  var isEnabled = false;
+  var isEnabled = true;
 
   @override
   State<DearToggleButton> createState() => _DearToggleButtonState();

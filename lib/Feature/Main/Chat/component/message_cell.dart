@@ -1,13 +1,17 @@
+import 'package:dear_app/Feature/Main/Chat/model/message_response.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class MessageCell extends StatelessWidget {
-  final String message;
+
+
+  final MessageResponse message;
   final bool isSelf;
 
   MessageCell({super.key, required this.message, required this.isSelf});
+
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class MessageCell extends StatelessWidget {
               ),
             if (isSelf)
               Text(
-                "오전 1:10",
+                message.getDate(),
                 style: TextStyle(
                     color: Color(0xffAAAAAA),
                     fontFamily: "Pretendard",
@@ -46,7 +50,7 @@ class MessageCell extends StatelessWidget {
                       Padding(
                         padding: EdgeInsets.fromLTRB(0, 0, 0, 4),
                         child: Text(
-                          "이해준",
+                          "민교수",
                           style: TextStyle(
                               color: Colors.black,
                               fontFamily: "Pretendard",
@@ -65,7 +69,7 @@ class MessageCell extends StatelessWidget {
                             padding: EdgeInsets.symmetric(
                                 vertical: 7, horizontal: 10),
                             child: Text(
-                              message,
+                              message.message,
                               style: TextStyle(
                                   color: Colors.black,
                                   fontFamily: "Pretendard",
