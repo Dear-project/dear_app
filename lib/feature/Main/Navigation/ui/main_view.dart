@@ -33,6 +33,7 @@ class _MainViewState extends State<MainView> {
     _profileVM.getProfile();
     _homeVM.getBanner();
     _communityVM.getPosts();
+    _communityVM.getPostsMy();
   }
 
   final List<Widget> _pages = [

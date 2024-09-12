@@ -193,7 +193,11 @@ class _InChatViewState extends State<InChatView> {
                                 Spacer(),
                                 CupertinoButton(
                                     onPressed: () {
-                                      _chatVM.sendMessage("테스트");
+                                      if (_textEditController.value.text != "") {
+                                        _chatVM.sendMessage(
+                                            _textEditController.value.text);
+                                        _textEditController.text = "";
+                                      }
                                     },
                                     child: Image(
                                       image: DearIcons.send.toFill(false).image,
