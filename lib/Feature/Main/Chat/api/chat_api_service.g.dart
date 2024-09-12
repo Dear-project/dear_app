@@ -12,9 +12,7 @@ class _ChatApiService implements ChatApiService {
   _ChatApiService(
     this._dio, {
     this.baseUrl,
-  }) {
-    baseUrl ??= 'http://43.202.136.92:8080';
-  }
+  });
 
   final Dio _dio;
 

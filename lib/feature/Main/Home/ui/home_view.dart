@@ -1,6 +1,8 @@
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
+import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
+import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
@@ -20,11 +22,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final _homeVM = Get.put(HomeViewModel());
 
-
   @override
   void initState() {
-
     super.initState();
+    _homeVM.getSchedule();
   }
 
   @override
@@ -57,32 +58,42 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
         body: Obx(() => ListView(
-          children: [
-            if (_homeVM.model.value!.isNotEmpty) BannerViewer(list: _homeVM.model.value!),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 34),
-              child: Container(
-                height: 1,
-                decoration: BoxDecoration(color: Color(0xffE6E6E6)),
-              ),
-            ),
-            SuggestionCell(
-              title: "이런 교수님은 어때요?",
-              leading: CupertinoButton(
-                onPressed: () {},
-                child: Image(
-                  image: DearIcons.next.image,
-                  width: 20,
-                  height: 20,
+              children: [
+                if (_homeVM.model.value!.isNotEmpty)
+                  BannerViewer(list: _homeVM.model.value!),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 34),
+                  child: Container(
+                    height: 1,
+                    decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                  ),
                 ),
-              ),
-              content: Column(
-                children: [
-                  ProfessorCell(professorInfo: DiscoverResponse(1, "대학교", "ㄴ", "ㅉ", null),)
-                ],
-              ),
-            ),
-          ],
-        )));
+                SizedBox(
+                  height: 10,
+                ),
+                CupertinoButton(child: ScheduleCell(
+                  list: _homeVM.scheduleModel.value,
+                ), onPressed: () {
+                  Get.to(ScheduleView(list: _homeVM.scheduleModel.value,));
+                }),
+                SuggestionCell(
+                  title: "이런 교수님은 어때요?",
+                  leading: CupertinoButton(
+                    onPressed: () {},
+                    child: Image(
+                      image: DearIcons.next.image,
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                  content: Column(
+                    children: [
+                      ProfessorCell(professorInfo: DiscoverResponse(1, "대학교", "ㄴ", "ㅉ", null),)
+                    ],
+                  ),
+                )
+
+              ],
+            )));
   }
 }

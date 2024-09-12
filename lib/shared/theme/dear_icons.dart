@@ -26,6 +26,7 @@ class DearIcons {
   static Image arrowLeft = Image.asset("assets/icons/left_arrow.png");
   static Image write = Image.asset("assets/icons/write.png");
   static Image editProfile = Image.asset("assets/icons/edit_profile.png");
+  static Image calendar = Image.asset("assets/icons/calendar.png");
 }
 
 extension DearIconsFill on Image {
