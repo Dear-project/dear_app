@@ -26,17 +26,20 @@ class _ScheduleViewState extends State<ScheduleView> {
   List<CalendarEvent> getCalendarEvent(List<ScheduleResponse> list) {
     List<CalendarEvent> value = [];
     for (int i = 0; i < list.length; i++) {
-      value.add(
-        CalendarEvent(
-          eventName: list[i].scheduler,
-          eventDate: convertDate(list[i].date),
-          eventTextStyle: TextStyle(
-              fontFamily: "Pretendard",
-              fontWeight: FontWeight.w600,
-              fontSize: 11),
-          eventBackgroundColor: Colors.transparent,
-        ),
-      );
+      var splitedSchedule = list[i].scheduler.split("/ ·  ");
+      for (int j = 0; j < splitedSchedule.length; j++) {
+        value.add(
+          CalendarEvent(
+            eventName: splitedSchedule[j],
+            eventDate: convertDate(list[i].date),
+            eventTextStyle: TextStyle(
+                fontFamily: "Pretendard",
+                fontWeight: FontWeight.w600,
+                fontSize: 11),
+            eventBackgroundColor: Colors.transparent,
+          ),
+        );
+      }
     }
     return value;
   }
