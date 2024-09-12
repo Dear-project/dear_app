@@ -23,6 +23,7 @@ class _HomeViewState extends State<HomeView> {
   @override
   void initState() {
     super.initState();
+    _homeVM.getSchedule();
   }
 
   @override
@@ -68,9 +69,10 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(
                   height: 10,
                 ),
-                CupertinoButton(child: ScheduleCell(), onPressed: () {
-                  Get.to(ScheduleView());
-                  // Get.to(ScheduleView(title: "학사일정"));
+                CupertinoButton(child: ScheduleCell(
+                  list: _homeVM.scheduleModel.value,
+                ), onPressed: () {
+                  Get.to(ScheduleView(list: _homeVM.scheduleModel.value,));
                 }),
                 SuggestionCell(
                   title: "매칭요청이 왔어요",

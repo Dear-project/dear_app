@@ -37,6 +37,8 @@ class ProfileViewModel extends GetxController {
     ApiResponse response = await _repository.getProfile();
     badgeList.value = [];
 
+    print("프로필 response ${response.data}");
+
     if (response.statusCode == HttpStatus.ok) {
 
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(

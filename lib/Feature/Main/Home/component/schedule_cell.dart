@@ -1,9 +1,17 @@
 import 'package:dear_app/Feature/Main/Home/component/schedule_in_cell.dart';
+import 'package:dear_app/Feature/Main/Home/model/schedule_response.dart';
 import 'package:flutter/material.dart';
 
-class ScheduleCell extends StatelessWidget {
-  const ScheduleCell({super.key});
+class ScheduleCell extends StatefulWidget {
+  List<ScheduleResponse>? list;
 
+  ScheduleCell({super.key, required this.list});
+
+  @override
+  State<ScheduleCell> createState() => _ScheduleCellState();
+}
+
+class _ScheduleCellState extends State<ScheduleCell> {
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -34,11 +42,19 @@ class ScheduleCell extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 22),
-              ScheduleInCell(),
-              SizedBox(height: 10),
-              ScheduleInCell(),
-              SizedBox(height: 10),
-              ScheduleInCell(),
+              if (widget.list != null)
+                ...List.generate(
+                  widget.list!.length <= 3 ? widget.list!.length : 3,
+                  (index) => Column(
+                    children: [
+                      ScheduleInCell(
+                        title: "${widget.list![index].scheduler}",
+                        date: "${widget.list![index].date}",
+                      ),
+                      SizedBox(height: 10),
+                    ],
+                  ),
+                ),
             ],
           ),
         ),

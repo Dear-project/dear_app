@@ -1,53 +1,49 @@
 import 'package:cell_calendar/cell_calendar.dart';
+import 'package:dear_app/Feature/Main/Home/model/schedule_response.dart';
 import 'package:dear_app/shared/theme/dear_badge.dart';
 import 'package:dear_app/shared/theme/dear_color.dart';
 import 'package:dear_app/shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class ScheduleView extends StatelessWidget {
-  ScheduleView({super.key});
+class ScheduleView extends StatefulWidget {
+  List<ScheduleResponse>? list;
+
+  ScheduleView({required this.list, super.key});
+
+  @override
+  State<ScheduleView> createState() => _ScheduleViewState();
+}
+
+class _ScheduleViewState extends State<ScheduleView> {
+
+  DateTime convertDate(String datetime) {
+    String date = datetime.substring(0, 8);
+    String time = "0000";
+    return DateTime.parse('${date}T$time');
+  }
+
+  List<CalendarEvent> getCalendarEvent(List<ScheduleResponse> list) {
+    List<CalendarEvent> value = [];
+    for (int i = 0; i < list.length; i++) {
+      value.add(
+        CalendarEvent(
+          eventName: list[i].scheduler,
+          eventDate: convertDate(list[i].date),
+          eventTextStyle: TextStyle(
+              fontFamily: "Pretendard",
+              fontWeight: FontWeight.w600,
+              fontSize: 11),
+          eventBackgroundColor: Colors.transparent,
+        ),
+      );
+    }
+    return value;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final events = [
-      CalendarEvent(
-        eventName: "중간고사",
-        eventDate: DateTime.now(),
-        eventTextStyle: TextStyle(
-            fontFamily: "Pretendard",
-            fontWeight: FontWeight.w600,
-            fontSize: 11),
-        eventBackgroundColor: Colors.transparent,
-      ),
-      CalendarEvent(
-        eventName: "중간고사",
-        eventDate: DateTime.now(),
-        eventTextStyle: TextStyle(
-            fontFamily: "Pretendard",
-            fontWeight: FontWeight.w600,
-            fontSize: 11),
-        eventBackgroundColor: Colors.transparent,
-      ),
-      CalendarEvent(
-        eventName: "중간고사",
-        eventDate: DateTime.now(),
-        eventTextStyle: TextStyle(
-            fontFamily: "Pretendard",
-            fontWeight: FontWeight.w600,
-            fontSize: 11),
-        eventBackgroundColor: Colors.transparent,
-      ),
-      CalendarEvent(
-        eventName: "기말고사",
-        eventDate: DateTime(2024, DateTime.september, DateTime.sunday),
-        eventTextStyle: TextStyle(
-            fontFamily: "Pretendard",
-            fontWeight: FontWeight.w600,
-            fontSize: 11),
-        eventBackgroundColor: Colors.transparent,
-      ),
-    ];
+    final events = getCalendarEvent(widget.list!);
     final cellCalendarPageController = CellCalendarPageController();
     return Scaffold(
       backgroundColor: DearColors.white,
@@ -84,7 +80,6 @@ class ScheduleView extends StatelessWidget {
         ],
       ),
       body: CellCalendar(
-
         dateTextStyle: TextStyle(
           fontFamily: "Pretendard",
           fontWeight: FontWeight.w600,
@@ -103,6 +98,8 @@ class ScheduleView extends StatelessWidget {
                 return Color(0xff000000);
             }
           }
+
+          widget.list;
           return Padding(
             padding: const EdgeInsets.only(bottom: 5.0),
             child: Padding(

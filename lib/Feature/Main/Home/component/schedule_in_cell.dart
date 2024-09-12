@@ -1,9 +1,18 @@
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
-class ScheduleInCell extends StatelessWidget {
-  const ScheduleInCell({super.key});
+class ScheduleInCell extends StatefulWidget {
 
+  String title;
+  String date;
+
+  ScheduleInCell({required this.title, required this.date, super.key});
+
+  @override
+  State<ScheduleInCell> createState() => _ScheduleInCellState();
+}
+
+class _ScheduleInCellState extends State<ScheduleInCell> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,7 +26,7 @@ class ScheduleInCell extends StatelessWidget {
         child: Row(
           children: [
             Text(
-              "정보처리산업기사시험",
+              "${widget.title}",
               style: TextStyle(
                 fontFamily: "Pretendard",
                 fontWeight: FontWeight.w700,
@@ -27,7 +36,7 @@ class ScheduleInCell extends StatelessWidget {
             ),
             Spacer(flex: 1),
             Text(
-              "2024.9.04(수)",
+              "${widget.date}",
               style: TextStyle(
                 fontFamily: "Pretendard",
                 fontWeight: FontWeight.w500,
