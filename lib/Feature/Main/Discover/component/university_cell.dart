@@ -31,7 +31,7 @@ class UniversityCell extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(16)),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: DearImages.professorPlaceholder.image,
+                      image: DearImages.schoolPlaceholder.image,
                     ),
                   ),
                 ),

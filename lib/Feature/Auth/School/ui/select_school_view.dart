@@ -3,6 +3,7 @@ import 'package:dear_app/Feature/Auth/School/component/search_school/select_gubu
 import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
+import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -11,6 +12,7 @@ class SelectSchoolView extends StatelessWidget {
   SelectSchoolView({super.key});
 
   final _schoolVM = Get.put(SchoolViewModel());
+  final _profileVM = Get.put(ProfileViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,9 @@ class SelectSchoolView extends StatelessWidget {
                 fontWeight: FontWeight.w700),
           ),
           leading: CupertinoButton(
-            onPressed: () {},
+            onPressed: () {
+              _profileVM.signOut();
+            },
             child: Icon(
               Icons.chevron_left,
               color: Color(0xff0E2764),

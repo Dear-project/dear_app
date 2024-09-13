@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dear_app/Feature/Main/Chat/ui/chat_view.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/discover_view.dart';
+import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/main_community_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
@@ -22,6 +23,7 @@ class MainView extends StatefulWidget {
 
 class _MainViewState extends State<MainView> {
   final _profileVM = Get.put(ProfileViewModel());
+  final _discoverVM = Get.put(DiscoverViewModel());
   final _homeVM = Get.put(HomeViewModel());
   final _communityVM = Get.put(CommunityViewModel());
   final _chatVM = Get.put(ChatViewModel());
@@ -32,6 +34,7 @@ class _MainViewState extends State<MainView> {
   void initState() {
     super.initState();
     _profileVM.getProfile();
+    _discoverVM.getProfessor();
     _homeVM.getBanner();
     _communityVM.getPosts();
     _communityVM.getPostsMy();

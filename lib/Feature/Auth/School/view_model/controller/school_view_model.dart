@@ -78,11 +78,14 @@ class SchoolViewModel extends GetxController {
 
     SchoolInfo info = schoolInfoList[selectedSchoolInfoIndex.value];
 
-    ApiResponse response = await _repository.registerSchool(
-        registerSchoolRequest:
-            RegisterSchoolRequest(seq: info.seq, schoolName: info.schoolName, link: info.link ?? "", adres: info.adres));
+    RegisterSchoolRequest request = RegisterSchoolRequest(seq: info.seq, schoolName: info.schoolName, link: info.link ?? "", adres: info.adres);
 
-    if (response.statusCode == HttpStatus.created) {
+    ApiResponse response = await _repository.registerSchool(
+        registerSchoolRequest: request);
+
+    print(request.toJson());
+
+    if (response.statusCode == HttpStatus.ok) {
       Get.to(() => SelectDepartmentInterestView());
     }
   }

@@ -55,8 +55,23 @@ class SigninViewModel extends GetxController {
       await storageService.saveAccessToken(authentication.accessToken);
       await storageService.saveRefreshToken(authentication.refreshToken);
 
+      ApiResponse profleRespomse = await _userRepository.getProfile();
+
+
+      ResponseData<UserProfileResponse> profileData = profleRespomse.data;
+      UserProfileResponse userProfileResponse = profileData.data;
+
+      if (userProfileResponse.schoolName == null) {
+        Get.to(() => SelectSchoolView());
+      } else if (userProfileResponse.mClass == null) {
+        Get.to(() => SelectDepartmentInterestView());
+      } else {
+        Get.offAll(() => MainView());
+      }
+
       Get.delete<SigninViewModel>();
-      Get.offAll(() => MainView());
+
+
       return true;
 
     } else if (apiResponse.statusCode == HttpStatus.notFound) {

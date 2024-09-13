@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
+import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
@@ -21,11 +22,17 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   final _homeVM = Get.put(HomeViewModel());
+  final _discoverVM = Get.put(DiscoverViewModel());
+
+  List<DiscoverResponse> professorSuggests = [];
 
   @override
   void initState() {
     super.initState();
     _homeVM.getSchedule();
+    if (_discoverVM.professorList.value != null && _discoverVM.professorList.value!.isNotEmpty) {
+      professorSuggests = _discoverVM.professorList.value!.sublist(0, 2);
+    }
   }
 
   @override
@@ -88,7 +95,13 @@ class _HomeViewState extends State<HomeView> {
               ),
               content: Column(
                 children: [
-                  ProfessorCell(professorInfo: DiscoverResponse(1, "대학교", "ㄴ", "ㅉ", null),)
+                  ...List.generate(
+                      professorSuggests.length,
+                  (index) => Padding(
+                      padding: EdgeInsets.symmetric(vertical: 6),
+                  child: ProfessorCell(professorInfo: professorSuggests[index])
+                  )
+                  )
                 ],
               ),
             )
