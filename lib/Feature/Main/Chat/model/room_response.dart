@@ -17,7 +17,7 @@ class RoomResponse {
   String createdAt;
 
   @JsonKey(name: "joinedUserId")
-  String? joinedUserId;
+  int? joinedUserId;
 
   @JsonKey(name: "createdDateTime")
   String? createdDateTime;

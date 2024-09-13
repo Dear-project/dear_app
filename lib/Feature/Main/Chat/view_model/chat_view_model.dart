@@ -57,7 +57,7 @@ class ChatViewModel extends GetxController {
       return;
     }
 
-    if (message.isEmpty) {
+    if (message.isEmpty || message.trim().isEmpty) {
       return;
     }
 
@@ -70,15 +70,15 @@ class ChatViewModel extends GetxController {
           {
             "roomId": currentValue!.id,
             "type": "MESSAGE",
-            "message": message
+            "message": message.trim()
           }
       )
     );
 
   }
 
-  void getRooms() async {
-    ApiResponse apiResponse = await _repository.getRooms();
+  void getRooms(int userId) async {
+    ApiResponse apiResponse = await _repository.getRooms(userId);
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       List<RoomResponse> response = List<RoomResponse>.from(

@@ -1,5 +1,7 @@
 import 'package:dear_app/Feature/Main/Chat/component/chat_cell.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
+import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
+import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +17,12 @@ class AllChatView extends StatefulWidget {
 
 class _AllChatViewState extends State<AllChatView> {
   final _chatVM = Get.put(ChatViewModel());
+  final _profileVM = Get.put(ProfileViewModel());
 
   @override
   void initState() {
     super.initState();
-    _chatVM.getRooms();
+    _chatVM.getRooms(_profileVM.model.value?.id ?? 0);
   }
 
   @override
@@ -41,6 +44,7 @@ class _AllChatViewState extends State<AllChatView> {
                               _chatVM.clickedIndex = index;
                             }
                         )),
+                    SizedBox(height: 100)
                   ],
                 )
                     : Column(

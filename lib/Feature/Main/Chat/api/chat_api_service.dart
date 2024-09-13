@@ -12,7 +12,7 @@ abstract class ChatApiService {
   factory ChatApiService(Dio dio) = _ChatApiService;
 
   @GET('/chat/get')
-  Future<HttpResponse> getRooms();
+  Future<HttpResponse> getRooms(@Query("userId") int userId);
 
   @POST('/chat/create')
   Future<HttpResponse> createRoom(@Body() RoomRequest roomRequest);

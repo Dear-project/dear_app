@@ -120,7 +120,7 @@ class _ChatCellState extends State<ChatCell> {
                                       MainAxisAlignment.start,
                                       children: [
                                         Text(
-                                          widget.model.lastMessage,
+                                          widget.model.lastMessage.trim(),
                                           style: TextStyle(
                                             fontFamily: "Pretendard",
                                             fontSize: 15,
