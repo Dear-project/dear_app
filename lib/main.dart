@@ -17,9 +17,53 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await _initFirebaseMessage();
+  _requestPermissionForIOS();
   await initServices();
   FirebaseMessaging.instance.getToken().then((value) => print(value));
   runApp(MyApp());
+}
+
+Future<void> _initFirebaseMessage() async {
+  // Get inicial message if the application
+  // has been opened from a terminated state.
+  final message = await FirebaseMessaging.instance.getInitialMessage();
+  // Check notification data
+  if (message != null) {
+    // Debug
+    debugPrint('getInitialMessage() -> data: ${message.data}');
+    // Handle notification data
+    await _handleNotificationClick(message.data);
+  }
+
+  // Returns a [Stream] that is called when a user
+  // presses a notification message displayed via FCM.
+  // Note: A Stream event will be sent if the app has
+  // opened from a background state (not terminated).
+  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) async {
+    // Debug
+    debugPrint('onMessageOpenedApp() -> data: ${message.data}');
+    // Handle notification data
+    await _handleNotificationClick(message.data);
+  });
+
+  // Listen for incoming push notifications
+  FirebaseMessaging.onMessage.listen((RemoteMessage? message) async {
+    // Debug
+    debugPrint('onMessage() -> data: ${message?.data}');
+    // Handle notification data
+    await _handleNotificationClick(message?.data);
+  });
+}
+
+Future<void> _handleNotificationClick(Map<String, dynamic>? data) async {
+
+}
+
+void _requestPermissionForIOS() async {
+  if (Platform.isIOS) {
+    await FirebaseMessaging.instance.requestPermission();
+  }
 }
 
 
