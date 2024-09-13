@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dear_app/shared/net/api_constants.dart';
+import 'package:dear_app/Shared/net/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
 

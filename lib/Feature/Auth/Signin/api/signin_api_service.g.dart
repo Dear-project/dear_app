@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'discover_api_service.dart';
+part of 'signin_api_service.dart';
 
 // **************************************************************************
 // RetrofitGenerator
@@ -8,8 +8,8 @@ part of 'discover_api_service.dart';
 
 // ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers,unused_element
 
-class _DiscoverApiService implements DiscoverApiService {
-  _DiscoverApiService(
+class _SignInApiService implements SignInApiService {
+  _SignInApiService(
     this._dio, {
     this.baseUrl,
   }) {
@@ -21,57 +21,22 @@ class _DiscoverApiService implements DiscoverApiService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<dynamic>> getProfessor(
-    int page,
-    int size,
-  ) async {
-    final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{
-      r'page': page,
-      r'size': size,
-    };
-    final _headers = <String, dynamic>{};
-    const Map<String, dynamic>? _data = null;
-    final _result =
-        await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(Options(
-      method: 'GET',
-      headers: _headers,
-      extra: _extra,
-    )
-            .compose(
-              _dio.options,
-              '/professor',
-              queryParameters: queryParameters,
-              data: _data,
-            )
-            .copyWith(
-                baseUrl: _combineBaseUrls(
-              _dio.options.baseUrl,
-              baseUrl,
-            ))));
-    final _value = _result.data;
-    final httpResponse = HttpResponse(_value, _result);
-    return httpResponse;
-  }
-
-  @override
-  Future<HttpResponse<dynamic>> sendMatchingRequest(
-      {MatchingRequest? matchingRequest}) async {
+  Future<HttpResponse<ResponseData<Authentication>>> signIn(
+      SignInRequest signInRequest) async {
     final _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{};
-    queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
     final _data = <String, dynamic>{};
-    _data.addAll(matchingRequest?.toJson() ?? <String, dynamic>{});
-    final _result =
-        await _dio.fetch(_setStreamType<HttpResponse<dynamic>>(Options(
+    _data.addAll(signInRequest.toJson());
+    final _result = await _dio.fetch<Map<String, dynamic>>(
+        _setStreamType<HttpResponse<ResponseData<Authentication>>>(Options(
       method: 'POST',
       headers: _headers,
       extra: _extra,
     )
             .compose(
               _dio.options,
-              '/matching',
+              '/auth',
               queryParameters: queryParameters,
               data: _data,
             )
@@ -80,7 +45,10 @@ class _DiscoverApiService implements DiscoverApiService {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    final _value = _result.data;
+    final _value = ResponseData<Authentication>.fromJson(
+      _result.data!,
+      (json) => Authentication.fromJson(json as Map<String, dynamic>),
+    );
     final httpResponse = HttpResponse(_value, _result);
     return httpResponse;
   }

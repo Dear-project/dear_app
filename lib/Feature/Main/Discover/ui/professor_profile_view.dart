@@ -1,21 +1,22 @@
+
 import 'package:dear_app/Feature/Main/Chat/model/room_request.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
+import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
+import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ProfessorProfileView extends StatelessWidget {
   DiscoverResponse? professorInfo;
+  final _discoverVM = Get.put(DiscoverViewModel());
+  final _chatVM = Get.put(ChatViewModel());
 
   ProfessorProfileView({this.professorInfo});
-
-  final _discoverVM = Get.put(DiscoverViewModel());
-
-  final _chatVM = Get.put(ChatViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +33,6 @@ class ProfessorProfileView extends StatelessWidget {
               padding: EdgeInsets.zero,
               child: Image(
                 image: DearIcons.back.image,
-                // 이 아이콘 피그마랑 다름. 추가해야함.
                 width: 36,
                 height: 36,
                 fit: BoxFit.fitWidth,
@@ -76,7 +76,7 @@ class ProfessorProfileView extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "${professorInfo != null ? professorInfo!.school : ""} ${professorInfo != null ? professorInfo!.major : ""}",
+                      "${professorInfo?.school != null ? professorInfo!.school : ""}${professorInfo?.major != null ? " ${professorInfo!.major}" : ""}",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontSize: 12,
@@ -159,9 +159,9 @@ class ProfessorProfileView extends StatelessWidget {
             width: MediaQuery.of(context).size.width - 54,
             child: CupertinoButton(
               onPressed: () {
-                if (professorInfo != null && professorInfo?.professorId != null) {
+                if (professorInfo != null) {
                   _chatVM.createRoom(RoomRequest(roomName: professorInfo!.name,
-                      joinUserId: professorInfo!.professorId!));
+                      joinUserId: professorInfo!.professorId ?? 0));
                 }
               },
               color: DearColors.main,

@@ -10,12 +10,12 @@ EmailAuthNumberRequest _$EmailAuthNumberRequestFromJson(
         Map<String, dynamic> json) =>
     EmailAuthNumberRequest(
       email: json['email'] as String,
-      authCode: json['AuthCode'] as String,
+      authCode: json['authCode'] as String,
     );
 
 Map<String, dynamic> _$EmailAuthNumberRequestToJson(
         EmailAuthNumberRequest instance) =>
     <String, dynamic>{
       'email': instance.email,
-      'AuthCode': instance.authCode,
+      'authCode': instance.authCode,
     };

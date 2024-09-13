@@ -1,6 +1,6 @@
-import 'package:dear_app/shared/model/response_data.dart';
-import 'package:dear_app/shared/model/user_profile_response.dart';
-import 'package:dear_app/shared/net/api_constants.dart';
+import 'package:dear_app/Shared/model/response_data.dart';
+import 'package:dear_app/Shared/model/user_profile_response.dart';
+import 'package:dear_app/Shared/net/api_constants.dart';
 import 'package:dio/dio.dart';
 import 'package:retrofit/dio.dart';
 import 'package:retrofit/http.dart';

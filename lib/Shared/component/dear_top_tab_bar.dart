@@ -23,11 +23,11 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
   List<Widget> getTabs() {
     switch (widget.topBarType) {
       case TopBarType.Discover:
-        return [Tab(text: "교수님 목록"), Tab(text: "찜한 교수님"), Tab(text: "순위 보기")];
+        return [Tab(text: "교수님 목록"), Tab(text: "대학교 목록"), Tab(text: "찜한 목록")];
       case TopBarType.Chat:
         return [Tab(text: "전체"), Tab(text: "차단한 사람 보기")];
       case TopBarType.Community:
-        return [Tab(text: "커뮤니티"), Tab(text: "멘토링"), Tab(text: "랭킹")];
+        return [Tab(text: "커뮤니티"), Tab(text: "내 작성글 보기")];
     }
   }
 

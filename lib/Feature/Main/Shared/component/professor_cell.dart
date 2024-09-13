@@ -3,6 +3,7 @@ import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class ProfessorCell extends StatelessWidget {
   DiscoverResponse? professorInfo;
@@ -14,9 +15,10 @@ class ProfessorCell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
+      alignment: Alignment.center,
       children: [
         CupertinoButton(
-            padding: EdgeInsets.symmetric(horizontal: 27, vertical: 0),
+            padding: EdgeInsets.zero,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -41,7 +43,7 @@ class ProfessorCell extends StatelessWidget {
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
                       professorInfo != null ? professorInfo!.name : "",
@@ -52,7 +54,7 @@ class ProfessorCell extends StatelessWidget {
                           color: Colors.black),
                     ),
                     Text(
-                      "${professorInfo != null ? professorInfo!.school : ""} ${professorInfo != null ? professorInfo!.major : ""}",
+                      "${professorInfo?.school != null ? professorInfo!.school : ""}${professorInfo?.major != null ? " ${professorInfo!.major}" : ""}",
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 12,
@@ -70,21 +72,18 @@ class ProfessorCell extends StatelessWidget {
                 action!();
               }
             }),
-        Row(
-          children: [
-            Spacer(),
-            CupertinoButton(
-              child: Image(
-                image: DearIcons.banner.image,
-                width: 12,
-                height: 17,
-              ),
-              onPressed: () {
-                print("찜하기 버튼 클릭됨");
-              },
+        Align(
+          alignment: Alignment.centerRight,
+          child: CupertinoButton(
+            child: Image(
+              image: DearIcons.banner.image,
+              width: 12,
+              height: 17,
             ),
-            SizedBox(width: 27),
-          ],
+            onPressed: () {
+              print("찜하기 버튼 클릭됨");
+            },
+          ),
         ),
       ],
     );

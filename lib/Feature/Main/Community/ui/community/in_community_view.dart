@@ -1,8 +1,8 @@
 import 'package:dear_app/Feature/Auth/Signup/component/dear_textfield_button.dart';
 import 'package:dear_app/Feature/Main/Community/component/community/in_community_comment.dart';
 import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

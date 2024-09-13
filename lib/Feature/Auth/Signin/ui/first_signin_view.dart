@@ -4,7 +4,6 @@ import 'package:dear_app/Feature/Auth/Signin/component/input_password_widget.dar
 import 'package:dear_app/Feature/Auth/Signin/view_model/controller/signin_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/component/round_button.dart';
-import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -95,11 +94,6 @@ class _FirstSigninViewState extends State<FirstSigninView> {
                       height: 55,
                       title: '로그인',
                       loading: _signInVM.loading.value,
-                      // onPress: () {
-                      //   // _signInVM.userRole.value = _obVM.userProfileResponse.role as UserType;
-                      //   _signInVM.signIn;
-                      //   // print("-------------------------");
-                      //   // print(_signInVM.userRole.value);
                       onPress: _signInVM.signIn)),
                   SizedBox(height: 45),
                 ],

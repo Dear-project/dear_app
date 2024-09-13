@@ -74,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
             CupertinoButton(child: ScheduleCell(
               list: _homeVM.scheduleModel.value,
             ), onPressed: () {
-              Get.to(ScheduleView(list: _homeVM.scheduleModel.value,));
+              Get.to(() => ScheduleView(list: _homeVM.scheduleModel.value,));
             }),
             SuggestionCell(
               title: "이런 교수님은 어때요?",
