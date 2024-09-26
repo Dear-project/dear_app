@@ -13,9 +13,6 @@ abstract class ChatApiService {
 
   @GET('/chat/get')
   Future<HttpResponse> getRooms(@Query("userId") int userId);
-
-  @POST('/chat/create')
-  Future<HttpResponse> createRoom(@Body() RoomRequest roomRequest);
   
   @POST('/chat/search/room/{roomId}')
   Future<HttpResponse> getRoombyId(@Path("roomId") String roomId, @Query("userId") int userId);

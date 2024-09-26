@@ -18,9 +18,9 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await _initFirebaseMessage();
+  FirebaseMessaging.instance.getToken().then((value) => print(value));
   _requestPermissionForIOS();
   await initServices();
-  FirebaseMessaging.instance.getToken().then((value) => print(value));
   runApp(MyApp());
 }
 

@@ -160,8 +160,7 @@ class ProfessorProfileView extends StatelessWidget {
             child: CupertinoButton(
               onPressed: () {
                 if (professorInfo != null) {
-                  _chatVM.createRoom(RoomRequest(roomName: professorInfo!.name,
-                      joinUserId: professorInfo!.professorId ?? 0));
+
                 }
               },
               color: DearColors.main,

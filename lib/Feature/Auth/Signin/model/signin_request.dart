@@ -10,7 +10,10 @@ class SignInRequest {
   @JsonKey(name: "password")
   String password;
 
-  SignInRequest({required this.email, required this.password});
+  @JsonKey(name: "FCMToken")
+  String? fcmToken;
+
+  SignInRequest({required this.email, required this.password, required this.fcmToken});
 
   factory SignInRequest.fromJson(Map<String, dynamic> json) =>
       _$SignInRequestFromJson(json);

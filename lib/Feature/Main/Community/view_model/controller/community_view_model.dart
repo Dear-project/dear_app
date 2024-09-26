@@ -12,6 +12,7 @@ import 'package:get/get.dart';
 class CommunityViewModel extends GetxController {
   final CommunityRepository _repositoy = CommunityRepositoryImpl();
   Rxn<List<CommunityResponse>> model = Rxn<List<CommunityResponse>>([]);
+  Rxn<List<CommunityResponse>> myModel = Rxn<List<CommunityResponse>>([]);
   Rxn<CommunityResponse> idInfo = Rxn<CommunityResponse>();
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
@@ -42,7 +43,6 @@ class CommunityViewModel extends GetxController {
 
   void patchPosts(int id) async {
     ApiResponse apiResponse = await _repositoy.patchPosts(id, PostRequest(title: titleController.text, content: contentController.text));
-    print(id);
     print([apiResponse.statusCode, apiResponse.errorMessage]);
     if (apiResponse.statusCode == HttpStatus.ok) {
       Get.back();
@@ -61,6 +61,6 @@ class CommunityViewModel extends GetxController {
     ApiResponse apiResponse = await _repositoy.getPostsMy();
     ResponseData<List<CommunityResponse>> communityResponse = ResponseData.fromJson(apiResponse.data, (json) => (json as List).map((e) => CommunityResponse.fromJson(e)).toList());
 
-    print(communityResponse.data);
+    myModel.value = communityResponse.data;
   }
 }

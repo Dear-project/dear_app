@@ -13,6 +13,7 @@ import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:dear_app/Shared/model/authentication.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -33,6 +34,12 @@ class SigninViewModel extends GetxController {
 
   Future<bool> signIn() async {
 
+    String? fcmToken;
+
+    await FirebaseMessaging.instance.getToken().then((value) {
+      fcmToken = value;
+    });
+
     if (emailController.value.text.isEmpty) {
       Utils.snackBar('알림', '이메일을 입력해 주세요.');
       return false;
@@ -42,11 +49,17 @@ class SigninViewModel extends GetxController {
       Utils.snackBar('알림', '비밀번호를 입력해 주세요.');
       return false;
     }
+
     loading.value = true;
+
+
+    print(fcmToken);
     ApiResponse apiResponse = await _repository.signIn(
         signInRequest: SignInRequest(
             email: emailController.value.text,
-            password: passwordController.value.text));
+            password: passwordController.value.text,
+          fcmToken: fcmToken
+        ));
 
 
     if (apiResponse.statusCode == HttpStatus.ok) {
@@ -56,7 +69,6 @@ class SigninViewModel extends GetxController {
       await storageService.saveRefreshToken(authentication.refreshToken);
 
       ApiResponse profleRespomse = await _userRepository.getProfile();
-
 
       ResponseData<UserProfileResponse> profileData = profleRespomse.data;
       UserProfileResponse userProfileResponse = profileData.data;
@@ -79,6 +91,7 @@ class SigninViewModel extends GetxController {
     } else {
       Utils.snackBar('알림', '이메일 또는 비밀번호를 다시 확인해 주세요.');
     }
+
     loading.value = false;
     return false;
   }

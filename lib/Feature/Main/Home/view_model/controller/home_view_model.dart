@@ -20,21 +20,17 @@ class HomeViewModel extends GetxController {
       ResponseData<List<BannerResponse>> bannerResponse = ResponseData.fromJson(response.data, (json) => (json as List).map((e) => BannerResponse.fromJson(e)).toList());
 
       model.value = bannerResponse.data;
-      print(bannerResponse);
-      // model.value = bannerResponse.data;
     }
 
   }
 
   void getSchedule() async {
-    print("학사일정");
     ApiResponse response = await _repository.getSchedule();
 
     if (response.statusCode == HttpStatus.ok) {
       ResponseData<List<ScheduleResponse>> scheduleResponse = ResponseData.fromJson(response.data, (json) => (json as List).map((e) => ScheduleResponse.fromJson(e)).toList());
 
       scheduleModel.value = scheduleResponse.data;
-      print(scheduleResponse);
     }
   }
 }

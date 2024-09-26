@@ -89,15 +89,6 @@ class ChatViewModel extends GetxController {
     }
   }
 
-  void createRoom(RoomRequest roomRequest) async {
-    ApiResponse apiResponse = await _repository.createRoom(roomRequest);
-
-    if (apiResponse.statusCode == HttpStatus.ok) {
-      Utils.toastMessage("채팅 방이 개설되었습니다");
-      Get.back();
-    }
-  }
-
   void getRoombyId(String roomId, int userId) async {
     ApiResponse apiResponse = await _repository.getRoombyId(roomId, userId);
 

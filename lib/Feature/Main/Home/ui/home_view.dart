@@ -5,8 +5,11 @@ import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
 import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
+import 'package:dear_app/Feature/Main/Shared/component/matching_request_cell.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
+import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
+import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,6 +26,7 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final _homeVM = Get.put(HomeViewModel());
   final _discoverVM = Get.put(DiscoverViewModel());
+  final _roleController = UserRoleController.shared;
 
   List<DiscoverResponse> professorSuggests = [];
 
@@ -104,8 +108,12 @@ class _HomeViewState extends State<HomeView> {
                   )
                 ],
               ),
-            )
-
+            ),
+            Center(
+              heightFactor: 2,
+              child: Text(_roleController.isStudent ? "학생" : "교수")
+            ),
+            SizedBox(height: 100,)
           ],
         )));
   }

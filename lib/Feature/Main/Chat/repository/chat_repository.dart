@@ -10,7 +10,6 @@ import 'package:dio/dio.dart';
 
 abstract class ChatRepository {
   Future<ApiResponse> getRooms( int userId );
-  Future<ApiResponse> createRoom( RoomRequest roomRequest );
   Future<ApiResponse> getRoombyId( String roomId, int userId );
   Future<ApiResponse> getMessages( String roomId, int? userId, MessageRequest? pageable );
 }
@@ -21,26 +20,6 @@ class ChatRepositoryImpl implements ChatRepository {
   @override
   Future<ApiResponse> getRooms(int userId) async {
     ApiResponse apiResponse = await _apiService.getRooms(userId).then((
-        httpResponse) async {
-      return ApiResponse(
-          statusCode: httpResponse.response.statusCode,
-          data: httpResponse.data
-      );
-    }).onError((DioException e, stackTrace) async {
-      return ApiResponse.error(
-          (e.response == null)
-              ? HttpStatus.badRequest : e.response!.statusCode!,
-          (e.response == null)
-              ? "클라이언트 에러" : e.response!.statusMessage!
-      );
-    });
-
-    return apiResponse;
-  }
-
-  @override
-  Future<ApiResponse> createRoom(RoomRequest roomRequest) async {
-    ApiResponse apiResponse = await _apiService.createRoom(roomRequest).then((
         httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
