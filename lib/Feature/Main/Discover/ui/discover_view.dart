@@ -1,6 +1,7 @@
 import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/university_view.dart';
+import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -19,10 +20,16 @@ class _DiscoverViewState extends State<DiscoverView>
     with SingleTickerProviderStateMixin {
   var _index = 0;
 
-  final List<Widget> _pages = [
+  final _roleController = UserRoleController.shared;
+
+  final List<Widget> _pagesForSt = [
     ProfessorListView(),
     UniversityView(),
     DibProfessorView(),
+  ];
+
+  final List<Widget> _pageForPro = [
+
   ];
 
   late final TabController _tabController = TabController(
@@ -77,7 +84,7 @@ class _DiscoverViewState extends State<DiscoverView>
                     ])))
           ],
         ),
-        body: _pages[_index]
+        body: _roleController.isStudent ? _pagesForSt[_index] : _pageForPro[_index]
     );
   }
 }

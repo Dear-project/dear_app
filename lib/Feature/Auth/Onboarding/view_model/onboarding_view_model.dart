@@ -17,7 +17,7 @@ import 'package:get/get.dart';
 
 class OnboardingViewModel extends GetxController {
   final UserRepository _userRepository = UserRepositoryImpl();
-  final UserRoleController _roleController = Get.put(UserRoleController(), permanent: true);
+  final UserRoleController _roleController = Get.put(UserRoleController(), tag: "roleC", permanent: true);
 
   RxBool loading = false.obs;
 

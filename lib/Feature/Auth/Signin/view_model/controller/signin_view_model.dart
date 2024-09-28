@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dear_app/Feature/Auth/Onboarding/view_model/onboarding_view_model.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_department_interest_view.dart';
 import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Auth/Signin/model/signin_request.dart';
@@ -21,7 +22,7 @@ import 'package:get/get.dart';
 class SigninViewModel extends GetxController {
   final storageService = Get.find<SecureStorageService>();
   final SignInRepository _repository = SignInRepositoryImpl();
-  final UserRepository _userRepository = UserRepositoryImpl();
+  final OnboardingViewModel _onboardingVM = Get.put(OnboardingViewModel());
 
   final emailController = TextEditingController().obs;
   final passwordController = TextEditingController().obs;
@@ -30,7 +31,6 @@ class SigninViewModel extends GetxController {
 
   RxBool loading = false.obs;
 
-  Rx<UserType> userRole = Rx<UserType>(UserType.STUDENT);
 
   Future<bool> signIn() async {
 
@@ -68,18 +68,7 @@ class SigninViewModel extends GetxController {
       await storageService.saveAccessToken(authentication.accessToken);
       await storageService.saveRefreshToken(authentication.refreshToken);
 
-      ApiResponse profleRespomse = await _userRepository.getProfile();
-
-      ResponseData<UserProfileResponse> profileData = profleRespomse.data;
-      UserProfileResponse userProfileResponse = profileData.data;
-
-      if (userProfileResponse.schoolName == null) {
-        Get.to(() => SelectSchoolView());
-      } else if (userProfileResponse.mClass == null) {
-        Get.to(() => SelectDepartmentInterestView());
-      } else {
-        Get.offAll(() => MainView());
-      }
+      _onboardingVM.login();
 
       Get.delete<SigninViewModel>();
 

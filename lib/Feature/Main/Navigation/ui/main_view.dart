@@ -29,7 +29,7 @@ class _MainViewState extends State<MainView> {
   final _communityVM = Get.put(CommunityViewModel());
   final _chatVM = Get.put(ChatViewModel());
 
-
+  final _roleController = UserRoleController.shared;
 
   var _index = 0;
 
@@ -42,7 +42,6 @@ class _MainViewState extends State<MainView> {
     _communityVM.getPosts();
     _communityVM.getPostsMy();
   }
-
 
 
   final List<Widget> _pages = [

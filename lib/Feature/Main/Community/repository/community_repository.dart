@@ -19,7 +19,7 @@ class CommunityRepositoryImpl implements CommunityRepository {
 
   @override
   Future<ApiResponse> getPosts() async {
-    ApiResponse apiResponse = await _apiService.getPosts(1, 100).then((
+    ApiResponse apiResponse = await _apiService.getPosts(1, 10).then((
         httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
@@ -99,7 +99,7 @@ class CommunityRepositoryImpl implements CommunityRepository {
 
   @override
   Future<ApiResponse> getPostsMy() async {
-    ApiResponse apiResponse = await _apiService.getPostsMy(1, 100).then((
+    ApiResponse apiResponse = await _apiService.getPostsMy(1, 10).then((
         httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
