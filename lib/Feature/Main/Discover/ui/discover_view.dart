@@ -1,7 +1,7 @@
 import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/university_view.dart';
-import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -66,7 +66,7 @@ class _DiscoverViewState extends State<DiscoverView>
           backgroundColor: DearColors.white,
           bottom: DearTopTabBar(
             tabController: _tabController,
-            topBarType: _roleController.isStudent ? TopBarType.Discover : TopBarType.Professor,
+            topBarType: _roleController.isStudent ? TopBarType.Discover : TopBarType.ProfessorDisc,
           ),
           actions: [
             Padding(

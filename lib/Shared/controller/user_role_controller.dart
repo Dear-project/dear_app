@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 
 class UserRoleController extends GetxController {
 
-  static UserRoleController get shared => Get.find(tag: "roleC");
+  static UserRoleController get shared => Get.find(tag: "ROLEC");
 
   Rx<UserType> role = Rx<UserType>(UserType.STUDENT);
 

@@ -1,5 +1,7 @@
 import 'package:dear_app/Feature/Main/Chat/ui/all_chat_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/blocked_person_view.dart';
+import 'package:dear_app/Feature/Main/Chat/ui/chat_request_view.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -16,14 +18,19 @@ class ChatView extends StatefulWidget {
 
 class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin {
   var _index = 0;
+  static final _roleController = UserRoleController.shared;
 
-  final List<Widget> _pages = [
+  final List<Widget> pages = _roleController.isStudent ? [
+    AllChatView(),
+    BlockedPersonView()
+  ] : [
     AllChatView(),
     BlockedPersonView(),
+    ChatRequestView()
   ];
 
-  late TabController _tabController = TabController(
-    length: 2,
+  late final TabController _tabController = TabController(
+    length: pages.length,
     vsync: this,
     initialIndex: 0,
   );
@@ -55,7 +62,7 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
         ),
         bottom: DearTopTabBar(
           tabController: _tabController,
-          topBarType: TopBarType.Chat,
+          topBarType: _roleController.isStudent ? TopBarType.Chat : TopBarType.ProfessorChat,
         ),
         actions: [
           Padding(
@@ -76,7 +83,7 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
         child: Column(
           children: [
             SizedBox(height: 22),
-            _pages[_index],
+            pages[_index],
           ],
         ),
       ),

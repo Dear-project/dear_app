@@ -10,7 +10,7 @@ import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
-import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_tab_view.dart';
 import 'package:dear_app/Shared/model/dear_tab_view_item.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';

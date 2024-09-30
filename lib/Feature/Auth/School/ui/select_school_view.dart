@@ -4,7 +4,7 @@ import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
-import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

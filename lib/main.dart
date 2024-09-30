@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dear_app/Feature/Auth/Onboarding/ui/first_join_view.dart';
 import 'package:dear_app/Shared/controller/user_controller.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:dear_app/Shared/theme/dear_theme.dart';
 import 'package:dear_app/firebase_options.dart';
@@ -71,6 +72,7 @@ void _requestPermissionForIOS() async {
 Future<void> initServices() async {
   await Get.putAsync<SecureStorageService>(() async => SecureStorageService());
   await Get.putAsync<UserController>(() async => UserController());
+  await Get.putAsync<UserRoleController>(() async => UserRoleController(), tag: "ROLEC", permanent: true);
 }
 
 class MyApp extends StatelessWidget {

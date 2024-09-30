@@ -7,7 +7,7 @@ import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Shared/component/matching_request_cell.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
-import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
