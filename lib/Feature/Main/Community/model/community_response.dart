@@ -52,11 +52,22 @@ class CommunityResponse {
     if(createdDateTime != null)  {
       final localdatetime = createdDateTime!.split('T');
       final date = localdatetime.first.split('-');
+
+      return "${date[0]}년 ${date[1]}월 ${date[2]}일";
+    } else {
+      return "날짜를 불러올 수 없습니다";
+    }
+  }
+
+  String getTime() {
+    if(createdDateTime != null)  {
+      final localdatetime = createdDateTime!.split('T');
+      final date = localdatetime.first.split('-');
       final time = localdatetime.last.substring(0, localdatetime.last.lastIndexOf('.')).split(':');
 
       return "${date[0]}년 ${date[1]}월 ${date[2]}일 ${(int.parse(time[0]) / 12) < 1 ? "오전" : "오후"} ${int.parse(time[0]) % 12}:${time[1]}";
     } else {
-      return "날짜를 불러올 수 없습니다.";
+      return "날짜를 불러올 수 없습니다";
     }
   }
 

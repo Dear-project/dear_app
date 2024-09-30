@@ -1,5 +1,5 @@
 import 'package:dear_app/Feature/Main/Community/model/community_response.dart';
-import 'package:dear_app/Feature/Main/Community/ui/community/in_community_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/in_community_view.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -89,7 +89,7 @@ class CommunityCell extends StatelessWidget {
                       ),
                       SizedBox(width: 7),
                       Text(
-                        "${model.userName} • ${model.createdDateTime?.split('T').first.split('-').join('.') ?? "날짜를 불러올 수 없습니다"}.",
+                        "${model.userName} • ${model.getTime()}",
                         style: TextStyle(
                           fontFamily: "Pretendard",
                           fontWeight: FontWeight.w500,

@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:dear_app/Feature/Main/Community/model/community_response.dart';
 import 'package:dear_app/Feature/Main/Community/model/post_id_response.dart';
 import 'package:dear_app/Feature/Main/Community/model/post_request.dart';
+import 'package:dear_app/Feature/Main/Community/repository/comment_repository.dart';
 import 'package:dear_app/Feature/Main/Community/repository/community_repository.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
@@ -11,9 +12,12 @@ import 'package:get/get.dart';
 
 class CommunityViewModel extends GetxController {
   final CommunityRepository _repositoy = CommunityRepositoryImpl();
-  Rxn<List<CommunityResponse>> model = Rxn<List<CommunityResponse>>([]);
-  Rxn<List<CommunityResponse>> myModel = Rxn<List<CommunityResponse>>([]);
-  Rxn<CommunityResponse> idInfo = Rxn<CommunityResponse>();
+  final CommentRepository _commentRepository = CommentRepositoryImpl();
+  Rxn<List<CommunityResponse>> communityList = Rxn<List<CommunityResponse>>([]);
+  Rxn<List<CommunityResponse>> myCommunityList = Rxn<List<CommunityResponse>>([]);
+
+  Rxn<CommunityResponse> infoById = Rxn<CommunityResponse>();
+
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
 
@@ -28,7 +32,7 @@ class CommunityViewModel extends GetxController {
     if (apiResponse.statusCode == HttpStatus.ok) {
       ResponseData<List<CommunityResponse>> communityResponse = ResponseData.fromJson(apiResponse.data, (json) => (json as List).map((e) => CommunityResponse.fromJson(e)).toList());
 
-      model.value = communityResponse.data;
+      communityList.value = communityResponse.data;
     }
   }
 
@@ -53,14 +57,21 @@ class CommunityViewModel extends GetxController {
   void getPostbyId(int id) async {
     ApiResponse apiResponse = await _repositoy.getPostbyId(id);
     ResponseData<CommunityResponse> response = ResponseData.fromJson(apiResponse.data, (json) => CommunityResponse.fromJson(json as Map<String, dynamic>));
-    idInfo.value = response.data;
-    print(idInfo.value?.toJson());
+    infoById.value = response.data;
+    print(infoById.value?.toJson());
   }
 
   void getPostsMy() async {
     ApiResponse apiResponse = await _repositoy.getPostsMy();
     ResponseData<List<CommunityResponse>> communityResponse = ResponseData.fromJson(apiResponse.data, (json) => (json as List).map((e) => CommunityResponse.fromJson(e)).toList());
 
-    myModel.value = communityResponse.data;
+    myCommunityList.value = communityResponse.data;
   }
+
+  void getComments(int id) async {
+    _commentRepository.getComments(id).then((value) => {
+      print(value.data)
+    });
+  }
+
 }

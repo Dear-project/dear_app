@@ -11,7 +11,6 @@ class InCommunityView extends StatefulWidget {
   final int id;
   const InCommunityView({super.key, required this.id});
 
-
   @override
   State<InCommunityView> createState() => _InCommunityViewState();
 }
@@ -24,6 +23,8 @@ class _InCommunityViewState extends State<InCommunityView> {
   void initState() {
     super.initState();
     _communityVM.getPostbyId(widget.id);
+
+    _communityVM.getComments(widget.id);
   }
 
   @override
@@ -83,7 +84,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                _communityVM.idInfo.value?.userName ?? "",
+                                _communityVM.infoById.value?.userName ?? "",
                                 style: TextStyle(
                                   fontFamily: "Pretendard",
                                   fontWeight: FontWeight.w700,
@@ -91,7 +92,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                                 ),
                               ),
                               Text(
-                                _communityVM.idInfo.value?.getDate() ?? "",
+                                _communityVM.infoById.value?.getDate() ?? "",
                                 style: TextStyle(
                                   fontFamily: "Pretendard",
                                   fontWeight: FontWeight.w500,
@@ -115,7 +116,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 27),
                     child: Text(
-                      _communityVM.idInfo.value?.title ?? "제목",
+                      _communityVM.infoById.value?.title ?? "제목",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontWeight: FontWeight.w700,
@@ -127,7 +128,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                   Padding(
                     padding: EdgeInsets.symmetric(horizontal: 27),
                     child: Text(
-                      _communityVM.idInfo.value?.content ?? "내용",
+                      _communityVM.infoById.value?.content ?? "내용",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontWeight: FontWeight.w500,
@@ -143,9 +144,6 @@ class _InCommunityViewState extends State<InCommunityView> {
                       height: 8,
                     ),
                   ),
-                  InCommunityComment(),
-                  InCommunityComment(commentType: CommunityCommentType.reply),
-                  for (int i = 0; i < 10; i++) InCommunityComment(),
                 ],
               ),
             ),
