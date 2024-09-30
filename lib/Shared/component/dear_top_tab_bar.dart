@@ -2,7 +2,7 @@ import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-enum TopBarType { Discover, Chat, Community }
+enum TopBarType { Discover, Chat, Community, Professor }
 
 class DearTopTabBar extends StatefulWidget implements PreferredSizeWidget {
   DearTopTabBar(
@@ -28,6 +28,8 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
         return [Tab(text: "전체"), Tab(text: "차단한 사람 보기")];
       case TopBarType.Community:
         return [Tab(text: "커뮤니티"), Tab(text: "내 작성글 보기")];
+      case TopBarType.Professor:
+        return [Tab(text: "임시")];
     }
   }
 

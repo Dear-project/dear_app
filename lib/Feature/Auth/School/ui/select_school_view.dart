@@ -4,15 +4,30 @@ import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:dear_app/Feature/Auth/Shared/component/bottom_button.dart';
 import 'package:dear_app/Feature/Auth/School/view_model/controller/school_view_model.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
+import 'package:dear_app/Feature/Main/Shared/controller/user_role_controller.dart';
+import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class SelectSchoolView extends StatelessWidget {
+class SelectSchoolView extends StatefulWidget {
   SelectSchoolView({super.key});
 
+  @override
+  State<SelectSchoolView> createState() => _SelectSchoolViewState();
+}
+
+class _SelectSchoolViewState extends State<SelectSchoolView> {
   final _schoolVM = Get.put(SchoolViewModel());
   final _profileVM = Get.put(ProfileViewModel());
+  final _roleController = UserRoleController.shared;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _schoolVM.schoolType.value = SchoolType.UNIV;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,8 +101,8 @@ class SelectSchoolView extends StatelessWidget {
                 padding: EdgeInsets.symmetric(horizontal: 36),
                 child: Column(
                   children: [
-                    SelectGubunTypeWidget(schoolType: _schoolVM.schoolType),
-                    SizedBox(
+                    if(_roleController.isStudent) SelectGubunTypeWidget(schoolType: _schoolVM.schoolType),
+                    if(_roleController.isStudent) SizedBox(
                       height: 10,
                     ),
                     SchoolSearchBar(),

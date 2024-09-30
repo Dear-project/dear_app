@@ -20,20 +20,18 @@ class _DiscoverViewState extends State<DiscoverView>
     with SingleTickerProviderStateMixin {
   var _index = 0;
 
-  final _roleController = UserRoleController.shared;
+  static final _roleController = UserRoleController.shared;
 
-  final List<Widget> _pagesForSt = [
+  final List<Widget> page = _roleController.isStudent ? [
     ProfessorListView(),
     UniversityView(),
-    DibProfessorView(),
-  ];
-
-  final List<Widget> _pageForPro = [
-
+    DibProfessorView()
+  ] : [
+    DibProfessorView()
   ];
 
   late final TabController _tabController = TabController(
-      length: 3,
+      length: page.length,
       vsync: this,
       initialIndex: 0
   );
@@ -47,6 +45,7 @@ class _DiscoverViewState extends State<DiscoverView>
         _index = _tabController.index;
       });
     });
+
   }
 
   @override
@@ -67,7 +66,7 @@ class _DiscoverViewState extends State<DiscoverView>
           backgroundColor: DearColors.white,
           bottom: DearTopTabBar(
             tabController: _tabController,
-            topBarType: TopBarType.Discover,
+            topBarType: _roleController.isStudent ? TopBarType.Discover : TopBarType.Professor,
           ),
           actions: [
             Padding(
@@ -84,7 +83,7 @@ class _DiscoverViewState extends State<DiscoverView>
                     ])))
           ],
         ),
-        body: _roleController.isStudent ? _pagesForSt[_index] : _pageForPro[_index]
+        body:   page[_index]
     );
   }
 }
