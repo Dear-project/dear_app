@@ -5,118 +5,115 @@ import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:shimmer/shimmer.dart';
 
 class CommunityCell extends StatelessWidget {
   CommunityResponse model;
   int id;
+
   CommunityCell({super.key, required this.model, required this.id});
-
-
 
   @override
   Widget build(BuildContext context) {
     return Container(
-        decoration: BoxDecoration(
-          color: DearColors.white
-        ),
-        child: Column(
-          children: [
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 25),
-              child: CupertinoButton(
-                padding: EdgeInsets.zero,
-                onPressed: () {
-                  Get.to(() => InCommunityView(id: id));
-                },
-                child: SizedBox(
+      decoration: BoxDecoration(color: DearColors.white),
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 25),
+            child: CupertinoButton(
+              padding: EdgeInsets.zero,
+              onPressed: () {
+                Get.to(() => InCommunityView(id: id));
+              },
+              child: SizedBox(
                   width: double.infinity,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(height: 24),
-                        Text(
-                          model.title,
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontFamily: "Pretendard",
-                              fontSize: 17,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        SizedBox(height: 5),
-                        Text(
-                          model.getDate(),
-                          style: TextStyle(
-                            fontFamily: "Pretendard",
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                            color: Color(0xff787878),
-                          ),
-                        ),
-                        SizedBox(height: 11),
-                        Text(
-                          model.content,
-                          style: TextStyle(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 24),
+                      Text(
+                        model.title,
+                        style: TextStyle(
                             color: Colors.black,
                             fontFamily: "Pretendard",
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ],
-                    )
-                ),
-              ),
-            ),
-            SizedBox(height: 11),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 27),
-              child: Wrap(
-                children: [
-                  ColoredBox(
-                    color: Color(0xffD1D1D1),
-                    child: SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      height: 0.5,
-                    ),
-                  ),
-                  SizedBox(height: 18),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: 14,
-                        height: 14,
-                        child: DearIcons.communityProfile,
+                            fontSize: 17,
+                            fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(width: 7),
+                      SizedBox(height: 5),
                       Text(
-                        "${model.userName} • ${model.getTime()}",
+                        model.getDate(),
                         style: TextStyle(
                           fontFamily: "Pretendard",
+                          fontSize: 10,
                           fontWeight: FontWeight.w500,
-                          fontSize: 12,
                           color: Color(0xff787878),
                         ),
                       ),
-                      Spacer(flex: 1),
-                      DearIcons.communityChat,
-                      SizedBox(width: 5),
+                      SizedBox(height: 11),
                       Text(
-                        "2",
+                        model.content,
                         style: TextStyle(
+                          color: Colors.black,
                           fontFamily: "Pretendard",
+                          fontSize: 14,
                           fontWeight: FontWeight.w500,
-                          fontSize: 12,
-                          color: Color(0xff787878),
                         ),
                       ),
                     ],
-                  ),
-                ],
-              ),
+                  )),
             ),
-            SizedBox(height: 18),
-          ],
-        )
-      );
+          ),
+          SizedBox(height: 11),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 27),
+            child: Wrap(
+              children: [
+                ColoredBox(
+                  color: Color(0xffD1D1D1),
+                  child: SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    height: 0.5,
+                  ),
+                ),
+                SizedBox(height: 18),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: 14,
+                      height: 14,
+                      child: DearIcons.communityProfile,
+                    ),
+                    SizedBox(width: 7),
+                    Text(
+                      "${model.userName} • ${model.getTime()}",
+                      style: TextStyle(
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: Color(0xff787878),
+                      ),
+                    ),
+                    Spacer(flex: 1),
+                    DearIcons.communityChat,
+                    SizedBox(width: 5),
+                    Text(
+                      "2",
+                      style: TextStyle(
+                        fontFamily: "Pretendard",
+                        fontWeight: FontWeight.w500,
+                        fontSize: 12,
+                        color: Color(0xff787878),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+          SizedBox(height: 18),
+        ],
+      ),
+    );
   }
 }

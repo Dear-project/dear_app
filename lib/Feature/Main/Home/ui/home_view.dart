@@ -7,6 +7,7 @@ import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Shared/component/matching_request_cell.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
+import 'package:dear_app/Shared/component/skeleton_loader.dart';
 import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
@@ -34,6 +35,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     _homeVM.getSchedule();
+    _homeVM.getBanner();
     if (_discoverVM.professorList.value != null &&
         _discoverVM.professorList.value!.isNotEmpty) {
       professorSuggests = _discoverVM.professorList.value!.sublist(0, 2);
@@ -74,7 +76,7 @@ class _HomeViewState extends State<HomeView> {
               children: [
                 if (_homeVM.model.value!.isNotEmpty)
                   BannerViewer(list: _homeVM.model.value!),
-                Padding(
+                if (_homeVM.model.value!.isNotEmpty) Padding(
                   padding: EdgeInsets.symmetric(horizontal: 34),
                   child: Container(
                     height: 1,
@@ -122,7 +124,7 @@ class _HomeViewState extends State<HomeView> {
                 SuggestionCell(title: "오늘의 글을 확인해보세요"),
                 Center(
                     heightFactor: 2,
-                    child: Text(_roleController.isStudent ? "학생" : "교수")
+                    child: SkeletonLoader(child: Text("야야야야야 한유섬 날려버려라"))
                 ),
                 SizedBox(height: 100,)
               ],

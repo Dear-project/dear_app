@@ -4,10 +4,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CommunityView extends StatelessWidget {
+class CommunityView extends StatefulWidget {
   CommunityView({super.key});
 
+  @override
+  State<CommunityView> createState() => _CommunityViewState();
+}
+
+class _CommunityViewState extends State<CommunityView> {
   final _communityVM = Get.put(CommunityViewModel());
+
+  @override
+  void initState() {
+    super.initState();
+    _communityVM.getPosts();
+  }
 
   @override
   Widget build(BuildContext context) {

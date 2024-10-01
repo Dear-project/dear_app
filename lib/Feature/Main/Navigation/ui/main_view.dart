@@ -38,9 +38,6 @@ class _MainViewState extends State<MainView> {
     super.initState();
     _profileVM.getProfile();
     _discoverVM.getProfessor();
-    _homeVM.getBanner();
-    _communityVM.getPosts();
-    _communityVM.getPostsMy();
   }
 
 

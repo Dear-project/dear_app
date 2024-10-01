@@ -34,6 +34,7 @@ dependencies:
   stomp_dart_client: ^2.0.0
   permission_handler: ^11.3.0
   cell_calendar: ^0.8.0
+  shimmer: ^3.0.0
 
 
 dev_dependencies:
