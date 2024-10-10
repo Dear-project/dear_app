@@ -3,6 +3,7 @@ import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_vi
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
+import 'package:dear_app/Feature/Main/Home/ui/meal_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
@@ -30,7 +31,8 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     _homeVM.getSchedule();
-    if (_discoverVM.professorList.value != null && _discoverVM.professorList.value!.isNotEmpty) {
+    if (_discoverVM.professorList.value != null &&
+        _discoverVM.professorList.value!.isNotEmpty) {
       professorSuggests = _discoverVM.professorList.value!.sublist(0, 2);
     }
   }
@@ -65,48 +67,56 @@ class _HomeViewState extends State<HomeView> {
           ],
         ),
         body: Obx(() => ListView(
-          children: [
-            if (_homeVM.model.value!.isNotEmpty)
-              BannerViewer(list: _homeVM.model.value!),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 34),
-              child: Container(
-                height: 1,
-                decoration: BoxDecoration(color: Color(0xffE6E6E6)),
-              ),
-            ),
-            SizedBox(
-              height: 10,
-            ),
-            CupertinoButton(child: ScheduleCell(
-              list: _homeVM.scheduleModel.value,
-            ), onPressed: () {
-              Get.to(() => ScheduleView(list: _homeVM.scheduleModel.value,));
-            }),
-            SuggestionCell(
-              title: "이런 교수님은 어때요?",
-              leading: CupertinoButton(
-                onPressed: () {},
-                child: Image(
-                  image: DearIcons.next.image,
-                  width: 20,
-                  height: 20,
+              children: [
+                if (_homeVM.model.value!.isNotEmpty)
+                  BannerViewer(list: _homeVM.model.value!),
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 34),
+                  child: Container(
+                    height: 1,
+                    decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                  ),
                 ),
-              ),
-              content: Column(
-                children: [
-                  ...List.generate(
-                      professorSuggests.length,
-                  (index) => Padding(
-                      padding: EdgeInsets.symmetric(vertical: 6),
-                  child: ProfessorCell(professorInfo: professorSuggests[index])
-                  )
-                  )
-                ],
-              ),
-            )
-
-          ],
-        )));
+                SizedBox(
+                  height: 10,
+                ),
+                CupertinoButton(
+                  child: Text("식단표 뷰로 가기"),
+                  onPressed: () {
+                    Get.to(() => MealView());
+                  },
+                ),
+                CupertinoButton(
+                    child: ScheduleCell(
+                      list: _homeVM.scheduleModel.value,
+                    ),
+                    onPressed: () {
+                      Get.to(() => ScheduleView(
+                            list: _homeVM.scheduleModel.value,
+                          ));
+                    }),
+                SuggestionCell(
+                  title: "이런 교수님은 어때요?",
+                  leading: CupertinoButton(
+                    onPressed: () {},
+                    child: Image(
+                      image: DearIcons.next.image,
+                      width: 20,
+                      height: 20,
+                    ),
+                  ),
+                  content: Column(
+                    children: [
+                      ...List.generate(
+                          professorSuggests.length,
+                          (index) => Padding(
+                              padding: EdgeInsets.symmetric(vertical: 6),
+                              child: ProfessorCell(
+                                  professorInfo: professorSuggests[index])))
+                    ],
+                  ),
+                )
+              ],
+            )));
   }
 }
