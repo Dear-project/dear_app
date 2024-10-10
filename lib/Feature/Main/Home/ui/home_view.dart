@@ -71,62 +71,59 @@ class _HomeViewState extends State<HomeView> {
                     ])))
           ],
         ),
-        body: Obx(() =>
-            ListView(
+        body: Obx(() => ListView(
               children: [
                 if (_homeVM.model.value!.isNotEmpty)
                   BannerViewer(list: _homeVM.model.value!),
-                if (_homeVM.model.value!.isNotEmpty) Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 34),
-                  child: Container(
-                    height: 1,
-                    decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                if (_homeVM.model.value!.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 34),
+                    child: Container(
+                      height: 1,
+                      decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                    ),
                   ),
-                ),
                 SizedBox(
                   height: 10,
                 ),
-                _roleController.isStudent ?
-                CupertinoButton(child: ScheduleCell(
-                  list: _homeVM.scheduleModel.value,
-                ), onPressed: () {
-                  Get.to(() =>
-                      ScheduleView(list: _homeVM.scheduleModel.value,));
-                }) :
-                SuggestionCell(
-                    title: "매칭요청이 왔어요"
-                ),
-                _roleController.isStudent ?
-                SuggestionCell(
-                  title: "이런 교수님은 어때요?",
-                  leading: CupertinoButton(
-                    onPressed: () {},
-                    child: Image(
-                      image: DearIcons.next.image,
-                      width: 20,
-                      height: 20,
-                    ),
-                  ),
-                  content: Column(
-                    children: [
-                      ...List.generate(
-                          professorSuggests.length,
-                              (index) =>
-                              Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 6),
-                                  child: ProfessorCell(
-                                      professorInfo: professorSuggests[index])
-                              )
-                        )
-                    ],
-                  ),
-                ) : 
-                SuggestionCell(title: "오늘의 글을 확인해보세요"),
-                Center(
-                    heightFactor: 2,
-                    child: SkeletonLoader(child: Text("야야야야야 한유섬 날려버려라"))
-                ),
-                SizedBox(height: 100,)
+                _roleController.isStudent
+                    ? CupertinoButton(
+                        child: ScheduleCell(
+                          list: _homeVM.scheduleModel.value,
+                        ),
+                        onPressed: () {
+                          Get.to(() => ScheduleView(
+                                list: _homeVM.scheduleModel.value,
+                              ));
+                        })
+                    : SuggestionCell(title: "매칭요청이 왔어요"),
+                _roleController.isStudent
+                    ? SuggestionCell(
+                        title: "이런 교수님은 어때요?",
+                        leading: CupertinoButton(
+                          onPressed: () {},
+                          child: Image(
+                            image: DearIcons.next.image,
+                            width: 20,
+                            height: 20,
+                          ),
+                        ),
+                        content: Column(
+                          children: [
+                            ...List.generate(
+                                professorSuggests.length,
+                                (index) => Padding(
+                                    padding: EdgeInsets.symmetric(vertical: 6),
+                                    child: ProfessorCell(
+                                        professorInfo:
+                                            professorSuggests[index])))
+                          ],
+                        ),
+                      )
+                    : SuggestionCell(title: "오늘의 글을 확인해보세요"),
+                SizedBox(
+                  height: 100,
+                )
               ],
             )));
   }

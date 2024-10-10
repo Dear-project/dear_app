@@ -7,7 +7,7 @@ class SkeletonLoader extends StatefulWidget {
   final Widget child;
   bool isLoaded;
 
-  SkeletonLoader({super.key, required this.child, this.isLoaded = false});
+  SkeletonLoader({super.key, required this.child, this.isLoaded = true});
 
 
   @override
@@ -23,7 +23,7 @@ class _SkeletonLoaderState extends State<SkeletonLoader> {
 
   @override
   Widget build(BuildContext context) {
-    return !widget.isLoaded ?  Shimmer.fromColors(
+    return widget.isLoaded ?  Shimmer.fromColors(
         baseColor: Color(0xffD1D1D1),
         highlightColor: Color(0xffD9D9D9),
         child: Container(

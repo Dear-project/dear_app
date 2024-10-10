@@ -36,6 +36,8 @@ class DiscoverViewModel extends GetxController {
               (json) =>
               (json as List).map((e) => DiscoverResponse.fromJson(e)).toList());
 
+      print(responseData.data);
+
       professorList.value = responseData.data;
     }
   }
