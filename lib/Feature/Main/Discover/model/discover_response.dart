@@ -4,8 +4,8 @@ part 'discover_response.g.dart';
 
 @JsonSerializable()
 class DiscoverResponse {
-  @JsonKey(name: "professorId")
-  int? professorId;
+  @JsonKey(name: "userId")
+  int? userId;
 
   @JsonKey(name: "name")
   String name;
@@ -16,11 +16,14 @@ class DiscoverResponse {
   @JsonKey(name: "major")
   String? major;
 
+  @JsonKey(name: "email")
+  String? email;
+
   @JsonKey(name: "profileImage")
   String? profileImage;
 
   DiscoverResponse(
-      this.professorId,
+      this.userId,
       this.name,
       this.school,
       this.major,

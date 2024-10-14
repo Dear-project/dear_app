@@ -52,7 +52,7 @@ class _BannerViewerState extends State<BannerViewer> {
         child: Column(
           children: [
             SizedBox(
-                height: 200,
+                height: 152,
                 child:  PageView(
                   scrollDirection: Axis.horizontal,
                   controller: widget._pageController,
@@ -73,7 +73,7 @@ class _BannerViewerState extends State<BannerViewer> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),
                                   image: DecorationImage(
-                                      fit: BoxFit.cover,
+                                      fit: BoxFit.fill,
                                       image: widget.list[index].imgPath != null
                                           ? NetworkImage(
                                           widget.list[index].imgPath!)

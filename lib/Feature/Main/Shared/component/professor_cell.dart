@@ -54,7 +54,8 @@ class ProfessorCell extends StatelessWidget {
                           color: Colors.black),
                     ),
                     Text(
-                      "${professorInfo?.school ?? ""}${professorInfo?.major ?? "컴퓨터공학과"}",
+                      "${professorInfo?.school ?? ""} ${professorInfo?.major ?? "컴퓨터공학과"}",
+                      maxLines: 2,
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 12,

@@ -25,30 +25,27 @@ class _CommunityViewState extends State<CommunityView> {
     return Expanded(
       child: SingleChildScrollView(
           child: Obx(
-                () => Column(
-              children: [
-                ...List.generate(_communityVM.communityList.value!.length, (index) {
-                  if (_communityVM.communityList.value![index].title.trim() != "") {
-                    return Column(
-                      children: [
-                        CommunityCell(
-                            model: _communityVM.communityList.value![index],
-                            id: _communityVM.communityList.value![index].id),
-                        SizedBox(
-                          height: 6,
-                        )
-                      ],
-                    );
-                  }
-                  else {
-                    return Container();
-                  }
-                }),
-                SizedBox(
-                  height: 100,
-                )
-              ],
-            ),
+                () =>
+                Column(
+                  children: [
+                    ...List.generate(
+                        _communityVM.communityList.value!.length, (index) {
+                      return Column(
+                        children: [
+                          CommunityCell(
+                              model: _communityVM.communityList.value![index],
+                              id: _communityVM.communityList.value![index].id),
+                          SizedBox(
+                            height: 6,
+                          )
+                        ],
+                      );
+                    }),
+                    SizedBox(
+                      height: 100,
+                    )
+                  ],
+                ),
           )),
     );
   }

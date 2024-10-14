@@ -31,7 +31,7 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
       case TopBarType.ProfessorDisc:
         return [Tab(text: "임시")];
       case TopBarType.ProfessorChat:
-        return [Tab(text: "전체"), Tab(text: "차단한 사람 보기"), Tab(text: "요청")];
+        return [Tab(text: "전체"), Tab(text: "교수채팅"), Tab(text: "차단한 사람 보기"), Tab(text: "요청")];
     }
   }
 
@@ -66,6 +66,7 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
             fontFamily: "Pretendard",
             fontWeight: FontWeight.w600,
             fontSize: 17),
+        unselectedLabelColor: Color(0xff7B7B7B),
         tabs: getTabs(),
       ),
     );

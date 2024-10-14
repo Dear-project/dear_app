@@ -19,29 +19,33 @@ class MyWritingCell extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              DearIcons.communityProfile,
+              Image(
+                image: DearIcons.communityProfile.image,
+                width: 45,
+                height: 45,
+              ),
               Padding(
                 padding: EdgeInsets.only(left: 14),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                    Text(
-                      name,
-                      style: TextStyle(
-                        fontFamily: "Pretendard",
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
+                child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        name,
+                        style: TextStyle(
+                          fontFamily: "Pretendard",
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                  Text(
-                    "내가 쓴 글 ${2}",
-                    style: TextStyle(
-                      fontFamily: "Pretendard",
-                      fontSize: 13,
-                    ),
-                  ),
-                ]),
+                      Text(
+                        "내가 쓴 글 ${2}",
+                        style: TextStyle(
+                          fontFamily: "Pretendard",
+                          fontSize: 13,
+                        ),
+                      ),
+                    ]),
               )
             ],
           ),
