@@ -32,8 +32,7 @@ class _MyPostViewState extends State<MyPostView> {
                     return Column(
                       children: [
                         CommunityCell(
-                            model: _communityVM.myCommunityList.value![index],
-                            id: _communityVM.myCommunityList.value![index].id),
+                            model: _communityVM.myCommunityList.value![index]),
                         SizedBox(
                           height: 6,
                         )

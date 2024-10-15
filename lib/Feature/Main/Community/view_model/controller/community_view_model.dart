@@ -11,11 +11,14 @@ import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class CommunityViewModel extends GetxController {
   final CommunityRepository _repositoy = CommunityRepositoryImpl();
   final CommentRepository _commentRepository = CommentRepositoryImpl();
-  Rxn<List<CommunityResponse>> communityList = Rxn<List<CommunityResponse>>([]);
+
+  final PagingController<int, CommunityResponse> pagingController = PagingController(firstPageKey: 1);
+
   Rxn<List<CommunityResponse>> myCommunityList =
       Rxn<List<CommunityResponse>>([]);
 
@@ -31,8 +34,8 @@ class CommunityViewModel extends GetxController {
     contentController.text = "";
   }
 
-  void getPosts() async {
-    ApiResponse apiResponse = await _repositoy.getPosts();
+  Future<void> getPosts(int pageKey) async {
+    ApiResponse apiResponse = await _repositoy.getPosts(pageKey);
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       ResponseData<List<CommunityResponse>> communityResponse =
@@ -42,7 +45,12 @@ class CommunityViewModel extends GetxController {
                   .map((e) => CommunityResponse.fromJson(e))
                   .toList());
 
-      communityList.value = communityResponse.data;
+      if (communityResponse.data.length < 10) {
+        pagingController.appendLastPage(communityResponse.data);
+      } else {
+        final nextPageKey = pageKey + 1;
+        pagingController.appendPage(communityResponse.data, nextPageKey);
+      }
     }
   }
 
@@ -64,7 +72,10 @@ class CommunityViewModel extends GetxController {
     print([apiResponse.statusCode, apiResponse.errorMessage]);
     if (apiResponse.statusCode == HttpStatus.ok) {
       Get.back();
-      getPosts();
+
+      pagingController.addPageRequestListener((pageKey) {
+        getPosts(pageKey);
+      });
     }
   }
 
@@ -102,8 +113,8 @@ class CommunityViewModel extends GetxController {
   }
 
   void postComment(int id, String content) async {
-    _commentRepository.postComment(CommentRequest(content: content, id: id)).then((value) {
-      print(value.data);
+    _commentRepository.postComment(
+        CommentRequest(content: content, id: id)).then((value) {
       getComments(id);
     });
   }

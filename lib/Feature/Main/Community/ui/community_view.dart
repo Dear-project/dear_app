@@ -1,8 +1,10 @@
 import 'package:dear_app/Feature/Main/Community/component/community/community_cell.dart';
+import 'package:dear_app/Feature/Main/Community/model/community_response.dart';
 import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class CommunityView extends StatefulWidget {
   CommunityView({super.key});
@@ -17,36 +19,26 @@ class _CommunityViewState extends State<CommunityView> {
   @override
   void initState() {
     super.initState();
-    _communityVM.getPosts();
+    _communityVM.pagingController.addPageRequestListener((pageKey) {
+      _communityVM.getPosts(pageKey);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: SingleChildScrollView(
-          child: Obx(
-                () =>
-                Column(
-                  children: [
-                    ...List.generate(
-                        _communityVM.communityList.value!.length, (index) {
-                      return Column(
-                        children: [
-                          CommunityCell(
-                              model: _communityVM.communityList.value![index],
-                              id: _communityVM.communityList.value![index].id),
-                          SizedBox(
-                            height: 6,
-                          )
-                        ],
-                      );
-                    }),
-                    SizedBox(
-                      height: 100,
-                    )
-                  ],
-                ),
-          )),
+    return Flexible(
+      child: PagedListView<int, CommunityResponse>.separated(
+        shrinkWrap: false,
+        pagingController: _communityVM.pagingController,
+        builderDelegate: PagedChildBuilderDelegate(
+          itemBuilder: (BuildContext context, item, index) {
+            return CommunityCell(model: item);
+          },
+        ),
+        separatorBuilder: (BuildContext context, int index) {
+          return SizedBox(height: 6);
+        },
+      ),
     );
   }
 }

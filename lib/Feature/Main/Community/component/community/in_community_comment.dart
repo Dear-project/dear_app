@@ -20,7 +20,11 @@ class InCommunityComment extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           if (commentType == CommunityCommentType.reply) SizedBox(width: 47),
-          DearIcons.communityProfile,
+          Image(
+            image: DearIcons.communityProfile.image,
+            width: 38,
+            height: 38,
+          ),
           SizedBox(width: 14),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,

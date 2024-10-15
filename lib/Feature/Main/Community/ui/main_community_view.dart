@@ -78,6 +78,7 @@ class _MainCommunityViewState extends State<MainCommunityView>
                     )
                 ),
                 _pages[_index],
+                SizedBox(height: 100)
               ],
             ),
             Positioned(

@@ -9,9 +9,8 @@ import 'package:shimmer/shimmer.dart';
 
 class CommunityCell extends StatelessWidget {
   CommunityResponse model;
-  int id;
 
-  CommunityCell({super.key, required this.model, required this.id});
+  CommunityCell({super.key, required this.model});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +23,7 @@ class CommunityCell extends StatelessWidget {
             child: CupertinoButton(
               padding: EdgeInsets.zero,
               onPressed: () {
-                Get.to(() => InCommunityView(id: id));
+                Get.to(() => InCommunityView(id: model.id));
               },
               child: SizedBox(
                   width: double.infinity,
@@ -98,7 +97,7 @@ class CommunityCell extends StatelessWidget {
                     DearIcons.communityChat,
                     SizedBox(width: 5),
                     Text(
-                      "2",
+                      "${model.commentCnt ?? 0}",
                       style: TextStyle(
                         fontFamily: "Pretendard",
                         fontWeight: FontWeight.w500,

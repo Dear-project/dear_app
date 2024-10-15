@@ -25,6 +25,9 @@ class CommunityResponse {
   @JsonKey(name: "modifiedDateTime")
   String? modifiedDateTime;
 
+  @JsonKey(name: "comment")
+  int? commentCnt;
+
   @JsonKey(name: "imagePath")
   dynamic imagePath;
 

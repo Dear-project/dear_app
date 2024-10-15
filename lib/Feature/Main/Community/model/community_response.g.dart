@@ -17,7 +17,7 @@ CommunityResponse _$CommunityResponseFromJson(Map<String, dynamic> json) =>
       json['modifiedDateTime'] as String?,
       json['imagePath'],
       json['profileImage'] as String?,
-    );
+    )..commentCnt = (json['comment'] as num?)?.toInt();
 
 Map<String, dynamic> _$CommunityResponseToJson(CommunityResponse instance) =>
     <String, dynamic>{
@@ -28,6 +28,7 @@ Map<String, dynamic> _$CommunityResponseToJson(CommunityResponse instance) =>
       'content': instance.content,
       'createdDateTime': instance.createdDateTime,
       'modifiedDateTime': instance.modifiedDateTime,
+      'comment': instance.commentCnt,
       'imagePath': instance.imagePath,
       'profileImage': instance.profileImage,
     };

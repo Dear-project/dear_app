@@ -7,7 +7,7 @@ import 'package:dear_app/Shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class CommunityRepository {
-  Future<ApiResponse> getPosts();
+  Future<ApiResponse> getPosts(int page);
   Future<ApiResponse> addPosts();
   Future<ApiResponse> patchPosts(int id, PostRequest body);
   Future<ApiResponse> getPostbyId(int id);
@@ -18,8 +18,8 @@ class CommunityRepositoryImpl implements CommunityRepository {
   final _apiService = CommunityApiService(HttpClient().client);
 
   @override
-  Future<ApiResponse> getPosts() async {
-    ApiResponse apiResponse = await _apiService.getPosts(1, 10).then((
+  Future<ApiResponse> getPosts(int page) async {
+    ApiResponse apiResponse = await _apiService.getPosts(page, 10).then((
         httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
