@@ -57,7 +57,7 @@ class _DiscoverViewState extends State<DiscoverView>
           scrolledUnderElevation: 0.0,
           elevation: 0,
           title: Text(
-            "학교 알아보기",
+            _roleController.isStudent ? "학교 알아보기" : "교수 커뮤니티",
             style: TextStyle(
                 fontFamily: "Pretendard",
                 fontSize: 20,
@@ -83,7 +83,7 @@ class _DiscoverViewState extends State<DiscoverView>
                     ])))
           ],
         ),
-        body:   page[_index]
+        body: page[_index]
     );
   }
 }

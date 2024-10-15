@@ -17,7 +17,6 @@ class InCommunityView extends StatefulWidget {
 }
 
 class _InCommunityViewState extends State<InCommunityView> {
-  TextEditingController _commentController = TextEditingController();
   final _communityVM = Get.put(CommunityViewModel());
 
   @override
@@ -50,7 +49,9 @@ class _InCommunityViewState extends State<InCommunityView> {
                     color: Colors.black,
                   ),
                   onPressed: () {
+                    _communityVM.pagingController.refresh();
                     Get.back();
+
                   }),
             ],
           ),
@@ -186,7 +187,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                 alignment: Alignment.center,
                 children: [
                   CupertinoTextField(
-                      controller: _commentController,
+                      controller: _communityVM.commentController,
                       decoration: BoxDecoration(),
                       placeholder: "댓글을 입력해 주세요.",
                       style: TextStyle(
@@ -198,7 +199,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                       child: DearTextFieldButton(
                           action: () {
                             _communityVM.postComment(
-                                widget.id, _commentController.text);
+                                widget.id);
                           },
                           buttonText: "댓글 달기"))
                 ],

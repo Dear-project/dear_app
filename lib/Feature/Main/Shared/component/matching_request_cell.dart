@@ -42,7 +42,6 @@ class MatchingRequestCell extends StatelessWidget {
                       color: Colors.black),
                 ),
                 Text("영남이공대학"),
-                Text("어제")
               ],
             ),
             Text(

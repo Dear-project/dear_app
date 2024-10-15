@@ -17,7 +17,8 @@ class CommunityViewModel extends GetxController {
   final CommunityRepository _repositoy = CommunityRepositoryImpl();
   final CommentRepository _commentRepository = CommentRepositoryImpl();
 
-  final PagingController<int, CommunityResponse> pagingController = PagingController(firstPageKey: 1);
+  final PagingController<int, CommunityResponse> pagingController =
+      PagingController(firstPageKey: 1);
 
   Rxn<List<CommunityResponse>> myCommunityList =
       Rxn<List<CommunityResponse>>([]);
@@ -28,6 +29,7 @@ class CommunityViewModel extends GetxController {
 
   TextEditingController titleController = TextEditingController();
   TextEditingController contentController = TextEditingController();
+  TextEditingController commentController = TextEditingController();
 
   void initTextController() {
     titleController.text = "";
@@ -72,10 +74,7 @@ class CommunityViewModel extends GetxController {
     print([apiResponse.statusCode, apiResponse.errorMessage]);
     if (apiResponse.statusCode == HttpStatus.ok) {
       Get.back();
-
-      pagingController.addPageRequestListener((pageKey) {
-        getPosts(pageKey);
-      });
+      pagingController.refresh();
     }
   }
 
@@ -102,20 +101,22 @@ class CommunityViewModel extends GetxController {
 
   void getComments(int id) async {
     ApiResponse apiResponse = await _commentRepository.getComments(id);
-    ResponseData<List<CommentResponse>> commentResponse =
-    ResponseData.fromJson(
+    ResponseData<List<CommentResponse>> commentResponse = ResponseData.fromJson(
         apiResponse.data,
-            (json) => (json as List)
-            .map((e) => CommentResponse.fromJson(e))
-            .toList());
+        (json) =>
+            (json as List).map((e) => CommentResponse.fromJson(e)).toList());
 
     commentList.value = commentResponse.data;
   }
 
-  void postComment(int id, String content) async {
-    _commentRepository.postComment(
-        CommentRequest(content: content, id: id)).then((value) {
-      getComments(id);
-    });
+  void postComment(int id) async {
+    if (commentController.text.trim() != "") {
+      _commentRepository
+          .postComment(CommentRequest(content: commentController.text, id: id))
+          .then((value) {
+        getComments(id);
+        commentController.text = "";
+      });
+    }
   }
 }
