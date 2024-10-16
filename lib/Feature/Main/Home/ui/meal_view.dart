@@ -1,4 +1,4 @@
-import 'package:dear_app/Feature/Main/Home/component/meal_cell.dart';
+import 'package:dear_app/Feature/Main/Home/component/meal_view_cell.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -78,12 +78,12 @@ class MealView extends StatelessWidget {
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 35),
-              child: MealCell(),
+              child: MealViewCell(),
             ),
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 35),
-              child: MealCell(),
+              child: MealViewCell(),
             ),
             SizedBox(height: 30),
             Padding(
@@ -108,12 +108,12 @@ class MealView extends StatelessWidget {
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 35),
-              child: MealCell(),
+              child: MealViewCell(),
             ),
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 35),
-              child: MealCell(),
+              child: MealViewCell(),
             ),
             SizedBox(height: 30),
             Padding(
@@ -138,12 +138,12 @@ class MealView extends StatelessWidget {
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 35),
-              child: MealCell(),
+              child: MealViewCell(),
             ),
             SizedBox(height: 15),
             Padding(
               padding: const EdgeInsets.only(left: 35),
-              child: MealCell(),
+              child: MealViewCell(),
             ),
             SizedBox(height: 30),
           ],

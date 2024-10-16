@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
+import 'package:dear_app/Feature/Main/Home/component/student_pageview.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
 import 'package:dear_app/Feature/Main/Home/ui/meal_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
@@ -80,21 +81,12 @@ class _HomeViewState extends State<HomeView> {
                 SizedBox(
                   height: 10,
                 ),
-                CupertinoButton(
-                  child: Text("식단표 뷰로 가기"),
-                  onPressed: () {
-                    Get.to(() => MealView());
-                  },
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 8),
+                  child: StudentPageView(
+                    list: _homeVM.scheduleModel.value,
+                  ),
                 ),
-                CupertinoButton(
-                    child: ScheduleCell(
-                      list: _homeVM.scheduleModel.value,
-                    ),
-                    onPressed: () {
-                      Get.to(() => ScheduleView(
-                            list: _homeVM.scheduleModel.value,
-                          ));
-                    }),
                 SuggestionCell(
                   title: "이런 교수님은 어때요?",
                   leading: CupertinoButton(
