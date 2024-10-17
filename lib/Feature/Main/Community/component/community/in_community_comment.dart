@@ -21,7 +21,7 @@ class InCommunityComment extends StatelessWidget {
         children: [
           if (commentType == CommunityCommentType.reply) SizedBox(width: 47),
           Image(
-            image: DearIcons.communityProfile.image,
+            image: DearIcons.communityProfile.toIcon().image,
             width: 38,
             height: 38,
           ),
@@ -76,7 +76,7 @@ class InCommunityComment extends StatelessWidget {
           SizedBox(
             width: 20,
             height: 40,
-            child: DearIcons.detailVertical,
+            child: DearIcons.detailVertical.toIcon(),
           ),
         ],
       ),

@@ -79,7 +79,7 @@ class _ChatCellState extends State<ChatCell> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Image(
-                              image: DearIcons.my.image,
+                              image: DearIcons.my.toIcon().image,
                               width: 50,
                               height: 50,
                             ),

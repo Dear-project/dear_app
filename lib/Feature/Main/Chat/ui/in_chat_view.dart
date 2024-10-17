@@ -126,7 +126,7 @@ class _InChatViewState extends State<InChatView> {
             CupertinoButton(
                 padding: EdgeInsets.zero,
                 child: Image(
-                  image: DearIcons.back.image,
+                  image: DearIcons.back.toIcon().image,
                   width: 24,
                   height: 24,
                   fit: BoxFit.fitWidth,
@@ -180,7 +180,7 @@ class _InChatViewState extends State<InChatView> {
                         child: Row(
                           children: [
                             Image(
-                              image: DearIcons.attach.image,
+                              image: DearIcons.attach.toIcon().image,
                               width: 26,
                               height: 26,
                               fit: BoxFit.fitWidth,
@@ -189,7 +189,7 @@ class _InChatViewState extends State<InChatView> {
                               width: 10,
                             ),
                             Image(
-                              image: DearIcons.photo.image,
+                              image: DearIcons.photo.toIcon().image,
                               width: 26,
                               height: 26,
                               fit: BoxFit.fitWidth,
@@ -204,7 +204,7 @@ class _InChatViewState extends State<InChatView> {
                                   }
                                 },
                                 child: Image(
-                                  image: DearIcons.send.toFill(false).image,
+                                  image: DearIcons.send.toIcon(fill: true).image,
                                   width: 25,
                                   height: 25,
                                   fit: BoxFit.fitWidth,

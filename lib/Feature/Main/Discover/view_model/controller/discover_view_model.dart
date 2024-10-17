@@ -26,14 +26,14 @@ class DiscoverViewModel extends GetxController {
 
   void getProfessor() async {
     ApiResponse response =
-    await _repository.getProfessor(discoverRequest: _request);
+        await _repository.getProfessor(discoverRequest: _request);
 
     print([response.statusCode, response.errorMessage, response.data]);
 
     if (response.statusCode == HttpStatus.ok) {
       ResponseData<List<DiscoverResponse>> responseData = ResponseData.fromJson(
           response.data,
-              (json) =>
+          (json) =>
               (json as List).map((e) => DiscoverResponse.fromJson(e)).toList());
 
       print(responseData.data);
@@ -43,7 +43,8 @@ class DiscoverViewModel extends GetxController {
   }
 
   void sendMatchingRequest(MatchingRequest? matchingRequest) async {
-    ApiResponse response = await _repository.sendMatchingRequest(matchingRequest: matchingRequest);
+    ApiResponse response =
+        await _repository.sendMatchingRequest(matchingRequest: matchingRequest);
 
     if (response.statusCode == HttpStatus.ok) {
       print("매칭 요청 성공");
@@ -54,13 +55,16 @@ class DiscoverViewModel extends GetxController {
     }
   }
 
+  void getMatchingRequest() async {}
+
   void getUniversity() async {
-    ApiResponse response = await _schoolRepository.search(searchSchoolRequest: SearchSchoolRequest(gubunType: SchoolType.UNIV.key, keyword: ""));
+    ApiResponse response = await _schoolRepository.search(
+        searchSchoolRequest:
+            SearchSchoolRequest(gubunType: SchoolType.UNIV.key, keyword: ""));
 
     SearchSchoolResponse searchSchoolResponse =
-    response.data as SearchSchoolResponse;
+        response.data as SearchSchoolResponse;
 
     univeristyList.value = searchSchoolResponse.data;
-
   }
 }

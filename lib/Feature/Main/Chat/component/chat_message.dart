@@ -24,7 +24,7 @@ class ChatMessage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final userProfilePhoto = (userPhotoLink == null || userPhotoLink == "")
-        ? CircleAvatar(radius: 20, child: DearIcons.my)
+        ? CircleAvatar(radius: 20, child: DearIcons.my.toIcon())
         : CachedCicleAvatar(
             userPhotoLink!,
             radius: 20,

@@ -9,50 +9,74 @@ import 'package:dio/dio.dart';
 
 abstract class DiscoverRepository {
   Future<ApiResponse> getProfessor({required DiscoverRequest discoverRequest});
-  Future<ApiResponse> sendMatchingRequest({required MatchingRequest? matchingRequest});
+
+  Future<ApiResponse> sendMatchingRequest(
+      {required MatchingRequest? matchingRequest});
+
+  Future<ApiResponse> getMatchingRequest(
+      {required DiscoverRequest discoverRequest});
 }
 
 class DiscoverRepositoryImpl implements DiscoverRepository {
   final _apiService = DiscoverApiService(HttpClient().client);
 
   @override
-  Future<ApiResponse> getProfessor({required DiscoverRequest discoverRequest}) async {
-    ApiResponse apiResponse = await _apiService.getProfessor(discoverRequest.page, discoverRequest.size).then((httpResponse) async {
+  Future<ApiResponse> getProfessor(
+      {required DiscoverRequest discoverRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .getProfessor(discoverRequest.page, discoverRequest.size)
+        .then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
-          data: httpResponse.data
-      );
+          data: httpResponse.data);
     }).onError((DioException e, stackTrace) async {
       return ApiResponse.error(
           (e.response == null)
-              ? HttpStatus.badRequest : e.response!.statusCode!,
-          (e.response == null)
-              ? "클라이언트 에러" : e.response!.statusMessage!
-      );
+              ? HttpStatus.badRequest
+              : e.response!.statusCode!,
+          (e.response == null) ? "클라이언트 에러" : e.response!.statusMessage!);
     });
 
     return apiResponse;
   }
 
   @override
-  Future<ApiResponse> sendMatchingRequest({required MatchingRequest? matchingRequest}) async {
-    ApiResponse apiResponse = await _apiService.sendMatchingRequest(matchingRequest: matchingRequest).then((httpResponse) async {
+  Future<ApiResponse> sendMatchingRequest(
+      {required MatchingRequest? matchingRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .sendMatchingRequest(matchingRequest: matchingRequest)
+        .then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,
-          data: httpResponse.data
-      );
+          data: httpResponse.data);
     }).onError((DioException e, stackTrace) async {
-      print(e);
-
       return ApiResponse.error(
           (e.response == null)
-              ? HttpStatus.badRequest : e.response!.statusCode!,
-          (e.response == null)
-              ? "클라이언트 에러" : e.response!.statusMessage!
-      );
+              ? HttpStatus.badRequest
+              : e.response!.statusCode!,
+          (e.response == null) ? "클라이언트 에러" : e.response!.statusMessage!);
     });
 
     return apiResponse;
   }
 
+  @override
+  Future<ApiResponse> getMatchingRequest(
+      {required DiscoverRequest discoverRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .getMachingRequest(discoverRequest.page, discoverRequest.size)
+        .then((httpResponse) async {
+      return ApiResponse(
+          statusCode: httpResponse.response.statusCode,
+          data: httpResponse.data);
+    }).onError((DioException e, stackTrace) async {
+      return ApiResponse.error(
+          (e.response == null)
+              ? HttpStatus.badRequest
+              : e.response!.statusCode!,
+          (e.response == null) ? "클라이언트 에러" : e.response!.statusMessage!);
+    });
+
+    return apiResponse;
+  }
 }

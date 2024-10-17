@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Discover/ui/dib_professor_view.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_community_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/professor_list_view.dart';
 import 'package:dear_app/Feature/Main/Discover/ui/university_view.dart';
 import 'package:dear_app/Shared/controller/user_role_controller.dart';
@@ -27,7 +28,8 @@ class _DiscoverViewState extends State<DiscoverView>
     UniversityView(),
     DibProfessorView()
   ] : [
-    DibProfessorView()
+    ProfessorListView(),
+    ProfessorCommunityView()
   ];
 
   late final TabController _tabController = TabController(
@@ -77,7 +79,7 @@ class _DiscoverViewState extends State<DiscoverView>
                     child: Stack(alignment: Alignment.topRight, children: [
                       CupertinoButton(
                           padding: EdgeInsets.zero,
-                          child: DearIcons.bell,
+                          child: DearIcons.bell.toIcon(),
                           onPressed: () {}),
                       DearBadge()
                     ])))

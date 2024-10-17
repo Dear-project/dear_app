@@ -15,13 +15,13 @@ class ChatProfileView extends StatelessWidget {
           backgroundColor: Color(0xffF8F9F9),
           leading: CupertinoButton(onPressed: () {
             Get.back();
-          }, child: DearIcons.back),
+          }, child: DearIcons.back.toIcon()),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Image(
-                image: DearIcons.my.image,
+                image: DearIcons.my.toIcon().image,
                 fit: BoxFit.fill,
                 width: 100,
                 height: 100),
@@ -45,15 +45,15 @@ class ChatProfileView extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     ChatProfileItem(
-                      image: DearIcons.profile,
+                      image: DearIcons.profile.toIcon(),
                       title: "프로필",
                     ),
                     ChatProfileItem(
-                      image: DearIcons.banner.toFill(true),
+                      image: DearIcons.banner.toIcon(fill: true),
                       title: "즐겨찾기",
                     ),
                     ChatProfileItem(
-                      image: DearIcons.detailHorizontal,
+                      image: DearIcons.detailHorizontal.toIcon(),
                       title: "옵션",
                     )
                   ],

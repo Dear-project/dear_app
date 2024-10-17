@@ -33,7 +33,7 @@ class _ScheduleCellState extends State<ScheduleCell> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image(
-                    image: DearIcons.calendar.image,
+                    image: DearIcons.calendar.toIcon().image,
                     width: 32,
                     height: 32,
                   ),

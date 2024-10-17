@@ -42,14 +42,13 @@ class _InCommunityViewState extends State<InCommunityView> {
               CupertinoButton(
                   padding: EdgeInsets.zero,
                   child: Image(
-                    image: DearIcons.arrowLeft.image,
+                    image: DearIcons.arrowLeft.toIcon().image,
                     width: 36,
                     height: 36,
                     fit: BoxFit.fitWidth,
                     color: Colors.black,
                   ),
                   onPressed: () {
-                    _communityVM.pagingController.refresh();
                     Get.back();
 
                   }),
@@ -76,7 +75,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                             SizedBox(
                               width: 45,
                               height: 45,
-                              child: DearIcons.communityProfile,
+                              child: DearIcons.communityProfile.toIcon(),
                             ),
                             SizedBox(width: 10),
                             Container(
@@ -108,7 +107,7 @@ class _InCommunityViewState extends State<InCommunityView> {
                             SizedBox(
                               width: 20,
                               height: 40,
-                              child: DearIcons.detailVertical,
+                              child: DearIcons.detailVertical.toIcon(),
                             ),
                           ],
                         ),

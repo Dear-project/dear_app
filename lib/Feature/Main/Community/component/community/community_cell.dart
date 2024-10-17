@@ -81,7 +81,7 @@ class CommunityCell extends StatelessWidget {
                     SizedBox(
                       width: 14,
                       height: 14,
-                      child: DearIcons.communityProfile,
+                      child: DearIcons.communityProfile.toIcon(),
                     ),
                     SizedBox(width: 7),
                     Text(
@@ -94,7 +94,7 @@ class CommunityCell extends StatelessWidget {
                       ),
                     ),
                     Spacer(flex: 1),
-                    DearIcons.communityChat,
+                    DearIcons.communityChat.toIcon(),
                     SizedBox(width: 5),
                     Text(
                       "${model.commentCnt ?? 0}",

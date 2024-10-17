@@ -65,7 +65,7 @@ class _HomeViewState extends State<HomeView> {
                     child: Stack(alignment: Alignment.topRight, children: [
                       CupertinoButton(
                           padding: EdgeInsets.zero,
-                          child: DearIcons.bell,
+                          child: DearIcons.bell.toIcon(),
                           onPressed: () {}),
                       DearBadge()
                     ])))
@@ -101,9 +101,11 @@ class _HomeViewState extends State<HomeView> {
                     ? SuggestionCell(
                         title: "이런 교수님은 어때요?",
                         leading: CupertinoButton(
-                          onPressed: () {},
+                          onPressed: () {
+
+                          },
                           child: Image(
-                            image: DearIcons.next.image,
+                            image: DearIcons.next.toIcon().image,
                             width: 20,
                             height: 20,
                           ),

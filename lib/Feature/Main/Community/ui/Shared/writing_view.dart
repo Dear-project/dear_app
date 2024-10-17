@@ -37,7 +37,7 @@ class _WritingViewState extends State<WritingView> {
           child: CupertinoButton(
               padding: EdgeInsets.zero,
               child: Image(
-                image: DearIcons.back.image,
+                image: DearIcons.back.toIcon().image,
                 width: 32,
                 height: 32,
                 fit: BoxFit.fitWidth,
@@ -130,13 +130,13 @@ class _WritingViewState extends State<WritingView> {
                 SizedBox(
                   width: 26,
                   height: 26,
-                  child: DearIcons.attach,
+                  child: DearIcons.attach.toIcon(),
                 ),
                 SizedBox(width: 11),
                 SizedBox(
                   width: 26,
                   height: 26,
-                  child: DearIcons.photo,
+                  child: DearIcons.photo.toIcon(),
                 ),
               ],
             ),

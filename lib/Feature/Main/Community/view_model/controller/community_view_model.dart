@@ -31,6 +31,10 @@ class CommunityViewModel extends GetxController {
   TextEditingController contentController = TextEditingController();
   TextEditingController commentController = TextEditingController();
 
+  void initPagingController() {
+
+  }
+
   void initTextController() {
     titleController.text = "";
     contentController.text = "";

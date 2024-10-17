@@ -48,7 +48,7 @@ class _ProfessorListViewState extends State<ProfessorListView> {
                                       professorInfo:
                                       _discoverVM.professorList.value![index],
                                       action: () {
-                                        Get.to(ProfessorProfileView(professorInfo: _discoverVM.professorList.value![index]));
+                                        Get.to(() => ProfessorProfileView(professorInfo: _discoverVM.professorList.value![index]));
                                       },
                                     )),
                               ),

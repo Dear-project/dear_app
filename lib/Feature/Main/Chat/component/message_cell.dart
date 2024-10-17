@@ -26,7 +26,7 @@ class MessageCell extends StatelessWidget {
               Padding(
                 padding: EdgeInsets.fromLTRB(0, 0, 2, 20),
                 child: Image(
-                  image: DearIcons.my.image,
+                  image: DearIcons.my.toIcon().image,
                   width: 37,
                   height: 37,
                   fit: BoxFit.cover,

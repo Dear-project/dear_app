@@ -97,7 +97,7 @@ class _MainCommunityViewState extends State<MainCommunityView>
                     height: 45,
                     child: Padding(
                       padding: EdgeInsets.all(12),
-                      child: DearIcons.write,
+                      child: DearIcons.write.toIcon(),
                     ),
                   )),
             )

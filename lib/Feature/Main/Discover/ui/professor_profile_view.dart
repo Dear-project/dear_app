@@ -31,7 +31,7 @@ class ProfessorProfileView extends StatelessWidget {
           child: CupertinoButton(
               padding: EdgeInsets.zero,
               child: Image(
-                image: DearIcons.arrowLeft.image,
+                image: DearIcons.arrowLeft.toIcon().image,
                 width: 24,
                 height: 24,
                 fit: BoxFit.fitWidth,
@@ -51,7 +51,7 @@ class ProfessorProfileView extends StatelessWidget {
         actions: [
           Padding(
             padding: EdgeInsets.only(right: 27),
-            child: DearIcons.bell,
+            child: DearIcons.bell.toIcon(),
           ),
         ],
       ),
@@ -85,7 +85,7 @@ class ProfessorProfileView extends StatelessWidget {
                         )),
                         SizedBox(width: 20),
                         Image(
-                          image: DearIcons.communityProfile.image,
+                          image: DearIcons.communityProfile.toIcon().image,
                           fit: BoxFit.fill,
                           width: 60,
                           height: 60,

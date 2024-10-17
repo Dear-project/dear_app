@@ -77,7 +77,7 @@ class ProfessorCell extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: CupertinoButton(
             child: Image(
-              image: DearIcons.banner.image,
+              image: DearIcons.banner.toIcon().image,
               width: 12,
               height: 17,
             ),

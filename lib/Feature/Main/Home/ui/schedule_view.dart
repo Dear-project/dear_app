@@ -73,7 +73,7 @@ class _ScheduleViewState extends State<ScheduleView> {
                 children: [
                   CupertinoButton(
                       padding: EdgeInsets.zero,
-                      child: DearIcons.bell,
+                      child: DearIcons.bell.toIcon(),
                       onPressed: () {}),
                   DearBadge()
                 ],

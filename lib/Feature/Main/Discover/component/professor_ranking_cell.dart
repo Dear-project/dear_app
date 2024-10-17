@@ -35,7 +35,7 @@ class ProfessorRankingCell extends StatelessWidget {
     return Column(
       children: [
         Image(
-          image: DearIcons.my.image,
+          image: DearIcons.my.toIcon().image,
           fit: BoxFit.fill,
           width: 70,
           height: 70,

@@ -26,7 +26,7 @@ class EditProfileView extends StatelessWidget {
             onPressed: () {
               Get.back();
             },
-            child: DearIcons.arrowLeft,
+            child: DearIcons.arrowLeft.toIcon(),
           ),
           title: Text(
             "수정하기",
@@ -52,7 +52,7 @@ class EditProfileView extends StatelessWidget {
                     fit: BoxFit.fill,
                     image: _profileVM.model.value?.imgPath != null
                         ? NetworkImage(_profileVM.model.value!.imgPath!)
-                        : DearIcons.my.image,
+                        : DearIcons.my.toIcon().image,
                   ),
                 ),
               ),

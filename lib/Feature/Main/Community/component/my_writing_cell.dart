@@ -22,7 +22,7 @@ class MyWritingCell extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image(
-                        image: DearIcons.communityProfile.image,
+                        image: DearIcons.communityProfile.toIcon().image,
                         width: 45,
                         height: 45,
                       ),
