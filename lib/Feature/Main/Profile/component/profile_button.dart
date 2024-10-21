@@ -6,6 +6,7 @@ enum ProfileButtonType {
   ServicePolicy,
   Version,
   Support,
+  AIInterView,
   Logout,
   MemberSecession,
 }
@@ -26,6 +27,8 @@ class ProfileButton extends StatelessWidget {
         return "버전";
       case ProfileButtonType.Support:
         return "고객센터";
+      case ProfileButtonType.AIInterView:
+        return "AI 면접";
       case ProfileButtonType.Logout:
         return "로그아웃";
       case ProfileButtonType.MemberSecession:

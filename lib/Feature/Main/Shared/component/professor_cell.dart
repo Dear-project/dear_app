@@ -46,7 +46,7 @@ class ProfessorCell extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      professorInfo != null ? professorInfo!.name : "",
+                      professorInfo?.name ?? "",
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 14,
@@ -54,13 +54,14 @@ class ProfessorCell extends StatelessWidget {
                           color: Colors.black),
                     ),
                     Text(
-                      "${professorInfo?.school ?? ""} ${professorInfo?.major ?? "컴퓨터공학과"}",
+                      "${professorInfo?.school?.padRight(professorInfo!.school!.length + 1) ?? ""}${professorInfo?.major ?? "컴퓨터공학과"}",
                       maxLines: 2,
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 12,
                           fontWeight: FontWeight.w400,
                           color: Color(0xff787878)),
+                      overflow: TextOverflow.ellipsis,
                     ),
                     SizedBox(height: 30),
                   ],

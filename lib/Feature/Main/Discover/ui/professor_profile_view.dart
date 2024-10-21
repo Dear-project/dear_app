@@ -1,4 +1,3 @@
-import 'package:dear_app/Feature/Main/Chat/model/room_request.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
@@ -84,12 +83,19 @@ class ProfessorProfileView extends StatelessWidget {
                           ],
                         )),
                         SizedBox(width: 20),
-                        Image(
-                          image: DearIcons.communityProfile.toIcon().image,
-                          fit: BoxFit.fill,
+                        Container(
                           width: 60,
                           height: 60,
-                        )
+                          decoration: BoxDecoration(
+                            shape: BoxShape.circle,
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: professorInfo?.profileImage != null
+                                  ? NetworkImage(professorInfo!.profileImage!)
+                                  : DearIcons.communityProfile.toIcon().image
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                   ),

@@ -197,6 +197,12 @@ class _ProfileViewState extends State<ProfileView> {
                         Get.to(() => QuestionView());
                       },
                     ),
+                    ProfileButton(
+                        buttonType: ProfileButtonType.AIInterView,
+                        onPressed: () {
+
+                        }
+                    ),
                     SizedBox(height: 10),
                     ProfileButton(
                       buttonType: ProfileButtonType.Logout,

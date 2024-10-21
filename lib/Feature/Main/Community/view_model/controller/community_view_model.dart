@@ -24,6 +24,7 @@ class CommunityViewModel extends GetxController {
       Rxn<List<CommunityResponse>>([]);
 
   Rxn<List<CommentResponse>> commentList = Rxn<List<CommentResponse>>([]);
+  Rxn<List<CommunityResponse>> todayCommunityList = Rxn<List<CommunityResponse>>([]);
 
   Rxn<CommunityResponse> infoById = Rxn<CommunityResponse>();
 
@@ -31,9 +32,6 @@ class CommunityViewModel extends GetxController {
   TextEditingController contentController = TextEditingController();
   TextEditingController commentController = TextEditingController();
 
-  void initPagingController() {
-
-  }
 
   void initTextController() {
     titleController.text = "";
@@ -41,7 +39,7 @@ class CommunityViewModel extends GetxController {
   }
 
   Future<void> getPosts(int pageKey) async {
-    ApiResponse apiResponse = await _repositoy.getPosts(pageKey);
+    ApiResponse apiResponse = await _repositoy.getPosts(pageKey, 10);
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       ResponseData<List<CommunityResponse>> communityResponse =
@@ -121,6 +119,22 @@ class CommunityViewModel extends GetxController {
         getComments(id);
         commentController.text = "";
       });
+    }
+  }
+
+  void getCommunityToday() async {
+    ApiResponse apiResponse = await _repositoy.getPosts(1, 3);
+
+    if (apiResponse.statusCode == HttpStatus.ok) {
+      ResponseData<List<CommunityResponse>> communityResponse =
+      ResponseData.fromJson(
+          apiResponse.data,
+              (json) =>
+              (json as List)
+                  .map((e) => CommunityResponse.fromJson(e))
+                  .toList());
+
+      todayCommunityList.value = communityResponse.data;
     }
   }
 }
