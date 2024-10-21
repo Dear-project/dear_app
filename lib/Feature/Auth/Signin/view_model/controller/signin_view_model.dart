@@ -52,8 +52,6 @@ class SigninViewModel extends GetxController {
 
     loading.value = true;
 
-
-    print(fcmToken);
     ApiResponse apiResponse = await _repository.signIn(
         signInRequest: SignInRequest(
             email: emailController.value.text,

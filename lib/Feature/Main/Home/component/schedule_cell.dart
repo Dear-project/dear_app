@@ -47,6 +47,8 @@ class _ScheduleCellState extends State<ScheduleCell> {
                       color: Colors.black,
                     ),
                   ),
+                  Spacer(),
+                  Image.asset("assets/image/goorm")
                 ],
               ),
               SizedBox(height: 22),
