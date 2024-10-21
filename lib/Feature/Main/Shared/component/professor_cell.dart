@@ -27,7 +27,7 @@ class ProfessorCell extends StatelessWidget {
                   height: 75,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: professorInfo != null

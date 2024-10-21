@@ -38,7 +38,7 @@ class _HomeViewState extends State<HomeView> {
     _homeVM.getSchedule();
     _homeVM.getBanner();
     _communityVM.getCommunityToday();
-    _discoverVM.getProfessor();
+    _discoverVM.getSuggestProfessor();
   }
 
   @override
@@ -114,7 +114,7 @@ class _HomeViewState extends State<HomeView> {
                           ))
                     ],
                   ),
-                if(_discoverVM.professorList.value!.isNotEmpty)
+                if(_discoverVM.suggestProfessorList.value!.isNotEmpty)
                 _roleController.isStudent
                     ? SuggestionCell(
                         title: "이런 교수님은 어때요?",
@@ -133,8 +133,7 @@ class _HomeViewState extends State<HomeView> {
                                 (index) => Padding(
                                     padding: EdgeInsets.symmetric(vertical: 6),
                                     child: ProfessorCell(
-                                        professorInfo: _discoverVM
-                                            .professorList.value![index])))
+                                        professorInfo: _discoverVM.suggestProfessorList.value![index])))
                           ],
                         ),
                       )

@@ -12,21 +12,22 @@ import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:get/get.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
 class DiscoverViewModel extends GetxController {
   final DiscoverRepository _repository = DiscoverRepositoryImpl();
 
   final SchoolRepository _schoolRepository = SchoolRepositoryImpl();
 
-  Rxn<List<DiscoverResponse>> professorList = Rxn<List<DiscoverResponse>>([]);
+
+  final PagingController<int, DiscoverResponse> pagingController = PagingController(firstPageKey: 1);
 
   Rxn<List<SchoolInfo>> univeristyList = Rxn<List<SchoolInfo>>([]);
+  Rxn<List<DiscoverResponse>> suggestProfessorList = Rxn<List<DiscoverResponse>>([]);
 
-  final DiscoverRequest _request = DiscoverRequest(page: 1, size: 10);
-
-  Future<void> getProfessor() async {
+  Future<void> getProfessor(int pageKey) async {
     ApiResponse response =
-        await _repository.getProfessor(discoverRequest: _request);
+        await _repository.getProfessor(discoverRequest: DiscoverRequest(page: pageKey, size: 10));
 
     print([response.statusCode, response.errorMessage, response.data]);
 
@@ -36,9 +37,12 @@ class DiscoverViewModel extends GetxController {
           (json) =>
               (json as List).map((e) => DiscoverResponse.fromJson(e)).toList());
 
-      print(responseData.data);
-
-      professorList.value = responseData.data;
+      if (responseData.data.length < 10) {
+        pagingController.appendLastPage(responseData.data);
+      } else {
+        final nextPageKey = pageKey + 1;
+        pagingController.appendPage(responseData.data, nextPageKey);
+      }
     }
   }
 
@@ -66,5 +70,20 @@ class DiscoverViewModel extends GetxController {
         response.data as SearchSchoolResponse;
 
     univeristyList.value = searchSchoolResponse.data;
+  }
+
+  void getSuggestProfessor() async {
+    ApiResponse response = await _repository.getProfessor(
+      discoverRequest: DiscoverRequest(page: 1, size: 3)
+    );
+
+    if (response.statusCode == HttpStatus.ok) {
+      ResponseData<List<DiscoverResponse>> responseData = ResponseData.fromJson(
+          response.data,
+              (json) =>
+              (json as List).map((e) => DiscoverResponse.fromJson(e)).toList());
+
+      suggestProfessorList.value = responseData.data;
+    }
   }
 }
