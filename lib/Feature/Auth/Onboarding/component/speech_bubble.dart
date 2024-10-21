@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SpeechBubble extends StatelessWidget {
-  SpeechBubble({super.key});
+  Widget child;
+  SpeechBubble({ super.key, required this.child });
 
   @override
   Widget build(BuildContext context) {
@@ -15,37 +16,13 @@ class SpeechBubble extends StatelessWidget {
         child: ClipPath(
             clipper: _SpeechBubbleClipper(),
             child: Container(
-                width: 145,
+              width: 148,
                 height: 40,
                 color: Colors.white,
-                child: Padding(
-                    padding: EdgeInsets.fromLTRB(6, 0, 10, 0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Image(
-                          image: Image.asset("assets/icons/idcard.png").image,
-                          width: 15,
-                          height: 15,
-                          fit: BoxFit.fill,
-                        ),
-                        Text("회원가입하고",
-                            style: TextStyle(
-                                fontFamily: "Pretendard",
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10)),
-                        Text("숨은 정보",
-                            style: TextStyle(
-                                fontFamily: "Pretendard",
-                                fontWeight: FontWeight.w800,
-                                fontSize: 10)),
-                        Text("받기",
-                            style: TextStyle(
-                                fontFamily: "Pretendard",
-                                fontWeight: FontWeight.w600,
-                                fontSize: 10)),
-                      ],
-                    )))));
+                child: child
+            )
+        )
+    );
   }
 }
 
@@ -81,7 +58,7 @@ class _SpeechBubbleClipper extends CustomClipper<Path> {
       ..addRRect(RRect.fromRectAndRadius(
           Rect.fromCenter(center: Offset(midw, midh), width: w, height: fixh),
           Radius.circular(5)))
-      ..moveTo(midw - 8, fixh)
+      ..moveTo(midw - 12, fixh)
       ..arcToPoint(
         Offset(midw, h),
         radius: Radius.circular(2),
@@ -89,7 +66,7 @@ class _SpeechBubbleClipper extends CustomClipper<Path> {
       )
       ..moveTo(midw, h)
       ..arcToPoint(
-        Offset(midw + 8, fixh),
+        Offset(midw + 12, fixh),
         radius: Radius.circular(2),
         clockwise: true,
       )

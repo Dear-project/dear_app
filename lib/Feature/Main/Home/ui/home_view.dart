@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Auth/Onboarding/component/speech_bubble.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
@@ -36,6 +37,8 @@ class _HomeViewState extends State<HomeView> {
     super.initState();
     _homeVM.getSchedule();
     _homeVM.getBanner();
+    _discoverVM.getProfessor();
+
     if (_discoverVM.professorList.value != null &&
         _discoverVM.professorList.value!.isNotEmpty) {
       professorSuggests = _discoverVM.professorList.value!.sublist(0, 2);
@@ -87,23 +90,45 @@ class _HomeViewState extends State<HomeView> {
                   height: 10,
                 ),
                 _roleController.isStudent
-                    ? CupertinoButton(
-                        child: ScheduleCell(
-                          list: _homeVM.scheduleModel.value,
-                        ),
-                        onPressed: () {
-                          Get.to(() => ScheduleView(
+                    ? Stack(
+                        children: [
+                          CupertinoButton(
+                              child: ScheduleCell(
                                 list: _homeVM.scheduleModel.value,
-                              ));
-                        })
+                              ),
+                              onPressed: () {
+                                Get.to(() => ScheduleView(
+                                      list: _homeVM.scheduleModel.value,
+                                    ));
+                              }),
+                          Align(
+                            alignment: Alignment.topRight,
+                            child: Padding(
+                              padding: EdgeInsets.only(
+                                  right: 4
+                              ),
+                              child: SpeechBubble(
+                                  child: Center(
+                                    child: Text(
+                                      "학교의 학사일정을 확인해요!",
+                                      style: TextStyle(
+                                          fontFamily: "Pretendard",
+                                          fontSize: 10,
+                                          fontWeight: FontWeight.w600
+                                      ),
+                                    ),
+                                  )
+                              ),
+                            )
+                          )
+                        ],
+                      )
                     : SuggestionCell(title: "매칭요청이 왔어요"),
                 _roleController.isStudent
                     ? SuggestionCell(
                         title: "이런 교수님은 어때요?",
                         leading: CupertinoButton(
-                          onPressed: () {
-
-                          },
+                          onPressed: () {},
                           child: Image(
                             image: DearIcons.next.toIcon().image,
                             width: 20,

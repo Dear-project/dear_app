@@ -19,7 +19,6 @@ class _ScheduleCellState extends State<ScheduleCell> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: Container(
-        height: 232,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -48,7 +47,13 @@ class _ScheduleCellState extends State<ScheduleCell> {
                     ),
                   ),
                   Spacer(),
-                  Image.asset("assets/image/goorm")
+                  Image(
+                    image: DearImages.goorm.image,
+                    fit: BoxFit.fitHeight,
+                    width: 50,
+                    height: 50,
+                  ),
+                  SizedBox(width: 20)
                 ],
               ),
               SizedBox(height: 22),

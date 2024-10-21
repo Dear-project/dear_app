@@ -24,7 +24,7 @@ class DiscoverViewModel extends GetxController {
 
   final DiscoverRequest _request = DiscoverRequest(page: 1, size: 10);
 
-  void getProfessor() async {
+  Future<void> getProfessor() async {
     ApiResponse response =
         await _repository.getProfessor(discoverRequest: _request);
 

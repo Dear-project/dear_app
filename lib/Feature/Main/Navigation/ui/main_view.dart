@@ -38,7 +38,6 @@ class _MainViewState extends State<MainView> {
   void initState() {
     super.initState();
     _profileVM.getProfile();
-    _discoverVM.getProfessor();
   }
 
   final List<Widget> _pages = [

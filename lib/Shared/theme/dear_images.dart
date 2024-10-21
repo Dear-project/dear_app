@@ -7,4 +7,6 @@ class DearImages {
   static Image schoolPlaceholder = Image.asset("assets/images/school_profile_placeholder.png");
   static Image studentDraw = Image.asset("assets/images/student_draw.png");
   static Image professorDraw = Image.asset("assets/images/professor_draw.png");
+  static Image goorm = Image.asset("assets/images/goorm.png");
+
 }
