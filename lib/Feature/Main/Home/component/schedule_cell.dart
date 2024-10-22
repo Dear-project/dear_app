@@ -57,19 +57,29 @@ class _ScheduleCellState extends State<ScheduleCell> {
                 ],
               ),
               SizedBox(height: 22),
-              if (widget.list != null)
-                ...List.generate(
-                  widget.list!.length <= 2 ? widget.list!.length : 2,
-                  (index) => Column(
-                    children: [
-                      ScheduleInCell(
-                        title: "${widget.list![index].scheduler}",
-                        date: "${widget.list![index].date}",
-                      ),
-                      SizedBox(height: 10),
-                    ],
-                  ),
-                ),
+              ScheduleInCell(
+                title: "신입생 1차 합격자 발표",
+                date: "${widget.list![9].date}",
+              ),
+              SizedBox(height: 10),
+              ScheduleInCell(
+                title: "ICT 융합 엑스포",
+                date: "${widget.list![10].date}",
+              ),
+              SizedBox(height: 10),
+              // if (widget.list != null)
+              //   ...List.generate(
+              //     widget.list!.length <= 2 ? widget.list!.length : 2,
+              //     (index) => Column(
+              //       children: [
+              //         ScheduleInCell(
+              //           title: "${widget.list![index].scheduler}",
+              //           date: "${widget.list![index].date}",
+              //         ),
+              //         SizedBox(height: 10),
+              //       ],
+              //     ),
+              //   ),
             ],
           ),
         ),
