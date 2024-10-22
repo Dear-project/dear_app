@@ -11,7 +11,7 @@ RoomResponse _$RoomResponseFromJson(Map<String, dynamic> json) => RoomResponse(
       (json['adminId'] as num).toInt(),
       json['chatName'] as String,
       json['createdAt'] as String,
-      json['joinedUserId'] as String?,
+      (json['joinedUserId'] as num?)?.toInt(),
       json['createdDateTime'] as String?,
       json['lastMessage'] as String,
       json['lastMessageTimeStamp'] as String,

@@ -5,16 +5,16 @@ part 'discover_response.g.dart';
 @JsonSerializable()
 class DiscoverResponse {
   @JsonKey(name: "professorId")
-  int professorId;
+  int? professorId;
 
   @JsonKey(name: "name")
   String name;
 
   @JsonKey(name: "school")
-  String school;
+  String? school;
 
   @JsonKey(name: "major")
-  String major;
+  String? major;
 
   @JsonKey(name: "profileImage")
   String? profileImage;

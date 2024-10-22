@@ -56,4 +56,11 @@ class CommunityViewModel extends GetxController {
     idInfo.value = response.data;
     print(idInfo.value?.toJson());
   }
+
+  void getPostsMy() async {
+    ApiResponse apiResponse = await _repositoy.getPostsMy();
+    ResponseData<List<CommunityResponse>> communityResponse = ResponseData.fromJson(apiResponse.data, (json) => (json as List).map((e) => CommunityResponse.fromJson(e)).toList());
+
+    print(communityResponse.data);
+  }
 }

@@ -10,7 +10,14 @@ class RegisterSchoolRequest {
   @JsonKey(name: "schoolName")
   String schoolName;
 
-  RegisterSchoolRequest({required this.seq, required this.schoolName});
+  @JsonKey(name: "link")
+  String link;
+
+  @JsonKey(name: "adres")
+  String adres;
+
+
+  RegisterSchoolRequest({required this.seq, required this.schoolName, required this.link, required this.adres});
 
   factory RegisterSchoolRequest.fromJson(Map<String, dynamic> json) =>
       _$RegisterSchoolRequestFromJson(json);

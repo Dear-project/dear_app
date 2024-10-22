@@ -9,8 +9,8 @@ import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:dear_app/Shared/model/user_profile_response.dart';
 import 'package:dear_app/Shared/service/secure_storage_service.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ProfileViewModel extends GetxController {
@@ -19,8 +19,8 @@ class ProfileViewModel extends GetxController {
 
   final ProfileRepository _repository = ProfileRepositoryImpl();
   final imagePicker = ImagePicker();
-  final imageCropper = ImageCropper();
   final TextEditingController editPWController = TextEditingController();
+  final TextEditingController editSchoolController = TextEditingController();
 
   Rxn<UserProfileResponse> model = Rxn<UserProfileResponse>();
   Rxn<List<String>> badgeList = Rxn<List<String>>([]);
@@ -40,10 +40,10 @@ class ProfileViewModel extends GetxController {
     print("프로필 response ${response.data}");
 
     if (response.statusCode == HttpStatus.ok) {
-
       ResponseData<UserProfileResponse> profileResponse = ResponseData.fromJson(
           response.data,
-          (json) => UserProfileResponse.fromJson(json as Map<String, dynamic>));
+              (json) =>
+              UserProfileResponse.fromJson(json as Map<String, dynamic>));
       model.value = profileResponse.data;
 
       userController.updateUser(profileResponse.data);
@@ -64,6 +64,8 @@ class ProfileViewModel extends GetxController {
 
     ApiResponse response = await _repository.setProfileImage(file ?? File(""));
 
+    print(response.statusCode);
+
     if (response.statusCode == HttpStatus.ok) {
       getProfile();
     }
@@ -72,22 +74,10 @@ class ProfileViewModel extends GetxController {
   Future<File?> selectImage() async {
     try {
       final XFile? image = await imagePicker.pickImage(
-          source: ImageSource.gallery,
-          maxHeight: 200,
-          maxWidth: 200
-      );
+          source: ImageSource.gallery, maxHeight: 200, maxWidth: 200);
 
       if (image != null && image.path != "") {
-        // final croppedFile = await imageCropper.cropImage(
-        //     sourcePath: File(image.path).path,
-        //     compressFormat: ImageCompressFormat.jpg,
-        //     compressQuality: 100,
-        //     aspectRatio: CropAspectRatio(ratioX: 1.0, ratioY: 1.0),
-        // );
-
-        // if (croppedFile != null) {
         return File(image.path);
-        // }
       } else {
         return null;
       }

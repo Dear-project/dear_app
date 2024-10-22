@@ -11,6 +11,7 @@ abstract class CommunityRepository {
   Future<ApiResponse> addPosts();
   Future<ApiResponse> patchPosts(int id, PostRequest body);
   Future<ApiResponse> getPostbyId(int id);
+  Future<ApiResponse> getPostsMy();
 }
 
 class CommunityRepositoryImpl implements CommunityRepository {
@@ -94,6 +95,27 @@ class CommunityRepositoryImpl implements CommunityRepository {
     });
 
     return apiResponse;
+  }
+
+  @override
+  Future<ApiResponse> getPostsMy() async {
+    ApiResponse apiResponse = await _apiService.getPostsMy(1, 100).then((
+        httpResponse) async {
+      return ApiResponse(
+          statusCode: httpResponse.response.statusCode,
+          data: httpResponse.data
+      );
+    }).onError((DioException e, stackTrace) async {
+      return ApiResponse.error(
+          (e.response == null)
+              ? HttpStatus.badRequest : e.response!.statusCode!,
+          (e.response == null)
+              ? "클라이언트 에러" : e.response!.statusMessage!
+      );
+    });
+
+    return apiResponse;
+
   }
 
 }

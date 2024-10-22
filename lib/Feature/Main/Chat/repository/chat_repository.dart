@@ -9,7 +9,7 @@ import 'package:dear_app/Shared/net/http_client.dart';
 import 'package:dio/dio.dart';
 
 abstract class ChatRepository {
-  Future<ApiResponse> getRooms();
+  Future<ApiResponse> getRooms( int userId );
   Future<ApiResponse> createRoom( RoomRequest roomRequest );
   Future<ApiResponse> getRoombyId( String roomId, int userId );
   Future<ApiResponse> getMessages( String roomId, int? userId, MessageRequest? pageable );
@@ -19,8 +19,8 @@ class ChatRepositoryImpl implements ChatRepository {
   final _apiService = ChatApiService(HttpClient().client);
 
   @override
-  Future<ApiResponse> getRooms() async {
-    ApiResponse apiResponse = await _apiService.getRooms().then((
+  Future<ApiResponse> getRooms(int userId) async {
+    ApiResponse apiResponse = await _apiService.getRooms(userId).then((
         httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,

@@ -30,9 +30,9 @@ class ChatViewModel extends GetxController {
 
   final scrollController = ScrollController();
 
+  int page = 1;
 
   void onConnect(StompFrame frame) {
-
     stompClient!.subscribe(
         destination: "/exchange/chat.exchange/room.${currentValue?.id ?? ""}",
         headers: {
@@ -46,7 +46,7 @@ class ChatViewModel extends GetxController {
             messages.value!.insert(0, response);
             messages.refresh();
 
-            scrollController.jumpTo(0);
+            scrollController.animateTo(0, duration: Duration(milliseconds: 300), curve: Curves.linear);
           }
         });
 
@@ -54,6 +54,10 @@ class ChatViewModel extends GetxController {
 
   void sendMessage(String message) {
     if (stompClient == null) {
+      return;
+    }
+
+    if (message.isEmpty || message.trim().isEmpty) {
       return;
     }
 
@@ -66,15 +70,15 @@ class ChatViewModel extends GetxController {
           {
             "roomId": currentValue!.id,
             "type": "MESSAGE",
-            "message": message
+            "message": message.trim()
           }
       )
     );
 
   }
 
-  void getRooms() async {
-    ApiResponse apiResponse = await _repository.getRooms();
+  void getRooms(int userId) async {
+    ApiResponse apiResponse = await _repository.getRooms(userId);
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       List<RoomResponse> response = List<RoomResponse>.from(
@@ -105,7 +109,7 @@ class ChatViewModel extends GetxController {
   void getMessages() async {
     currentValue = roomList.value?[clickedIndex];
 
-    ApiResponse apiResponse = await _repository.getMessages(currentValue!.id, null, null);
+    ApiResponse apiResponse = await _repository.getMessages(currentValue!.id, null, MessageRequest(page: page, size: 10));
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       MessagesResponse messagesResponse = MessagesResponse.fromJson(apiResponse.data);

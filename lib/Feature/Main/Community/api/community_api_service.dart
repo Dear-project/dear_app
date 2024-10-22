@@ -21,4 +21,7 @@ abstract class CommunityApiService {
   
   @GET('/community/{id}')
   Future<HttpResponse> getPostbyId(@Path("id") int id);
+
+  @GET('/community/my-articles')
+  Future<HttpResponse> getPostsMy(@Query("page") int page, @Query("size") int size);
 }

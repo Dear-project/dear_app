@@ -62,7 +62,7 @@ class ProfessorRankingCell extends StatelessWidget {
         ),
         SizedBox(height: 7),
         Text(
-          "${getRankingText()}",
+          getRankingText(),
           style: TextStyle(
             fontFamily: "Pretendard",
             fontWeight: FontWeight.w700,

@@ -12,16 +12,18 @@ class _ChatApiService implements ChatApiService {
   _ChatApiService(
     this._dio, {
     this.baseUrl,
-  });
+  }) {
+    baseUrl ??= 'http://43.202.136.92:8080';
+  }
 
   final Dio _dio;
 
   String? baseUrl;
 
   @override
-  Future<HttpResponse<dynamic>> getRooms() async {
+  Future<HttpResponse<dynamic>> getRooms(int userId) async {
     final _extra = <String, dynamic>{};
-    final queryParameters = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{r'userId': userId};
     final _headers = <String, dynamic>{};
     const Map<String, dynamic>? _data = null;
     final _result =

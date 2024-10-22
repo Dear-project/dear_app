@@ -1,8 +1,8 @@
 import 'package:cell_calendar/cell_calendar.dart';
 import 'package:dear_app/Feature/Main/Home/model/schedule_response.dart';
-import 'package:dear_app/shared/theme/dear_badge.dart';
-import 'package:dear_app/shared/theme/dear_color.dart';
-import 'package:dear_app/shared/theme/dear_icons.dart';
+import 'package:dear_app/Shared/theme/dear_badge.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
+import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 

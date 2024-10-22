@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:dear_app/Feature/Main/Home/model/banner_response.dart';
 import 'package:dear_app/Feature/Main/Home/model/schedule_response.dart';
 import 'package:dear_app/Feature/Main/Home/repository/home_repository.dart';
-import 'package:dear_app/shared/model/api_response.dart';
-import 'package:dear_app/shared/model/response_data.dart';
+import 'package:dear_app/Shared/model/api_response.dart';
+import 'package:dear_app/Shared/model/response_data.dart';
 import 'package:get/get.dart';
 
 class HomeViewModel extends GetxController {
