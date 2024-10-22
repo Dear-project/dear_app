@@ -1,24 +1,32 @@
+import 'package:dear_app/Feature/Main/Discover/model/matching_response.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class MatchingRequestCell extends StatelessWidget {
+
+  MatchingResponse model;
+
+  MatchingRequestCell({required this.model});
+
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Image(
+        Container(
           width: 50,
           height: 50,
-          fit: BoxFit.fill,
-          image: null != null
-              ? null != null
-                  ? NetworkImage("")
-                  : DearIcons.my.toIcon().image
-              : DearIcons.my.toIcon().image,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            image: DecorationImage(
+                image: model.userProfileImage != null
+                    ? NetworkImage(model.userProfileImage!)
+                    : DearIcons.my.toIcon().image
+            )
+          ),
         ),
         SizedBox(
           width: 15,
@@ -31,7 +39,7 @@ class MatchingRequestCell extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      "이름",
+                      model.userName,
                       style: TextStyle(
                           fontFamily: "Pretendard",
                           fontSize: 17,
@@ -40,23 +48,15 @@ class MatchingRequestCell extends StatelessWidget {
                     ),
                     SizedBox(width: 10),
                     Text(
-                      "영남이공대학",
+                      "${model?.schoolName?.padRight(model!.schoolName!.length + 1) ?? ""}${model?.majorName ?? "컴퓨터공학과"}",
                       style: TextStyle(
                         color: Color(0xffAAAAAA),
                         fontFamily: "Pretendard",
                         fontSize: 11,
+                        overflow: TextOverflow.ellipsis
                       ),
                     ),
                   ],
-                ),
-                SizedBox(height: 10),
-                Text(
-                  "하이",
-                  style: TextStyle(
-                      fontFamily: "Pretendard",
-                      fontSize: 15,
-                      fontWeight: FontWeight.w400,
-                      color: Color(0xff787878)),
                 ),
                 SizedBox(height: 10),
                 Row(

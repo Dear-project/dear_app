@@ -7,6 +7,7 @@ import 'package:dear_app/Feature/Auth/School/repository/school_repository.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_request.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
+import 'package:dear_app/Feature/Main/Discover/model/matching_response.dart';
 import 'package:dear_app/Feature/Main/Discover/repository/discover_repository.dart';
 import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
@@ -22,6 +23,8 @@ class DiscoverViewModel extends GetxController {
 
 
   final PagingController<int, DiscoverResponse> pagingController = PagingController(firstPageKey: 1);
+  final PagingController<int, MatchingResponse> matchingPC = PagingController(firstPageKey: 1);
+
 
   Rxn<List<SchoolInfo>> univeristyList = Rxn<List<SchoolInfo>>([]);
   Rxn<List<DiscoverResponse>> suggestProfessorList = Rxn<List<DiscoverResponse>>([]);
@@ -57,11 +60,28 @@ class DiscoverViewModel extends GetxController {
     } else if(response.statusCode == HttpStatus.conflict) {
       Utils.toastMessage("이미 요청한 교수님입니다");
     } else {
+      print(response.statusCode,);
       Utils.toastMessage("오류가 발생하였습니다");
     }
   }
 
-  void getMatchingRequest() async {}
+  void getMatchingRequest(int pageKey) async {
+    ApiResponse response = await _repository.getMatchingRequest(discoverRequest: DiscoverRequest(page: pageKey, size: 10));
+
+    if (response.statusCode == HttpStatus.ok) {
+      ResponseData<List<MatchingResponse>> responseData = ResponseData.fromJson(
+          response.data,
+              (json) => (json as List).map((e) => MatchingResponse.fromJson(e)).toList());
+
+      print(responseData.data);
+      if (responseData.data.length < 10) {
+        matchingPC.appendLastPage(responseData.data);
+      } else {
+        final nextPageKey = pageKey + 1;
+        matchingPC.appendPage(responseData.data, nextPageKey);
+      }
+    }
+  }
 
   void getUniversity() async {
     ApiResponse response = await _schoolRepository.search(

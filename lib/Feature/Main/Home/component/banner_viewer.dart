@@ -4,6 +4,8 @@ import 'package:dear_app/Feature/Main/Home/model/banner_response.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 class BannerViewer extends StatefulWidget {
   List<BannerResponse> list;
@@ -68,7 +70,11 @@ class _BannerViewerState extends State<BannerViewer> {
                             padding: EdgeInsets.symmetric(horizontal: 25),
                             child: CupertinoButton(
                               padding: EdgeInsets.zero,
-                              onPressed: () {},
+                              onPressed: () {
+                                if(widget.list[index].url != null) {
+                                  launchUrlString(widget.list[index].url!);
+                                }
+                              },
                               child: Container(
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(16),

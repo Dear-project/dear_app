@@ -6,7 +6,7 @@ part 'matching_response.g.dart';
 class MatchingResponse {
   int id;
   int userId;
-  int professorId;
+  int? professorId;
   String matchingType;
   String userName;
   String? schoolName;
