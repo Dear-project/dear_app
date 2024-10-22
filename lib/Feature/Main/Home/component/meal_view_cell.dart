@@ -2,7 +2,10 @@ import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/material.dart';
 
 class MealViewCell extends StatefulWidget {
-  const MealViewCell({super.key});
+  String mealTimeText;
+  List<List<String>> menu;
+
+  MealViewCell({super.key, required this.mealTimeText, required this.menu});
 
   @override
   State<MealViewCell> createState() => _MealViewCellState();
@@ -13,7 +16,7 @@ class _MealViewCellState extends State<MealViewCell> {
   Widget build(BuildContext context) {
     return Container(
       width: 323,
-      height: 88,
+      height: widget.menu.length < 4 ? 88 : 102,
       decoration: BoxDecoration(
         color: DearColors.white,
         borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -33,7 +36,7 @@ class _MealViewCellState extends State<MealViewCell> {
             child: Row(
               children: [
                 Text(
-                  "점심",
+                  widget.mealTimeText,
                   style: TextStyle(
                     fontFamily: "Pretendard",
                     fontWeight: FontWeight.w600,
@@ -57,7 +60,7 @@ class _MealViewCellState extends State<MealViewCell> {
             padding: const EdgeInsets.only(left: 30, bottom: 16),
             child: Wrap(
               children: [
-                for (var foods in [["미역국", "파스타"], ["라면", "감바스"], ["스파게티", "계란후라이"]])
+                for (var foods in widget.menu)
                 Row(
                   children: [
                     SizedBox(
