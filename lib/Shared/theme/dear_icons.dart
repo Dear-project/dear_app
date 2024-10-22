@@ -24,7 +24,8 @@ enum DearIcons {
   arrowLeft(path: "assets/icons/left_arrow.png"),
   write(path: "assets/icons/write.png"),
   editProfile(path: "assets/icons/edit_profile.png"),
-  calendar(path: "assets/icons/calendar.png");
+  calendar(path: "assets/icons/calendar.png"),
+  meal(path: "assets/icons/meal.png");
 
   final String path;
   const DearIcons({required this.path});

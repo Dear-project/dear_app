@@ -20,14 +20,17 @@ class ProfessorProfileCell extends StatelessWidget {
                 fontSize: 16),
           ),
           SizedBox(width: 16),
-          Text(
-            content,
-            style: TextStyle(
-                color: Color(0xff333333),
-                fontFamily: "Pretendard",
-                fontWeight: FontWeight.w600,
-                fontSize: 16),
+          Expanded(
+              child: Text(
+                content,
+                maxLines: 2,
+                style: TextStyle(
+                    color: Color(0xff333333),
+                    fontFamily: "Pretendard",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16),
 
+              )
           )
         ],
       ),

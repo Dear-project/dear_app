@@ -95,7 +95,9 @@ class _InChatViewState extends State<InChatView> {
                           borderRadius: BorderRadius.circular(10)),
                       clipBehavior: Clip.antiAlias,
                       height: MediaQuery.of(context).size.height * 0.9,
-                      child: ChatProfileView()),
+                      child: ChatProfileView(
+                        roomResponse: widget.roomResponse,
+                      )),
                   isScrollControlled: true);
             },
             child: Column(
@@ -111,7 +113,7 @@ class _InChatViewState extends State<InChatView> {
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  "영남이공대 펭귄과 ›",
+                  "대구소프트웨어고등학교 컴퓨터소프트웨어과 ›",
                   style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 11,

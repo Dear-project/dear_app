@@ -60,19 +60,6 @@ class UniversityCell extends StatelessWidget {
                 action!();
               }
             }),
-        Align(
-          alignment: Alignment.centerRight,
-          child: CupertinoButton(
-            child: Image(
-              image: DearIcons.banner.toIcon().image,
-              width: 12,
-              height: 17,
-            ),
-            onPressed: () {
-              print("찜하기 버튼 클릭됨");
-            },
-          ),
-        )
 
 
       ],

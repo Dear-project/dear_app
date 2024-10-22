@@ -55,7 +55,7 @@ class _BannerViewerState extends State<BannerViewer> {
           children: [
             SizedBox(
                 height: 152,
-                child:  PageView(
+                child: PageView(
                   scrollDirection: Axis.horizontal,
                   controller: widget._pageController,
                   onPageChanged: (value) {

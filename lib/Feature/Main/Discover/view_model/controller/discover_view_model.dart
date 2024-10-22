@@ -4,6 +4,7 @@ import 'package:dear_app/Feature/Auth/School/model/school_info.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_request.dart';
 import 'package:dear_app/Feature/Auth/School/model/search_school_response.dart';
 import 'package:dear_app/Feature/Auth/School/repository/school_repository.dart';
+import 'package:dear_app/Feature/Main/Discover/model/bookmark_response.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_request.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
@@ -106,6 +107,24 @@ class DiscoverViewModel extends GetxController {
               (json as List).map((e) => DiscoverResponse.fromJson(e)).toList());
 
       suggestProfessorList.value = responseData.data;
+    }
+  }
+
+  void getBookmark() async {
+    ApiResponse response = await _repository.getProfessor(
+        discoverRequest: DiscoverRequest(page: 1, size: 10)
+    );
+
+    print(response.statusCode);
+
+    if (response.statusCode == HttpStatus.ok) {
+      ResponseData<List<BookmarkResponse>> data = ResponseData.fromJson(
+          response.data,
+            (json) =>
+            (json as List).map((e) => BookmarkResponse.fromJson(e)).toList()
+      );
+
+      print(data);
     }
   }
 }

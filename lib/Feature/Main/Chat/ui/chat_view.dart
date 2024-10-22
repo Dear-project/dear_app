@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Chat/ui/all_chat_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/blocked_person_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/chat_request_view.dart';
 import 'package:dear_app/Feature/Main/Chat/ui/professor_chat_view.dart';
+import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
 import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
@@ -72,13 +73,9 @@ class _ChatViewState extends State<ChatView> with SingleTickerProviderStateMixin
               child: Container(
                   width: 22,
                   height: 25,
-                  child: Stack(alignment: Alignment.topRight, children: [
-                    CupertinoButton(
-                        padding: EdgeInsets.zero,
-                        child: DearIcons.bell.toIcon(),
-                        onPressed: () {}),
-                    DearBadge()
-                  ])))
+                  child: NotificationBell()
+              )
+          )
         ],
       ),
       body: Center(

@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Chat/component/chat_profile_item.dart';
+import 'package:dear_app/Feature/Main/Chat/model/room_response.dart';
 import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -6,6 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class ChatProfileView extends StatelessWidget {
+
+  RoomResponse roomResponse;
+
+  ChatProfileView({super.key, required this.roomResponse});
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,14 +34,14 @@ class ChatProfileView extends StatelessWidget {
                 height: 100),
             SizedBox(height: 18),
             Text(
-              "이해준",
+              roomResponse.chatName,
               style: TextStyle(
                   fontFamily: "Pretendard",
                   fontWeight: FontWeight.w700,
                   fontSize: 24,
                   color: Colors.black),
             ),
-            Text("영남이공대학 박승철 헤어과",
+            Text("대구소프트웨어고등학교 컴퓨터소프트웨어과",
                 style: TextStyle(
                     fontFamily: "Assistant",
                     fontSize: 15,

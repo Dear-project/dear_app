@@ -30,11 +30,9 @@ class ProfessorCell extends StatelessWidget {
                     borderRadius: BorderRadius.all(Radius.circular(5)),
                     image: DecorationImage(
                       fit: BoxFit.fill,
-                      image: professorInfo != null
-                          ? professorInfo!.profileImage != null
+                      image: professorInfo!.profileImage != null
                           ? NetworkImage(professorInfo!.profileImage!)
                           : DearImages.professorPlaceholder.image
-                          : DearImages.professorPlaceholder.image,
                     ),
                   ),
                 ),
@@ -67,6 +65,7 @@ class ProfessorCell extends StatelessWidget {
                   ],
                 ),
                 Spacer(),
+                SizedBox(width: 30)
               ],
             ),
             onPressed: () {

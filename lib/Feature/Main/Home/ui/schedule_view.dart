@@ -1,5 +1,6 @@
 import 'package:cell_calendar/cell_calendar.dart';
 import 'package:dear_app/Feature/Main/Home/model/schedule_response.dart';
+import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
@@ -68,16 +69,7 @@ class _ScheduleViewState extends State<ScheduleView> {
             child: Container(
               width: 22,
               height: 25,
-              child: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      child: DearIcons.bell.toIcon(),
-                      onPressed: () {}),
-                  DearBadge()
-                ],
-              ),
+              child: NotificationBell()
             ),
           ),
         ],

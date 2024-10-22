@@ -57,7 +57,7 @@ class ChatViewModel extends GetxController {
     }
 
     stompClient!.send(
-        destination: "/pub/chat.message",
+          destination: "/pub/chat.message",
       headers: {
         "Authorization": "Bearer $accessToken"
       },

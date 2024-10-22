@@ -3,6 +3,7 @@ import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/component/professor_profile_cell.dart';
 import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
+import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/cupertino.dart';
@@ -49,9 +50,13 @@ class ProfessorProfileView extends StatelessWidget {
         ),
         actions: [
           Padding(
-            padding: EdgeInsets.only(right: 27),
-            child: DearIcons.bell.toIcon(),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Container(
+                  width: 22,
+                  height: 25,
+                  child: NotificationBell()
+              )
+          )
         ],
       ),
       body: Column(

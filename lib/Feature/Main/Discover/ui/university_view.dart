@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Discover/component/university_cell.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/university_profile_view.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -41,7 +42,13 @@ class _UniversityViewState extends State<UniversityView> {
                                     child: UniversityCell(
                                       schoolInfo: _discoverVM
                                           .univeristyList.value![index],
-                                    )),
+                                      action: () {
+                                        Get.to(() => UniversityProfileView(
+                                            schoolInfo: _discoverVM.univeristyList.value![index],
+                                        ));
+                                      },
+                                    ),
+                                ),
                               ),
                               SizedBox(
                                 height: 100,
