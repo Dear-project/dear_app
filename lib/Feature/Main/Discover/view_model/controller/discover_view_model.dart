@@ -11,6 +11,7 @@ import 'package:dear_app/Feature/Main/Discover/repository/discover_repository.da
 import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
+import 'package:dear_app/Shared/utils/utils.dart';
 import 'package:get/get.dart';
 import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 
@@ -51,11 +52,12 @@ class DiscoverViewModel extends GetxController {
         await _repository.sendMatchingRequest(matchingRequest: matchingRequest);
 
     if (response.statusCode == HttpStatus.ok) {
-      print("매칭 요청 성공");
-      print("${response.statusCode} ${response.errorMessage}");
+      Utils.toastMessage("교수님께 매칭을 요청하였습니다.");
+      Get.back();
+    } else if(response.statusCode == HttpStatus.conflict) {
+      Utils.toastMessage("이미 요청한 교수님입니다");
     } else {
-      print("매칭 요청 실패");
-      print("${response.statusCode} ${response.errorMessage}");
+      Utils.toastMessage("오류가 발생하였습니다");
     }
   }
 

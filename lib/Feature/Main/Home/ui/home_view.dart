@@ -1,6 +1,7 @@
 import 'package:dear_app/Feature/Auth/Onboarding/component/speech_bubble.dart';
 import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_profile_view.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
 import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
@@ -133,7 +134,15 @@ class _HomeViewState extends State<HomeView> {
                                 (index) => Padding(
                                     padding: EdgeInsets.symmetric(vertical: 6),
                                     child: ProfessorCell(
-                                        professorInfo: _discoverVM.suggestProfessorList.value![index])))
+                                        professorInfo: _discoverVM.suggestProfessorList.value![index],
+                                      action: () {
+                                        Get.to(() => ProfessorProfileView(
+                                          professorInfo: _discoverVM.suggestProfessorList.value![index],
+                                        ));
+                                      },
+                                    )
+                                ),
+                            )
                           ],
                         ),
                       )
