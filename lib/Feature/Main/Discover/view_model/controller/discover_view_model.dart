@@ -29,6 +29,7 @@ class DiscoverViewModel extends GetxController {
 
   Rxn<List<SchoolInfo>> univeristyList = Rxn<List<SchoolInfo>>([]);
   Rxn<List<DiscoverResponse>> suggestProfessorList = Rxn<List<DiscoverResponse>>([]);
+  Rxn<List<MatchingResponse>> recentMatchingList = Rxn<List<MatchingResponse>>([]);
 
   Future<void> getProfessor(int pageKey) async {
     ApiResponse response =
@@ -84,6 +85,18 @@ class DiscoverViewModel extends GetxController {
     }
   }
 
+  void getMatchingRecent() async {
+    ApiResponse response = await _repository.getMatchingRequest(discoverRequest: DiscoverRequest(page: 1, size: 2));
+
+    if (response.statusCode == HttpStatus.ok) {
+      ResponseData<List<MatchingResponse>> responseData = ResponseData.fromJson(
+          response.data,
+              (json) => (json as List).map((e) => MatchingResponse.fromJson(e)).toList());
+
+      recentMatchingList.value = responseData.data;
+    }
+  }
+
   void getUniversity() async {
     ApiResponse response = await _schoolRepository.search(
         searchSchoolRequest:
@@ -127,4 +140,29 @@ class DiscoverViewModel extends GetxController {
       print(data);
     }
   }
+
+  void rejectMatchingRequest(MatchingRequest matchingRequest) async {
+    ApiResponse response =
+    await _repository.rejectMatchingRequest(matchingRequest: matchingRequest!);
+
+    if (response.statusCode == HttpStatus.ok) {
+      Utils.toastMessage("요청을 거절하였습니다");
+      matchingPC.refresh();
+    } else {
+      Utils.toastMessage("오류가 발생하였습니다");
+    }
+  }
+
+  void acceptMatchingRequest(MatchingRequest matchingRequest) async {
+    ApiResponse response =
+    await _repository.acceptMatchingRequest(matchingRequest: matchingRequest!);
+
+    if (response.statusCode == HttpStatus.ok) {
+      Utils.toastMessage("요청을 수락하였습니다.");
+      matchingPC.refresh();
+    } else {
+      Utils.toastMessage("오류가 발생하였습니다");
+    }
+  }
+
 }

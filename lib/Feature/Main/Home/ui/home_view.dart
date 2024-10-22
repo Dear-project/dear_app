@@ -11,6 +11,7 @@ import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
 import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
+import 'package:dear_app/Feature/Main/Shared/component/matching_request_cell.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
 import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
@@ -43,7 +44,11 @@ class _HomeViewState extends State<HomeView> {
     _homeVM.getSchedule();
     _homeVM.getBanner();
     _communityVM.getCommunityToday();
-    _discoverVM.getSuggestProfessor();
+    if (_roleController.isStudent) {
+      _discoverVM.getSuggestProfessor();
+    } else {
+      _discoverVM.getMatchingRecent();
+    }
   }
 
   @override
@@ -158,40 +163,69 @@ class _HomeViewState extends State<HomeView> {
                         )
                       ],
                     ),
-                if (_discoverVM.suggestProfessorList.value!.isNotEmpty)
-                  _roleController.isStudent
-                      ? SuggestionCell(
-                          title: "이런 교수님은 어때요?",
-                          leading: CupertinoButton(
-                            onPressed: () {},
-                            child: Image(
-                              image: DearIcons.next.toIcon().image,
-                              width: 20,
-                              height: 20,
-                            ),
+                _roleController.isStudent
+                    ? SuggestionCell(
+                        title: "이런 교수님은 어때요?",
+                        leading: CupertinoButton(
+                          onPressed: () {},
+                          child: Image(
+                            image: DearIcons.next.toIcon().image,
+                            width: 20,
+                            height: 20,
                           ),
-                          content: Column(
-                            children: [
-                              ...List.generate(
-                                2,
-                                (index) => Padding(
-                                    padding: EdgeInsets.symmetric(vertical: 6),
-                                    child: ProfessorCell(
-                                      professorInfo: _discoverVM
-                                          .suggestProfessorList.value![index],
-                                      action: () {
-                                        Get.to(() => ProfessorProfileView(
-                                              professorInfo: _discoverVM
-                                                  .suggestProfessorList
-                                                  .value![index],
-                                            ));
-                                      },
-                                    )),
+                        ),
+                        content: _discoverVM
+                                .suggestProfessorList.value!.isNotEmpty
+                            ? Column(
+                                children: [
+                                  ...List.generate(
+                                    2,
+                                    (index) => Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 6),
+                                        child: ProfessorCell(
+                                          professorInfo: _discoverVM
+                                              .suggestProfessorList
+                                              .value![index],
+                                          action: () {
+                                            Get.to(() => ProfessorProfileView(
+                                                  professorInfo: _discoverVM
+                                                      .suggestProfessorList
+                                                      .value![index],
+                                                ));
+                                          },
+                                        )),
+                                  )
+                                ],
                               )
-                            ],
-                          ),
-                        )
-                      : SuggestionCell(title: "매칭요청이 왔어요"),
+                            : Container(),
+                      )
+                    : SuggestionCell(
+                        title: "매칭요청이 왔어요",
+                        content:
+                            _discoverVM.recentMatchingList.value!.isNotEmpty
+                                ? Column(
+                              children: [
+                                ...List.generate(
+                                  2,
+                                    (index) => MatchingRequestCell(model: _discoverVM.recentMatchingList.value![index])
+                                )
+                              ],
+                            )
+                                : Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Center(
+                                child: Text(
+                                  "매칭 요청이 오지 않았습니다",
+                                  style: TextStyle(
+                                    fontFamily: "Pretendard",
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0xffE6E6E6)
+                                  ),
+                                ),
+                              ),
+                            )),
                 if (_communityVM.todayCommunityList.value!.isNotEmpty)
                   SuggestionCell(
                     title: "오늘의 글을 확인해보세요.",

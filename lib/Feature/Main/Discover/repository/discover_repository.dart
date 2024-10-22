@@ -16,6 +16,18 @@ abstract class DiscoverRepository {
 
   Future<ApiResponse> getMatchingRequest(
       {required DiscoverRequest discoverRequest});
+
+  Future<ApiResponse> rejectMatchingRequest(
+      {required MatchingRequest matchingRequest});
+
+  Future<ApiResponse> acceptMatchingRequest(
+      {required MatchingRequest matchingRequest});
+
+  Future<ApiResponse> getBookmarks(
+      {required DiscoverRequest discoverRequest});
+
+  Future<ApiResponse> postBookmark(
+      {required int id, required BookmarkType type});
 }
 
 class DiscoverRepositoryImpl implements DiscoverRepository {
@@ -106,6 +118,44 @@ class DiscoverRepositoryImpl implements DiscoverRepository {
       {required int id, required BookmarkType type}) async {
     ApiResponse apiResponse = await _apiService
         .postBookmark(id, type)
+        .then((httpResponse) async {
+      return ApiResponse(
+          statusCode: httpResponse.response.statusCode,
+          data: httpResponse.data);
+    }).onError((DioException e, stackTrace) async {
+      return ApiResponse.error(
+          (e.response == null)
+              ? HttpStatus.badRequest
+              : e.response!.statusCode!,
+          (e.response == null) ? "클라이언트 에러" : e.response!.statusMessage!);
+    });
+
+    return apiResponse;
+  }
+
+  @override
+  Future<ApiResponse> acceptMatchingRequest({required MatchingRequest matchingRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .acceptMatchingRequest(matchingRequest: matchingRequest)
+        .then((httpResponse) async {
+      return ApiResponse(
+          statusCode: httpResponse.response.statusCode,
+          data: httpResponse.data);
+    }).onError((DioException e, stackTrace) async {
+      return ApiResponse.error(
+          (e.response == null)
+              ? HttpStatus.badRequest
+              : e.response!.statusCode!,
+          (e.response == null) ? "클라이언트 에러" : e.response!.statusMessage!);
+    });
+
+    return apiResponse;
+  }
+
+  @override
+  Future<ApiResponse> rejectMatchingRequest({required MatchingRequest matchingRequest}) async {
+    ApiResponse apiResponse = await _apiService
+        .rejectMatchingRequest(matchingRequest: matchingRequest)
         .then((httpResponse) async {
       return ApiResponse(
           statusCode: httpResponse.response.statusCode,

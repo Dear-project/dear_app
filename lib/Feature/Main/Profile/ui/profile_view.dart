@@ -43,10 +43,10 @@ class _ProfileViewState extends State<ProfileView> {
             controller: _topController,
             scrollDirection: Axis.vertical,
             child: Obx(() => SizedBox(
-                height: context.height,
+                height: context.height + 120,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
                         color: Color(0xffFFFFFF),
@@ -241,7 +241,6 @@ class _ProfileViewState extends State<ProfileView> {
                                     ],
                                   ));
                         }),
-                    Spacer(flex: 1),
                   ],
                 )))));
   }

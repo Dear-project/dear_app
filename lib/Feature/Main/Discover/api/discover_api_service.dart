@@ -25,6 +25,14 @@ abstract class DiscoverApiService {
   Future<HttpResponse> sendMatchingRequest(
       {@Body() MatchingRequest? matchingRequest});
 
+  @POST('/matching/reject')
+  Future<HttpResponse> rejectMatchingRequest(
+      {@Body() MatchingRequest? matchingRequest});
+
+  @POST('/matching/accept')
+  Future<HttpResponse> acceptMatchingRequest(
+      {@Body() MatchingRequest? matchingRequest});
+
   @GET('/bookmark')
   Future<HttpResponse> getBookmark(
       @Query("page") int page, @Query("size") int size);

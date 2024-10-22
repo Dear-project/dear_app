@@ -64,30 +64,6 @@ class _FirstSigninViewState extends State<FirstSigninView> {
                   InputEmailWidget(),
                   SizedBox(height: 15),
                   InputPasswordWidget(),
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50, vertical: 10),
-                    child: Align(
-                      alignment: Alignment.centerRight,
-                      child: TextButton(
-                        style: TextButton.styleFrom(
-                            minimumSize: Size.zero,
-                            padding: EdgeInsets.zero,
-                            tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                        onPressed: () {},
-                        child: Text(
-                          style: TextStyle(
-                              height: 1.2,
-                              fontFamily: "Pretendard",
-                              fontSize: 12,
-                              fontWeight: FontWeight.w600,
-                              color: Color(0xff0E2764),
-                              decoration: TextDecoration.underline),
-                          "비밀번호 찾기",
-                        ),
-                        // SizedBox(width: 29),
-                      ),
-                    ),
-                  ),
                   SizedBox(height: 220),
                   Obx(() => RoundButton(
                       width: 340,

@@ -29,6 +29,11 @@ class _ChatRequestViewState extends State<ChatRequestView> {
             shrinkWrap: false,
             pagingController: _discoverVM.matchingPC,
             builderDelegate: PagedChildBuilderDelegate(
+              noItemsFoundIndicatorBuilder: (context) {
+                return Center(
+                  child: Text("교수님께 온 요청이 없습니다."),
+                );
+              },
               itemBuilder: (BuildContext context, item, index) {
                 return Padding(
                     padding: EdgeInsets.symmetric(horizontal: 26, vertical: 7),

@@ -92,10 +92,10 @@ class ChatViewModel extends GetxController {
     }
   }
 
-  void getMessages() async {
+  void getMessages(int userId) async {
     currentValue = roomList.value?[clickedIndex];
 
-    ApiResponse apiResponse = await _repository.getMessages(currentValue!.id, null, MessageRequest(page: page, size: 10));
+    ApiResponse apiResponse = await _repository.getMessages(currentValue!.id, userId, MessageRequest(page: page, size: 10));
 
     if (apiResponse.statusCode == HttpStatus.ok) {
       MessagesResponse messagesResponse = MessagesResponse.fromJson(apiResponse.data);

@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Chat/component/chat_cell.dart';
 import 'package:dear_app/Feature/Main/Chat/view_model/chat_view_model.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,6 +19,7 @@ class AllChatView extends StatefulWidget {
 class _AllChatViewState extends State<AllChatView> {
   final _chatVM = Get.put(ChatViewModel());
   final _profileVM = Get.put(ProfileViewModel());
+  final _roleController = UserRoleController.shared;
 
   @override
   void initState() {
@@ -60,7 +62,7 @@ class _AllChatViewState extends State<AllChatView> {
                       height: 35,
                     ),
                     Text(
-                      "교수님에게 말을 걸어보세요",
+                      _roleController.isStudent ? "교수님에게 말을 걸어보세요" : "요청이 오기까지 기다려주세요",
                       style: TextStyle(
                           color: Colors.black,
                           fontFamily: "Pretendard",

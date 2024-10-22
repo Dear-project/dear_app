@@ -42,7 +42,7 @@ class _InChatViewState extends State<InChatView> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _initAccess();
 
-      _chatVM.getMessages();
+      _chatVM.getMessages(_profileVM.model.value!.id);
 
       _chatVM.stompClient = StompClient(
           config: StompConfig(
@@ -61,10 +61,11 @@ class _InChatViewState extends State<InChatView> {
               },
               onDisconnect: (e) {
                 print(e);
+                _chatVM.stompClient!.deactivate();
               },
               onStompError: (e) {
-                print(e);
-                _chatVM.stompClient?.deactivate();
+                print("stompError: ${e}");
+                _chatVM.stompClient!.deactivate();
               },
               onWebSocketError: (e) => print(e)));
 
