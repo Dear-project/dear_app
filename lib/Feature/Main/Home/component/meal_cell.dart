@@ -14,7 +14,6 @@ class _MealCellState extends State<MealCell> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: Container(
-        height: 232,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -28,7 +27,7 @@ class _MealCellState extends State<MealCell> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image(
-                    image: DearIcons.calendar.image,
+                    image: DearIcons.meal.toIcon().image,
                     width: 32,
                     height: 32,
                   ),
@@ -46,8 +45,6 @@ class _MealCellState extends State<MealCell> {
               ),
               SizedBox(height: 15),
               Container(
-                width: 317,
-                height: 120,
                 decoration: BoxDecoration(
                   color: Color(0xffF7F8FA),
                   borderRadius: BorderRadius.all(Radius.circular(16)),
@@ -57,10 +54,9 @@ class _MealCellState extends State<MealCell> {
                   child: Wrap(
                     children: [
                       for (var foods in [
-                        ["미역국", "파스타"],
-                        ["라면", "감바스"],
-                        ["스파게티", "계란후라이"],
-                        ["김치찌개"],
+                        ["발아현미밥", "왕새우튀김"],
+                        ["한국식마라탕", "배추김치"],
+                        ["석쇠불고기", "오이고추된장무침"],
                       ])
                         Row(
                           children: [

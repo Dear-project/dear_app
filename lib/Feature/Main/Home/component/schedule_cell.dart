@@ -19,7 +19,6 @@ class _ScheduleCellState extends State<ScheduleCell> {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 8),
       child: Container(
-        height: 232,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(20),
@@ -33,7 +32,7 @@ class _ScheduleCellState extends State<ScheduleCell> {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Image(
-                    image: DearIcons.calendar.image,
+                    image: DearIcons.calendar.toIcon().image,
                     width: 32,
                     height: 32,
                   ),
@@ -47,6 +46,14 @@ class _ScheduleCellState extends State<ScheduleCell> {
                       color: Colors.black,
                     ),
                   ),
+                  Spacer(),
+                  Image(
+                    image: DearImages.goorm.image,
+                    fit: BoxFit.fitHeight,
+                    width: 50,
+                    height: 50,
+                  ),
+                  SizedBox(width: 20)
                 ],
               ),
               SizedBox(height: 22),

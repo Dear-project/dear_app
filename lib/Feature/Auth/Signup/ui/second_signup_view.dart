@@ -156,10 +156,10 @@ class _TypeSelectButtonState extends State<TypeSelectButton> {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      side: MaterialStateBorderSide.resolveWith(
+                      side: WidgetStateBorderSide.resolveWith(
                             (states) => BorderSide(color: Color(0xffC5D0DA)),
                       ),
-                      fillColor: MaterialStatePropertyAll(
+                      fillColor: WidgetStatePropertyAll(
                           Color(isClicked ? 0xffE6EDF7 : 0xffF1F2F3)),
                       checkColor: Color(0xff0E2764),
                     ),

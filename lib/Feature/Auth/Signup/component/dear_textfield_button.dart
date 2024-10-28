@@ -8,8 +8,6 @@ class DearTextFieldButton extends StatelessWidget {
 
   DearTextFieldButton({required this.action, required this.buttonText});
 
-  // const DearTextFieldButton({super.key});
-
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(

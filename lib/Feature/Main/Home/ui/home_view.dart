@@ -1,13 +1,20 @@
+import 'package:dear_app/Feature/Auth/Onboarding/component/speech_bubble.dart';
+import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
+import 'package:dear_app/Feature/Main/Discover/ui/professor_profile_view.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/Main/Home/component/banner_viewer.dart';
+import 'package:dear_app/Feature/Main/Home/component/meal_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
-import 'package:dear_app/Feature/Main/Home/component/student_pageview.dart';
+import 'package:dear_app/Feature/Main/Home/component/short_community_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
 import 'package:dear_app/Feature/Main/Home/ui/meal_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
+import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
+import 'package:dear_app/Feature/Main/Shared/component/matching_request_cell.dart';
 import 'package:dear_app/Feature/Main/Shared/component/professor_cell.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
@@ -25,6 +32,10 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   final _homeVM = Get.put(HomeViewModel());
   final _discoverVM = Get.put(DiscoverViewModel());
+  final _communityVM = Get.put(CommunityViewModel());
+  final _roleController = UserRoleController.shared;
+
+  int _activeIndex = 0;
 
   List<DiscoverResponse> professorSuggests = [];
 
@@ -32,9 +43,12 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     _homeVM.getSchedule();
-    if (_discoverVM.professorList.value != null &&
-        _discoverVM.professorList.value!.isNotEmpty) {
-      professorSuggests = _discoverVM.professorList.value!.sublist(0, 2);
+    _homeVM.getBanner();
+    _communityVM.getCommunityToday();
+    if (_roleController.isStudent) {
+      _discoverVM.getSuggestProfessor();
+    } else {
+      _discoverVM.getMatchingRecent();
     }
   }
 
@@ -55,58 +69,184 @@ class _HomeViewState extends State<HomeView> {
           actions: [
             Padding(
                 padding: EdgeInsets.symmetric(horizontal: 30),
-                child: Container(
-                    width: 22,
-                    height: 25,
-                    child: Stack(alignment: Alignment.topRight, children: [
-                      CupertinoButton(
-                          padding: EdgeInsets.zero,
-                          child: DearIcons.bell,
-                          onPressed: () {}),
-                      DearBadge()
-                    ])))
+                child:
+                    Container(width: 22, height: 25, child: NotificationBell()))
           ],
         ),
         body: Obx(() => ListView(
               children: [
                 if (_homeVM.model.value!.isNotEmpty)
                   BannerViewer(list: _homeVM.model.value!),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 34),
-                  child: Container(
-                    height: 1,
-                    decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                if (_homeVM.model.value!.isNotEmpty)
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 34),
+                    child: Container(
+                      height: 1,
+                      decoration: BoxDecoration(color: Color(0xffE6E6E6)),
+                    ),
                   ),
-                ),
                 SizedBox(
                   height: 10,
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: StudentPageView(
-                    list: _homeVM.scheduleModel.value,
-                  ),
-                ),
-                SuggestionCell(
-                  title: "이런 교수님은 어때요?",
-                  leading: CupertinoButton(
-                    onPressed: () {},
-                    child: Image(
-                      image: DearIcons.next.image,
-                      width: 20,
-                      height: 20,
+                if (_roleController.isStudent)
+                  if (_homeVM.scheduleModel.value!.isNotEmpty)
+                    Stack(
+                      alignment: Alignment.bottomRight,
+                      children: [
+                        SizedBox(
+                            height: 280,
+                            child: PageView(
+                              onPageChanged: (index) {
+                                setState(() {
+                                  _activeIndex = index;
+                                });
+                              },
+                              children: [
+                                Stack(
+                                  children: [
+                                    CupertinoButton(
+                                        child: ScheduleCell(
+                                          list: _homeVM.scheduleModel.value,
+                                        ),
+                                        onPressed: () {
+                                          Get.to(() => ScheduleView(
+                                                list:
+                                                    _homeVM.scheduleModel.value,
+                                              ));
+                                        }),
+                                    Align(
+                                        alignment: Alignment.topRight,
+                                        child: Padding(
+                                          padding: EdgeInsets.only(right: 4),
+                                          child: SpeechBubble(
+                                              child: Center(
+                                            child: Text(
+                                              "학교의 학사일정을 확인해요!",
+                                              style: TextStyle(
+                                                  fontFamily: "Pretendard",
+                                                  fontSize: 10,
+                                                  fontWeight: FontWeight.w600),
+                                            ),
+                                          )),
+                                        )),
+                                  ],
+                                ),
+                                Padding(
+                                    padding:
+                                        EdgeInsets.symmetric(horizontal: 14),
+                                    child: CupertinoButton(child: MealCell(
+
+                                    ), onPressed: () {
+                                      Get.to(() => MealView());
+                                    }))
+                              ],
+                            )),
+                        Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: 52, vertical: 32),
+                          child: Row(
+                            children: [
+                              Spacer(),
+                              ...List.generate(
+                                  2,
+                                  (index) => Row(
+                                        children: [
+                                          Container(
+                                            width: 8,
+                                            height: 8,
+                                            decoration: BoxDecoration(
+                                                shape: BoxShape.circle,
+                                                color: _activeIndex == index
+                                                    ? Color(0xff0E2764)
+                                                    : Color(0xffD5DCEC)),
+                                          ),
+                                          SizedBox(width: 12)
+                                        ],
+                                      ))
+                            ],
+                          ),
+                        )
+                      ],
+                    ),
+                _roleController.isStudent
+                    ? SuggestionCell(
+                        title: "이런 교수님은 어때요?",
+                        leading: CupertinoButton(
+                          onPressed: () {},
+                          child: Image(
+                            image: DearIcons.next.toIcon().image,
+                            width: 20,
+                            height: 20,
+                          ),
+                        ),
+                        content: _discoverVM
+                                .suggestProfessorList.value!.isNotEmpty
+                            ? Column(
+                                children: [
+                                  ...List.generate(
+                                    2,
+                                    (index) => Padding(
+                                        padding:
+                                            EdgeInsets.symmetric(vertical: 6),
+                                        child: ProfessorCell(
+                                          professorInfo: _discoverVM
+                                              .suggestProfessorList
+                                              .value![index],
+                                          action: () {
+                                            Get.to(() => ProfessorProfileView(
+                                                  professorInfo: _discoverVM
+                                                      .suggestProfessorList
+                                                      .value![index],
+                                                ));
+                                          },
+                                        )),
+                                  )
+                                ],
+                              )
+                            : Container(),
+                      )
+                    : SuggestionCell(
+                        title: "매칭요청이 왔어요",
+                        content:
+                            _discoverVM.recentMatchingList.value!.isNotEmpty
+                                ? Column(
+                              children: [
+                                ...List.generate(
+                                  2,
+                                    (index) => MatchingRequestCell(model: _discoverVM.recentMatchingList.value![index])
+                                )
+                              ],
+                            )
+                                : Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: Center(
+                                child: Text(
+                                  "매칭 요청이 오지 않았습니다",
+                                  style: TextStyle(
+                                    fontFamily: "Pretendard",
+                                    fontSize: 20,
+                                    fontWeight: FontWeight.w800,
+                                    color: Color(0xffE6E6E6)
+                                  ),
+                                ),
+                              ),
+                            )),
+                if (_communityVM.todayCommunityList.value!.isNotEmpty)
+                  SuggestionCell(
+                    title: "오늘의 글을 확인해보세요.",
+                    content: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        ...List.generate(
+                            _communityVM.todayCommunityList.value!.length,
+                            (index) => ShortCommunityCell(
+                                model: _communityVM
+                                    .todayCommunityList.value![index]))
+                      ],
                     ),
                   ),
-                  content: Column(
-                    children: [
-                      ...List.generate(
-                          professorSuggests.length,
-                          (index) => Padding(
-                              padding: EdgeInsets.symmetric(vertical: 6),
-                              child: ProfessorCell(
-                                  professorInfo: professorSuggests[index])))
-                    ],
-                  ),
+                SizedBox(
+                  height: 100,
                 )
               ],
             )));

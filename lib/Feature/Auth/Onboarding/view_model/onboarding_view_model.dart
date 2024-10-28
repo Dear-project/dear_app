@@ -6,6 +6,7 @@ import 'package:dear_app/Feature/Auth/School/ui/select_school_view.dart';
 import 'package:dear_app/Feature/Auth/Signin/ui/first_signin_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/home_view.dart';
 import 'package:dear_app/Feature/Main/Navigation/ui/main_view.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/enums/user_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
@@ -16,7 +17,7 @@ import 'package:get/get.dart';
 
 class OnboardingViewModel extends GetxController {
   final UserRepository _userRepository = UserRepositoryImpl();
-
+  final UserRoleController _roleController = UserRoleController.shared;
 
   RxBool loading = false.obs;
 
@@ -27,6 +28,8 @@ class OnboardingViewModel extends GetxController {
     if (apiResponse.statusCode == HttpStatus.ok) {
       ResponseData<UserProfileResponse> responseData = apiResponse.data;
       UserProfileResponse userProfileResponse = responseData.data;
+
+      _roleController.role.value = UserType.values.byName(userProfileResponse.role);
 
       if (userProfileResponse.schoolName == null) {
         Get.to(() => SelectSchoolView());

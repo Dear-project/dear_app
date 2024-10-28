@@ -28,7 +28,7 @@ class UniversityCell extends StatelessWidget {
                   height: 75,
                   decoration: BoxDecoration(
                     shape: BoxShape.rectangle,
-                    borderRadius: BorderRadius.all(Radius.circular(16)),
+                    borderRadius: BorderRadius.all(Radius.circular(5)),
                     image: DecorationImage(
                       fit: BoxFit.fill,
                       image: DearImages.schoolPlaceholder.image,
@@ -60,19 +60,6 @@ class UniversityCell extends StatelessWidget {
                 action!();
               }
             }),
-        Align(
-          alignment: Alignment.centerRight,
-          child: CupertinoButton(
-            child: Image(
-              image: DearIcons.banner.image,
-              width: 12,
-              height: 17,
-            ),
-            onPressed: () {
-              print("찜하기 버튼 클릭됨");
-            },
-          ),
-        )
 
 
       ],

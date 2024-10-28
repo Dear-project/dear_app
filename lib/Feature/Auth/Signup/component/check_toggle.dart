@@ -26,7 +26,7 @@ class CheckToggle extends StatelessWidget {
                 border: Border.all(color: Color(0xffC5D0DA))),
             child: Center(
                 child: Image(
-                  image: DearIcons.check.image,
+                  image: DearIcons.check.toIcon().image,
                   width: 13,
                   height: 10,
                   color: toggle ? Color(0xff0E2764) : Colors.transparent,

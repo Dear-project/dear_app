@@ -42,7 +42,9 @@ class _InChatViewState extends State<InChatView> {
     WidgetsBinding.instance.addPostFrameCallback((_) async {
       await _initAccess();
 
-      _chatVM.getMessages();
+      _chatVM.getMessages(_profileVM.model.value!.id);
+
+      print(widget.roomResponse.id);
 
       _chatVM.stompClient = StompClient(
           config: StompConfig(
@@ -61,10 +63,11 @@ class _InChatViewState extends State<InChatView> {
               },
               onDisconnect: (e) {
                 print(e);
+                _chatVM.stompClient!.deactivate();
               },
               onStompError: (e) {
-                print(e);
-                _chatVM.stompClient?.deactivate();
+                print("stompError: ${e}");
+                _chatVM.stompClient!.deactivate();
               },
               onWebSocketError: (e) => print(e)));
 
@@ -95,7 +98,9 @@ class _InChatViewState extends State<InChatView> {
                           borderRadius: BorderRadius.circular(10)),
                       clipBehavior: Clip.antiAlias,
                       height: MediaQuery.of(context).size.height * 0.9,
-                      child: ChatProfileView()),
+                      child: ChatProfileView(
+                        roomResponse: widget.roomResponse,
+                      )),
                   isScrollControlled: true);
             },
             child: Column(
@@ -111,7 +116,7 @@ class _InChatViewState extends State<InChatView> {
                       fontWeight: FontWeight.w700),
                 ),
                 Text(
-                  "영남이공대 펭귄과 ›",
+                  "대구소프트웨어고등학교 컴퓨터소프트웨어과 ›",
                   style: TextStyle(
                       fontFamily: "Pretendard",
                       fontSize: 11,
@@ -126,7 +131,7 @@ class _InChatViewState extends State<InChatView> {
             CupertinoButton(
                 padding: EdgeInsets.zero,
                 child: Image(
-                  image: DearIcons.back.image,
+                  image: DearIcons.back.toIcon().image,
                   width: 24,
                   height: 24,
                   fit: BoxFit.fitWidth,
@@ -180,7 +185,7 @@ class _InChatViewState extends State<InChatView> {
                         child: Row(
                           children: [
                             Image(
-                              image: DearIcons.attach.image,
+                              image: DearIcons.attach.toIcon().image,
                               width: 26,
                               height: 26,
                               fit: BoxFit.fitWidth,
@@ -189,7 +194,7 @@ class _InChatViewState extends State<InChatView> {
                               width: 10,
                             ),
                             Image(
-                              image: DearIcons.photo.image,
+                              image: DearIcons.photo.toIcon().image,
                               width: 26,
                               height: 26,
                               fit: BoxFit.fitWidth,
@@ -204,7 +209,7 @@ class _InChatViewState extends State<InChatView> {
                                   }
                                 },
                                 child: Image(
-                                  image: DearIcons.send.toFill(false).image,
+                                  image: DearIcons.send.toIcon(fill: true).image,
                                   width: 25,
                                   height: 25,
                                   fit: BoxFit.fitWidth,

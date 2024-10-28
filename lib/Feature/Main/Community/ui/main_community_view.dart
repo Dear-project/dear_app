@@ -1,7 +1,7 @@
-import 'package:dear_app/Feature/Main/Community/ui/community/my_post_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/my_post_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Feature/Main/community/component/my_writing_cell.dart';
-import 'package:dear_app/Feature/Main/Community/ui/community/community_view.dart';
+import 'package:dear_app/Feature/Main/Community/ui/community_view.dart';
 import 'package:dear_app/Feature/Main/Community/ui/Shared/writing_view.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/component/dear_top_tab_bar.dart';
@@ -78,6 +78,7 @@ class _MainCommunityViewState extends State<MainCommunityView>
                     )
                 ),
                 _pages[_index],
+                SizedBox(height: 100)
               ],
             ),
             Positioned(
@@ -96,7 +97,7 @@ class _MainCommunityViewState extends State<MainCommunityView>
                     height: 45,
                     child: Padding(
                       padding: EdgeInsets.all(12),
-                      child: DearIcons.write,
+                      child: DearIcons.write.toIcon(),
                     ),
                   )),
             )

@@ -2,6 +2,7 @@ import 'package:dear_app/Feature/Main/Profile/component/dear_toggle_button.dart'
 import 'package:dear_app/Feature/Main/Profile/component/profile_badge.dart';
 import 'package:dear_app/Feature/Main/Profile/component/profile_button.dart';
 import 'package:dear_app/Feature/Main/Profile/ui/edit_profile_view.dart';
+import 'package:dear_app/Feature/Main/Profile/ui/question_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -42,10 +43,10 @@ class _ProfileViewState extends State<ProfileView> {
             controller: _topController,
             scrollDirection: Axis.vertical,
             child: Obx(() => SizedBox(
-                height: context.height,
+                height: context.height + 120,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
                         color: Color(0xffFFFFFF),
@@ -86,7 +87,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                       .model
                                                       .value!
                                                       .imgPath!)
-                                                      : DearIcons.my.image,
+                                                      : DearIcons.my.toIcon().image,
                                                 ),
                                               ),
                                             ),
@@ -110,7 +111,7 @@ class _ProfileViewState extends State<ProfileView> {
                                                       ),
                                                       alignment:
                                                       Alignment.center,
-                                                      child: DearIcons.editProfile,
+                                                      child: DearIcons.editProfile.toIcon(),
                                                     )))
                                           ],
                                         ))),
@@ -192,7 +193,15 @@ class _ProfileViewState extends State<ProfileView> {
                     ),
                     ProfileButton(
                       buttonType: ProfileButtonType.Support,
-                      onPressed: () {},
+                      onPressed: () {
+                        Get.to(() => QuestionView());
+                      },
+                    ),
+                    ProfileButton(
+                        buttonType: ProfileButtonType.AIInterView,
+                        onPressed: () {
+
+                        }
                     ),
                     SizedBox(height: 10),
                     ProfileButton(
@@ -232,7 +241,6 @@ class _ProfileViewState extends State<ProfileView> {
                                     ],
                                   ));
                         }),
-                    Spacer(flex: 1),
                   ],
                 )))));
   }

@@ -10,8 +10,10 @@ import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model
 import 'package:dear_app/Feature/Main/Profile/ui/profile_view.dart';
 import 'package:dear_app/Feature/Main/Profile/view_model/controller/profile_view_model.dart';
 import 'package:dear_app/Feature/Main/Community/view_model/controller/community_view_model.dart';
+import 'package:dear_app/Shared/controller/user_role_controller.dart';
 import 'package:dear_app/Shared/component/dear_tab_view.dart';
 import 'package:dear_app/Shared/model/dear_tab_view_item.dart';
+import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -28,19 +30,15 @@ class _MainViewState extends State<MainView> {
   final _communityVM = Get.put(CommunityViewModel());
   final _chatVM = Get.put(ChatViewModel());
 
+  final _roleController = UserRoleController.shared;
+
   var _index = 0;
 
   @override
   void initState() {
     super.initState();
     _profileVM.getProfile();
-    _discoverVM.getProfessor();
-    _homeVM.getBanner();
-    _communityVM.getPosts();
-    _communityVM.getPostsMy();
   }
-
-
 
   final List<Widget> _pages = [
     HomeView(),
@@ -53,33 +51,33 @@ class _MainViewState extends State<MainView> {
   final List<DearTabViewItem> _items = [
     DearTabViewItem(icon: DearIcons.home, toggle: true),
     DearTabViewItem(icon: DearIcons.chat),
-    DearTabViewItem(
-      icon: DearIcons.inventory,
-    ),
-    DearTabViewItem(
-      icon: DearIcons.people,
-    ),
+    DearTabViewItem(icon: DearIcons.inventory,),
+    DearTabViewItem(icon: DearIcons.people,),
     DearTabViewItem(icon: DearIcons.my)
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        body: _pages[_index],
-        extendBody: true,
-        bottomSheet: BottomAppBar(
-          elevation: 0,
-          height: 60 + MediaQuery.of(context).padding.bottom,
-          color: Colors.transparent,
-          padding: EdgeInsets.zero,
-          child: DearTabView(
-            items: _items,
-            onClick: (value) {
-              setState(() {
-                _index = value;
-              });
-            },
-          ),
-        ));
+    return Stack(children: [
+      _pages[_index],
+      Align(
+          alignment: Alignment.bottomCenter,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              DearTabView(
+                items: _items,
+                onClick: (value) {
+                  setState(() {
+                    _index = value;
+                  });
+                },
+              ),
+              Container(
+                  color: DearColors.white,
+                  height: MediaQuery.of(context).padding.bottom)
+            ],
+          ))
+    ]);
   }
 }

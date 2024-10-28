@@ -2,7 +2,7 @@ import 'package:dear_app/Shared/theme/dear_color.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-enum TopBarType { Discover, Chat, Community }
+enum TopBarType { Discover, Chat, Community, ProfessorDisc, ProfessorChat }
 
 class DearTopTabBar extends StatefulWidget implements PreferredSizeWidget {
   DearTopTabBar(
@@ -28,6 +28,10 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
         return [Tab(text: "전체"), Tab(text: "차단한 사람 보기")];
       case TopBarType.Community:
         return [Tab(text: "커뮤니티"), Tab(text: "내 작성글 보기")];
+      case TopBarType.ProfessorDisc:
+        return [Tab(text: "교수님 목록"), Tab(text: "커뮤니티")];
+      case TopBarType.ProfessorChat:
+        return [Tab(text: "전체"), Tab(text: "교수채팅"), Tab(text: "차단한 사람 보기"), Tab(text: "요청")];
     }
   }
 
@@ -36,8 +40,6 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
     widget.tabController.dispose();
     super.dispose();
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -49,9 +51,10 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
       height: 40,
       child: TabBar(
         splashFactory: NoSplash.splashFactory,
+        indicatorPadding: EdgeInsets.zero,
         isScrollable: true,
         controller: widget.tabController,
-        overlayColor: MaterialStateColor.resolveWith((states) => Colors.white),
+        overlayColor: WidgetStateColor.resolveWith((states) => Colors.white),
         tabAlignment: TabAlignment.center,
         indicatorColor: DearColors.main,
         indicatorSize: widget.topBarType == TopBarType.Community
@@ -63,6 +66,8 @@ class _DearTopTabBarState extends State<DearTopTabBar> {
             fontFamily: "Pretendard",
             fontWeight: FontWeight.w600,
             fontSize: 17),
+        unselectedLabelColor: Color(0xff7B7B7B),
+
         tabs: getTabs(),
       ),
     );

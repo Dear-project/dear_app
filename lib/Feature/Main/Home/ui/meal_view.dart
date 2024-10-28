@@ -1,4 +1,5 @@
 import 'package:dear_app/Feature/Main/Home/component/meal_view_cell.dart';
+import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
 import 'package:dear_app/Shared/component/dear_logo.dart';
 import 'package:dear_app/Shared/theme/dear_badge.dart';
 import 'package:dear_app/Shared/theme/dear_color.dart';
@@ -27,22 +28,13 @@ class MealView extends StatelessWidget {
         backgroundColor: DearColors.white,
         actions: [
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 30),
-            child: Container(
-              width: 22,
-              height: 25,
-              child: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  CupertinoButton(
-                      padding: EdgeInsets.zero,
-                      child: DearIcons.bell,
-                      onPressed: () {}),
-                  DearBadge()
-                ],
-              ),
-            ),
-          ),
+              padding: EdgeInsets.symmetric(horizontal: 30),
+              child: Container(
+                  width: 22,
+                  height: 25,
+                  child: NotificationBell()
+              )
+          )
         ],
       ),
       body: SingleChildScrollView(

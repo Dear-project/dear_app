@@ -1,29 +1,37 @@
 import 'package:flutter/material.dart';
 
 class ProfessorProfileCell extends StatelessWidget {
-  const ProfessorProfileCell({super.key});
+  String title;
+  String content;
+
+  ProfessorProfileCell({super.key, required this.title, required this.content});
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(vertical: 10),
+    return SizedBox(
       child: Row(
         children: [
           Text(
-            "2021.02.02",
+            title,
             style: TextStyle(
+                color: Color(0xff787878),
                 fontFamily: "Pretendard",
                 fontWeight: FontWeight.w600,
-                fontSize: 13),
+                fontSize: 16),
           ),
-          Spacer(flex: 1),
-          Text(
-            "포항 제철고등학교 졸업",
-            style: TextStyle(
-                fontFamily: "Pretendard",
-                fontWeight: FontWeight.w600,
-                fontSize: 13),
-          ),
+          SizedBox(width: 16),
+          Expanded(
+              child: Text(
+                content,
+                maxLines: 2,
+                style: TextStyle(
+                    color: Color(0xff333333),
+                    fontFamily: "Pretendard",
+                    fontWeight: FontWeight.w600,
+                    fontSize: 16),
+
+              )
+          )
         ],
       ),
     );
