@@ -1,16 +1,19 @@
 import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
+import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Shared/theme/dear_icons.dart';
 import 'package:dear_app/Shared/theme/dear_images.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
 
 class ProfessorCell extends StatelessWidget {
   DiscoverResponse? professorInfo;
-
   final Function? action;
 
   ProfessorCell({this.professorInfo, this.action});
+
+  final _discoverVM = Get.put(DiscoverViewModel());
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +80,12 @@ class ProfessorCell extends StatelessWidget {
           alignment: Alignment.centerRight,
           child: CupertinoButton(
             child: Image(
-              image: DearIcons.banner.toIcon().image,
+              image: DearIcons.banner.toIcon(fill: professorInfo!.isBookMarked ?? false).image,
               width: 12,
               height: 17,
             ),
             onPressed: () {
-              print("찜하기 버튼 클릭됨");
+              _discoverVM.postBookmark(professorInfo!.userId!);
             },
           ),
         ),

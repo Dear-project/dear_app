@@ -10,6 +10,7 @@ import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/model/matching_request.dart';
 import 'package:dear_app/Feature/Main/Discover/model/matching_response.dart';
 import 'package:dear_app/Feature/Main/Discover/repository/discover_repository.dart';
+import 'package:dear_app/Feature/Main/Home/enums/bookmark_type.dart';
 import 'package:dear_app/Shared/enums/school_type.dart';
 import 'package:dear_app/Shared/model/api_response.dart';
 import 'package:dear_app/Shared/model/response_data.dart';
@@ -30,6 +31,9 @@ class DiscoverViewModel extends GetxController {
   Rxn<List<SchoolInfo>> univeristyList = Rxn<List<SchoolInfo>>([]);
   Rxn<List<DiscoverResponse>> suggestProfessorList = Rxn<List<DiscoverResponse>>([]);
   Rxn<List<MatchingResponse>> recentMatchingList = Rxn<List<MatchingResponse>>([]);
+
+  Rxn<List<BookmarkResponse>> bookmarkList = Rxn<List<BookmarkResponse>>([]);
+
 
   Future<void> getProfessor(int pageKey) async {
     ApiResponse response =
@@ -124,8 +128,26 @@ class DiscoverViewModel extends GetxController {
   }
 
   void getBookmark() async {
-    ApiResponse response = await _repository.getProfessor(
+    ApiResponse response = await _repository.getBookmarks(
         discoverRequest: DiscoverRequest(page: 1, size: 10)
+    );
+
+    if (response.statusCode == HttpStatus.ok) {
+      ResponseData<List<BookmarkResponse>> data = ResponseData.fromJson(
+          response.data,
+            (json) =>
+            (json as List).map((e) => BookmarkResponse.fromJson(e)).toList()
+      );
+
+      bookmarkList.value = data.data;
+    }
+
+
+  }
+
+  void postBookmark(int id) async {
+    ApiResponse response = await _repository.postBookmark(
+      id: id, type: BookmarkType.PROFESSOR
     );
 
     print(response.statusCode);
@@ -133,8 +155,8 @@ class DiscoverViewModel extends GetxController {
     if (response.statusCode == HttpStatus.ok) {
       ResponseData<List<BookmarkResponse>> data = ResponseData.fromJson(
           response.data,
-            (json) =>
-            (json as List).map((e) => BookmarkResponse.fromJson(e)).toList()
+              (json) =>
+              (json as List).map((e) => BookmarkResponse.fromJson(e)).toList()
       );
 
       print(data);

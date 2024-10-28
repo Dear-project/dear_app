@@ -54,10 +54,9 @@ class _MealCellState extends State<MealCell> {
                   child: Wrap(
                     children: [
                       for (var foods in [
-                        ["미역국", "파스타"],
-                        ["라면", "감바스"],
-                        ["스파게티", "계란후라이"],
-                        ["김치찌개"],
+                        ["발아현미밥", "왕새우튀김"],
+                        ["한국식마라탕", "배추김치"],
+                        ["석쇠불고기", "오이고추된장무침"],
                       ])
                         Row(
                           children: [

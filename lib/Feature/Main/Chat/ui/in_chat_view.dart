@@ -44,6 +44,8 @@ class _InChatViewState extends State<InChatView> {
 
       _chatVM.getMessages(_profileVM.model.value!.id);
 
+      print(widget.roomResponse.id);
+
       _chatVM.stompClient = StompClient(
           config: StompConfig(
               url: "$STOMP_URL/stomp/chat",

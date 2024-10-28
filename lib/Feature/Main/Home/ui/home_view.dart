@@ -8,6 +8,7 @@ import 'package:dear_app/Feature/Main/Home/component/meal_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/schedule_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/short_community_cell.dart';
 import 'package:dear_app/Feature/Main/Home/component/suggestion_cell.dart';
+import 'package:dear_app/Feature/Main/Home/ui/meal_view.dart';
 import 'package:dear_app/Feature/Main/Home/ui/schedule_view.dart';
 import 'package:dear_app/Feature/Main/Home/view_model/controller/home_view_model.dart';
 import 'package:dear_app/Feature/Main/Notification/components/notification_bell.dart';
@@ -133,7 +134,11 @@ class _HomeViewState extends State<HomeView> {
                                 Padding(
                                     padding:
                                         EdgeInsets.symmetric(horizontal: 14),
-                                    child: MealCell())
+                                    child: CupertinoButton(child: MealCell(
+
+                                    ), onPressed: () {
+                                      Get.to(() => MealView());
+                                    }))
                               ],
                             )),
                         Padding(

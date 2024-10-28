@@ -17,6 +17,8 @@ class ChatViewModel extends GetxController {
 
   Rxn<List<MessageResponse>> messages = Rxn<List<MessageResponse>>([]);
 
+  Rxn<int> _userId = Rxn<int>();
+
   int clickedIndex = 0;
   String? accessToken;
 
@@ -34,12 +36,8 @@ class ChatViewModel extends GetxController {
           "Authorization": "Bearer $accessToken"
         },
         callback: (StompFrame frame) {
-          if (frame.body != null) {
-            Map<String, dynamic> object = json.decode(frame.body!);
-
-            MessageResponse response = MessageResponse.fromJson(object);
-            messages.value!.insert(0, response);
-            messages.refresh();
+          if (frame.body != null || _userId.value != null) {
+            getMessages(_userId.value!);
 
             scrollController.animateTo(0, duration: Duration(milliseconds: 300), curve: Curves.linear);
           }
@@ -94,6 +92,8 @@ class ChatViewModel extends GetxController {
 
   void getMessages(int userId) async {
     currentValue = roomList.value?[clickedIndex];
+
+    _userId.value = userId;
 
     ApiResponse apiResponse = await _repository.getMessages(currentValue!.id, userId, MessageRequest(page: page, size: 10));
 

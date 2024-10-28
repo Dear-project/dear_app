@@ -1,3 +1,4 @@
+import 'package:dear_app/Feature/Main/Discover/model/discover_response.dart';
 import 'package:dear_app/Feature/Main/Discover/view_model/controller/discover_view_model.dart';
 import 'package:dear_app/Feature/main/Shared/component/professor_cell.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,9 @@ class _DibProfessorViewState extends State<DibProfessorView> {
         child: SingleChildScrollView(
           child: Column(
             children: [
-
+              ...List.generate(_discoverVM.bookmarkList.value!.length, (index) =>
+                ProfessorCell(professorInfo: DiscoverResponse(0, _discoverVM.bookmarkList.value![index].name, _discoverVM.bookmarkList.value![index].content, "", "", true))
+              )
             ],
           ),
         ),
